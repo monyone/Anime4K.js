@@ -1,7 +1,7 @@
 {
   "name": "anime4k.js",
   "version": "0.0.1",
-  "description": "Anime4K implementaion WebGL",
+  "description": "Anime4K WebGL implementation",
   "main": "index.js",
   "license": "MIT",
   "private": true,

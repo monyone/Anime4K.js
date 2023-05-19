@@ -11,8 +11,8 @@ export const useWebGL = (source: TexImageSource, canvas: HTMLCanvasElement): voi
   const in_width = (source instanceof HTMLVideoElement) ? source.videoWidth : source.width;
   const in_height = (source instanceof HTMLVideoElement) ? source.videoHeight : source.height;
 
-  //const out_width = in_width * 2, out_height = in_height * 2;
-  const out_width = in_width, out_height = in_height;
+  const out_width = in_width * 2, out_height = in_height * 2;
+  //const out_width = in_width, out_height = in_height;
   canvas.width = out_width;
   canvas.height = out_height;
 
@@ -52,7 +52,7 @@ export const useWebGL = (source: TexImageSource, canvas: HTMLCanvasElement): voi
 
   let texture: TextureData = { texture: in_texture, width: in_width, height: in_height };
   texture = restore.render(texture);
-  //texture = upscale.render(texture);
+  texture = upscale.render(texture);
   //texture = clamp.render({ texture: in_texture, width: in_width, height: in_height }, texture);
 
   //
