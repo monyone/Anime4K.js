@@ -16,3 +16,7 @@ export const ANIME4K_MAC_FAST_A = [
   Anime4K_AutoDownscalePre_x4,
   Anime4K_Upscale_CNN_x2_S
 ];
+
+export const ANIME4KJS_SIMPLE = [
+  Anime4K_Upscale_CNN_x2_M
+];

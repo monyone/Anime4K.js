@@ -72,11 +72,10 @@ export const createRectangleBuffer = (gl: WebGLRenderingContext, sx: number, sy:
   return buffer;
 };
 
-export const enableVertexAttribArray = (gl: WebGLRenderingContext, name: string, program: WebGLProgram, buffer: WebGLBuffer) => {
-  const location = gl.getAttribLocation(program, name);
-  gl.enableVertexAttribArray(location)
+export const enableVertexAttribArray = (gl: WebGLRenderingContext, location: number, buffer: WebGLBuffer) => {
   gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
   gl.vertexAttribPointer(location, 2, gl.FLOAT, false, 0, 0);
+  gl.bindBuffer(gl.ARRAY_BUFFER, null);
 };
 
 export type TextureData = {

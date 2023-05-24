@@ -73,11 +73,26 @@ void main() {
 export default class Anime4K_AutoDownscalePre_x4 extends Anime4KShader {
   private gl: WebGLRenderingContext;
   private program_0: WebGLProgram;
+  private program_0_a_position_location: number;
+  private program_0_a_texture_coord_location: number;
+  private program_0_u_resolution_location: WebGLUniformLocation | null;
+  private program_0_u_texture_size_location: WebGLUniformLocation | null;
+  private program_0_MAIN_TextureLocation: WebGLUniformLocation | null
+  private program_0_NATIVE_TextureLocation: WebGLUniformLocation | null
+
 
   public constructor(gl: WebGLRenderingContext) {
     super();
     this.gl = gl;
     this.program_0 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_0_shader)!)!;
+    this.program_0_a_position_location = gl.getAttribLocation(this.program_0, "a_position");
+    gl.enableVertexAttribArray(this.program_0_a_position_location);
+    this.program_0_a_texture_coord_location = gl.getAttribLocation(this.program_0, "a_texture_coord");
+    gl.enableVertexAttribArray(this.program_0_a_texture_coord_location);
+    this.program_0_u_resolution_location = gl.getUniformLocation(this.program_0, "u_resolution");
+    this.program_0_u_texture_size_location = gl.getUniformLocation(this.program_0, "u_texture_size");
+    this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN")
+    this.program_0_NATIVE_TextureLocation = gl.getUniformLocation(this.program_0, "NATIVE")
   }
 
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {
@@ -103,22 +118,18 @@ export default class Anime4K_AutoDownscalePre_x4 extends Anime4KShader {
         const positionBuffer = createRectangleBuffer(gl, 0, 0, (OUTPUT.width / 2), (OUTPUT.height / 2))!;
         const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
-        enableVertexAttribArray(gl, 'a_position', this.program_0, positionBuffer);
-        enableVertexAttribArray(gl, 'a_texture_coord', this.program_0, texcoordBuffer);
+        enableVertexAttribArray(gl, this.program_0_a_position_location, positionBuffer);
+        enableVertexAttribArray(gl, this.program_0_a_texture_coord_location, texcoordBuffer);
 
-        const resolutionLocation = gl.getUniformLocation(this.program_0, "u_resolution");
-        gl.uniform2f(resolutionLocation, (OUTPUT.width / 2), (OUTPUT.height / 2));
-        const textureSizeLocation = gl.getUniformLocation(this.program_0, "u_texture_size");
-        gl.uniform2f(textureSizeLocation, MAIN.width, MAIN.height);
+        gl.uniform2f(this.program_0_u_resolution_location, (OUTPUT.width / 2), (OUTPUT.height / 2));
+        gl.uniform2f(this.program_0_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
-        const MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN");
-        gl.uniform1i(MAIN_TextureLocation, 0);
+        gl.uniform1i(this.program_0_MAIN_TextureLocation, 0);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, NATIVE.texture);
-        const NATIVE_TextureLocation = gl.getUniformLocation(this.program_0, "NATIVE");
-        gl.uniform1i(NATIVE_TextureLocation, 1);
+        gl.uniform1i(this.program_0_NATIVE_TextureLocation, 1);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);

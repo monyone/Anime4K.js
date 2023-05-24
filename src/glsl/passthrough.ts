@@ -41,19 +41,29 @@ void main() {
 `
 
 export default class PassThrough {
-  #gl: WebGLRenderingContext;
-  #program: WebGLProgram;
+  private gl: WebGLRenderingContext;
+  private program: WebGLProgram;
+  private resolutionLocation: WebGLUniformLocation | null;
+  private sourceTextureLocation: WebGLUniformLocation | null;
+  private aPositionLocation: number;
+  private aTextureCoordLocation: number;
 
   public constructor(gl: WebGLRenderingContext) {
-    this.#gl = gl;
-    this.#program = createProgram(gl,
+    this.gl = gl;
+    this.program = createProgram(gl,
       createVertexShader(gl, flip)!,
       createFragmentShader(gl, pass)!,
     )!;
+    this.resolutionLocation = gl.getUniformLocation(this.program, "u_resolution");
+    this.sourceTextureLocation = gl.getUniformLocation(this.program, "u_image");
+    this.aPositionLocation = gl.getAttribLocation(this.program, "a_position");
+    gl.enableVertexAttribArray(this.aPositionLocation);
+    this.aTextureCoordLocation = gl.getAttribLocation(this.program, "a_texture_coord");
+    gl.enableVertexAttribArray(this.aTextureCoordLocation);
   }
 
   public render(texture: TextureData, out_width: number, out_height: number): void {
-    const gl = this.#gl;
+    const gl = this.gl;
 
     const { texture: in_texture } = texture;
 
@@ -64,17 +74,14 @@ export default class PassThrough {
       gl.activeTexture(gl.TEXTURE0);
       gl.bindTexture(gl.TEXTURE_2D, in_texture);
 
-      gl.useProgram(this.#program);
+      gl.useProgram(this.program);
       const positionBuffer = createRectangleBuffer(gl, 0, 0, out_width, out_height)!;
       const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
-      enableVertexAttribArray(gl, 'a_position', this.#program, positionBuffer);
-      enableVertexAttribArray(gl, 'a_texture_coord', this.#program, texcoordBuffer);
-      const resolutionLocation = gl.getUniformLocation(this.#program, "u_resolution");
-      gl.uniform2f(resolutionLocation, out_width, out_height);
-
-      const sourceTextureLocation = gl.getUniformLocation(this.#program, "u_image");
-      gl.uniform1i(sourceTextureLocation, 0);
+      enableVertexAttribArray(gl, this.aPositionLocation, positionBuffer);
+      enableVertexAttribArray(gl, this.aTextureCoordLocation, texcoordBuffer);
+      gl.uniform2f(this.resolutionLocation, out_width, out_height);
+      gl.uniform1i(this.sourceTextureLocation, 0);
 
       gl.drawArrays(gl.TRIANGLES, 0, 6);
     }

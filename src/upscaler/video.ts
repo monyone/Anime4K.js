@@ -16,10 +16,13 @@ export default class VideoUpscaler {
 
   private readonly upscaleHandler: () => void = this.upscale.bind(this);
   private upscaleTimer: number | null = null;
+  private upscaleTime: number = 0;
+  private fps: number;
   private supported: boolean;
 
-  public constructor(config: (new (gl: WebGLRenderingContext) => Anime4KShader)[]) {
+  public constructor(fps: number, config: (new (gl: WebGLRenderingContext) => Anime4KShader)[]) {
     this.supported = VideoUpscaler.isSupported();
+    this.fps = fps;
     this.config = config;
   }
 
@@ -34,8 +37,10 @@ export default class VideoUpscaler {
 
   public start() {
     this.upscaleTimer = requestAnimationFrame(this.upscaleHandler);
+    this.upscaleTime = performance.now();
   }
   public stop() {
+    this.upscaleTime = 0;
     if (this.canvas) {
       this.canvas.style.visibility = 'hidden';
     }
@@ -44,7 +49,7 @@ export default class VideoUpscaler {
     this.upscaleTimer = null;
   }
 
-  public upscale() {
+  private upscale() {
     if (!this.supported) { return; }
     if (!this.video) { return; }
     if (!this.canvas) { return; }
@@ -52,6 +57,13 @@ export default class VideoUpscaler {
     if (!this.framebuffer) { return; }
     if (!this.programs) { return; }
     if (!this.passthrough) { return; }
+
+    const currentTime = performance.now();
+    if ((currentTime - this.upscaleTime) * this.fps < 1000) {
+      requestAnimationFrame(this.upscaleHandler);
+      return;
+    }
+    this.upscaleTime = currentTime;
 
     const gl = this.gl;
     const framebuffer = this.framebuffer;
@@ -107,7 +119,6 @@ export default class VideoUpscaler {
     }
 
     this.passthrough.render(this.textures.get('PREKERNEL')!, out_width, out_height);
-    gl.flush();
 
     this.canvas.style.visibility = 'visible';
 

@@ -290,6 +290,50 @@ export default class Anime4K_Thin_HQ extends Anime4KShader {
   private program_5: WebGLProgram;
   private program_6: WebGLProgram;
   private program_7: WebGLProgram;
+  private program_0_a_position_location: number;
+  private program_1_a_position_location: number;
+  private program_2_a_position_location: number;
+  private program_3_a_position_location: number;
+  private program_4_a_position_location: number;
+  private program_5_a_position_location: number;
+  private program_6_a_position_location: number;
+  private program_7_a_position_location: number;
+  private program_0_a_texture_coord_location: number;
+  private program_1_a_texture_coord_location: number;
+  private program_2_a_texture_coord_location: number;
+  private program_3_a_texture_coord_location: number;
+  private program_4_a_texture_coord_location: number;
+  private program_5_a_texture_coord_location: number;
+  private program_6_a_texture_coord_location: number;
+  private program_7_a_texture_coord_location: number;
+  private program_0_u_resolution_location: WebGLUniformLocation | null;
+  private program_1_u_resolution_location: WebGLUniformLocation | null;
+  private program_2_u_resolution_location: WebGLUniformLocation | null;
+  private program_3_u_resolution_location: WebGLUniformLocation | null;
+  private program_4_u_resolution_location: WebGLUniformLocation | null;
+  private program_5_u_resolution_location: WebGLUniformLocation | null;
+  private program_6_u_resolution_location: WebGLUniformLocation | null;
+  private program_7_u_resolution_location: WebGLUniformLocation | null;
+  private program_0_u_texture_size_location: WebGLUniformLocation | null;
+  private program_1_u_texture_size_location: WebGLUniformLocation | null;
+  private program_2_u_texture_size_location: WebGLUniformLocation | null;
+  private program_3_u_texture_size_location: WebGLUniformLocation | null;
+  private program_4_u_texture_size_location: WebGLUniformLocation | null;
+  private program_5_u_texture_size_location: WebGLUniformLocation | null;
+  private program_6_u_texture_size_location: WebGLUniformLocation | null;
+  private program_7_u_texture_size_location: WebGLUniformLocation | null;
+  private program_0_MAIN_TextureLocation: WebGLUniformLocation | null
+  private program_1_LINELUMA_TextureLocation: WebGLUniformLocation | null
+  private program_2_LINESOBEL_TextureLocation: WebGLUniformLocation | null
+  private program_3_MAIN_TextureLocation: WebGLUniformLocation | null
+  private program_3_LINESOBEL_TextureLocation: WebGLUniformLocation | null
+  private program_4_MAIN_TextureLocation: WebGLUniformLocation | null
+  private program_4_LINESOBEL_TextureLocation: WebGLUniformLocation | null
+  private program_5_LINESOBEL_TextureLocation: WebGLUniformLocation | null
+  private program_6_LINESOBEL_TextureLocation: WebGLUniformLocation | null
+  private program_7_MAIN_TextureLocation: WebGLUniformLocation | null
+  private program_7_LINESOBEL_TextureLocation: WebGLUniformLocation | null
+
 
   public constructor(gl: WebGLRenderingContext) {
     super();
@@ -302,6 +346,65 @@ export default class Anime4K_Thin_HQ extends Anime4KShader {
     this.program_5 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_5_shader)!)!;
     this.program_6 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_6_shader)!)!;
     this.program_7 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_7_shader)!)!;
+    this.program_0_a_position_location = gl.getAttribLocation(this.program_0, "a_position");
+    gl.enableVertexAttribArray(this.program_0_a_position_location);
+    this.program_1_a_position_location = gl.getAttribLocation(this.program_1, "a_position");
+    gl.enableVertexAttribArray(this.program_1_a_position_location);
+    this.program_2_a_position_location = gl.getAttribLocation(this.program_2, "a_position");
+    gl.enableVertexAttribArray(this.program_2_a_position_location);
+    this.program_3_a_position_location = gl.getAttribLocation(this.program_3, "a_position");
+    gl.enableVertexAttribArray(this.program_3_a_position_location);
+    this.program_4_a_position_location = gl.getAttribLocation(this.program_4, "a_position");
+    gl.enableVertexAttribArray(this.program_4_a_position_location);
+    this.program_5_a_position_location = gl.getAttribLocation(this.program_5, "a_position");
+    gl.enableVertexAttribArray(this.program_5_a_position_location);
+    this.program_6_a_position_location = gl.getAttribLocation(this.program_6, "a_position");
+    gl.enableVertexAttribArray(this.program_6_a_position_location);
+    this.program_7_a_position_location = gl.getAttribLocation(this.program_7, "a_position");
+    gl.enableVertexAttribArray(this.program_7_a_position_location);
+    this.program_0_a_texture_coord_location = gl.getAttribLocation(this.program_0, "a_texture_coord");
+    gl.enableVertexAttribArray(this.program_0_a_texture_coord_location);
+    this.program_1_a_texture_coord_location = gl.getAttribLocation(this.program_1, "a_texture_coord");
+    gl.enableVertexAttribArray(this.program_1_a_texture_coord_location);
+    this.program_2_a_texture_coord_location = gl.getAttribLocation(this.program_2, "a_texture_coord");
+    gl.enableVertexAttribArray(this.program_2_a_texture_coord_location);
+    this.program_3_a_texture_coord_location = gl.getAttribLocation(this.program_3, "a_texture_coord");
+    gl.enableVertexAttribArray(this.program_3_a_texture_coord_location);
+    this.program_4_a_texture_coord_location = gl.getAttribLocation(this.program_4, "a_texture_coord");
+    gl.enableVertexAttribArray(this.program_4_a_texture_coord_location);
+    this.program_5_a_texture_coord_location = gl.getAttribLocation(this.program_5, "a_texture_coord");
+    gl.enableVertexAttribArray(this.program_5_a_texture_coord_location);
+    this.program_6_a_texture_coord_location = gl.getAttribLocation(this.program_6, "a_texture_coord");
+    gl.enableVertexAttribArray(this.program_6_a_texture_coord_location);
+    this.program_7_a_texture_coord_location = gl.getAttribLocation(this.program_7, "a_texture_coord");
+    gl.enableVertexAttribArray(this.program_7_a_texture_coord_location);
+    this.program_0_u_resolution_location = gl.getUniformLocation(this.program_0, "u_resolution");
+    this.program_1_u_resolution_location = gl.getUniformLocation(this.program_1, "u_resolution");
+    this.program_2_u_resolution_location = gl.getUniformLocation(this.program_2, "u_resolution");
+    this.program_3_u_resolution_location = gl.getUniformLocation(this.program_3, "u_resolution");
+    this.program_4_u_resolution_location = gl.getUniformLocation(this.program_4, "u_resolution");
+    this.program_5_u_resolution_location = gl.getUniformLocation(this.program_5, "u_resolution");
+    this.program_6_u_resolution_location = gl.getUniformLocation(this.program_6, "u_resolution");
+    this.program_7_u_resolution_location = gl.getUniformLocation(this.program_7, "u_resolution");
+    this.program_0_u_texture_size_location = gl.getUniformLocation(this.program_0, "u_texture_size");
+    this.program_1_u_texture_size_location = gl.getUniformLocation(this.program_1, "u_texture_size");
+    this.program_2_u_texture_size_location = gl.getUniformLocation(this.program_2, "u_texture_size");
+    this.program_3_u_texture_size_location = gl.getUniformLocation(this.program_3, "u_texture_size");
+    this.program_4_u_texture_size_location = gl.getUniformLocation(this.program_4, "u_texture_size");
+    this.program_5_u_texture_size_location = gl.getUniformLocation(this.program_5, "u_texture_size");
+    this.program_6_u_texture_size_location = gl.getUniformLocation(this.program_6, "u_texture_size");
+    this.program_7_u_texture_size_location = gl.getUniformLocation(this.program_7, "u_texture_size");
+    this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN")
+    this.program_1_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_1, "LINELUMA")
+    this.program_2_LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_2, "LINESOBEL")
+    this.program_3_MAIN_TextureLocation = gl.getUniformLocation(this.program_3, "MAIN")
+    this.program_3_LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_3, "LINESOBEL")
+    this.program_4_MAIN_TextureLocation = gl.getUniformLocation(this.program_4, "MAIN")
+    this.program_4_LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_4, "LINESOBEL")
+    this.program_5_LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_5, "LINESOBEL")
+    this.program_6_LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_6, "LINESOBEL")
+    this.program_7_MAIN_TextureLocation = gl.getUniformLocation(this.program_7, "MAIN")
+    this.program_7_LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_7, "LINESOBEL")
   }
 
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {
@@ -327,18 +430,15 @@ export default class Anime4K_Thin_HQ extends Anime4KShader {
         const positionBuffer = createRectangleBuffer(gl, 0, 0, (MAIN.width), (MAIN.height))!;
         const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
-        enableVertexAttribArray(gl, 'a_position', this.program_0, positionBuffer);
-        enableVertexAttribArray(gl, 'a_texture_coord', this.program_0, texcoordBuffer);
+        enableVertexAttribArray(gl, this.program_0_a_position_location, positionBuffer);
+        enableVertexAttribArray(gl, this.program_0_a_texture_coord_location, texcoordBuffer);
 
-        const resolutionLocation = gl.getUniformLocation(this.program_0, "u_resolution");
-        gl.uniform2f(resolutionLocation, (MAIN.width), (MAIN.height));
-        const textureSizeLocation = gl.getUniformLocation(this.program_0, "u_texture_size");
-        gl.uniform2f(textureSizeLocation, MAIN.width, MAIN.height);
+        gl.uniform2f(this.program_0_u_resolution_location, (MAIN.width), (MAIN.height));
+        gl.uniform2f(this.program_0_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
-        const MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN");
-        gl.uniform1i(MAIN_TextureLocation, 0);
+        gl.uniform1i(this.program_0_MAIN_TextureLocation, 0);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -373,18 +473,15 @@ export default class Anime4K_Thin_HQ extends Anime4KShader {
         const positionBuffer = createRectangleBuffer(gl, 0, 0, (MAIN.width), (MAIN.height))!;
         const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
-        enableVertexAttribArray(gl, 'a_position', this.program_1, positionBuffer);
-        enableVertexAttribArray(gl, 'a_texture_coord', this.program_1, texcoordBuffer);
+        enableVertexAttribArray(gl, this.program_1_a_position_location, positionBuffer);
+        enableVertexAttribArray(gl, this.program_1_a_texture_coord_location, texcoordBuffer);
 
-        const resolutionLocation = gl.getUniformLocation(this.program_1, "u_resolution");
-        gl.uniform2f(resolutionLocation, (MAIN.width), (MAIN.height));
-        const textureSizeLocation = gl.getUniformLocation(this.program_1, "u_texture_size");
-        gl.uniform2f(textureSizeLocation, MAIN.width, MAIN.height);
+        gl.uniform2f(this.program_1_u_resolution_location, (MAIN.width), (MAIN.height));
+        gl.uniform2f(this.program_1_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, LINELUMA.texture);
-        const LINELUMA_TextureLocation = gl.getUniformLocation(this.program_1, "LINELUMA");
-        gl.uniform1i(LINELUMA_TextureLocation, 0);
+        gl.uniform1i(this.program_1_LINELUMA_TextureLocation, 0);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -419,18 +516,15 @@ export default class Anime4K_Thin_HQ extends Anime4KShader {
         const positionBuffer = createRectangleBuffer(gl, 0, 0, (MAIN.width), (MAIN.height))!;
         const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
-        enableVertexAttribArray(gl, 'a_position', this.program_2, positionBuffer);
-        enableVertexAttribArray(gl, 'a_texture_coord', this.program_2, texcoordBuffer);
+        enableVertexAttribArray(gl, this.program_2_a_position_location, positionBuffer);
+        enableVertexAttribArray(gl, this.program_2_a_texture_coord_location, texcoordBuffer);
 
-        const resolutionLocation = gl.getUniformLocation(this.program_2, "u_resolution");
-        gl.uniform2f(resolutionLocation, (MAIN.width), (MAIN.height));
-        const textureSizeLocation = gl.getUniformLocation(this.program_2, "u_texture_size");
-        gl.uniform2f(textureSizeLocation, MAIN.width, MAIN.height);
+        gl.uniform2f(this.program_2_u_resolution_location, (MAIN.width), (MAIN.height));
+        gl.uniform2f(this.program_2_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, LINESOBEL.texture);
-        const LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_2, "LINESOBEL");
-        gl.uniform1i(LINESOBEL_TextureLocation, 0);
+        gl.uniform1i(this.program_2_LINESOBEL_TextureLocation, 0);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -465,22 +559,18 @@ export default class Anime4K_Thin_HQ extends Anime4KShader {
         const positionBuffer = createRectangleBuffer(gl, 0, 0, (MAIN.width), (MAIN.height))!;
         const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
-        enableVertexAttribArray(gl, 'a_position', this.program_3, positionBuffer);
-        enableVertexAttribArray(gl, 'a_texture_coord', this.program_3, texcoordBuffer);
+        enableVertexAttribArray(gl, this.program_3_a_position_location, positionBuffer);
+        enableVertexAttribArray(gl, this.program_3_a_texture_coord_location, texcoordBuffer);
 
-        const resolutionLocation = gl.getUniformLocation(this.program_3, "u_resolution");
-        gl.uniform2f(resolutionLocation, (MAIN.width), (MAIN.height));
-        const textureSizeLocation = gl.getUniformLocation(this.program_3, "u_texture_size");
-        gl.uniform2f(textureSizeLocation, MAIN.width, MAIN.height);
+        gl.uniform2f(this.program_3_u_resolution_location, (MAIN.width), (MAIN.height));
+        gl.uniform2f(this.program_3_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
-        const MAIN_TextureLocation = gl.getUniformLocation(this.program_3, "MAIN");
-        gl.uniform1i(MAIN_TextureLocation, 0);
+        gl.uniform1i(this.program_3_MAIN_TextureLocation, 0);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, LINESOBEL.texture);
-        const LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_3, "LINESOBEL");
-        gl.uniform1i(LINESOBEL_TextureLocation, 1);
+        gl.uniform1i(this.program_3_LINESOBEL_TextureLocation, 1);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -517,22 +607,18 @@ export default class Anime4K_Thin_HQ extends Anime4KShader {
         const positionBuffer = createRectangleBuffer(gl, 0, 0, (MAIN.width), (MAIN.height))!;
         const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
-        enableVertexAttribArray(gl, 'a_position', this.program_4, positionBuffer);
-        enableVertexAttribArray(gl, 'a_texture_coord', this.program_4, texcoordBuffer);
+        enableVertexAttribArray(gl, this.program_4_a_position_location, positionBuffer);
+        enableVertexAttribArray(gl, this.program_4_a_texture_coord_location, texcoordBuffer);
 
-        const resolutionLocation = gl.getUniformLocation(this.program_4, "u_resolution");
-        gl.uniform2f(resolutionLocation, (MAIN.width), (MAIN.height));
-        const textureSizeLocation = gl.getUniformLocation(this.program_4, "u_texture_size");
-        gl.uniform2f(textureSizeLocation, MAIN.width, MAIN.height);
+        gl.uniform2f(this.program_4_u_resolution_location, (MAIN.width), (MAIN.height));
+        gl.uniform2f(this.program_4_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
-        const MAIN_TextureLocation = gl.getUniformLocation(this.program_4, "MAIN");
-        gl.uniform1i(MAIN_TextureLocation, 0);
+        gl.uniform1i(this.program_4_MAIN_TextureLocation, 0);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, LINESOBEL.texture);
-        const LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_4, "LINESOBEL");
-        gl.uniform1i(LINESOBEL_TextureLocation, 1);
+        gl.uniform1i(this.program_4_LINESOBEL_TextureLocation, 1);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -569,18 +655,15 @@ export default class Anime4K_Thin_HQ extends Anime4KShader {
         const positionBuffer = createRectangleBuffer(gl, 0, 0, (MAIN.width), (MAIN.height))!;
         const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
-        enableVertexAttribArray(gl, 'a_position', this.program_5, positionBuffer);
-        enableVertexAttribArray(gl, 'a_texture_coord', this.program_5, texcoordBuffer);
+        enableVertexAttribArray(gl, this.program_5_a_position_location, positionBuffer);
+        enableVertexAttribArray(gl, this.program_5_a_texture_coord_location, texcoordBuffer);
 
-        const resolutionLocation = gl.getUniformLocation(this.program_5, "u_resolution");
-        gl.uniform2f(resolutionLocation, (MAIN.width), (MAIN.height));
-        const textureSizeLocation = gl.getUniformLocation(this.program_5, "u_texture_size");
-        gl.uniform2f(textureSizeLocation, MAIN.width, MAIN.height);
+        gl.uniform2f(this.program_5_u_resolution_location, (MAIN.width), (MAIN.height));
+        gl.uniform2f(this.program_5_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, LINESOBEL.texture);
-        const LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_5, "LINESOBEL");
-        gl.uniform1i(LINESOBEL_TextureLocation, 0);
+        gl.uniform1i(this.program_5_LINESOBEL_TextureLocation, 0);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -615,18 +698,15 @@ export default class Anime4K_Thin_HQ extends Anime4KShader {
         const positionBuffer = createRectangleBuffer(gl, 0, 0, (MAIN.width), (MAIN.height))!;
         const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
-        enableVertexAttribArray(gl, 'a_position', this.program_6, positionBuffer);
-        enableVertexAttribArray(gl, 'a_texture_coord', this.program_6, texcoordBuffer);
+        enableVertexAttribArray(gl, this.program_6_a_position_location, positionBuffer);
+        enableVertexAttribArray(gl, this.program_6_a_texture_coord_location, texcoordBuffer);
 
-        const resolutionLocation = gl.getUniformLocation(this.program_6, "u_resolution");
-        gl.uniform2f(resolutionLocation, (MAIN.width), (MAIN.height));
-        const textureSizeLocation = gl.getUniformLocation(this.program_6, "u_texture_size");
-        gl.uniform2f(textureSizeLocation, MAIN.width, MAIN.height);
+        gl.uniform2f(this.program_6_u_resolution_location, (MAIN.width), (MAIN.height));
+        gl.uniform2f(this.program_6_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, LINESOBEL.texture);
-        const LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_6, "LINESOBEL");
-        gl.uniform1i(LINESOBEL_TextureLocation, 0);
+        gl.uniform1i(this.program_6_LINESOBEL_TextureLocation, 0);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -661,22 +741,18 @@ export default class Anime4K_Thin_HQ extends Anime4KShader {
         const positionBuffer = createRectangleBuffer(gl, 0, 0, (MAIN.width), (MAIN.height))!;
         const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
-        enableVertexAttribArray(gl, 'a_position', this.program_7, positionBuffer);
-        enableVertexAttribArray(gl, 'a_texture_coord', this.program_7, texcoordBuffer);
+        enableVertexAttribArray(gl, this.program_7_a_position_location, positionBuffer);
+        enableVertexAttribArray(gl, this.program_7_a_texture_coord_location, texcoordBuffer);
 
-        const resolutionLocation = gl.getUniformLocation(this.program_7, "u_resolution");
-        gl.uniform2f(resolutionLocation, (MAIN.width), (MAIN.height));
-        const textureSizeLocation = gl.getUniformLocation(this.program_7, "u_texture_size");
-        gl.uniform2f(textureSizeLocation, MAIN.width, MAIN.height);
+        gl.uniform2f(this.program_7_u_resolution_location, (MAIN.width), (MAIN.height));
+        gl.uniform2f(this.program_7_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
-        const MAIN_TextureLocation = gl.getUniformLocation(this.program_7, "MAIN");
-        gl.uniform1i(MAIN_TextureLocation, 0);
+        gl.uniform1i(this.program_7_MAIN_TextureLocation, 0);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, LINESOBEL.texture);
-        const LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_7, "LINESOBEL");
-        gl.uniform1i(LINESOBEL_TextureLocation, 1);
+        gl.uniform1i(this.program_7_LINESOBEL_TextureLocation, 1);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
