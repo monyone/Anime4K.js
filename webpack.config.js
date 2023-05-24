@@ -22,11 +22,7 @@ module.exports = {
           { loader: 'babel-loader' },
           { loader: 'ts-loader' },
         ],
-      },
-      {
-        test: /\.glsl$/,
-        type: 'asset/source',
-      },
+      }
     ]
   }
 }
