@@ -50,8 +50,9 @@ export const createTexture = (gl: WebGLRenderingContext, type: number): WebGLTex
   return texture;
 };
 export const fillEmptyTexture = (gl: WebGLRenderingContext, texture: WebGLTexture, width: number, height: number): void => {
+  const ext = gl.getExtension("OES_texture_half_float");
   gl.bindTexture(gl.TEXTURE_2D, texture);
-  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, width, height, 0, gl.RGBA, gl.FLOAT, null);
+  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, width, height, 0, gl.RGBA, ext?.HALF_FLOAT_OES ?? gl.FLOAT, null);
   gl.bindTexture(gl.TEXTURE_2D, null);
 }
 
