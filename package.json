@@ -1,8 +1,28 @@
 {
   "name": "anime4k.js",
   "version": "0.0.1",
-  "description": "Anime4K WebGL implementation",
-  "main": "index.js",
+  "description": "Anime4K WebGL port/implementation",
+  "keywords": [
+    "anime4k",
+    "webgl",
+    "glsl",
+    "upscale",
+    "upscaler",
+    "image",
+    "video"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/monyone/Anime4K.js"
+  },
+  "main": "dist/anime4k.js",
+  "types": "d.ts/index.d.ts",
+  "files": [
+    "dist/**/*",
+    "d.ts/**/*",
+    "src/**/*",
+    "tsconfig.json"
+  ],
   "license": "MIT",
   "private": true,
   "scripts": {
