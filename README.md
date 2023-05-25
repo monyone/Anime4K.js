@@ -9,20 +9,24 @@ A WebGL port of Anime4K (4.0.1) glsl filter
 ## Build
 ### Preparing
 
+```sh
 git clone https://github.com/monyone/Anime4K.js
 cd Anime4K.js
 yarn
+```
 
 ## Compile
 
+```sh
 yarn build
+```
 
 ## Getting Start
 
 ### Image Upscale
 
 ```javascript
-const upscaler = new Anime4KJS.VideoUpscaler(Anime4KJS.ANIME4KJS_SIMPLE_M_2X /* PROFILE */);
+const upscaler = new Anime4KJS.ImageUpscaler(Anime4KJS.ANIME4KJS_SIMPLE_M_2X /* PROFILE */);
 upscaler.attachSource(textureSource, canvasElement);
 upscaler.upscale(); // do upscale
 ```
