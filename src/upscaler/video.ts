@@ -121,6 +121,7 @@ export default class VideoUpscaler {
 
     this.passthrough.render(this.textures.get('PREKERNEL')!, out_width, out_height);
 
+    gl.flush();
     this.canvas.style.visibility = 'visible';
 
     this.upscaleTimer = requestAnimationFrame(this.upscaleHandler);
