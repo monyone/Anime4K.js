@@ -26,6 +26,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "clean": "rimraf dist d.ts",
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
     "tsc": "tsc --noEmit"
@@ -35,6 +36,7 @@
     "@babel/preset-env": "^7.21.5",
     "babel-loader": "^9.1.2",
     "core-js": "^3.30.2",
+    "rimraf": "^5.0.1",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.4",
     "webpack": "^5.82.1",
