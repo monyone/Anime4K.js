@@ -24,7 +24,6 @@
     "tsconfig.json"
   ],
   "license": "MIT",
-  "private": true,
   "scripts": {
     "clean": "rimraf dist d.ts",
     "build": "webpack --mode production",
