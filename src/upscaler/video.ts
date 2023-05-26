@@ -16,6 +16,7 @@ export default class VideoUpscaler {
 
   private readonly upscaleHandler: () => void = this.upscale.bind(this);
   private upscaleTimer: number | null = null;
+  private running: boolean = false;
   private upscaleTime: number = 0;
   private fps: number;
   private supported: boolean;
@@ -36,10 +37,12 @@ export default class VideoUpscaler {
   }
 
   public start() {
-    this.upscaleTimer = requestAnimationFrame(this.upscaleHandler);
-    this.upscaleTime = performance.now();
+    this.running = true;
+    this.upscaleTime = 0;
+    this.upscale();
   }
   public stop() {
+    this.running = false;
     this.upscaleTime = 0;
     if (this.canvas) {
       this.canvas.style.visibility = 'hidden';
@@ -57,6 +60,9 @@ export default class VideoUpscaler {
     if (!this.framebuffer) { return; }
     if (!this.programs) { return; }
     if (!this.passthrough) { return; }
+
+    if (!this.running) { return; }
+    this.adjustCanvasSize();
 
     const currentTime = performance.now();
     if ((currentTime - this.upscaleTime) * this.fps < 1000) {
