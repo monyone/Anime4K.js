@@ -130,7 +130,7 @@ void main() {
   float new_luma = min(current_luma, STATSMAX_tex(PREKERNEL_pos).x);
   //This trick is only possible if the inverse Y->RGB matrix has 1 for every row... (which is the case for BT.709)
   //Otherwise we would need to convert RGB to YUV, modify Y then convert back to RGB.
-  gl_FragColor = PREKERNEL_tex(PREKERNEL_pos) - (current_luma - new_luma);
+  gl_FragColor = vec4((PREKERNEL_tex(PREKERNEL_pos) - (current_luma - new_luma)).rgb, 1);
 }
 `;
 

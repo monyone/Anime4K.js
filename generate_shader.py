@@ -173,7 +173,7 @@ uniform sampler2D {bind};
 #define {bind}_texOff(offset) ({bind}_tex({bind}_pos + {bind}_pt * offset))
 """.lstrip() for bind in self.get_bind()]) + '\n'
 
-    replaced = self.shader.replace('vec4 hook', 'void main').replace('float c3 = c2', 'float c3 = 0.0').replace('HOOKED', self.hook).split('\n')
+    replaced = self.shader.replace('vec4 hook', 'void main').replace('float c3 = c2', 'float c3 = 0.0').replace('HOOKED', self.hook).replace('PREKERNEL_tex(PREKERNEL_pos) - (current_luma - new_luma);', 'vec4((PREKERNEL_tex(PREKERNEL_pos) - (current_luma - new_luma)).rgb, 1);').split('\n')
     body = '\n'.join(replaced[:-4]) + '\n' + '\n'.join(replaced[-4:]).replace('return', 'gl_FragColor =')
     body = re.sub(r'\s*float c(\d) = (.*)\[.*\]', indent("""
 float c\\1 = 0.0;
