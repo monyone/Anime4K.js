@@ -1,6 +1,6 @@
 # Anime4K.js
 
-A WebGL port of Anime4K (4.0.1) glsl filter
+A WebGL port of [Anime4K](https://github.com/bloc97/Anime4K) (4.0.1) glsl filter
 
 ## Feature
 
@@ -38,3 +38,7 @@ const upscaler = new Anime4KJS.VideoUpscaler(30 /* TARGET FPS */, Anime4KJS.ANIM
 upscaler.attachVideo(videoElement, canvasElement);
 upscaler.start(); // start upscale
 ```
+
+## Credits
+
+* [Anime4K](https://github.com/bloc97/Anime4K) by [bloc97](https://github.com/bloc97)
