@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Anime4K.js Demo</title>
+    <script src="./dist/anime4k.js"></script>
+  </head>
+  <body>
+    <div>
+      Left: Orignal Image <br/>
+      Right: Upscaled Image
+    </div>
+    <div>
+      <label for="input">Choose a Image: </label><input type="file" id="input" accept="image/png, image/jpeg"/>
+    </div>
+    <div id="compare" style="position: relative;">
+    </div>
+    <script>
+      const upscale = async (event) => {
+        const file = event.target.files[0];
+        if (file == null) { return; }
+
+        const upscaler = new Anime4KJS.ImageUpscaler(Anime4KJS.ANIME4KJS_SIMPLE_M_2X);
+
+        const div = document.getElementById('compare');
+        while (div.lastChild) { div.removeChild(div.lastChild); }
+
+        const original = document.createElement('img');
+        original.src = URL.createObjectURL(file);
+        original.style.position = 'absolute';
+        original.style.top = '0';
+        original.style.left = '0';
+        original.style.clipPath = "polygon(0 0, 50% 0, 50% 100%, 0 100%)";
+        await new Promise((resolve) => { original.onload = resolve });
+        div.style.width = `${original.width}px`;
+        div.style.height = `${original.height}px`;
+        div.appendChild(original);
+
+        const canvas = document.createElement('canvas');
+        upscaler.attachSource(original, canvas);
+        upscaler.upscale();
+        const upscaled = document.createElement('img');
+        upscaled.src = canvas.toDataURL();
+        upscaled.style.width = `${original.width}px`;
+        upscaled.style.height = `${original.height}px`;
+        upscaled.style.position = 'absolute';
+        upscaled.style.top = '0';
+        upscaled.style.left = '0';
+        upscaled.style.clipPath = "polygon(50% 0, 100% 0, 100% 100%, 50% 100%)";
+        await new Promise((resolve) => { upscaled.onload = resolve });
+        div.appendChild(upscaled);
+
+        const mousemove = (event) => {
+          const x = event.offsetX;
+          const percent = x * 100 / original.width;
+          original.style.clipPath = `polygon(0 0, ${percent}% 0, ${percent}% 100%, 0 100%)`;
+          upscaled.style.clipPath = `polygon(${percent}% 0, 100% 0, 100% 100%, ${percent}% 100%)`;
+        }
+
+        const mouseleave = (event) => {
+          original.style.clipPath = "polygon(0 0, 50% 0, 50% 100%, 0 100%)";
+          upscaled.style.clipPath = "polygon(50% 0, 100% 0, 100% 100%, 50% 100%)";
+        }
+
+        div.onmousemove = mousemove;
+        div.onmouseleave = mouseleave;
+      };
+
+      const input = document.getElementById('input');
+      input.onchange = upscale.bind(input);
+    </script>
+  </body>
+</html>
