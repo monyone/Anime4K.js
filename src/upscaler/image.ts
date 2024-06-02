@@ -57,8 +57,8 @@ export default class VideoUpscaler {
     const output_texture = createTexture(gl, gl.LINEAR);
     if (!output_texture) { return; }
 
-    const in_width = this.source instanceof HTMLVideoElement ? this.source.videoWidth : this.source.width;
-    const in_height = this.source instanceof HTMLVideoElement ? this.source.videoHeight : this.source.height;
+    const in_width = this.source instanceof HTMLVideoElement ? this.source.videoWidth : this.source instanceof VideoFrame ? this.source.displayWidth : this.source.width;
+    const in_height = this.source instanceof HTMLVideoElement ? this.source.videoHeight : this.source instanceof VideoFrame ? this.source.displayHeight : this.source.height;
     const out_width = this.canvas.width, out_height = this.canvas.height;
 
     // use Texture
@@ -135,8 +135,8 @@ export default class VideoUpscaler {
     if (!this.source) { return; }
     if (!this.canvas) { return; }
 
-    const in_width = this.source instanceof HTMLVideoElement ? this.source.videoWidth : this.source.width;
-    const in_height = this.source instanceof HTMLVideoElement ? this.source.videoHeight : this.source.height;
+    const in_width = this.source instanceof HTMLVideoElement ? this.source.videoWidth : this.source instanceof VideoFrame ? this.source.displayWidth : this.source.width;
+    const in_height = this.source instanceof HTMLVideoElement ? this.source.videoHeight : this.source instanceof VideoFrame ? this.source.displayHeight : this.source.height;
     this.canvas.width = in_width * 2;
     this.canvas.height = in_height * 2;
     this.canvas.style.pointerEvents = 'none';

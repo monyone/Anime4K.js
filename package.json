@@ -1,6 +1,6 @@
 {
   "name": "anime4k.js",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Anime4K WebGL port/implementation",
   "keywords": [
     "anime4k",
@@ -37,7 +37,7 @@
     "core-js": "^3.30.2",
     "rimraf": "^5.0.1",
     "ts-loader": "^9.4.2",
-    "typescript": "^5.0.4",
+    "typescript": "^5.4.5",
     "webpack": "^5.82.1",
     "webpack-cli": "^5.1.1"
   }
