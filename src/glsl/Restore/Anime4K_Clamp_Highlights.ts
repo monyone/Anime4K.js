@@ -139,6 +139,9 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
   private program_0: WebGLProgram;
   private program_1: WebGLProgram;
   private program_2: WebGLProgram;
+  private program_0_intermediate_texture: WebGLProgram;
+  private program_1_intermediate_texture: WebGLProgram;
+  private program_2_intermediate_texture: WebGLProgram;
   private program_0_a_position_location: number;
   private program_1_a_position_location: number;
   private program_2_a_position_location: number;
@@ -164,6 +167,9 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
     this.program_0 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_0_shader)!)!;
     this.program_1 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_1_shader)!)!;
     this.program_2 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_2_shader)!)!;
+    this.program_0_intermediate_texture = createTexture(gl, gl.NEAREST)!;
+    this.program_1_intermediate_texture = createTexture(gl, gl.NEAREST)!;
+    this.program_2_intermediate_texture = createTexture(gl, gl.NEAREST)!;
     this.program_0_a_position_location = gl.getAttribLocation(this.program_0, "a_position");
     gl.enableVertexAttribArray(this.program_0_a_position_location);
     this.program_1_a_position_location = gl.getAttribLocation(this.program_1, "a_position");
@@ -201,7 +207,7 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
      {
-        const output = createTexture(gl, gl.NEAREST)!;
+        const output = this.program_0_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width), (MAIN.height));
         gl.viewport(0, 0, (MAIN.width), (MAIN.height));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
@@ -226,9 +232,6 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
         gl.deleteBuffer(texcoordBuffer);
-        if (textures.has('STATSMAX')) {
-          gl.deleteTexture(textures.get('STATSMAX')!.texture);
-        }
         textures.set('STATSMAX', { texture: output, width: (MAIN.width), height: (MAIN.height)});
       }
     }
@@ -244,7 +247,7 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
       const STATSMAX = textures.get('STATSMAX');
       if (!STATSMAX) { return; }
      {
-        const output = createTexture(gl, gl.NEAREST)!;
+        const output = this.program_1_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width), (MAIN.height));
         gl.viewport(0, 0, (MAIN.width), (MAIN.height));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
@@ -274,9 +277,6 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
         gl.deleteBuffer(texcoordBuffer);
-        if (textures.has('STATSMAX')) {
-          gl.deleteTexture(textures.get('STATSMAX')!.texture);
-        }
         textures.set('STATSMAX', { texture: output, width: (MAIN.width), height: (MAIN.height)});
       }
     }
@@ -296,7 +296,7 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
       const STATSMAX = textures.get('STATSMAX');
       if (!STATSMAX) { return; }
      {
-        const output = createTexture(gl, gl.NEAREST)!;
+        const output = this.program_2_intermediate_texture;
         fillEmptyTexture(gl, output, (PREKERNEL.width), (PREKERNEL.height));
         gl.viewport(0, 0, (PREKERNEL.width), (PREKERNEL.height));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
@@ -326,9 +326,6 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
         gl.deleteBuffer(texcoordBuffer);
-        if (textures.has('PREKERNEL')) {
-          gl.deleteTexture(textures.get('PREKERNEL')!.texture);
-        }
         textures.set('PREKERNEL', { texture: output, width: (PREKERNEL.width), height: (PREKERNEL.height)});
       }
     }

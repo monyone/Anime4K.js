@@ -359,6 +359,13 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
   private program_4: WebGLProgram;
   private program_5: WebGLProgram;
   private program_6: WebGLProgram;
+  private program_0_intermediate_texture: WebGLProgram;
+  private program_1_intermediate_texture: WebGLProgram;
+  private program_2_intermediate_texture: WebGLProgram;
+  private program_3_intermediate_texture: WebGLProgram;
+  private program_4_intermediate_texture: WebGLProgram;
+  private program_5_intermediate_texture: WebGLProgram;
+  private program_6_intermediate_texture: WebGLProgram;
   private program_0_a_position_location: number;
   private program_1_a_position_location: number;
   private program_2_a_position_location: number;
@@ -414,6 +421,13 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
     this.program_4 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_4_shader)!)!;
     this.program_5 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_5_shader)!)!;
     this.program_6 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_6_shader)!)!;
+    this.program_0_intermediate_texture = createTexture(gl, gl.NEAREST)!;
+    this.program_1_intermediate_texture = createTexture(gl, gl.NEAREST)!;
+    this.program_2_intermediate_texture = createTexture(gl, gl.NEAREST)!;
+    this.program_3_intermediate_texture = createTexture(gl, gl.NEAREST)!;
+    this.program_4_intermediate_texture = createTexture(gl, gl.NEAREST)!;
+    this.program_5_intermediate_texture = createTexture(gl, gl.NEAREST)!;
+    this.program_6_intermediate_texture = createTexture(gl, gl.NEAREST)!;
     this.program_0_a_position_location = gl.getAttribLocation(this.program_0, "a_position");
     gl.enableVertexAttribArray(this.program_0_a_position_location);
     this.program_1_a_position_location = gl.getAttribLocation(this.program_1, "a_position");
@@ -485,7 +499,7 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
      {
-        const output = createTexture(gl, gl.NEAREST)!;
+        const output = this.program_0_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width), (MAIN.height));
         gl.viewport(0, 0, (MAIN.width), (MAIN.height));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
@@ -510,9 +524,6 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
         gl.deleteBuffer(texcoordBuffer);
-        if (textures.has('LINELUMA')) {
-          gl.deleteTexture(textures.get('LINELUMA')!.texture);
-        }
         textures.set('LINELUMA', { texture: output, width: (MAIN.width), height: (MAIN.height)});
       }
     }
@@ -528,7 +539,7 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
      {
-        const output = createTexture(gl, gl.NEAREST)!;
+        const output = this.program_1_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width * 2), (MAIN.height * 2));
         gl.viewport(0, 0, (MAIN.width * 2), (MAIN.height * 2));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
@@ -558,9 +569,6 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
         gl.deleteBuffer(texcoordBuffer);
-        if (textures.has('LUMAD')) {
-          gl.deleteTexture(textures.get('LUMAD')!.texture);
-        }
         textures.set('LUMAD', { texture: output, width: (MAIN.width * 2), height: (MAIN.height * 2)});
       }
     }
@@ -576,7 +584,7 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
      {
-        const output = createTexture(gl, gl.NEAREST)!;
+        const output = this.program_2_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width * 2), (MAIN.height * 2));
         gl.viewport(0, 0, (MAIN.width * 2), (MAIN.height * 2));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
@@ -606,9 +614,6 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
         gl.deleteBuffer(texcoordBuffer);
-        if (textures.has('LUMAD')) {
-          gl.deleteTexture(textures.get('LUMAD')!.texture);
-        }
         textures.set('LUMAD', { texture: output, width: (MAIN.width * 2), height: (MAIN.height * 2)});
       }
     }
@@ -624,7 +629,7 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
      {
-        const output = createTexture(gl, gl.NEAREST)!;
+        const output = this.program_3_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width * 2), (MAIN.height * 2));
         gl.viewport(0, 0, (MAIN.width * 2), (MAIN.height * 2));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
@@ -654,9 +659,6 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
         gl.deleteBuffer(texcoordBuffer);
-        if (textures.has('LUMAMM')) {
-          gl.deleteTexture(textures.get('LUMAMM')!.texture);
-        }
         textures.set('LUMAMM', { texture: output, width: (MAIN.width * 2), height: (MAIN.height * 2)});
       }
     }
@@ -674,7 +676,7 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
      {
-        const output = createTexture(gl, gl.NEAREST)!;
+        const output = this.program_4_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width * 2), (MAIN.height * 2));
         gl.viewport(0, 0, (MAIN.width * 2), (MAIN.height * 2));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
@@ -709,9 +711,6 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
         gl.deleteBuffer(texcoordBuffer);
-        if (textures.has('LUMAMM')) {
-          gl.deleteTexture(textures.get('LUMAMM')!.texture);
-        }
         textures.set('LUMAMM', { texture: output, width: (MAIN.width * 2), height: (MAIN.height * 2)});
       }
     }
@@ -729,7 +728,7 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
      {
-        const output = createTexture(gl, gl.NEAREST)!;
+        const output = this.program_5_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width * 2), (MAIN.height * 2));
         gl.viewport(0, 0, (MAIN.width * 2), (MAIN.height * 2));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
@@ -764,9 +763,6 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
         gl.deleteBuffer(texcoordBuffer);
-        if (textures.has('RESAMPLED')) {
-          gl.deleteTexture(textures.get('RESAMPLED')!.texture);
-        }
         textures.set('RESAMPLED', { texture: output, width: (MAIN.width * 2), height: (MAIN.height * 2)});
       }
     }
@@ -782,7 +778,7 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
       const RESAMPLED = textures.get('RESAMPLED');
       if (!RESAMPLED) { return; }
      {
-        const output = createTexture(gl, gl.NEAREST)!;
+        const output = this.program_6_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width), (MAIN.height));
         gl.viewport(0, 0, (MAIN.width), (MAIN.height));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
@@ -812,9 +808,6 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
         gl.deleteBuffer(texcoordBuffer);
-        if (textures.has('MAIN')) {
-          gl.deleteTexture(textures.get('MAIN')!.texture);
-        }
         textures.set('MAIN', { texture: output, width: (MAIN.width), height: (MAIN.height)});
       }
     }

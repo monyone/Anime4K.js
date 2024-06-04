@@ -439,6 +439,15 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_M extends Anime4KShader {
   private program_6: WebGLProgram;
   private program_7: WebGLProgram;
   private program_8: WebGLProgram;
+  private program_0_intermediate_texture: WebGLProgram;
+  private program_1_intermediate_texture: WebGLProgram;
+  private program_2_intermediate_texture: WebGLProgram;
+  private program_3_intermediate_texture: WebGLProgram;
+  private program_4_intermediate_texture: WebGLProgram;
+  private program_5_intermediate_texture: WebGLProgram;
+  private program_6_intermediate_texture: WebGLProgram;
+  private program_7_intermediate_texture: WebGLProgram;
+  private program_8_intermediate_texture: WebGLProgram;
   private program_0_a_position_location: number;
   private program_1_a_position_location: number;
   private program_2_a_position_location: number;
@@ -505,6 +514,15 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_M extends Anime4KShader {
     this.program_6 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_6_shader)!)!;
     this.program_7 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_7_shader)!)!;
     this.program_8 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_8_shader)!)!;
+    this.program_0_intermediate_texture = createTexture(gl, gl.NEAREST)!;
+    this.program_1_intermediate_texture = createTexture(gl, gl.NEAREST)!;
+    this.program_2_intermediate_texture = createTexture(gl, gl.NEAREST)!;
+    this.program_3_intermediate_texture = createTexture(gl, gl.NEAREST)!;
+    this.program_4_intermediate_texture = createTexture(gl, gl.NEAREST)!;
+    this.program_5_intermediate_texture = createTexture(gl, gl.NEAREST)!;
+    this.program_6_intermediate_texture = createTexture(gl, gl.NEAREST)!;
+    this.program_7_intermediate_texture = createTexture(gl, gl.NEAREST)!;
+    this.program_8_intermediate_texture = createTexture(gl, gl.NEAREST)!;
     this.program_0_a_position_location = gl.getAttribLocation(this.program_0, "a_position");
     gl.enableVertexAttribArray(this.program_0_a_position_location);
     this.program_1_a_position_location = gl.getAttribLocation(this.program_1, "a_position");
@@ -589,7 +607,7 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_M extends Anime4KShader {
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
       if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200))) {
-        const output = createTexture(gl, gl.NEAREST)!;
+        const output = this.program_0_intermediate_texture;
         fillEmptyTexture(gl, output, MAIN.width, MAIN.height);
         gl.viewport(0, 0, MAIN.width, MAIN.height);
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
@@ -614,9 +632,6 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_M extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
         gl.deleteBuffer(texcoordBuffer);
-        if (textures.has('conv2d_tf')) {
-          gl.deleteTexture(textures.get('conv2d_tf')!.texture);
-        }
         textures.set('conv2d_tf', { texture: output, width: MAIN.width, height: MAIN.height});
       }
     }
@@ -632,7 +647,7 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_M extends Anime4KShader {
       const conv2d_tf = textures.get('conv2d_tf');
       if (!conv2d_tf) { return; }
       if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200))) {
-        const output = createTexture(gl, gl.NEAREST)!;
+        const output = this.program_1_intermediate_texture;
         fillEmptyTexture(gl, output, conv2d_tf.width, conv2d_tf.height);
         gl.viewport(0, 0, conv2d_tf.width, conv2d_tf.height);
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
@@ -657,9 +672,6 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_M extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
         gl.deleteBuffer(texcoordBuffer);
-        if (textures.has('conv2d_1_tf')) {
-          gl.deleteTexture(textures.get('conv2d_1_tf')!.texture);
-        }
         textures.set('conv2d_1_tf', { texture: output, width: conv2d_tf.width, height: conv2d_tf.height});
       }
     }
@@ -675,7 +687,7 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_M extends Anime4KShader {
       const conv2d_1_tf = textures.get('conv2d_1_tf');
       if (!conv2d_1_tf) { return; }
       if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200))) {
-        const output = createTexture(gl, gl.NEAREST)!;
+        const output = this.program_2_intermediate_texture;
         fillEmptyTexture(gl, output, conv2d_1_tf.width, conv2d_1_tf.height);
         gl.viewport(0, 0, conv2d_1_tf.width, conv2d_1_tf.height);
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
@@ -700,9 +712,6 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_M extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
         gl.deleteBuffer(texcoordBuffer);
-        if (textures.has('conv2d_2_tf')) {
-          gl.deleteTexture(textures.get('conv2d_2_tf')!.texture);
-        }
         textures.set('conv2d_2_tf', { texture: output, width: conv2d_1_tf.width, height: conv2d_1_tf.height});
       }
     }
@@ -718,7 +727,7 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_M extends Anime4KShader {
       const conv2d_2_tf = textures.get('conv2d_2_tf');
       if (!conv2d_2_tf) { return; }
       if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200))) {
-        const output = createTexture(gl, gl.NEAREST)!;
+        const output = this.program_3_intermediate_texture;
         fillEmptyTexture(gl, output, conv2d_2_tf.width, conv2d_2_tf.height);
         gl.viewport(0, 0, conv2d_2_tf.width, conv2d_2_tf.height);
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
@@ -743,9 +752,6 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_M extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
         gl.deleteBuffer(texcoordBuffer);
-        if (textures.has('conv2d_3_tf')) {
-          gl.deleteTexture(textures.get('conv2d_3_tf')!.texture);
-        }
         textures.set('conv2d_3_tf', { texture: output, width: conv2d_2_tf.width, height: conv2d_2_tf.height});
       }
     }
@@ -761,7 +767,7 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_M extends Anime4KShader {
       const conv2d_3_tf = textures.get('conv2d_3_tf');
       if (!conv2d_3_tf) { return; }
       if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200))) {
-        const output = createTexture(gl, gl.NEAREST)!;
+        const output = this.program_4_intermediate_texture;
         fillEmptyTexture(gl, output, conv2d_3_tf.width, conv2d_3_tf.height);
         gl.viewport(0, 0, conv2d_3_tf.width, conv2d_3_tf.height);
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
@@ -786,9 +792,6 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_M extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
         gl.deleteBuffer(texcoordBuffer);
-        if (textures.has('conv2d_4_tf')) {
-          gl.deleteTexture(textures.get('conv2d_4_tf')!.texture);
-        }
         textures.set('conv2d_4_tf', { texture: output, width: conv2d_3_tf.width, height: conv2d_3_tf.height});
       }
     }
@@ -804,7 +807,7 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_M extends Anime4KShader {
       const conv2d_4_tf = textures.get('conv2d_4_tf');
       if (!conv2d_4_tf) { return; }
       if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200))) {
-        const output = createTexture(gl, gl.NEAREST)!;
+        const output = this.program_5_intermediate_texture;
         fillEmptyTexture(gl, output, conv2d_4_tf.width, conv2d_4_tf.height);
         gl.viewport(0, 0, conv2d_4_tf.width, conv2d_4_tf.height);
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
@@ -829,9 +832,6 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_M extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
         gl.deleteBuffer(texcoordBuffer);
-        if (textures.has('conv2d_5_tf')) {
-          gl.deleteTexture(textures.get('conv2d_5_tf')!.texture);
-        }
         textures.set('conv2d_5_tf', { texture: output, width: conv2d_4_tf.width, height: conv2d_4_tf.height});
       }
     }
@@ -847,7 +847,7 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_M extends Anime4KShader {
       const conv2d_5_tf = textures.get('conv2d_5_tf');
       if (!conv2d_5_tf) { return; }
       if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200))) {
-        const output = createTexture(gl, gl.NEAREST)!;
+        const output = this.program_6_intermediate_texture;
         fillEmptyTexture(gl, output, conv2d_5_tf.width, conv2d_5_tf.height);
         gl.viewport(0, 0, conv2d_5_tf.width, conv2d_5_tf.height);
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
@@ -872,9 +872,6 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_M extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
         gl.deleteBuffer(texcoordBuffer);
-        if (textures.has('conv2d_6_tf')) {
-          gl.deleteTexture(textures.get('conv2d_6_tf')!.texture);
-        }
         textures.set('conv2d_6_tf', { texture: output, width: conv2d_5_tf.width, height: conv2d_5_tf.height});
       }
     }
@@ -902,7 +899,7 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_M extends Anime4KShader {
       const conv2d_tf = textures.get('conv2d_tf');
       if (!conv2d_tf) { return; }
       if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200))) {
-        const output = createTexture(gl, gl.NEAREST)!;
+        const output = this.program_7_intermediate_texture;
         fillEmptyTexture(gl, output, conv2d_tf.width, conv2d_tf.height);
         gl.viewport(0, 0, conv2d_tf.width, conv2d_tf.height);
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
@@ -957,9 +954,6 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_M extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
         gl.deleteBuffer(texcoordBuffer);
-        if (textures.has('conv2d_last_tf')) {
-          gl.deleteTexture(textures.get('conv2d_last_tf')!.texture);
-        }
         textures.set('conv2d_last_tf', { texture: output, width: conv2d_tf.width, height: conv2d_tf.height});
       }
     }
@@ -975,7 +969,7 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_M extends Anime4KShader {
       const conv2d_last_tf = textures.get('conv2d_last_tf');
       if (!conv2d_last_tf) { return; }
       if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200))) {
-        const output = createTexture(gl, gl.NEAREST)!;
+        const output = this.program_8_intermediate_texture;
         fillEmptyTexture(gl, output, (conv2d_last_tf.width * 2), (conv2d_last_tf.height * 2));
         gl.viewport(0, 0, (conv2d_last_tf.width * 2), (conv2d_last_tf.height * 2));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
@@ -1005,9 +999,6 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_M extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
         gl.deleteBuffer(texcoordBuffer);
-        if (textures.has('MAIN')) {
-          gl.deleteTexture(textures.get('MAIN')!.texture);
-        }
         textures.set('MAIN', { texture: output, width: (conv2d_last_tf.width * 2), height: (conv2d_last_tf.height * 2)});
       }
     }

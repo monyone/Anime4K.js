@@ -10,6 +10,10 @@ export default class VideoUpscaler {
   private config: (new (gl: WebGLRenderingContext) => Anime4KShader)[];
 
   private textures = new Map<string, TextureData>();
+  private in_texture: WebGLTexture | null = null;
+  private native_texture: WebGLTexture | null = null;
+  private output_texture: WebGLTexture | null = null;
+
   private framebuffer: WebGLFramebuffer | null = null;
   private programs: Anime4KShader[] | null = null;
   private passthrough: PassThrough | null = null;
@@ -76,16 +80,16 @@ export default class VideoUpscaler {
     const ext = gl.getExtension("OES_texture_half_float_linear") && gl.getExtension("OES_texture_half_float");
 
     // init texture
-    const in_texture = createTexture(gl, gl.LINEAR);
+    const in_texture = this.in_texture;
     if (!in_texture) { return; }
     gl.bindTexture(gl.TEXTURE_2D, in_texture);
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, ext?.HALF_FLOAT_OES ?? gl.FLOAT, this.video);
     gl.bindTexture(gl.TEXTURE_2D, null);
 
-    const native_texture = createTexture(gl, gl.LINEAR);
+    const native_texture = this.native_texture;
     if (!native_texture) { return; }
 
-    const output_texture = createTexture(gl, gl.LINEAR);
+    const output_texture = this.output_texture;
     if (!output_texture) { return; }
 
     const in_width = this.video.videoWidth, in_height = this.video.videoHeight;
@@ -93,25 +97,19 @@ export default class VideoUpscaler {
 
     // use Texture
     {
-      if (this.textures.has('NATIVE')) {
-        gl.deleteTexture(this.textures.get('NATIVE')!.texture);
-        this.textures.delete('NATIVE');
+      if (!this.textures.has('NATIVE')) {
+        this.textures.set('NATIVE', { texture: native_texture, width: in_width, height: in_height });
       }
-      this.textures.set('NATIVE', { texture: native_texture, width: in_width, height: in_height });
     }
     {
-      if (this.textures.has('OUTPUT')) {
-        gl.deleteTexture(this.textures.get('OUTPUT')!.texture);
-        this.textures.delete('OUTPUT');
+      if (!this.textures.has('OUTPUT')) {
+        this.textures.set('OUTPUT', { texture: output_texture, width: out_width, height: out_height });
       }
-      this.textures.set('OUTPUT', { texture: output_texture, width: out_width, height: out_height });
     }
     {
-      if (this.textures.has('MAIN')) {
-        gl.deleteTexture(this.textures.get('MAIN')!.texture);
-        this.textures.delete('MAIN');
+      if (!this.textures.has('MAIN')) {
+        this.textures.set('MAIN', { texture: in_texture, width: in_width, height: in_height });
       }
-      this.textures.set('MAIN', { texture: in_texture, width: in_width, height: in_height });
     }
     this.programs.forEach((program) => program.hook_MAIN(this.textures, framebuffer!));
 
@@ -138,7 +136,7 @@ export default class VideoUpscaler {
       stencil: false,
       depth: false
     });
-    if (this.gl && this.gl.getExtension("OES_texture_float") && this.gl.getExtension("OES_texture_float_linear")) {
+    if (this.gl && this.gl.getExtension("OES_texture_float") && this.gl.getExtension("OES_texture_float_linear") && this.gl.getExtension("EXT_color_buffer_half_float")) {
       const gl = this.gl;
       gl.disable(gl.DEPTH_TEST);
       gl.disable(gl.STENCIL_TEST);
@@ -146,6 +144,10 @@ export default class VideoUpscaler {
       gl.clear(gl.COLOR_BUFFER_BIT);
 
       this.framebuffer = gl.createFramebuffer()!;
+
+      this.in_texture = createTexture(gl, gl.LINEAR);
+      this.native_texture = createTexture(gl, gl.LINEAR);
+      this.output_texture = createTexture(gl, gl.LINEAR);
 
       this.programs = this.config.map((constuctor) => new constuctor(gl));
       this.passthrough = new PassThrough(gl);
@@ -156,7 +158,15 @@ export default class VideoUpscaler {
   }
   public detachVideo() {
     this.stop();
+
+    this.gl?.deleteFramebuffer(this.framebuffer);
+    this.gl?.deleteTexture(this.in_texture);
+    this.gl?.deleteTexture(this.native_texture);
+    this.gl?.deleteTexture(this.output_texture);
+    this.in_texture = this.native_texture = this.output_texture = null;
+
     this.gl = null;
+    this.framebuffer = null;
     if (this.canvas) {
       this.canvas.style.visibility = 'hidden';
     }

@@ -199,9 +199,9 @@ const {bind} = textures.get('{bind}');
 if (!{bind}) {{ return; }}
 """.strip() for bind in sorted(list(set(program.get_bind() + [program.get_hook(), 'OUTPUT', 'NATIVE'])))])
 
-def prepareOutputTexture(program: Program):
+def prepareOutputTexture(program: Program, program_index: int):
   return f"""
-const output = createTexture(gl, gl.NEAREST)!;
+const output = this.program_{program_index}_intermediate_texture;
 fillEmptyTexture(gl, output, {program.get_width()}, {program.get_height()});
 gl.viewport(0, 0, {program.get_width()}, {program.get_height()});
 gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
@@ -223,9 +223,6 @@ gl.bindTexture(gl.TEXTURE_2D, null);
 
 def pushOutputTexture(program: Program):
   return f"""
-if (textures.has('{program.get_save()}')) {{
-  gl.deleteTexture(textures.get('{program.get_save()}')!.texture);
-}}
 textures.set('{program.get_save()}', {{ texture: output, width: {program.get_width()}, height: {program.get_height()}}});
 """.strip()
 
@@ -234,7 +231,7 @@ def generateHook(programs: list[Program], hook: str):
 {{
 { indent(prepareTextures(program), '  ') }
 {f'  if ({program.get_when_cond()})' if program.get_when_cond() else ''} {{
-{ indent(prepareOutputTexture(program), '    ') }
+{ indent(prepareOutputTexture(program, index), '    ') }
 
     gl.useProgram(this.program_{index});
 
@@ -335,6 +332,7 @@ if __name__ == '__main__':
     for index, program in enumerate(programs):
       out.write(f'const fragment_{index}_shader = `\n{program}`;\n')
     webgl_programs_declare = '\n'.join([ f'private program_{index}: WebGLProgram;' for index in range(len(programs)) ])
+    webgl_program_intermediate_texture_declare = '\n'.join([ f'private program_{index}_intermediate_texture: WebGLProgram;' for index in range(len(programs)) ])
     webgl_program_a_position_location_declare = '\n'.join([ f'private program_{index}_a_position_location: number;' for index in range(len(programs)) ])
     webgl_program_a_texture_coord_location_declare = '\n'.join([ f'private program_{index}_a_texture_coord_location: number;' for index in range(len(programs)) ])
     webgl_program_u_resolution_location_declare = '\n'.join([ f'private program_{index}_u_resolution_location: WebGLUniformLocation | null;' for index in range(len(programs)) ])
@@ -342,6 +340,7 @@ if __name__ == '__main__':
     webgl_program_u_texture_location_declare = '\n'.join(['\n'.join([ f'private program_{index}_{bind}_TextureLocation: WebGLUniformLocation | null' for bind in program.get_bind()]) for index, program in enumerate(programs)])
 
     webgl_programs_assign = '\n'.join([ f'this.program_{index} = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_{index}_shader)!)!;' for index in range(len(programs)) ])
+    webgl_program_intermediate_texture_assign = '\n'.join([ f'this.program_{index}_intermediate_texture = createTexture(gl, gl.NEAREST)!;' for index in range(len(programs)) ])
     webgl_program_a_position_location_assign = '\n'.join([ f'this.program_{index}_a_position_location = gl.getAttribLocation(this.program_{index}, "a_position");\ngl.enableVertexAttribArray(this.program_{index}_a_position_location);' for index in range(len(programs))])
     webgl_program_a_texture_coord_location_assign = '\n'.join([ f'this.program_{index}_a_texture_coord_location = gl.getAttribLocation(this.program_{index}, "a_texture_coord");\ngl.enableVertexAttribArray(this.program_{index}_a_texture_coord_location);' for index in range(len(programs)) ])
     webgl_program_u_resolution_location_assign = '\n'.join([ f'this.program_{index}_u_resolution_location = gl.getUniformLocation(this.program_{index}, "u_resolution");' for index in range(len(programs)) ])
@@ -356,6 +355,7 @@ f'''
 export default class {outfile.stem.replace('+', '_')} extends Anime4KShader {{
   private gl: WebGLRenderingContext;
 {indent(webgl_programs_declare, '  ')}
+{indent(webgl_program_intermediate_texture_declare, '  ')}
 {indent(webgl_program_a_position_location_declare, '  ')}
 {indent(webgl_program_a_texture_coord_location_declare, '  ')}
 {indent(webgl_program_u_resolution_location_declare, '  ')}
@@ -367,6 +367,7 @@ export default class {outfile.stem.replace('+', '_')} extends Anime4KShader {{
     super();
     this.gl = gl;
 {indent(webgl_programs_assign, '    ')}
+{indent(webgl_program_intermediate_texture_assign, '    ')}
 {indent(webgl_program_a_position_location_assign, '    ')}
 {indent(webgl_program_a_texture_coord_location_assign, '    ')}
 {indent(webgl_program_u_resolution_location_assign, '    ')}
