@@ -27,7 +27,7 @@ export default class VideoUpscaler {
   }
 
   public static isSupported(): boolean {
-    const canvas = document.createElement('canvas');
+    const canvas = new OffscreenCanvas(0,0)
     const gl = canvas.getContext('webgl');
     if (!gl) { return false; }
     if (gl.getExtension("OES_texture_float") == null) { return false; }
@@ -62,8 +62,8 @@ export default class VideoUpscaler {
     const output_texture = this.output_texture;
     if (!output_texture) { return; }
 
-    const in_width = this.source instanceof HTMLVideoElement ? this.source.videoWidth : this.source instanceof (window.VideoFrame ?? empty) ? this.source.displayWidth : this.source.width;
-    const in_height = this.source instanceof HTMLVideoElement ? this.source.videoHeight :this.source instanceof (window.VideoFrame ?? empty) ? this.source.displayHeight : this.source.height;
+    const in_width = this.source instanceof ImageBitmap ? this.source.width : this.source instanceof HTMLVideoElement ? this.source.videoWidth : this.source instanceof (window.VideoFrame ?? empty) ? this.source.displayWidth : this.source.width;
+    const in_height = this.source instanceof ImageBitmap ? this.source.height : this.source instanceof HTMLVideoElement ? this.source.videoHeight :this.source instanceof (window.VideoFrame ?? empty) ? this.source.displayHeight : this.source.height;
     const out_width = this.canvas.width, out_height = this.canvas.height;
 
     // use Texture
@@ -95,6 +95,7 @@ export default class VideoUpscaler {
 
     gl.flush();
 
+    if(!(this.canvas instanceof OffscreenCanvas))
     this.canvas.style.visibility = 'visible';
   }
 
@@ -135,6 +136,7 @@ export default class VideoUpscaler {
 
     this.gl = null;
     if (this.canvas) {
+      if(!(this.canvas instanceof OffscreenCanvas))
       this.canvas.style.visibility = 'hidden';
     }
     this.source = null;
@@ -144,10 +146,11 @@ export default class VideoUpscaler {
     if (!this.source) { return; }
     if (!this.canvas) { return; }
 
-    const in_width = this.source instanceof HTMLVideoElement ? this.source.videoWidth : this.source instanceof (window.VideoFrame ?? empty) ? this.source.displayWidth : this.source.width;
-    const in_height = this.source instanceof HTMLVideoElement ? this.source.videoHeight : this.source instanceof (window.VideoFrame ?? empty) ? this.source.displayHeight : this.source.height;
+    const in_width = this.source instanceof ImageBitmap ? this.source.width : this.source instanceof HTMLVideoElement ? this.source.videoWidth : this.source instanceof (window.VideoFrame ?? empty) ? this.source.displayWidth : this.source.width;
+    const in_height = this.source instanceof ImageBitmap ? this.source.height : this.source instanceof HTMLVideoElement ? this.source.videoHeight : this.source instanceof (window.VideoFrame ?? empty) ? this.source.displayHeight : this.source.height;
     this.canvas.width = in_width * 2;
     this.canvas.height = in_height * 2;
+    if(!(this.canvas instanceof OffscreenCanvas))
     this.canvas.style.pointerEvents = 'none';
   }
 }
