@@ -9,6 +9,7 @@ export default class VideoUpscaler {
   private canvas: HTMLCanvasElement | null = null;
   private gl: WebGLRenderingContext | null = null;
 
+  private scale: number;
   private config: (new (gl: WebGLRenderingContext) => Anime4KShader)[];
 
   private textures = new Map<string, TextureData>();
@@ -21,8 +22,9 @@ export default class VideoUpscaler {
 
   private supported: boolean;
 
-  public constructor(config: (new (gl: WebGLRenderingContext) => Anime4KShader)[]) {
+  public constructor(upscale: number, config: (new (gl: WebGLRenderingContext) => Anime4KShader)[]) {
     this.supported = VideoUpscaler.isSupported();
+    this.scale = upscale;
     this.config = config;
   }
 
@@ -148,8 +150,8 @@ export default class VideoUpscaler {
 
     const in_width = this.source instanceof ImageBitmap ? this.source.width : this.source instanceof HTMLVideoElement ? this.source.videoWidth : this.source instanceof (window.VideoFrame ?? empty) ? this.source.displayWidth : this.source.width;
     const in_height = this.source instanceof ImageBitmap ? this.source.height : this.source instanceof HTMLVideoElement ? this.source.videoHeight : this.source instanceof (window.VideoFrame ?? empty) ? this.source.displayHeight : this.source.height;
-    this.canvas.width = in_width * 2;
-    this.canvas.height = in_height * 2;
+    this.canvas.width = in_width * this.scale;
+    this.canvas.height = in_height * this.scale;
     if(!(this.canvas instanceof OffscreenCanvas))
     this.canvas.style.pointerEvents = 'none';
   }

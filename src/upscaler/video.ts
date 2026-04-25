@@ -2,11 +2,30 @@ import PassThrough from "../glsl/passthrough";
 import Anime4KShader from "../glsl/shader";
 import { createTexture, TextureData } from "../utils/index";
 
+const useVideoFrameCallback = (media?: HTMLVideoElement) => {
+  return typeof media?.requestVideoFrameCallback === 'function';
+};
+
+const requestFrame = (callback: () => void, media?: HTMLVideoElement): number => {
+  if (media?.requestVideoFrameCallback) {
+    return media.requestVideoFrameCallback(callback);
+  }
+  return requestAnimationFrame(callback);
+}
+const cancelFrame = (handle: number, media?: HTMLVideoElement): void => {
+  if (media?.cancelVideoFrameCallback) {
+    media.cancelVideoFrameCallback(handle);
+    return;
+  }
+  cancelAnimationFrame(handle);
+}
+
 export default class VideoUpscaler {
   private video: HTMLVideoElement | null = null;
   private canvas: HTMLCanvasElement | null = null;
   private gl: WebGLRenderingContext | null = null;
 
+  private scale: number;
   private config: (new (gl: WebGLRenderingContext) => Anime4KShader)[];
 
   private textures = new Map<string, TextureData>();
@@ -22,13 +41,14 @@ export default class VideoUpscaler {
   private upscaleTimer: number | null = null;
   private running: boolean = false;
   private upscaleTime: number = 0;
-  private fps: number;
+  private fps: number | undefined;
   private supported: boolean;
 
-  public constructor(fps: number, config: (new (gl: WebGLRenderingContext) => Anime4KShader)[]) {
+  public constructor(upscale: number, config: (new (gl: WebGLRenderingContext) => Anime4KShader)[], fps?: number) {
     this.supported = VideoUpscaler.isSupported();
-    this.fps = fps;
+    this.scale = upscale;
     this.config = config;
+    this.fps = fps;
   }
 
   public static isSupported(): boolean {
@@ -52,7 +72,7 @@ export default class VideoUpscaler {
       this.canvas.style.visibility = 'hidden';
     }
     if (this.upscaleTimer == null) { return; }
-    cancelAnimationFrame(this.upscaleTimer);
+    cancelFrame(this.upscaleTimer, this.video ?? undefined);
     this.upscaleTimer = null;
   }
 
@@ -69,8 +89,8 @@ export default class VideoUpscaler {
     this.adjustCanvasSize();
 
     const currentTime = performance.now();
-    if ((currentTime - this.upscaleTime) * this.fps < 1000) {
-      requestAnimationFrame(this.upscaleHandler);
+    if (!useVideoFrameCallback(this.video) && (currentTime - this.upscaleTime) * (this.fps ?? 0) < 1000) {
+      this.upscaleTimer = requestFrame(this.upscaleHandler, this.video);
       return;
     }
     this.upscaleTime = currentTime;
@@ -125,7 +145,7 @@ export default class VideoUpscaler {
     gl.flush();
     this.canvas.style.visibility = 'visible';
 
-    this.upscaleTimer = requestAnimationFrame(this.upscaleHandler);
+    this.upscaleTimer = requestFrame(this.upscaleHandler, this.video);
   }
 
   public attachVideo(video: HTMLVideoElement, canvas: HTMLCanvasElement) {
@@ -177,8 +197,8 @@ export default class VideoUpscaler {
     if (!this.video) { return; }
     if (!this.canvas) { return; }
 
-    this.canvas.width = this.video.videoWidth * 2;
-    this.canvas.height = this.video.videoHeight * 2;
+    this.canvas.width = this.video.videoWidth * this.scale;
+    this.canvas.height = this.video.videoHeight * this.scale;
     this.canvas.style.pointerEvents = 'none';
   }
 }
