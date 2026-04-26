@@ -202,7 +202,11 @@ if (!{bind}) {{ return; }}
 def prepareOutputTexture(program: Program, program_index: int):
   return f"""
 const output = this.program_{program_index}_intermediate_texture;
-fillEmptyTexture(gl, output, {program.get_width()}, {program.get_height()});
+if (this.program_{program_index}_intermediate_texture_cached_width !== {program.get_width()} || this.program_{program_index}_intermediate_texture_cached_height !== {program.get_height()}) {{
+  fillEmptyTexture(gl, output, {program.get_width()}, {program.get_height()});
+}}
+this.program_{program_index}_intermediate_texture_cached_width = {program.get_width()};
+this.program_{program_index}_intermediate_texture_cached_height = {program.get_height()};
 gl.viewport(0, 0, {program.get_width()}, {program.get_height()});
 gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
 gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, output, 0);
@@ -333,6 +337,8 @@ if __name__ == '__main__':
       out.write(f'const fragment_{index}_shader = `\n{program}`;\n')
     webgl_programs_declare = '\n'.join([ f'private program_{index}: WebGLProgram;' for index in range(len(programs)) ])
     webgl_program_intermediate_texture_declare = '\n'.join([ f'private program_{index}_intermediate_texture: WebGLTexture;' for index in range(len(programs)) ])
+    webgl_program_intermediate_texture_cached_width_declare = '\n'.join([ f'private program_{index}_intermediate_texture_cached_width: number | null;' for index in range(len(programs)) ])
+    webgl_program_intermediate_texture_cached_height_declare = '\n'.join([ f'private program_{index}_intermediate_texture_cached_height: number | null;' for index in range(len(programs)) ])
     webgl_program_a_position_location_declare = '\n'.join([ f'private program_{index}_a_position_location: number;' for index in range(len(programs)) ])
     webgl_program_a_texture_coord_location_declare = '\n'.join([ f'private program_{index}_a_texture_coord_location: number;' for index in range(len(programs)) ])
     webgl_program_u_resolution_location_declare = '\n'.join([ f'private program_{index}_u_resolution_location: WebGLUniformLocation | null;' for index in range(len(programs)) ])
@@ -341,6 +347,8 @@ if __name__ == '__main__':
 
     webgl_programs_assign = '\n'.join([ f'this.program_{index} = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_{index}_shader)!)!;' for index in range(len(programs)) ])
     webgl_program_intermediate_texture_assign = '\n'.join([ f'this.program_{index}_intermediate_texture = createTexture(gl, gl.NEAREST)!;' for index in range(len(programs)) ])
+    webgl_program_intermediate_texture_cached_width_assign = '\n'.join([ f'this.program_{index}_intermediate_texture_cached_width = null;' for index in range(len(programs)) ])
+    webgl_program_intermediate_texture_cached_height_assign = '\n'.join([ f'this.program_{index}_intermediate_texture_cached_height = null;' for index in range(len(programs)) ])
     webgl_program_a_position_location_assign = '\n'.join([ f'this.program_{index}_a_position_location = gl.getAttribLocation(this.program_{index}, "a_position");\ngl.enableVertexAttribArray(this.program_{index}_a_position_location);' for index in range(len(programs))])
     webgl_program_a_texture_coord_location_assign = '\n'.join([ f'this.program_{index}_a_texture_coord_location = gl.getAttribLocation(this.program_{index}, "a_texture_coord");\ngl.enableVertexAttribArray(this.program_{index}_a_texture_coord_location);' for index in range(len(programs)) ])
     webgl_program_u_resolution_location_assign = '\n'.join([ f'this.program_{index}_u_resolution_location = gl.getUniformLocation(this.program_{index}, "u_resolution");' for index in range(len(programs)) ])
@@ -356,18 +364,21 @@ export default class {outfile.stem.replace('+', '_')} extends Anime4KShader {{
   private gl: WebGLRenderingContext;
 {indent(webgl_programs_declare, '  ')}
 {indent(webgl_program_intermediate_texture_declare, '  ')}
+{indent(webgl_program_intermediate_texture_cached_width_declare, '  ')}
+{indent(webgl_program_intermediate_texture_cached_height_declare, '  ')}
 {indent(webgl_program_a_position_location_declare, '  ')}
 {indent(webgl_program_a_texture_coord_location_declare, '  ')}
 {indent(webgl_program_u_resolution_location_declare, '  ')}
 {indent(webgl_program_u_texture_size_location_declare, '  ')}
 {indent(webgl_program_u_texture_location_declare, '  ')}
 
-
   public constructor(gl: WebGLRenderingContext) {{
     super();
     this.gl = gl;
 {indent(webgl_programs_assign, '    ')}
 {indent(webgl_program_intermediate_texture_assign, '    ')}
+{indent(webgl_program_intermediate_texture_cached_width_assign, '    ')}
+{indent(webgl_program_intermediate_texture_cached_height_assign, '    ')}
 {indent(webgl_program_a_position_location_assign, '    ')}
 {indent(webgl_program_a_texture_coord_location_assign, '    ')}
 {indent(webgl_program_u_resolution_location_assign, '    ')}

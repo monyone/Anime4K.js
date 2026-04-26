@@ -285,6 +285,18 @@ export default class Anime4K_Darken_Fast extends Anime4KShader {
   private program_3_intermediate_texture: WebGLTexture;
   private program_4_intermediate_texture: WebGLTexture;
   private program_5_intermediate_texture: WebGLTexture;
+  private program_0_intermediate_texture_cached_width: number | null;
+  private program_1_intermediate_texture_cached_width: number | null;
+  private program_2_intermediate_texture_cached_width: number | null;
+  private program_3_intermediate_texture_cached_width: number | null;
+  private program_4_intermediate_texture_cached_width: number | null;
+  private program_5_intermediate_texture_cached_width: number | null;
+  private program_0_intermediate_texture_cached_height: number | null;
+  private program_1_intermediate_texture_cached_height: number | null;
+  private program_2_intermediate_texture_cached_height: number | null;
+  private program_3_intermediate_texture_cached_height: number | null;
+  private program_4_intermediate_texture_cached_height: number | null;
+  private program_5_intermediate_texture_cached_height: number | null;
   private program_0_a_position_location: number;
   private program_1_a_position_location: number;
   private program_2_a_position_location: number;
@@ -322,7 +334,6 @@ export default class Anime4K_Darken_Fast extends Anime4KShader {
   private program_5_MAIN_TextureLocation: WebGLUniformLocation | null
   private program_5_LINEKERNEL_TextureLocation: WebGLUniformLocation | null
 
-
   public constructor(gl: WebGLRenderingContext) {
     super();
     this.gl = gl;
@@ -338,6 +349,18 @@ export default class Anime4K_Darken_Fast extends Anime4KShader {
     this.program_3_intermediate_texture = createTexture(gl, gl.NEAREST)!;
     this.program_4_intermediate_texture = createTexture(gl, gl.NEAREST)!;
     this.program_5_intermediate_texture = createTexture(gl, gl.NEAREST)!;
+    this.program_0_intermediate_texture_cached_width = null;
+    this.program_1_intermediate_texture_cached_width = null;
+    this.program_2_intermediate_texture_cached_width = null;
+    this.program_3_intermediate_texture_cached_width = null;
+    this.program_4_intermediate_texture_cached_width = null;
+    this.program_5_intermediate_texture_cached_width = null;
+    this.program_0_intermediate_texture_cached_height = null;
+    this.program_1_intermediate_texture_cached_height = null;
+    this.program_2_intermediate_texture_cached_height = null;
+    this.program_3_intermediate_texture_cached_height = null;
+    this.program_4_intermediate_texture_cached_height = null;
+    this.program_5_intermediate_texture_cached_height = null;
     this.program_0_a_position_location = gl.getAttribLocation(this.program_0, "a_position");
     gl.enableVertexAttribArray(this.program_0_a_position_location);
     this.program_1_a_position_location = gl.getAttribLocation(this.program_1, "a_position");
@@ -401,7 +424,11 @@ export default class Anime4K_Darken_Fast extends Anime4KShader {
       if (!OUTPUT) { return; }
       {
         const output = this.program_0_intermediate_texture;
-        fillEmptyTexture(gl, output, (MAIN.width), (MAIN.height));
+        if (this.program_0_intermediate_texture_cached_width !== (MAIN.width) || this.program_0_intermediate_texture_cached_height !== (MAIN.height)) {
+          fillEmptyTexture(gl, output, (MAIN.width), (MAIN.height));
+        }
+        this.program_0_intermediate_texture_cached_width = (MAIN.width);
+        this.program_0_intermediate_texture_cached_height = (MAIN.height);
         gl.viewport(0, 0, (MAIN.width), (MAIN.height));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
         gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, output, 0);
@@ -441,7 +468,11 @@ export default class Anime4K_Darken_Fast extends Anime4KShader {
       if (!OUTPUT) { return; }
       {
         const output = this.program_1_intermediate_texture;
-        fillEmptyTexture(gl, output, (HOOKED.width / 2), (HOOKED.height / 2));
+        if (this.program_1_intermediate_texture_cached_width !== (HOOKED.width / 2) || this.program_1_intermediate_texture_cached_height !== (HOOKED.height / 2)) {
+          fillEmptyTexture(gl, output, (HOOKED.width / 2), (HOOKED.height / 2));
+        }
+        this.program_1_intermediate_texture_cached_width = (HOOKED.width / 2);
+        this.program_1_intermediate_texture_cached_height = (HOOKED.height / 2);
         gl.viewport(0, 0, (HOOKED.width / 2), (HOOKED.height / 2));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
         gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, output, 0);
@@ -488,7 +519,11 @@ export default class Anime4K_Darken_Fast extends Anime4KShader {
       if (!OUTPUT) { return; }
       {
         const output = this.program_2_intermediate_texture;
-        fillEmptyTexture(gl, output, (HOOKED.width / 2), (HOOKED.height / 2));
+        if (this.program_2_intermediate_texture_cached_width !== (HOOKED.width / 2) || this.program_2_intermediate_texture_cached_height !== (HOOKED.height / 2)) {
+          fillEmptyTexture(gl, output, (HOOKED.width / 2), (HOOKED.height / 2));
+        }
+        this.program_2_intermediate_texture_cached_width = (HOOKED.width / 2);
+        this.program_2_intermediate_texture_cached_height = (HOOKED.height / 2);
         gl.viewport(0, 0, (HOOKED.width / 2), (HOOKED.height / 2));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
         gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, output, 0);
@@ -538,7 +573,11 @@ export default class Anime4K_Darken_Fast extends Anime4KShader {
       if (!OUTPUT) { return; }
       {
         const output = this.program_3_intermediate_texture;
-        fillEmptyTexture(gl, output, (HOOKED.width / 2), (HOOKED.height / 2));
+        if (this.program_3_intermediate_texture_cached_width !== (HOOKED.width / 2) || this.program_3_intermediate_texture_cached_height !== (HOOKED.height / 2)) {
+          fillEmptyTexture(gl, output, (HOOKED.width / 2), (HOOKED.height / 2));
+        }
+        this.program_3_intermediate_texture_cached_width = (HOOKED.width / 2);
+        this.program_3_intermediate_texture_cached_height = (HOOKED.height / 2);
         gl.viewport(0, 0, (HOOKED.width / 2), (HOOKED.height / 2));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
         gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, output, 0);
@@ -583,7 +622,11 @@ export default class Anime4K_Darken_Fast extends Anime4KShader {
       if (!OUTPUT) { return; }
       {
         const output = this.program_4_intermediate_texture;
-        fillEmptyTexture(gl, output, (HOOKED.width / 2), (HOOKED.height / 2));
+        if (this.program_4_intermediate_texture_cached_width !== (HOOKED.width / 2) || this.program_4_intermediate_texture_cached_height !== (HOOKED.height / 2)) {
+          fillEmptyTexture(gl, output, (HOOKED.width / 2), (HOOKED.height / 2));
+        }
+        this.program_4_intermediate_texture_cached_width = (HOOKED.width / 2);
+        this.program_4_intermediate_texture_cached_height = (HOOKED.height / 2);
         gl.viewport(0, 0, (HOOKED.width / 2), (HOOKED.height / 2));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
         gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, output, 0);
@@ -628,7 +671,11 @@ export default class Anime4K_Darken_Fast extends Anime4KShader {
       if (!OUTPUT) { return; }
       {
         const output = this.program_5_intermediate_texture;
-        fillEmptyTexture(gl, output, (MAIN.width), (MAIN.height));
+        if (this.program_5_intermediate_texture_cached_width !== (MAIN.width) || this.program_5_intermediate_texture_cached_height !== (MAIN.height)) {
+          fillEmptyTexture(gl, output, (MAIN.width), (MAIN.height));
+        }
+        this.program_5_intermediate_texture_cached_width = (MAIN.width);
+        this.program_5_intermediate_texture_cached_height = (MAIN.height);
         gl.viewport(0, 0, (MAIN.width), (MAIN.height));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
         gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, output, 0);

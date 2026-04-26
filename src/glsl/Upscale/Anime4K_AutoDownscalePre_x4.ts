@@ -74,6 +74,8 @@ export default class Anime4K_AutoDownscalePre_x4 extends Anime4KShader {
   private gl: WebGLRenderingContext;
   private program_0: WebGLProgram;
   private program_0_intermediate_texture: WebGLTexture;
+  private program_0_intermediate_texture_cached_width: number | null;
+  private program_0_intermediate_texture_cached_height: number | null;
   private program_0_a_position_location: number;
   private program_0_a_texture_coord_location: number;
   private program_0_u_resolution_location: WebGLUniformLocation | null;
@@ -81,12 +83,13 @@ export default class Anime4K_AutoDownscalePre_x4 extends Anime4KShader {
   private program_0_MAIN_TextureLocation: WebGLUniformLocation | null
   private program_0_NATIVE_TextureLocation: WebGLUniformLocation | null
 
-
   public constructor(gl: WebGLRenderingContext) {
     super();
     this.gl = gl;
     this.program_0 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_0_shader)!)!;
     this.program_0_intermediate_texture = createTexture(gl, gl.NEAREST)!;
+    this.program_0_intermediate_texture_cached_width = null;
+    this.program_0_intermediate_texture_cached_height = null;
     this.program_0_a_position_location = gl.getAttribLocation(this.program_0, "a_position");
     gl.enableVertexAttribArray(this.program_0_a_position_location);
     this.program_0_a_texture_coord_location = gl.getAttribLocation(this.program_0, "a_texture_coord");
@@ -110,7 +113,11 @@ export default class Anime4K_AutoDownscalePre_x4 extends Anime4KShader {
       if (!OUTPUT) { return; }
       if (((((OUTPUT.width / NATIVE.width) < 4.0) && ((OUTPUT.height / NATIVE.height) < 4.0)) && (((OUTPUT.width / NATIVE.width) > 2.4) && ((OUTPUT.height / NATIVE.height) > 2.4))))  {
         const output = this.program_0_intermediate_texture;
-        fillEmptyTexture(gl, output, (OUTPUT.width / 2), (OUTPUT.height / 2));
+        if (this.program_0_intermediate_texture_cached_width !== (OUTPUT.width / 2) || this.program_0_intermediate_texture_cached_height !== (OUTPUT.height / 2)) {
+          fillEmptyTexture(gl, output, (OUTPUT.width / 2), (OUTPUT.height / 2));
+        }
+        this.program_0_intermediate_texture_cached_width = (OUTPUT.width / 2);
+        this.program_0_intermediate_texture_cached_height = (OUTPUT.height / 2);
         gl.viewport(0, 0, (OUTPUT.width / 2), (OUTPUT.height / 2));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
         gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, output, 0);
