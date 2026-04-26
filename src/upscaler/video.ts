@@ -117,17 +117,20 @@ export default class VideoUpscaler {
 
     // use Texture
     {
-      if (!this.textures.has('NATIVE')) {
+      const native = this.textures.get('NATIVE')
+      if (native == null || native.width !== in_width || native.height !== in_height) {
         this.textures.set('NATIVE', { texture: native_texture, width: in_width, height: in_height });
       }
     }
     {
-      if (!this.textures.has('OUTPUT')) {
+      const output = this.textures.get('OUTPUT')
+      if (output == null || output.width !== out_width || output.height !== out_height) {
         this.textures.set('OUTPUT', { texture: output_texture, width: out_width, height: out_height });
       }
     }
     {
-      if (!this.textures.has('MAIN')) {
+      const main = this.textures.get('MAIN');
+      if (main == null || main.width !== in_width || main.height !== in_height) {
         this.textures.set('MAIN', { texture: in_texture, width: in_width, height: in_height });
       }
     }
