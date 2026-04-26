@@ -2,18 +2,19 @@ import PassThrough from "../glsl/passthrough";
 import Anime4KShader from "../glsl/shader";
 import { createTexture, TextureData } from "../utils/index";
 
-const useVideoFrameCallback = (media?: HTMLVideoElement) => {
+const useVideoFrameCallback = (media?: HTMLVideoElement, fps?: number) => {
+  if (fps != null) { return false; }
   return typeof media?.requestVideoFrameCallback === 'function';
 };
 
-const requestFrame = (callback: () => void, media?: HTMLVideoElement): number => {
-  if (media?.requestVideoFrameCallback) {
+const requestFrame = (callback: () => void, media?: HTMLVideoElement, fps?: number): number => {
+  if (media?.requestVideoFrameCallback && useVideoFrameCallback(media, fps)) {
     return media.requestVideoFrameCallback(callback);
   }
   return requestAnimationFrame(callback);
 }
-const cancelFrame = (handle: number, media?: HTMLVideoElement): void => {
-  if (media?.cancelVideoFrameCallback) {
+const cancelFrame = (handle: number, media?: HTMLVideoElement, fps?: number): void => {
+  if (media?.cancelVideoFrameCallback && useVideoFrameCallback(media, fps)) {
     media.cancelVideoFrameCallback(handle);
     return;
   }
@@ -72,7 +73,7 @@ export default class VideoUpscaler {
       this.canvas.style.visibility = 'hidden';
     }
     if (this.upscaleTimer == null) { return; }
-    cancelFrame(this.upscaleTimer, this.video ?? undefined);
+    cancelFrame(this.upscaleTimer, this.video ?? undefined, this.fps);
     this.upscaleTimer = null;
   }
 
@@ -89,8 +90,8 @@ export default class VideoUpscaler {
     this.adjustCanvasSize();
 
     const currentTime = performance.now();
-    if (!useVideoFrameCallback(this.video) && (currentTime - this.upscaleTime) * (this.fps ?? 0) < 1000) {
-      this.upscaleTimer = requestFrame(this.upscaleHandler, this.video);
+    if (!useVideoFrameCallback(this.video, this.fps) && (currentTime - this.upscaleTime) * (this.fps ?? Number.POSITIVE_INFINITY) < 1000) {
+      this.upscaleTimer = requestFrame(this.upscaleHandler, this.video, this.fps);
       return;
     }
     this.upscaleTime = currentTime;
@@ -145,7 +146,7 @@ export default class VideoUpscaler {
     gl.flush();
     this.canvas.style.visibility = 'visible';
 
-    this.upscaleTimer = requestFrame(this.upscaleHandler, this.video);
+    this.upscaleTimer = requestFrame(this.upscaleHandler, this.video, this.fps);
   }
 
   public attachVideo(video: HTMLVideoElement, canvas: HTMLCanvasElement) {
