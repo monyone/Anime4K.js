@@ -83,6 +83,7 @@ export default class Anime4K_AutoDownscalePre_x4 extends Anime4KShader {
   private program_0_u_texture_size_location: WebGLUniformLocation | null;
   private program_0_MAIN_TextureLocation: WebGLUniformLocation | null
   private program_0_NATIVE_TextureLocation: WebGLUniformLocation | null
+  private program_0_position_buffer: WebGLBuffer | null;
 
   public constructor(gl: WebGLRenderingContext) {
     super();
@@ -100,6 +101,7 @@ export default class Anime4K_AutoDownscalePre_x4 extends Anime4KShader {
     this.program_0_u_texture_size_location = gl.getUniformLocation(this.program_0, "u_texture_size");
     this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN")
     this.program_0_NATIVE_TextureLocation = gl.getUniformLocation(this.program_0, "NATIVE")
+    this.program_0_position_buffer = null;
   }
 
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {
@@ -120,15 +122,19 @@ export default class Anime4K_AutoDownscalePre_x4 extends Anime4KShader {
         if (this.program_0_intermediate_texture_cached_width !== (OUTPUT.width / 2) || this.program_0_intermediate_texture_cached_height !== (OUTPUT.height / 2)) {
           fillEmptyTexture(gl, output, (OUTPUT.width / 2), (OUTPUT.height / 2));
         }
-        this.program_0_intermediate_texture_cached_width = (OUTPUT.width / 2);
-        this.program_0_intermediate_texture_cached_height = (OUTPUT.height / 2);
         gl.viewport(0, 0, (OUTPUT.width / 2), (OUTPUT.height / 2));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
         gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, output, 0);
 
         gl.useProgram(this.program_0);
 
-        const positionBuffer = createRectangleBuffer(gl, 0, 0, (OUTPUT.width / 2), (OUTPUT.height / 2))!;
+        if (this.program_0_position_buffer == null) {
+          this.program_0_position_buffer = createRectangleBuffer(gl, 0, 0, (OUTPUT.width / 2), (OUTPUT.height / 2))!;
+        } else if (this.program_0_intermediate_texture_cached_width !== (OUTPUT.width / 2) || this.program_0_intermediate_texture_cached_height !== (OUTPUT.height / 2)) {
+          gl.deleteBuffer(this.program_0_position_buffer);
+          this.program_0_position_buffer = createRectangleBuffer(gl, 0, 0, (OUTPUT.width / 2), (OUTPUT.height / 2))!;
+        }
+        const positionBuffer = this.program_0_position_buffer!;
 
         enableVertexAttribArray(gl, this.program_0_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_0_a_texture_coord_location, texcoordBuffer);
@@ -147,7 +153,8 @@ export default class Anime4K_AutoDownscalePre_x4 extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, null);
-        gl.deleteBuffer(positionBuffer);
+        this.program_0_intermediate_texture_cached_width = (OUTPUT.width / 2);
+        this.program_0_intermediate_texture_cached_height = (OUTPUT.height / 2);
         textures.set('MAIN', { texture: output, width: (OUTPUT.width / 2), height: (OUTPUT.height / 2)});
       }
     }

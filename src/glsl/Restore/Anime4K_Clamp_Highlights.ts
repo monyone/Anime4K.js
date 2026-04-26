@@ -166,6 +166,9 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
   private program_1_STATSMAX_TextureLocation: WebGLUniformLocation | null
   private program_2_PREKERNEL_TextureLocation: WebGLUniformLocation | null
   private program_2_STATSMAX_TextureLocation: WebGLUniformLocation | null
+  private program_0_position_buffer: WebGLBuffer | null;
+  private program_1_position_buffer: WebGLBuffer | null;
+  private program_2_position_buffer: WebGLBuffer | null;
 
   public constructor(gl: WebGLRenderingContext) {
     super();
@@ -206,6 +209,9 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
     this.program_1_STATSMAX_TextureLocation = gl.getUniformLocation(this.program_1, "STATSMAX")
     this.program_2_PREKERNEL_TextureLocation = gl.getUniformLocation(this.program_2, "PREKERNEL")
     this.program_2_STATSMAX_TextureLocation = gl.getUniformLocation(this.program_2, "STATSMAX")
+    this.program_0_position_buffer = null;
+    this.program_1_position_buffer = null;
+    this.program_2_position_buffer = null;
   }
 
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {
@@ -226,15 +232,19 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
         if (this.program_0_intermediate_texture_cached_width !== (MAIN.width) || this.program_0_intermediate_texture_cached_height !== (MAIN.height)) {
           fillEmptyTexture(gl, output, (MAIN.width), (MAIN.height));
         }
-        this.program_0_intermediate_texture_cached_width = (MAIN.width);
-        this.program_0_intermediate_texture_cached_height = (MAIN.height);
         gl.viewport(0, 0, (MAIN.width), (MAIN.height));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
         gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, output, 0);
 
         gl.useProgram(this.program_0);
 
-        const positionBuffer = createRectangleBuffer(gl, 0, 0, (MAIN.width), (MAIN.height))!;
+        if (this.program_0_position_buffer == null) {
+          this.program_0_position_buffer = createRectangleBuffer(gl, 0, 0, (MAIN.width), (MAIN.height))!;
+        } else if (this.program_0_intermediate_texture_cached_width !== (MAIN.width) || this.program_0_intermediate_texture_cached_height !== (MAIN.height)) {
+          gl.deleteBuffer(this.program_0_position_buffer);
+          this.program_0_position_buffer = createRectangleBuffer(gl, 0, 0, (MAIN.width), (MAIN.height))!;
+        }
+        const positionBuffer = this.program_0_position_buffer!;
 
         enableVertexAttribArray(gl, this.program_0_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_0_a_texture_coord_location, texcoordBuffer);
@@ -248,7 +258,8 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
-        gl.deleteBuffer(positionBuffer);
+        this.program_0_intermediate_texture_cached_width = (MAIN.width);
+        this.program_0_intermediate_texture_cached_height = (MAIN.height);
         textures.set('STATSMAX', { texture: output, width: (MAIN.width), height: (MAIN.height)});
       }
     }
@@ -268,15 +279,19 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
         if (this.program_1_intermediate_texture_cached_width !== (MAIN.width) || this.program_1_intermediate_texture_cached_height !== (MAIN.height)) {
           fillEmptyTexture(gl, output, (MAIN.width), (MAIN.height));
         }
-        this.program_1_intermediate_texture_cached_width = (MAIN.width);
-        this.program_1_intermediate_texture_cached_height = (MAIN.height);
         gl.viewport(0, 0, (MAIN.width), (MAIN.height));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
         gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, output, 0);
 
         gl.useProgram(this.program_1);
 
-        const positionBuffer = createRectangleBuffer(gl, 0, 0, (MAIN.width), (MAIN.height))!;
+        if (this.program_1_position_buffer == null) {
+          this.program_1_position_buffer = createRectangleBuffer(gl, 0, 0, (MAIN.width), (MAIN.height))!;
+        } else if (this.program_1_intermediate_texture_cached_width !== (MAIN.width) || this.program_1_intermediate_texture_cached_height !== (MAIN.height)) {
+          gl.deleteBuffer(this.program_1_position_buffer);
+          this.program_1_position_buffer = createRectangleBuffer(gl, 0, 0, (MAIN.width), (MAIN.height))!;
+        }
+        const positionBuffer = this.program_1_position_buffer!;
 
         enableVertexAttribArray(gl, this.program_1_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_1_a_texture_coord_location, texcoordBuffer);
@@ -295,7 +310,8 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, null);
-        gl.deleteBuffer(positionBuffer);
+        this.program_1_intermediate_texture_cached_width = (MAIN.width);
+        this.program_1_intermediate_texture_cached_height = (MAIN.height);
         textures.set('STATSMAX', { texture: output, width: (MAIN.width), height: (MAIN.height)});
       }
     }
@@ -321,15 +337,19 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
         if (this.program_2_intermediate_texture_cached_width !== (PREKERNEL.width) || this.program_2_intermediate_texture_cached_height !== (PREKERNEL.height)) {
           fillEmptyTexture(gl, output, (PREKERNEL.width), (PREKERNEL.height));
         }
-        this.program_2_intermediate_texture_cached_width = (PREKERNEL.width);
-        this.program_2_intermediate_texture_cached_height = (PREKERNEL.height);
         gl.viewport(0, 0, (PREKERNEL.width), (PREKERNEL.height));
         gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
         gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, output, 0);
 
         gl.useProgram(this.program_2);
 
-        const positionBuffer = createRectangleBuffer(gl, 0, 0, (PREKERNEL.width), (PREKERNEL.height))!;
+        if (this.program_2_position_buffer == null) {
+          this.program_2_position_buffer = createRectangleBuffer(gl, 0, 0, (PREKERNEL.width), (PREKERNEL.height))!;
+        } else if (this.program_2_intermediate_texture_cached_width !== (PREKERNEL.width) || this.program_2_intermediate_texture_cached_height !== (PREKERNEL.height)) {
+          gl.deleteBuffer(this.program_2_position_buffer);
+          this.program_2_position_buffer = createRectangleBuffer(gl, 0, 0, (PREKERNEL.width), (PREKERNEL.height))!;
+        }
+        const positionBuffer = this.program_2_position_buffer!;
 
         enableVertexAttribArray(gl, this.program_2_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_2_a_texture_coord_location, texcoordBuffer);
@@ -348,7 +368,8 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, null);
-        gl.deleteBuffer(positionBuffer);
+        this.program_2_intermediate_texture_cached_width = (PREKERNEL.width);
+        this.program_2_intermediate_texture_cached_height = (PREKERNEL.height);
         textures.set('PREKERNEL', { texture: output, width: (PREKERNEL.width), height: (PREKERNEL.height)});
       }
     }

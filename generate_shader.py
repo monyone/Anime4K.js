@@ -205,8 +205,6 @@ const output = this.program_{program_index}_intermediate_texture;
 if (this.program_{program_index}_intermediate_texture_cached_width !== {program.get_width()} || this.program_{program_index}_intermediate_texture_cached_height !== {program.get_height()}) {{
   fillEmptyTexture(gl, output, {program.get_width()}, {program.get_height()});
 }}
-this.program_{program_index}_intermediate_texture_cached_width = {program.get_width()};
-this.program_{program_index}_intermediate_texture_cached_height = {program.get_height()};
 gl.viewport(0, 0, {program.get_width()}, {program.get_height()});
 gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
 gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, output, 0);
@@ -239,7 +237,13 @@ def generateHook(programs: list[Program], hook: str):
 
     gl.useProgram(this.program_{index});
 
-    const positionBuffer = createRectangleBuffer(gl, 0, 0, {program.get_width()}, {program.get_height()})!;
+    if (this.program_{index}_position_buffer == null) {{
+      this.program_{index}_position_buffer = createRectangleBuffer(gl, 0, 0, {program.get_width()}, {program.get_height()})!;
+    }} else if (this.program_{index}_intermediate_texture_cached_width !== {program.get_width()} || this.program_{index}_intermediate_texture_cached_height !== {program.get_height()}) {{
+      gl.deleteBuffer(this.program_{index}_position_buffer);
+      this.program_{index}_position_buffer = createRectangleBuffer(gl, 0, 0, {program.get_width()}, {program.get_height()})!;
+    }}
+    const positionBuffer = this.program_{index}_position_buffer!;
 
     enableVertexAttribArray(gl, this.program_{index}_a_position_location, positionBuffer);
     enableVertexAttribArray(gl, this.program_{index}_a_texture_coord_location, texcoordBuffer);
@@ -250,7 +254,8 @@ def generateHook(programs: list[Program], hook: str):
 { indent(bindTextures(program, index), '    ') }
     gl.drawArrays(gl.TRIANGLES, 0, 6);
 { indent(unbindTextures(program), '    ') }
-    gl.deleteBuffer(positionBuffer);
+    this.program_{index}_intermediate_texture_cached_width = {program.get_width()};
+    this.program_{index}_intermediate_texture_cached_height = {program.get_height()};
 { indent(pushOutputTexture(program), '    ')}
   }}
 }}
@@ -342,6 +347,7 @@ if __name__ == '__main__':
     webgl_program_u_resolution_location_declare = '\n'.join([ f'private program_{index}_u_resolution_location: WebGLUniformLocation | null;' for index in range(len(programs)) ])
     webgl_program_u_texture_size_location_declare = '\n'.join([ f'private program_{index}_u_texture_size_location: WebGLUniformLocation | null;' for index in range(len(programs)) ])
     webgl_program_u_texture_location_declare = '\n'.join(['\n'.join([ f'private program_{index}_{bind}_TextureLocation: WebGLUniformLocation | null' for bind in program.get_bind()]) for index, program in enumerate(programs)])
+    webgl_program_position_buffer_declare = '\n'.join([ f'private program_{index}_position_buffer: WebGLBuffer | null;' for index in range(len(programs)) ])
 
     webgl_programs_assign = '\n'.join([ f'this.program_{index} = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_{index}_shader)!)!;' for index in range(len(programs)) ])
     webgl_program_intermediate_texture_assign = '\n'.join([ f'this.program_{index}_intermediate_texture = createTexture(gl, gl.NEAREST)!;' for index in range(len(programs)) ])
@@ -352,6 +358,7 @@ if __name__ == '__main__':
     webgl_program_u_resolution_location_assign = '\n'.join([ f'this.program_{index}_u_resolution_location = gl.getUniformLocation(this.program_{index}, "u_resolution");' for index in range(len(programs)) ])
     webgl_program_u_texture_size_location_assign = '\n'.join([ f'this.program_{index}_u_texture_size_location = gl.getUniformLocation(this.program_{index}, "u_texture_size");' for index in range(len(programs)) ])
     webgl_program_u_texture_location_assign = '\n'.join(['\n'.join([ f'this.program_{index}_{bind}_TextureLocation = gl.getUniformLocation(this.program_{index}, "{bind}")' for bind in program.get_bind()]) for index, program in enumerate(programs)])
+    webgl_program_position_buffer_assign = '\n'.join([ f'this.program_{index}_position_buffer = null;' for index in range(len(programs)) ])
 
     webgl_program_MAIN = generateHook(programs, 'MAIN')
     webgl_program_PREKERNEL = generateHook(programs, 'PREKERNEL')
@@ -370,6 +377,7 @@ export default class {outfile.stem.replace('+', '_')} extends Anime4KShader {{
 {indent(webgl_program_u_resolution_location_declare, '  ')}
 {indent(webgl_program_u_texture_size_location_declare, '  ')}
 {indent(webgl_program_u_texture_location_declare, '  ')}
+{indent(webgl_program_position_buffer_declare, '  ')}
 
   public constructor(gl: WebGLRenderingContext) {{
     super();
@@ -384,6 +392,7 @@ export default class {outfile.stem.replace('+', '_')} extends Anime4KShader {{
 {indent(webgl_program_u_resolution_location_assign, '    ')}
 {indent(webgl_program_u_texture_size_location_assign, '    ')}
 {indent(webgl_program_u_texture_location_assign, '    ')}
+{indent(webgl_program_position_buffer_assign, '    ')}
   }}
 
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {{
