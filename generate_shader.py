@@ -240,7 +240,6 @@ def generateHook(programs: list[Program], hook: str):
     gl.useProgram(this.program_{index});
 
     const positionBuffer = createRectangleBuffer(gl, 0, 0, {program.get_width()}, {program.get_height()})!;
-    const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
     enableVertexAttribArray(gl, this.program_{index}_a_position_location, positionBuffer);
     enableVertexAttribArray(gl, this.program_{index}_a_texture_coord_location, texcoordBuffer);
@@ -252,7 +251,6 @@ def generateHook(programs: list[Program], hook: str):
     gl.drawArrays(gl.TRIANGLES, 0, 6);
 { indent(unbindTextures(program), '    ') }
     gl.deleteBuffer(positionBuffer);
-    gl.deleteBuffer(texcoordBuffer);
 { indent(pushOutputTexture(program), '    ')}
   }}
 }}
@@ -362,6 +360,7 @@ if __name__ == '__main__':
 f'''
 export default class {outfile.stem.replace('+', '_')} extends Anime4KShader {{
   private gl: WebGLRenderingContext;
+  private texcoordBuffer: WebGLBuffer | null;
 {indent(webgl_programs_declare, '  ')}
 {indent(webgl_program_intermediate_texture_declare, '  ')}
 {indent(webgl_program_intermediate_texture_cached_width_declare, '  ')}
@@ -375,6 +374,7 @@ export default class {outfile.stem.replace('+', '_')} extends Anime4KShader {{
   public constructor(gl: WebGLRenderingContext) {{
     super();
     this.gl = gl;
+    this.texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1);
 {indent(webgl_programs_assign, '    ')}
 {indent(webgl_program_intermediate_texture_assign, '    ')}
 {indent(webgl_program_intermediate_texture_cached_width_assign, '    ')}
@@ -388,11 +388,15 @@ export default class {outfile.stem.replace('+', '_')} extends Anime4KShader {{
 
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {{
     const gl = this.gl;
-{indent(webgl_program_MAIN, '    ')}
+    const texcoordBuffer = this.texcoordBuffer;
+    if (!texcoordBuffer) {{ return; }}
+    {indent(webgl_program_MAIN, '    ')}
   }}
 
   public hook_PREKERNEL(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {{
     const gl = this.gl;
+    const texcoordBuffer = this.texcoordBuffer;
+    if (!texcoordBuffer) {{ return; }}
 {indent(webgl_program_PREKERNEL, '    ')}
   }}
 }}

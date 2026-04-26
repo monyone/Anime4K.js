@@ -2246,6 +2246,7 @@ void main() {
 
 export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
   private gl: WebGLRenderingContext;
+  private texcoordBuffer: WebGLBuffer | null;
   private program_0: WebGLProgram;
   private program_1: WebGLProgram;
   private program_2: WebGLProgram;
@@ -2532,6 +2533,7 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
   public constructor(gl: WebGLRenderingContext) {
     super();
     this.gl = gl;
+    this.texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1);
     this.program_0 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_0_shader)!)!;
     this.program_1 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_1_shader)!)!;
     this.program_2 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_2_shader)!)!;
@@ -2868,7 +2870,9 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
 
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {
     const gl = this.gl;
-    {
+    const texcoordBuffer = this.texcoordBuffer;
+    if (!texcoordBuffer) { return; }
+        {
       const HOOKED = textures.get('MAIN');
       if (!HOOKED) { return; }
       const MAIN = textures.get('MAIN');
@@ -2891,7 +2895,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_0);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, MAIN.width, MAIN.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_0_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_0_a_texture_coord_location, texcoordBuffer);
@@ -2906,7 +2909,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_tf', { texture: output, width: MAIN.width, height: MAIN.height});
       }
     }
@@ -2933,7 +2935,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_1);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, MAIN.width, MAIN.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_1_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_1_a_texture_coord_location, texcoordBuffer);
@@ -2948,7 +2949,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_tf1', { texture: output, width: MAIN.width, height: MAIN.height});
       }
     }
@@ -2975,7 +2975,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_2);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, MAIN.width, MAIN.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_2_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_2_a_texture_coord_location, texcoordBuffer);
@@ -2990,7 +2989,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_tf2', { texture: output, width: MAIN.width, height: MAIN.height});
       }
     }
@@ -3023,7 +3021,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_3);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_tf.width, conv2d_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_3_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_3_a_texture_coord_location, texcoordBuffer);
@@ -3048,7 +3045,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_1_tf', { texture: output, width: conv2d_tf.width, height: conv2d_tf.height});
       }
     }
@@ -3081,7 +3077,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_4);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_tf.width, conv2d_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_4_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_4_a_texture_coord_location, texcoordBuffer);
@@ -3106,7 +3101,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_1_tf1', { texture: output, width: conv2d_tf.width, height: conv2d_tf.height});
       }
     }
@@ -3139,7 +3133,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_5);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_tf.width, conv2d_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_5_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_5_a_texture_coord_location, texcoordBuffer);
@@ -3164,7 +3157,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_1_tf2', { texture: output, width: conv2d_tf.width, height: conv2d_tf.height});
       }
     }
@@ -3197,7 +3189,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_6);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_1_tf.width, conv2d_1_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_6_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_6_a_texture_coord_location, texcoordBuffer);
@@ -3222,7 +3213,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_2_tf', { texture: output, width: conv2d_1_tf.width, height: conv2d_1_tf.height});
       }
     }
@@ -3255,7 +3245,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_7);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_1_tf.width, conv2d_1_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_7_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_7_a_texture_coord_location, texcoordBuffer);
@@ -3280,7 +3269,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_2_tf1', { texture: output, width: conv2d_1_tf.width, height: conv2d_1_tf.height});
       }
     }
@@ -3313,7 +3301,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_8);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_1_tf.width, conv2d_1_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_8_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_8_a_texture_coord_location, texcoordBuffer);
@@ -3338,7 +3325,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_2_tf2', { texture: output, width: conv2d_1_tf.width, height: conv2d_1_tf.height});
       }
     }
@@ -3371,7 +3357,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_9);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_2_tf.width, conv2d_2_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_9_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_9_a_texture_coord_location, texcoordBuffer);
@@ -3396,7 +3381,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_3_tf', { texture: output, width: conv2d_2_tf.width, height: conv2d_2_tf.height});
       }
     }
@@ -3429,7 +3413,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_10);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_2_tf.width, conv2d_2_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_10_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_10_a_texture_coord_location, texcoordBuffer);
@@ -3454,7 +3437,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_3_tf1', { texture: output, width: conv2d_2_tf.width, height: conv2d_2_tf.height});
       }
     }
@@ -3487,7 +3469,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_11);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_2_tf.width, conv2d_2_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_11_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_11_a_texture_coord_location, texcoordBuffer);
@@ -3512,7 +3493,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_3_tf2', { texture: output, width: conv2d_2_tf.width, height: conv2d_2_tf.height});
       }
     }
@@ -3545,7 +3525,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_12);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_3_tf.width, conv2d_3_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_12_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_12_a_texture_coord_location, texcoordBuffer);
@@ -3570,7 +3549,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_4_tf', { texture: output, width: conv2d_3_tf.width, height: conv2d_3_tf.height});
       }
     }
@@ -3603,7 +3581,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_13);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_3_tf.width, conv2d_3_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_13_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_13_a_texture_coord_location, texcoordBuffer);
@@ -3628,7 +3605,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_4_tf1', { texture: output, width: conv2d_3_tf.width, height: conv2d_3_tf.height});
       }
     }
@@ -3661,7 +3637,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_14);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_3_tf.width, conv2d_3_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_14_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_14_a_texture_coord_location, texcoordBuffer);
@@ -3686,7 +3661,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_4_tf2', { texture: output, width: conv2d_3_tf.width, height: conv2d_3_tf.height});
       }
     }
@@ -3719,7 +3693,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_15);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_4_tf.width, conv2d_4_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_15_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_15_a_texture_coord_location, texcoordBuffer);
@@ -3744,7 +3717,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_5_tf', { texture: output, width: conv2d_4_tf.width, height: conv2d_4_tf.height});
       }
     }
@@ -3777,7 +3749,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_16);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_4_tf.width, conv2d_4_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_16_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_16_a_texture_coord_location, texcoordBuffer);
@@ -3802,7 +3773,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_5_tf1', { texture: output, width: conv2d_4_tf.width, height: conv2d_4_tf.height});
       }
     }
@@ -3835,7 +3805,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_17);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_4_tf.width, conv2d_4_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_17_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_17_a_texture_coord_location, texcoordBuffer);
@@ -3860,7 +3829,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_5_tf2', { texture: output, width: conv2d_4_tf.width, height: conv2d_4_tf.height});
       }
     }
@@ -3893,7 +3861,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_18);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_5_tf.width, conv2d_5_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_18_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_18_a_texture_coord_location, texcoordBuffer);
@@ -3918,7 +3885,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_6_tf', { texture: output, width: conv2d_5_tf.width, height: conv2d_5_tf.height});
       }
     }
@@ -3951,7 +3917,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_19);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_5_tf.width, conv2d_5_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_19_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_19_a_texture_coord_location, texcoordBuffer);
@@ -3976,7 +3941,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_6_tf1', { texture: output, width: conv2d_5_tf.width, height: conv2d_5_tf.height});
       }
     }
@@ -4009,7 +3973,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_20);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_5_tf.width, conv2d_5_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_20_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_20_a_texture_coord_location, texcoordBuffer);
@@ -4034,7 +3997,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_6_tf2', { texture: output, width: conv2d_5_tf.width, height: conv2d_5_tf.height});
       }
     }
@@ -4067,7 +4029,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_21);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_6_tf.width, conv2d_6_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_21_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_21_a_texture_coord_location, texcoordBuffer);
@@ -4092,7 +4053,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_7_tf', { texture: output, width: conv2d_6_tf.width, height: conv2d_6_tf.height});
       }
     }
@@ -4125,7 +4085,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_22);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_6_tf.width, conv2d_6_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_22_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_22_a_texture_coord_location, texcoordBuffer);
@@ -4150,7 +4109,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_7_tf1', { texture: output, width: conv2d_6_tf.width, height: conv2d_6_tf.height});
       }
     }
@@ -4183,7 +4141,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_23);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_6_tf.width, conv2d_6_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_23_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_23_a_texture_coord_location, texcoordBuffer);
@@ -4208,7 +4165,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('conv2d_7_tf2', { texture: output, width: conv2d_6_tf.width, height: conv2d_6_tf.height});
       }
     }
@@ -4265,7 +4221,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.useProgram(this.program_24);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, conv2d_3_tf.width, conv2d_3_tf.height)!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_24_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_24_a_texture_coord_location, texcoordBuffer);
@@ -4355,7 +4310,6 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE15);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('MAIN', { texture: output, width: conv2d_3_tf.width, height: conv2d_3_tf.height});
       }
     }
@@ -4363,6 +4317,8 @@ export default class Anime4K_Restore_CNN_UL extends Anime4KShader {
 
   public hook_PREKERNEL(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {
     const gl = this.gl;
+    const texcoordBuffer = this.texcoordBuffer;
+    if (!texcoordBuffer) { return; }
 
   }
 }

@@ -249,6 +249,7 @@ void main() {
 
 export default class Anime4K_Darken_HQ extends Anime4KShader {
   private gl: WebGLRenderingContext;
+  private texcoordBuffer: WebGLBuffer | null;
   private program_0: WebGLProgram;
   private program_1: WebGLProgram;
   private program_2: WebGLProgram;
@@ -303,6 +304,7 @@ export default class Anime4K_Darken_HQ extends Anime4KShader {
   public constructor(gl: WebGLRenderingContext) {
     super();
     this.gl = gl;
+    this.texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1);
     this.program_0 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_0_shader)!)!;
     this.program_1 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_1_shader)!)!;
     this.program_2 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_2_shader)!)!;
@@ -367,7 +369,9 @@ export default class Anime4K_Darken_HQ extends Anime4KShader {
 
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {
     const gl = this.gl;
-    {
+    const texcoordBuffer = this.texcoordBuffer;
+    if (!texcoordBuffer) { return; }
+        {
       const HOOKED = textures.get('MAIN');
       if (!HOOKED) { return; }
       const MAIN = textures.get('MAIN');
@@ -390,7 +394,6 @@ export default class Anime4K_Darken_HQ extends Anime4KShader {
         gl.useProgram(this.program_0);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, (MAIN.width), (MAIN.height))!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_0_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_0_a_texture_coord_location, texcoordBuffer);
@@ -405,7 +408,6 @@ export default class Anime4K_Darken_HQ extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('LINELUMA', { texture: output, width: (MAIN.width), height: (MAIN.height)});
       }
     }
@@ -434,7 +436,6 @@ export default class Anime4K_Darken_HQ extends Anime4KShader {
         gl.useProgram(this.program_1);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, (MAIN.width), (MAIN.height))!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_1_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_1_a_texture_coord_location, texcoordBuffer);
@@ -454,7 +455,6 @@ export default class Anime4K_Darken_HQ extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('LINEKERNEL', { texture: output, width: (MAIN.width), height: (MAIN.height)});
       }
     }
@@ -485,7 +485,6 @@ export default class Anime4K_Darken_HQ extends Anime4KShader {
         gl.useProgram(this.program_2);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, (MAIN.width), (MAIN.height))!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_2_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_2_a_texture_coord_location, texcoordBuffer);
@@ -510,7 +509,6 @@ export default class Anime4K_Darken_HQ extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('LINEKERNEL', { texture: output, width: (MAIN.width), height: (MAIN.height)});
       }
     }
@@ -539,7 +537,6 @@ export default class Anime4K_Darken_HQ extends Anime4KShader {
         gl.useProgram(this.program_3);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, (MAIN.width), (MAIN.height))!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_3_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_3_a_texture_coord_location, texcoordBuffer);
@@ -559,7 +556,6 @@ export default class Anime4K_Darken_HQ extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('LINEKERNEL', { texture: output, width: (MAIN.width), height: (MAIN.height)});
       }
     }
@@ -588,7 +584,6 @@ export default class Anime4K_Darken_HQ extends Anime4KShader {
         gl.useProgram(this.program_4);
 
         const positionBuffer = createRectangleBuffer(gl, 0, 0, (MAIN.width), (MAIN.height))!;
-        const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
 
         enableVertexAttribArray(gl, this.program_4_a_position_location, positionBuffer);
         enableVertexAttribArray(gl, this.program_4_a_texture_coord_location, texcoordBuffer);
@@ -608,7 +603,6 @@ export default class Anime4K_Darken_HQ extends Anime4KShader {
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, null);
         gl.deleteBuffer(positionBuffer);
-        gl.deleteBuffer(texcoordBuffer);
         textures.set('MAIN', { texture: output, width: (MAIN.width), height: (MAIN.height)});
       }
     }
@@ -616,6 +610,8 @@ export default class Anime4K_Darken_HQ extends Anime4KShader {
 
   public hook_PREKERNEL(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {
     const gl = this.gl;
+    const texcoordBuffer = this.texcoordBuffer;
+    if (!texcoordBuffer) { return; }
 
   }
 }
