@@ -328,7 +328,7 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_S extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-      if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200))) {
+      if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200)))  {
         const output = this.program_0_intermediate_texture;
         fillEmptyTexture(gl, output, MAIN.width, MAIN.height);
         gl.viewport(0, 0, MAIN.width, MAIN.height);
@@ -368,7 +368,7 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_S extends Anime4KShader {
       if (!OUTPUT) { return; }
       const conv2d_tf = textures.get('conv2d_tf');
       if (!conv2d_tf) { return; }
-      if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200))) {
+      if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200)))  {
         const output = this.program_1_intermediate_texture;
         fillEmptyTexture(gl, output, conv2d_tf.width, conv2d_tf.height);
         gl.viewport(0, 0, conv2d_tf.width, conv2d_tf.height);
@@ -408,7 +408,7 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_S extends Anime4KShader {
       if (!OUTPUT) { return; }
       const conv2d_1_tf = textures.get('conv2d_1_tf');
       if (!conv2d_1_tf) { return; }
-      if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200))) {
+      if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200)))  {
         const output = this.program_2_intermediate_texture;
         fillEmptyTexture(gl, output, conv2d_1_tf.width, conv2d_1_tf.height);
         gl.viewport(0, 0, conv2d_1_tf.width, conv2d_1_tf.height);
@@ -448,7 +448,7 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_S extends Anime4KShader {
       if (!OUTPUT) { return; }
       const conv2d_2_tf = textures.get('conv2d_2_tf');
       if (!conv2d_2_tf) { return; }
-      if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200))) {
+      if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200)))  {
         const output = this.program_3_intermediate_texture;
         fillEmptyTexture(gl, output, conv2d_2_tf.width, conv2d_2_tf.height);
         gl.viewport(0, 0, conv2d_2_tf.width, conv2d_2_tf.height);
@@ -488,7 +488,7 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_S extends Anime4KShader {
       if (!OUTPUT) { return; }
       const conv2d_last_tf = textures.get('conv2d_last_tf');
       if (!conv2d_last_tf) { return; }
-      if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200))) {
+      if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200)))  {
         const output = this.program_4_intermediate_texture;
         fillEmptyTexture(gl, output, (conv2d_last_tf.width * 2), (conv2d_last_tf.height * 2));
         gl.viewport(0, 0, (conv2d_last_tf.width * 2), (conv2d_last_tf.height * 2));

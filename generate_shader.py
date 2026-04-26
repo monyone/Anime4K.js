@@ -230,7 +230,7 @@ def generateHook(programs: list[Program], hook: str):
   return '\n'.join([f"""
 {{
 { indent(prepareTextures(program), '  ') }
-{f'  if ({program.get_when_cond()})' if program.get_when_cond() else ''} {{
+{f'  if ({program.get_when_cond()})' if program.get_when_cond() else ''}  {{
 { indent(prepareOutputTexture(program, index), '    ') }
 
     gl.useProgram(this.program_{index});

@@ -283,7 +283,7 @@ export default class Anime4K_Upscale_DoG_x2 extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-     {
+      {
         const output = this.program_0_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width), (MAIN.height));
         gl.viewport(0, 0, (MAIN.width), (MAIN.height));
@@ -323,7 +323,7 @@ export default class Anime4K_Upscale_DoG_x2 extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-      if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200))) {
+      if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200)))  {
         const output = this.program_1_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width), (MAIN.height));
         gl.viewport(0, 0, (MAIN.width), (MAIN.height));
@@ -368,7 +368,7 @@ export default class Anime4K_Upscale_DoG_x2 extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-      if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200))) {
+      if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200)))  {
         const output = this.program_2_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width), (MAIN.height));
         gl.viewport(0, 0, (MAIN.width), (MAIN.height));
@@ -415,7 +415,7 @@ export default class Anime4K_Upscale_DoG_x2 extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-      if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200))) {
+      if ((((OUTPUT.width / MAIN.width) > 1.200) && ((OUTPUT.height / MAIN.height) > 1.200)))  {
         const output = this.program_3_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width * 2), (MAIN.height * 2));
         gl.viewport(0, 0, (MAIN.width * 2), (MAIN.height * 2));

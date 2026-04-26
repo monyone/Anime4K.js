@@ -399,7 +399,7 @@ export default class Anime4K_Darken_VeryFast extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-     {
+      {
         const output = this.program_0_intermediate_texture;
         fillEmptyTexture(gl, output, (HOOKED.width / 2), (HOOKED.height / 2));
         gl.viewport(0, 0, (HOOKED.width / 2), (HOOKED.height / 2));
@@ -439,7 +439,7 @@ export default class Anime4K_Darken_VeryFast extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-     {
+      {
         const output = this.program_1_intermediate_texture;
         fillEmptyTexture(gl, output, (HOOKED.width / 4), (HOOKED.height / 4));
         gl.viewport(0, 0, (HOOKED.width / 4), (HOOKED.height / 4));
@@ -486,7 +486,7 @@ export default class Anime4K_Darken_VeryFast extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-     {
+      {
         const output = this.program_2_intermediate_texture;
         fillEmptyTexture(gl, output, (HOOKED.width / 4), (HOOKED.height / 4));
         gl.viewport(0, 0, (HOOKED.width / 4), (HOOKED.height / 4));
@@ -536,7 +536,7 @@ export default class Anime4K_Darken_VeryFast extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-     {
+      {
         const output = this.program_3_intermediate_texture;
         fillEmptyTexture(gl, output, (HOOKED.width / 4), (HOOKED.height / 4));
         gl.viewport(0, 0, (HOOKED.width / 4), (HOOKED.height / 4));
@@ -581,7 +581,7 @@ export default class Anime4K_Darken_VeryFast extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-     {
+      {
         const output = this.program_4_intermediate_texture;
         fillEmptyTexture(gl, output, (HOOKED.width / 4), (HOOKED.height / 4));
         gl.viewport(0, 0, (HOOKED.width / 4), (HOOKED.height / 4));
@@ -626,7 +626,7 @@ export default class Anime4K_Darken_VeryFast extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-     {
+      {
         const output = this.program_5_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width), (MAIN.height));
         gl.viewport(0, 0, (MAIN.width), (MAIN.height));

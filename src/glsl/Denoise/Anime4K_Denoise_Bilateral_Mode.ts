@@ -188,7 +188,7 @@ export default class Anime4K_Denoise_Bilateral_Mode extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-     {
+      {
         const output = this.program_0_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width), (MAIN.height));
         gl.viewport(0, 0, (MAIN.width), (MAIN.height));
@@ -228,7 +228,7 @@ export default class Anime4K_Denoise_Bilateral_Mode extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-     {
+      {
         const output = this.program_1_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width), (MAIN.height));
         gl.viewport(0, 0, (MAIN.width), (MAIN.height));

@@ -108,7 +108,7 @@ export default class Anime4K_AutoDownscalePre_x2 extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-      if (((((OUTPUT.width / NATIVE.width) < 2.0) && ((OUTPUT.height / NATIVE.height) < 2.0)) && (((OUTPUT.width / NATIVE.width) > 1.2) && ((OUTPUT.height / NATIVE.height) > 1.2)))) {
+      if (((((OUTPUT.width / NATIVE.width) < 2.0) && ((OUTPUT.height / NATIVE.height) < 2.0)) && (((OUTPUT.width / NATIVE.width) > 1.2) && ((OUTPUT.height / NATIVE.height) > 1.2))))  {
         const output = this.program_0_intermediate_texture;
         fillEmptyTexture(gl, output, OUTPUT.width, OUTPUT.height);
         gl.viewport(0, 0, OUTPUT.width, OUTPUT.height);

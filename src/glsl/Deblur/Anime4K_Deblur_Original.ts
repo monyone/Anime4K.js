@@ -498,7 +498,7 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-     {
+      {
         const output = this.program_0_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width), (MAIN.height));
         gl.viewport(0, 0, (MAIN.width), (MAIN.height));
@@ -538,7 +538,7 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-     {
+      {
         const output = this.program_1_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width * 2), (MAIN.height * 2));
         gl.viewport(0, 0, (MAIN.width * 2), (MAIN.height * 2));
@@ -583,7 +583,7 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-     {
+      {
         const output = this.program_2_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width * 2), (MAIN.height * 2));
         gl.viewport(0, 0, (MAIN.width * 2), (MAIN.height * 2));
@@ -628,7 +628,7 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-     {
+      {
         const output = this.program_3_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width * 2), (MAIN.height * 2));
         gl.viewport(0, 0, (MAIN.width * 2), (MAIN.height * 2));
@@ -675,7 +675,7 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-     {
+      {
         const output = this.program_4_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width * 2), (MAIN.height * 2));
         gl.viewport(0, 0, (MAIN.width * 2), (MAIN.height * 2));
@@ -727,7 +727,7 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-     {
+      {
         const output = this.program_5_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width * 2), (MAIN.height * 2));
         gl.viewport(0, 0, (MAIN.width * 2), (MAIN.height * 2));
@@ -777,7 +777,7 @@ export default class Anime4K_Deblur_Original extends Anime4KShader {
       if (!OUTPUT) { return; }
       const RESAMPLED = textures.get('RESAMPLED');
       if (!RESAMPLED) { return; }
-     {
+      {
         const output = this.program_6_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width), (MAIN.height));
         gl.viewport(0, 0, (MAIN.width), (MAIN.height));

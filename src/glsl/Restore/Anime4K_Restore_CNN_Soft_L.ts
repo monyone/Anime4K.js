@@ -743,7 +743,7 @@ export default class Anime4K_Restore_CNN_Soft_L extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-     {
+      {
         const output = this.program_0_intermediate_texture;
         fillEmptyTexture(gl, output, MAIN.width, MAIN.height);
         gl.viewport(0, 0, MAIN.width, MAIN.height);
@@ -781,7 +781,7 @@ export default class Anime4K_Restore_CNN_Soft_L extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-     {
+      {
         const output = this.program_1_intermediate_texture;
         fillEmptyTexture(gl, output, MAIN.width, MAIN.height);
         gl.viewport(0, 0, MAIN.width, MAIN.height);
@@ -823,7 +823,7 @@ export default class Anime4K_Restore_CNN_Soft_L extends Anime4KShader {
       if (!conv2d_tf) { return; }
       const conv2d_tf1 = textures.get('conv2d_tf1');
       if (!conv2d_tf1) { return; }
-     {
+      {
         const output = this.program_2_intermediate_texture;
         fillEmptyTexture(gl, output, conv2d_tf.width, conv2d_tf.height);
         gl.viewport(0, 0, conv2d_tf.width, conv2d_tf.height);
@@ -870,7 +870,7 @@ export default class Anime4K_Restore_CNN_Soft_L extends Anime4KShader {
       if (!conv2d_tf) { return; }
       const conv2d_tf1 = textures.get('conv2d_tf1');
       if (!conv2d_tf1) { return; }
-     {
+      {
         const output = this.program_3_intermediate_texture;
         fillEmptyTexture(gl, output, conv2d_tf.width, conv2d_tf.height);
         gl.viewport(0, 0, conv2d_tf.width, conv2d_tf.height);
@@ -917,7 +917,7 @@ export default class Anime4K_Restore_CNN_Soft_L extends Anime4KShader {
       if (!conv2d_1_tf) { return; }
       const conv2d_1_tf1 = textures.get('conv2d_1_tf1');
       if (!conv2d_1_tf1) { return; }
-     {
+      {
         const output = this.program_4_intermediate_texture;
         fillEmptyTexture(gl, output, conv2d_1_tf.width, conv2d_1_tf.height);
         gl.viewport(0, 0, conv2d_1_tf.width, conv2d_1_tf.height);
@@ -964,7 +964,7 @@ export default class Anime4K_Restore_CNN_Soft_L extends Anime4KShader {
       if (!conv2d_1_tf) { return; }
       const conv2d_1_tf1 = textures.get('conv2d_1_tf1');
       if (!conv2d_1_tf1) { return; }
-     {
+      {
         const output = this.program_5_intermediate_texture;
         fillEmptyTexture(gl, output, conv2d_1_tf.width, conv2d_1_tf.height);
         gl.viewport(0, 0, conv2d_1_tf.width, conv2d_1_tf.height);
@@ -1011,7 +1011,7 @@ export default class Anime4K_Restore_CNN_Soft_L extends Anime4KShader {
       if (!conv2d_2_tf) { return; }
       const conv2d_2_tf1 = textures.get('conv2d_2_tf1');
       if (!conv2d_2_tf1) { return; }
-     {
+      {
         const output = this.program_6_intermediate_texture;
         fillEmptyTexture(gl, output, conv2d_2_tf.width, conv2d_2_tf.height);
         gl.viewport(0, 0, conv2d_2_tf.width, conv2d_2_tf.height);
@@ -1058,7 +1058,7 @@ export default class Anime4K_Restore_CNN_Soft_L extends Anime4KShader {
       if (!conv2d_2_tf) { return; }
       const conv2d_2_tf1 = textures.get('conv2d_2_tf1');
       if (!conv2d_2_tf1) { return; }
-     {
+      {
         const output = this.program_7_intermediate_texture;
         fillEmptyTexture(gl, output, conv2d_2_tf.width, conv2d_2_tf.height);
         gl.viewport(0, 0, conv2d_2_tf.width, conv2d_2_tf.height);
@@ -1105,7 +1105,7 @@ export default class Anime4K_Restore_CNN_Soft_L extends Anime4KShader {
       if (!conv2d_3_tf) { return; }
       const conv2d_3_tf1 = textures.get('conv2d_3_tf1');
       if (!conv2d_3_tf1) { return; }
-     {
+      {
         const output = this.program_8_intermediate_texture;
         fillEmptyTexture(gl, output, conv2d_3_tf.width, conv2d_3_tf.height);
         gl.viewport(0, 0, conv2d_3_tf.width, conv2d_3_tf.height);

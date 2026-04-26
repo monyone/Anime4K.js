@@ -206,7 +206,7 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
       if (!NATIVE) { return; }
       const OUTPUT = textures.get('OUTPUT');
       if (!OUTPUT) { return; }
-     {
+      {
         const output = this.program_0_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width), (MAIN.height));
         gl.viewport(0, 0, (MAIN.width), (MAIN.height));
@@ -246,7 +246,7 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
       if (!OUTPUT) { return; }
       const STATSMAX = textures.get('STATSMAX');
       if (!STATSMAX) { return; }
-     {
+      {
         const output = this.program_1_intermediate_texture;
         fillEmptyTexture(gl, output, (MAIN.width), (MAIN.height));
         gl.viewport(0, 0, (MAIN.width), (MAIN.height));
@@ -295,7 +295,7 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
       if (!PREKERNEL) { return; }
       const STATSMAX = textures.get('STATSMAX');
       if (!STATSMAX) { return; }
-     {
+      {
         const output = this.program_2_intermediate_texture;
         fillEmptyTexture(gl, output, (PREKERNEL.width), (PREKERNEL.height));
         gl.viewport(0, 0, (PREKERNEL.width), (PREKERNEL.height));
