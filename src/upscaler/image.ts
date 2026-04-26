@@ -49,13 +49,12 @@ export default class VideoUpscaler {
 
     const gl = this.gl;
     const framebuffer = this.framebuffer;
-    const ext = gl.getExtension("OES_texture_half_float_linear") && gl.getExtension("OES_texture_half_float");
 
     // init texture
     const in_texture = this.in_texture;
     if (!in_texture) { return; }
     gl.bindTexture(gl.TEXTURE_2D, in_texture);
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, ext?.HALF_FLOAT_OES ?? gl.FLOAT, this.source);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, this.source);
     gl.bindTexture(gl.TEXTURE_2D, null);
 
     const native_texture = this.native_texture;
