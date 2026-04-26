@@ -197,8 +197,12 @@ export default class VideoUpscaler {
     if (!this.video) { return; }
     if (!this.canvas) { return; }
 
-    this.canvas.width = this.video.videoWidth * this.scale;
-    this.canvas.height = this.video.videoHeight * this.scale;
+    const width = this.video.videoWidth * this.scale;
+    const height = this.video.videoHeight * this.scale;
+    if (this.canvas.width !== width || this.canvas.height !== height) {
+      this.canvas.width = width;
+      this.canvas.height = height;
+    }
     this.canvas.style.pointerEvents = 'none';
   }
 }
