@@ -73,7 +73,7 @@ void main() {
 export default class Anime4K_AutoDownscalePre_x2 extends Anime4KShader {
   private gl: WebGLRenderingContext;
   private program_0: WebGLProgram;
-  private program_0_intermediate_texture: WebGLProgram;
+  private program_0_intermediate_texture: WebGLTexture;
   private program_0_a_position_location: number;
   private program_0_a_texture_coord_location: number;
   private program_0_u_resolution_location: WebGLUniformLocation | null;

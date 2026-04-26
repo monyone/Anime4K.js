@@ -233,11 +233,11 @@ export default class Anime4K_Upscale_Denoise_CNN_x2_S extends Anime4KShader {
   private program_2: WebGLProgram;
   private program_3: WebGLProgram;
   private program_4: WebGLProgram;
-  private program_0_intermediate_texture: WebGLProgram;
-  private program_1_intermediate_texture: WebGLProgram;
-  private program_2_intermediate_texture: WebGLProgram;
-  private program_3_intermediate_texture: WebGLProgram;
-  private program_4_intermediate_texture: WebGLProgram;
+  private program_0_intermediate_texture: WebGLTexture;
+  private program_1_intermediate_texture: WebGLTexture;
+  private program_2_intermediate_texture: WebGLTexture;
+  private program_3_intermediate_texture: WebGLTexture;
+  private program_4_intermediate_texture: WebGLTexture;
   private program_0_a_position_location: number;
   private program_1_a_position_location: number;
   private program_2_a_position_location: number;

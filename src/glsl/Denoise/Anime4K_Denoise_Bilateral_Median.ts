@@ -152,8 +152,8 @@ export default class Anime4K_Denoise_Bilateral_Median extends Anime4KShader {
   private gl: WebGLRenderingContext;
   private program_0: WebGLProgram;
   private program_1: WebGLProgram;
-  private program_0_intermediate_texture: WebGLProgram;
-  private program_1_intermediate_texture: WebGLProgram;
+  private program_0_intermediate_texture: WebGLTexture;
+  private program_1_intermediate_texture: WebGLTexture;
   private program_0_a_position_location: number;
   private program_1_a_position_location: number;
   private program_0_a_texture_coord_location: number;

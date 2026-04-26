@@ -139,9 +139,9 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
   private program_0: WebGLProgram;
   private program_1: WebGLProgram;
   private program_2: WebGLProgram;
-  private program_0_intermediate_texture: WebGLProgram;
-  private program_1_intermediate_texture: WebGLProgram;
-  private program_2_intermediate_texture: WebGLProgram;
+  private program_0_intermediate_texture: WebGLTexture;
+  private program_1_intermediate_texture: WebGLTexture;
+  private program_2_intermediate_texture: WebGLTexture;
   private program_0_a_position_location: number;
   private program_1_a_position_location: number;
   private program_2_a_position_location: number;

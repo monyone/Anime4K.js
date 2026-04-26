@@ -332,7 +332,7 @@ if __name__ == '__main__':
     for index, program in enumerate(programs):
       out.write(f'const fragment_{index}_shader = `\n{program}`;\n')
     webgl_programs_declare = '\n'.join([ f'private program_{index}: WebGLProgram;' for index in range(len(programs)) ])
-    webgl_program_intermediate_texture_declare = '\n'.join([ f'private program_{index}_intermediate_texture: WebGLProgram;' for index in range(len(programs)) ])
+    webgl_program_intermediate_texture_declare = '\n'.join([ f'private program_{index}_intermediate_texture: WebGLTexture;' for index in range(len(programs)) ])
     webgl_program_a_position_location_declare = '\n'.join([ f'private program_{index}_a_position_location: number;' for index in range(len(programs)) ])
     webgl_program_a_texture_coord_location_declare = '\n'.join([ f'private program_{index}_a_texture_coord_location: number;' for index in range(len(programs)) ])
     webgl_program_u_resolution_location_declare = '\n'.join([ f'private program_{index}_u_resolution_location: WebGLUniformLocation | null;' for index in range(len(programs)) ])
