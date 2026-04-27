@@ -375,9 +375,6 @@ if __name__ == '__main__':
     webgl_program_u_texture_location_assign = '\n'.join(['\n'.join([ f'this.program_{index}_{bind}_TextureLocation = gl.getUniformLocation(this.program_{index}, "{bind}");' for bind in program.get_bind()]) for index, program in enumerate(programs)])
     webgl_program_position_buffer_assign = '\n'.join([ f'this.program_{index}_position_buffer = null;' for index in range(len(programs)) ])
 
-    webgl_program_intermediate_texture_delete = '\n'.join([ f'gl.deleteTexture(this.program_{index}_intermediate_texture);' for index in range(len(programs)) ])
-    webgl_program_position_buffer_delete = '\n'.join([ f'gl.deleteBuffer(this.program_{index}_position_buffer);' for index in range(len(programs)) ])
-
     webgl_program_MAIN = generateHook(programs, 'MAIN')
     webgl_program_PREKERNEL = generateHook(programs, 'PREKERNEL')
 
