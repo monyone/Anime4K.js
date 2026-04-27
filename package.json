@@ -30,6 +30,26 @@
         "default": "./dist/index.cjs"
       }
     },
+    "./shaders": {
+      "import": {
+        "types": "./dist/shaders.d.mts",
+        "default": "./dist/shaders.mjs"
+      },
+      "require": {
+        "types": "./dist/shaders.d.cts",
+        "default": "./dist/shaders.cjs"
+      }
+    },
+    "./upscaler": {
+      "import": {
+        "types": "./dist/upscaler.d.mts",
+        "default": "./dist/upscaler.mjs"
+      },
+      "require": {
+        "types": "./dist/upscaler.d.cts",
+        "default": "./dist/upscaler.cjs"
+      }
+    },
     "./dist/anime4k.js": "./dist/anime4k.js"
   },
   "files": [

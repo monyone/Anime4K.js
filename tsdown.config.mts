@@ -2,7 +2,11 @@ import { defineConfig } from 'tsdown'
 
 export default defineConfig([
   {
-    entry: ['src/index.ts'],
+    entry: {
+      index: 'src/index.ts',
+      shaders: 'src/shaders.ts',
+      upscaler: 'src/upscaler.ts',
+    },
     format: ['esm', 'cjs'],
     platform: 'browser',
     dts: true,

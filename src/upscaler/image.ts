@@ -1,5 +1,6 @@
 import PassThrough from "../glsl/passthrough";
-import Anime4KShader, { type Anime4KShaderConstructor } from "../glsl/shader";
+import type Anime4KShader from "../glsl/shader";
+import { type Anime4KShaderConstructor } from "../glsl/shader";
 import { createTexture, TextureData } from "../utils/index";
 
 const empty = () => {}
