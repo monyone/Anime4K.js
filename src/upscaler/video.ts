@@ -1,5 +1,5 @@
 import PassThrough from "../glsl/passthrough";
-import Anime4KShader from "../glsl/shader";
+import Anime4KShader, { type Anime4KShaderConstructor } from "../glsl/shader";
 import { createTexture, TextureData } from "../utils/index";
 
 const useVideoFrameCallback = (media?: HTMLVideoElement, fps?: number) => {
@@ -27,7 +27,7 @@ export default class VideoUpscaler {
   private gl: WebGLRenderingContext | null = null;
 
   private scale: number;
-  private config: (new (gl: WebGLRenderingContext) => Anime4KShader)[];
+  private config: Anime4KShaderConstructor[];
 
   private textures = new Map<string, TextureData>();
   private in_texture: WebGLTexture | null = null;
@@ -45,7 +45,7 @@ export default class VideoUpscaler {
   private fps: number | undefined;
   private supported: boolean;
 
-  public constructor(upscale: number, config: (new (gl: WebGLRenderingContext) => Anime4KShader)[], fps?: number) {
+  public constructor(upscale: number, config: Anime4KShaderConstructor[], fps?: number) {
     this.supported = VideoUpscaler.isSupported();
     this.scale = upscale;
     this.config = config;

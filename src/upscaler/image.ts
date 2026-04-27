@@ -1,16 +1,16 @@
 import PassThrough from "../glsl/passthrough";
-import Anime4KShader from "../glsl/shader";
+import Anime4KShader, { type Anime4KShaderConstructor } from "../glsl/shader";
 import { createTexture, TextureData } from "../utils/index";
 
 const empty = () => {}
 
-export default class VideoUpscaler {
+export default class ImageUpscaler {
   private source: TexImageSource | null = null;
   private canvas: HTMLCanvasElement | null = null;
   private gl: WebGLRenderingContext | null = null;
 
   private scale: number;
-  private config: (new (gl: WebGLRenderingContext) => Anime4KShader)[];
+  private config: Anime4KShaderConstructor[];
 
   private textures = new Map<string, TextureData>();
   private in_texture: WebGLTexture | null = null;
@@ -22,8 +22,8 @@ export default class VideoUpscaler {
 
   private supported: boolean;
 
-  public constructor(upscale: number, config: (new (gl: WebGLRenderingContext) => Anime4KShader)[]) {
-    this.supported = VideoUpscaler.isSupported();
+  public constructor(upscale: number, config: Anime4KShaderConstructor[]) {
+    this.supported = ImageUpscaler.isSupported();
     this.scale = upscale;
     this.config = config;
   }
