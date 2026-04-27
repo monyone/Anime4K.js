@@ -910,45 +910,45 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
   private program_15_u_texture_size_location: WebGLUniformLocation | null;
   private program_16_u_texture_size_location: WebGLUniformLocation | null;
   private program_17_u_texture_size_location: WebGLUniformLocation | null;
-  private program_0_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_1_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_1_LINELUMA_TextureLocation: WebGLUniformLocation | null
-  private program_2_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_2_LINELUMA_TextureLocation: WebGLUniformLocation | null
-  private program_2_MMKERNEL_TextureLocation: WebGLUniformLocation | null
-  private program_3_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_3_MMKERNEL_TextureLocation: WebGLUniformLocation | null
-  private program_4_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_4_MMKERNEL_TextureLocation: WebGLUniformLocation | null
-  private program_5_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_5_MMKERNEL_TextureLocation: WebGLUniformLocation | null
-  private program_6_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_7_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_7_LINELUMA_TextureLocation: WebGLUniformLocation | null
-  private program_8_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_8_LUMAD_TextureLocation: WebGLUniformLocation | null
-  private program_9_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_9_LUMAD_TextureLocation: WebGLUniformLocation | null
-  private program_10_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_10_LUMAD_TextureLocation: WebGLUniformLocation | null
-  private program_10_LUMADG_TextureLocation: WebGLUniformLocation | null
-  private program_11_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_11_LUMAD_TextureLocation: WebGLUniformLocation | null
-  private program_12_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_12_LUMAD2_TextureLocation: WebGLUniformLocation | null
-  private program_13_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_13_LUMAD_TextureLocation: WebGLUniformLocation | null
-  private program_13_LUMAD2_TextureLocation: WebGLUniformLocation | null
-  private program_14_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_14_MAINTEMPTHIN_TextureLocation: WebGLUniformLocation | null
-  private program_15_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_15_MAINTEMP_TextureLocation: WebGLUniformLocation | null
-  private program_16_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_16_MMKERNEL_TextureLocation: WebGLUniformLocation | null
-  private program_17_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_17_MAINTEMPTHIN_TextureLocation: WebGLUniformLocation | null
-  private program_17_MAINTEMP_TextureLocation: WebGLUniformLocation | null
-  private program_17_MMKERNEL_TextureLocation: WebGLUniformLocation | null
+  private program_0_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_1_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_1_LINELUMA_TextureLocation: WebGLUniformLocation | null;
+  private program_2_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_2_LINELUMA_TextureLocation: WebGLUniformLocation | null;
+  private program_2_MMKERNEL_TextureLocation: WebGLUniformLocation | null;
+  private program_3_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_3_MMKERNEL_TextureLocation: WebGLUniformLocation | null;
+  private program_4_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_4_MMKERNEL_TextureLocation: WebGLUniformLocation | null;
+  private program_5_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_5_MMKERNEL_TextureLocation: WebGLUniformLocation | null;
+  private program_6_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_7_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_7_LINELUMA_TextureLocation: WebGLUniformLocation | null;
+  private program_8_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_8_LUMAD_TextureLocation: WebGLUniformLocation | null;
+  private program_9_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_9_LUMAD_TextureLocation: WebGLUniformLocation | null;
+  private program_10_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_10_LUMAD_TextureLocation: WebGLUniformLocation | null;
+  private program_10_LUMADG_TextureLocation: WebGLUniformLocation | null;
+  private program_11_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_11_LUMAD_TextureLocation: WebGLUniformLocation | null;
+  private program_12_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_12_LUMAD2_TextureLocation: WebGLUniformLocation | null;
+  private program_13_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_13_LUMAD_TextureLocation: WebGLUniformLocation | null;
+  private program_13_LUMAD2_TextureLocation: WebGLUniformLocation | null;
+  private program_14_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_14_MAINTEMPTHIN_TextureLocation: WebGLUniformLocation | null;
+  private program_15_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_15_MAINTEMP_TextureLocation: WebGLUniformLocation | null;
+  private program_16_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_16_MMKERNEL_TextureLocation: WebGLUniformLocation | null;
+  private program_17_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_17_MAINTEMPTHIN_TextureLocation: WebGLUniformLocation | null;
+  private program_17_MAINTEMP_TextureLocation: WebGLUniformLocation | null;
+  private program_17_MMKERNEL_TextureLocation: WebGLUniformLocation | null;
   private program_0_position_buffer: WebGLBuffer | null;
   private program_1_position_buffer: WebGLBuffer | null;
   private program_2_position_buffer: WebGLBuffer | null;
@@ -1152,45 +1152,45 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
     this.program_15_u_texture_size_location = gl.getUniformLocation(this.program_15, "u_texture_size");
     this.program_16_u_texture_size_location = gl.getUniformLocation(this.program_16, "u_texture_size");
     this.program_17_u_texture_size_location = gl.getUniformLocation(this.program_17, "u_texture_size");
-    this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN")
-    this.program_1_MAIN_TextureLocation = gl.getUniformLocation(this.program_1, "MAIN")
-    this.program_1_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_1, "LINELUMA")
-    this.program_2_MAIN_TextureLocation = gl.getUniformLocation(this.program_2, "MAIN")
-    this.program_2_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_2, "LINELUMA")
-    this.program_2_MMKERNEL_TextureLocation = gl.getUniformLocation(this.program_2, "MMKERNEL")
-    this.program_3_MAIN_TextureLocation = gl.getUniformLocation(this.program_3, "MAIN")
-    this.program_3_MMKERNEL_TextureLocation = gl.getUniformLocation(this.program_3, "MMKERNEL")
-    this.program_4_MAIN_TextureLocation = gl.getUniformLocation(this.program_4, "MAIN")
-    this.program_4_MMKERNEL_TextureLocation = gl.getUniformLocation(this.program_4, "MMKERNEL")
-    this.program_5_MAIN_TextureLocation = gl.getUniformLocation(this.program_5, "MAIN")
-    this.program_5_MMKERNEL_TextureLocation = gl.getUniformLocation(this.program_5, "MMKERNEL")
-    this.program_6_MAIN_TextureLocation = gl.getUniformLocation(this.program_6, "MAIN")
-    this.program_7_MAIN_TextureLocation = gl.getUniformLocation(this.program_7, "MAIN")
-    this.program_7_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_7, "LINELUMA")
-    this.program_8_MAIN_TextureLocation = gl.getUniformLocation(this.program_8, "MAIN")
-    this.program_8_LUMAD_TextureLocation = gl.getUniformLocation(this.program_8, "LUMAD")
-    this.program_9_MAIN_TextureLocation = gl.getUniformLocation(this.program_9, "MAIN")
-    this.program_9_LUMAD_TextureLocation = gl.getUniformLocation(this.program_9, "LUMAD")
-    this.program_10_MAIN_TextureLocation = gl.getUniformLocation(this.program_10, "MAIN")
-    this.program_10_LUMAD_TextureLocation = gl.getUniformLocation(this.program_10, "LUMAD")
-    this.program_10_LUMADG_TextureLocation = gl.getUniformLocation(this.program_10, "LUMADG")
-    this.program_11_MAIN_TextureLocation = gl.getUniformLocation(this.program_11, "MAIN")
-    this.program_11_LUMAD_TextureLocation = gl.getUniformLocation(this.program_11, "LUMAD")
-    this.program_12_MAIN_TextureLocation = gl.getUniformLocation(this.program_12, "MAIN")
-    this.program_12_LUMAD2_TextureLocation = gl.getUniformLocation(this.program_12, "LUMAD2")
-    this.program_13_MAIN_TextureLocation = gl.getUniformLocation(this.program_13, "MAIN")
-    this.program_13_LUMAD_TextureLocation = gl.getUniformLocation(this.program_13, "LUMAD")
-    this.program_13_LUMAD2_TextureLocation = gl.getUniformLocation(this.program_13, "LUMAD2")
-    this.program_14_MAIN_TextureLocation = gl.getUniformLocation(this.program_14, "MAIN")
-    this.program_14_MAINTEMPTHIN_TextureLocation = gl.getUniformLocation(this.program_14, "MAINTEMPTHIN")
-    this.program_15_MAIN_TextureLocation = gl.getUniformLocation(this.program_15, "MAIN")
-    this.program_15_MAINTEMP_TextureLocation = gl.getUniformLocation(this.program_15, "MAINTEMP")
-    this.program_16_MAIN_TextureLocation = gl.getUniformLocation(this.program_16, "MAIN")
-    this.program_16_MMKERNEL_TextureLocation = gl.getUniformLocation(this.program_16, "MMKERNEL")
-    this.program_17_MAIN_TextureLocation = gl.getUniformLocation(this.program_17, "MAIN")
-    this.program_17_MAINTEMPTHIN_TextureLocation = gl.getUniformLocation(this.program_17, "MAINTEMPTHIN")
-    this.program_17_MAINTEMP_TextureLocation = gl.getUniformLocation(this.program_17, "MAINTEMP")
-    this.program_17_MMKERNEL_TextureLocation = gl.getUniformLocation(this.program_17, "MMKERNEL")
+    this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN");
+    this.program_1_MAIN_TextureLocation = gl.getUniformLocation(this.program_1, "MAIN");
+    this.program_1_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_1, "LINELUMA");
+    this.program_2_MAIN_TextureLocation = gl.getUniformLocation(this.program_2, "MAIN");
+    this.program_2_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_2, "LINELUMA");
+    this.program_2_MMKERNEL_TextureLocation = gl.getUniformLocation(this.program_2, "MMKERNEL");
+    this.program_3_MAIN_TextureLocation = gl.getUniformLocation(this.program_3, "MAIN");
+    this.program_3_MMKERNEL_TextureLocation = gl.getUniformLocation(this.program_3, "MMKERNEL");
+    this.program_4_MAIN_TextureLocation = gl.getUniformLocation(this.program_4, "MAIN");
+    this.program_4_MMKERNEL_TextureLocation = gl.getUniformLocation(this.program_4, "MMKERNEL");
+    this.program_5_MAIN_TextureLocation = gl.getUniformLocation(this.program_5, "MAIN");
+    this.program_5_MMKERNEL_TextureLocation = gl.getUniformLocation(this.program_5, "MMKERNEL");
+    this.program_6_MAIN_TextureLocation = gl.getUniformLocation(this.program_6, "MAIN");
+    this.program_7_MAIN_TextureLocation = gl.getUniformLocation(this.program_7, "MAIN");
+    this.program_7_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_7, "LINELUMA");
+    this.program_8_MAIN_TextureLocation = gl.getUniformLocation(this.program_8, "MAIN");
+    this.program_8_LUMAD_TextureLocation = gl.getUniformLocation(this.program_8, "LUMAD");
+    this.program_9_MAIN_TextureLocation = gl.getUniformLocation(this.program_9, "MAIN");
+    this.program_9_LUMAD_TextureLocation = gl.getUniformLocation(this.program_9, "LUMAD");
+    this.program_10_MAIN_TextureLocation = gl.getUniformLocation(this.program_10, "MAIN");
+    this.program_10_LUMAD_TextureLocation = gl.getUniformLocation(this.program_10, "LUMAD");
+    this.program_10_LUMADG_TextureLocation = gl.getUniformLocation(this.program_10, "LUMADG");
+    this.program_11_MAIN_TextureLocation = gl.getUniformLocation(this.program_11, "MAIN");
+    this.program_11_LUMAD_TextureLocation = gl.getUniformLocation(this.program_11, "LUMAD");
+    this.program_12_MAIN_TextureLocation = gl.getUniformLocation(this.program_12, "MAIN");
+    this.program_12_LUMAD2_TextureLocation = gl.getUniformLocation(this.program_12, "LUMAD2");
+    this.program_13_MAIN_TextureLocation = gl.getUniformLocation(this.program_13, "MAIN");
+    this.program_13_LUMAD_TextureLocation = gl.getUniformLocation(this.program_13, "LUMAD");
+    this.program_13_LUMAD2_TextureLocation = gl.getUniformLocation(this.program_13, "LUMAD2");
+    this.program_14_MAIN_TextureLocation = gl.getUniformLocation(this.program_14, "MAIN");
+    this.program_14_MAINTEMPTHIN_TextureLocation = gl.getUniformLocation(this.program_14, "MAINTEMPTHIN");
+    this.program_15_MAIN_TextureLocation = gl.getUniformLocation(this.program_15, "MAIN");
+    this.program_15_MAINTEMP_TextureLocation = gl.getUniformLocation(this.program_15, "MAINTEMP");
+    this.program_16_MAIN_TextureLocation = gl.getUniformLocation(this.program_16, "MAIN");
+    this.program_16_MMKERNEL_TextureLocation = gl.getUniformLocation(this.program_16, "MMKERNEL");
+    this.program_17_MAIN_TextureLocation = gl.getUniformLocation(this.program_17, "MAIN");
+    this.program_17_MAINTEMPTHIN_TextureLocation = gl.getUniformLocation(this.program_17, "MAINTEMPTHIN");
+    this.program_17_MAINTEMP_TextureLocation = gl.getUniformLocation(this.program_17, "MAINTEMP");
+    this.program_17_MMKERNEL_TextureLocation = gl.getUniformLocation(this.program_17, "MMKERNEL");
     this.program_0_position_buffer = null;
     this.program_1_position_buffer = null;
     this.program_2_position_buffer = null;

@@ -153,9 +153,9 @@ export default class Anime4K_Denoise_Bilateral_Mode extends Anime4KShader {
   private program_1_u_resolution_location: WebGLUniformLocation | null;
   private program_0_u_texture_size_location: WebGLUniformLocation | null;
   private program_1_u_texture_size_location: WebGLUniformLocation | null;
-  private program_0_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_1_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_1_LINELUMA_TextureLocation: WebGLUniformLocation | null
+  private program_0_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_1_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_1_LINELUMA_TextureLocation: WebGLUniformLocation | null;
   private program_0_position_buffer: WebGLBuffer | null;
   private program_1_position_buffer: WebGLBuffer | null;
 
@@ -183,9 +183,9 @@ export default class Anime4K_Denoise_Bilateral_Mode extends Anime4KShader {
     this.program_1_u_resolution_location = gl.getUniformLocation(this.program_1, "u_resolution");
     this.program_0_u_texture_size_location = gl.getUniformLocation(this.program_0, "u_texture_size");
     this.program_1_u_texture_size_location = gl.getUniformLocation(this.program_1, "u_texture_size");
-    this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN")
-    this.program_1_MAIN_TextureLocation = gl.getUniformLocation(this.program_1, "MAIN")
-    this.program_1_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_1, "LINELUMA")
+    this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN");
+    this.program_1_MAIN_TextureLocation = gl.getUniformLocation(this.program_1, "MAIN");
+    this.program_1_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_1, "LINELUMA");
     this.program_0_position_buffer = null;
     this.program_1_position_buffer = null;
   }

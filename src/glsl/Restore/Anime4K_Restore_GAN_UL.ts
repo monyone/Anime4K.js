@@ -1835,61 +1835,61 @@ export default class Anime4K_Restore_GAN_UL extends Anime4KShader {
   private program_15_u_texture_size_location: WebGLUniformLocation | null;
   private program_16_u_texture_size_location: WebGLUniformLocation | null;
   private program_17_u_texture_size_location: WebGLUniformLocation | null;
-  private program_0_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_1_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_2_conv2d_tf_TextureLocation: WebGLUniformLocation | null
-  private program_2_conv2d_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_3_conv2d_tf_TextureLocation: WebGLUniformLocation | null
-  private program_3_conv2d_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_4_conv2d_tf_TextureLocation: WebGLUniformLocation | null
-  private program_4_conv2d_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_5_conv2d_1_tf_TextureLocation: WebGLUniformLocation | null
-  private program_5_conv2d_1_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_5_conv2d_1_tf2_TextureLocation: WebGLUniformLocation | null
-  private program_6_conv2d_1_tf_TextureLocation: WebGLUniformLocation | null
-  private program_6_conv2d_1_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_6_conv2d_1_tf2_TextureLocation: WebGLUniformLocation | null
-  private program_7_conv2d_tf_TextureLocation: WebGLUniformLocation | null
-  private program_7_conv2d_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_7_conv2d_2_tf_TextureLocation: WebGLUniformLocation | null
-  private program_7_conv2d_2_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_8_conv2d_tf_TextureLocation: WebGLUniformLocation | null
-  private program_8_conv2d_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_8_conv2d_2_tf_TextureLocation: WebGLUniformLocation | null
-  private program_8_conv2d_2_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_9_conv2d_tf_TextureLocation: WebGLUniformLocation | null
-  private program_9_conv2d_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_9_conv2d_2_tf_TextureLocation: WebGLUniformLocation | null
-  private program_9_conv2d_2_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_10_conv2d_3_tf_TextureLocation: WebGLUniformLocation | null
-  private program_10_conv2d_3_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_10_conv2d_3_tf2_TextureLocation: WebGLUniformLocation | null
-  private program_11_conv2d_3_tf_TextureLocation: WebGLUniformLocation | null
-  private program_11_conv2d_3_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_11_conv2d_3_tf2_TextureLocation: WebGLUniformLocation | null
-  private program_12_conv2d_2_tf_TextureLocation: WebGLUniformLocation | null
-  private program_12_conv2d_2_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_12_conv2d_4_tf_TextureLocation: WebGLUniformLocation | null
-  private program_12_conv2d_4_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_13_conv2d_2_tf_TextureLocation: WebGLUniformLocation | null
-  private program_13_conv2d_2_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_13_conv2d_4_tf_TextureLocation: WebGLUniformLocation | null
-  private program_13_conv2d_4_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_14_conv2d_2_tf_TextureLocation: WebGLUniformLocation | null
-  private program_14_conv2d_2_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_14_conv2d_4_tf_TextureLocation: WebGLUniformLocation | null
-  private program_14_conv2d_4_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_15_conv2d_5_tf_TextureLocation: WebGLUniformLocation | null
-  private program_15_conv2d_5_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_15_conv2d_5_tf2_TextureLocation: WebGLUniformLocation | null
-  private program_16_conv2d_5_tf_TextureLocation: WebGLUniformLocation | null
-  private program_16_conv2d_5_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_16_conv2d_5_tf2_TextureLocation: WebGLUniformLocation | null
-  private program_17_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_17_conv2d_4_tf_TextureLocation: WebGLUniformLocation | null
-  private program_17_conv2d_4_tf1_TextureLocation: WebGLUniformLocation | null
-  private program_17_conv2d_6_tf_TextureLocation: WebGLUniformLocation | null
-  private program_17_conv2d_6_tf1_TextureLocation: WebGLUniformLocation | null
+  private program_0_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_1_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_2_conv2d_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_2_conv2d_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_3_conv2d_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_3_conv2d_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_4_conv2d_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_4_conv2d_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_5_conv2d_1_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_5_conv2d_1_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_5_conv2d_1_tf2_TextureLocation: WebGLUniformLocation | null;
+  private program_6_conv2d_1_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_6_conv2d_1_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_6_conv2d_1_tf2_TextureLocation: WebGLUniformLocation | null;
+  private program_7_conv2d_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_7_conv2d_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_7_conv2d_2_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_7_conv2d_2_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_8_conv2d_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_8_conv2d_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_8_conv2d_2_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_8_conv2d_2_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_9_conv2d_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_9_conv2d_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_9_conv2d_2_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_9_conv2d_2_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_10_conv2d_3_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_10_conv2d_3_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_10_conv2d_3_tf2_TextureLocation: WebGLUniformLocation | null;
+  private program_11_conv2d_3_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_11_conv2d_3_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_11_conv2d_3_tf2_TextureLocation: WebGLUniformLocation | null;
+  private program_12_conv2d_2_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_12_conv2d_2_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_12_conv2d_4_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_12_conv2d_4_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_13_conv2d_2_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_13_conv2d_2_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_13_conv2d_4_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_13_conv2d_4_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_14_conv2d_2_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_14_conv2d_2_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_14_conv2d_4_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_14_conv2d_4_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_15_conv2d_5_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_15_conv2d_5_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_15_conv2d_5_tf2_TextureLocation: WebGLUniformLocation | null;
+  private program_16_conv2d_5_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_16_conv2d_5_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_16_conv2d_5_tf2_TextureLocation: WebGLUniformLocation | null;
+  private program_17_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_17_conv2d_4_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_17_conv2d_4_tf1_TextureLocation: WebGLUniformLocation | null;
+  private program_17_conv2d_6_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_17_conv2d_6_tf1_TextureLocation: WebGLUniformLocation | null;
   private program_0_position_buffer: WebGLBuffer | null;
   private program_1_position_buffer: WebGLBuffer | null;
   private program_2_position_buffer: WebGLBuffer | null;
@@ -2093,61 +2093,61 @@ export default class Anime4K_Restore_GAN_UL extends Anime4KShader {
     this.program_15_u_texture_size_location = gl.getUniformLocation(this.program_15, "u_texture_size");
     this.program_16_u_texture_size_location = gl.getUniformLocation(this.program_16, "u_texture_size");
     this.program_17_u_texture_size_location = gl.getUniformLocation(this.program_17, "u_texture_size");
-    this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN")
-    this.program_1_MAIN_TextureLocation = gl.getUniformLocation(this.program_1, "MAIN")
-    this.program_2_conv2d_tf_TextureLocation = gl.getUniformLocation(this.program_2, "conv2d_tf")
-    this.program_2_conv2d_tf1_TextureLocation = gl.getUniformLocation(this.program_2, "conv2d_tf1")
-    this.program_3_conv2d_tf_TextureLocation = gl.getUniformLocation(this.program_3, "conv2d_tf")
-    this.program_3_conv2d_tf1_TextureLocation = gl.getUniformLocation(this.program_3, "conv2d_tf1")
-    this.program_4_conv2d_tf_TextureLocation = gl.getUniformLocation(this.program_4, "conv2d_tf")
-    this.program_4_conv2d_tf1_TextureLocation = gl.getUniformLocation(this.program_4, "conv2d_tf1")
-    this.program_5_conv2d_1_tf_TextureLocation = gl.getUniformLocation(this.program_5, "conv2d_1_tf")
-    this.program_5_conv2d_1_tf1_TextureLocation = gl.getUniformLocation(this.program_5, "conv2d_1_tf1")
-    this.program_5_conv2d_1_tf2_TextureLocation = gl.getUniformLocation(this.program_5, "conv2d_1_tf2")
-    this.program_6_conv2d_1_tf_TextureLocation = gl.getUniformLocation(this.program_6, "conv2d_1_tf")
-    this.program_6_conv2d_1_tf1_TextureLocation = gl.getUniformLocation(this.program_6, "conv2d_1_tf1")
-    this.program_6_conv2d_1_tf2_TextureLocation = gl.getUniformLocation(this.program_6, "conv2d_1_tf2")
-    this.program_7_conv2d_tf_TextureLocation = gl.getUniformLocation(this.program_7, "conv2d_tf")
-    this.program_7_conv2d_tf1_TextureLocation = gl.getUniformLocation(this.program_7, "conv2d_tf1")
-    this.program_7_conv2d_2_tf_TextureLocation = gl.getUniformLocation(this.program_7, "conv2d_2_tf")
-    this.program_7_conv2d_2_tf1_TextureLocation = gl.getUniformLocation(this.program_7, "conv2d_2_tf1")
-    this.program_8_conv2d_tf_TextureLocation = gl.getUniformLocation(this.program_8, "conv2d_tf")
-    this.program_8_conv2d_tf1_TextureLocation = gl.getUniformLocation(this.program_8, "conv2d_tf1")
-    this.program_8_conv2d_2_tf_TextureLocation = gl.getUniformLocation(this.program_8, "conv2d_2_tf")
-    this.program_8_conv2d_2_tf1_TextureLocation = gl.getUniformLocation(this.program_8, "conv2d_2_tf1")
-    this.program_9_conv2d_tf_TextureLocation = gl.getUniformLocation(this.program_9, "conv2d_tf")
-    this.program_9_conv2d_tf1_TextureLocation = gl.getUniformLocation(this.program_9, "conv2d_tf1")
-    this.program_9_conv2d_2_tf_TextureLocation = gl.getUniformLocation(this.program_9, "conv2d_2_tf")
-    this.program_9_conv2d_2_tf1_TextureLocation = gl.getUniformLocation(this.program_9, "conv2d_2_tf1")
-    this.program_10_conv2d_3_tf_TextureLocation = gl.getUniformLocation(this.program_10, "conv2d_3_tf")
-    this.program_10_conv2d_3_tf1_TextureLocation = gl.getUniformLocation(this.program_10, "conv2d_3_tf1")
-    this.program_10_conv2d_3_tf2_TextureLocation = gl.getUniformLocation(this.program_10, "conv2d_3_tf2")
-    this.program_11_conv2d_3_tf_TextureLocation = gl.getUniformLocation(this.program_11, "conv2d_3_tf")
-    this.program_11_conv2d_3_tf1_TextureLocation = gl.getUniformLocation(this.program_11, "conv2d_3_tf1")
-    this.program_11_conv2d_3_tf2_TextureLocation = gl.getUniformLocation(this.program_11, "conv2d_3_tf2")
-    this.program_12_conv2d_2_tf_TextureLocation = gl.getUniformLocation(this.program_12, "conv2d_2_tf")
-    this.program_12_conv2d_2_tf1_TextureLocation = gl.getUniformLocation(this.program_12, "conv2d_2_tf1")
-    this.program_12_conv2d_4_tf_TextureLocation = gl.getUniformLocation(this.program_12, "conv2d_4_tf")
-    this.program_12_conv2d_4_tf1_TextureLocation = gl.getUniformLocation(this.program_12, "conv2d_4_tf1")
-    this.program_13_conv2d_2_tf_TextureLocation = gl.getUniformLocation(this.program_13, "conv2d_2_tf")
-    this.program_13_conv2d_2_tf1_TextureLocation = gl.getUniformLocation(this.program_13, "conv2d_2_tf1")
-    this.program_13_conv2d_4_tf_TextureLocation = gl.getUniformLocation(this.program_13, "conv2d_4_tf")
-    this.program_13_conv2d_4_tf1_TextureLocation = gl.getUniformLocation(this.program_13, "conv2d_4_tf1")
-    this.program_14_conv2d_2_tf_TextureLocation = gl.getUniformLocation(this.program_14, "conv2d_2_tf")
-    this.program_14_conv2d_2_tf1_TextureLocation = gl.getUniformLocation(this.program_14, "conv2d_2_tf1")
-    this.program_14_conv2d_4_tf_TextureLocation = gl.getUniformLocation(this.program_14, "conv2d_4_tf")
-    this.program_14_conv2d_4_tf1_TextureLocation = gl.getUniformLocation(this.program_14, "conv2d_4_tf1")
-    this.program_15_conv2d_5_tf_TextureLocation = gl.getUniformLocation(this.program_15, "conv2d_5_tf")
-    this.program_15_conv2d_5_tf1_TextureLocation = gl.getUniformLocation(this.program_15, "conv2d_5_tf1")
-    this.program_15_conv2d_5_tf2_TextureLocation = gl.getUniformLocation(this.program_15, "conv2d_5_tf2")
-    this.program_16_conv2d_5_tf_TextureLocation = gl.getUniformLocation(this.program_16, "conv2d_5_tf")
-    this.program_16_conv2d_5_tf1_TextureLocation = gl.getUniformLocation(this.program_16, "conv2d_5_tf1")
-    this.program_16_conv2d_5_tf2_TextureLocation = gl.getUniformLocation(this.program_16, "conv2d_5_tf2")
-    this.program_17_MAIN_TextureLocation = gl.getUniformLocation(this.program_17, "MAIN")
-    this.program_17_conv2d_4_tf_TextureLocation = gl.getUniformLocation(this.program_17, "conv2d_4_tf")
-    this.program_17_conv2d_4_tf1_TextureLocation = gl.getUniformLocation(this.program_17, "conv2d_4_tf1")
-    this.program_17_conv2d_6_tf_TextureLocation = gl.getUniformLocation(this.program_17, "conv2d_6_tf")
-    this.program_17_conv2d_6_tf1_TextureLocation = gl.getUniformLocation(this.program_17, "conv2d_6_tf1")
+    this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN");
+    this.program_1_MAIN_TextureLocation = gl.getUniformLocation(this.program_1, "MAIN");
+    this.program_2_conv2d_tf_TextureLocation = gl.getUniformLocation(this.program_2, "conv2d_tf");
+    this.program_2_conv2d_tf1_TextureLocation = gl.getUniformLocation(this.program_2, "conv2d_tf1");
+    this.program_3_conv2d_tf_TextureLocation = gl.getUniformLocation(this.program_3, "conv2d_tf");
+    this.program_3_conv2d_tf1_TextureLocation = gl.getUniformLocation(this.program_3, "conv2d_tf1");
+    this.program_4_conv2d_tf_TextureLocation = gl.getUniformLocation(this.program_4, "conv2d_tf");
+    this.program_4_conv2d_tf1_TextureLocation = gl.getUniformLocation(this.program_4, "conv2d_tf1");
+    this.program_5_conv2d_1_tf_TextureLocation = gl.getUniformLocation(this.program_5, "conv2d_1_tf");
+    this.program_5_conv2d_1_tf1_TextureLocation = gl.getUniformLocation(this.program_5, "conv2d_1_tf1");
+    this.program_5_conv2d_1_tf2_TextureLocation = gl.getUniformLocation(this.program_5, "conv2d_1_tf2");
+    this.program_6_conv2d_1_tf_TextureLocation = gl.getUniformLocation(this.program_6, "conv2d_1_tf");
+    this.program_6_conv2d_1_tf1_TextureLocation = gl.getUniformLocation(this.program_6, "conv2d_1_tf1");
+    this.program_6_conv2d_1_tf2_TextureLocation = gl.getUniformLocation(this.program_6, "conv2d_1_tf2");
+    this.program_7_conv2d_tf_TextureLocation = gl.getUniformLocation(this.program_7, "conv2d_tf");
+    this.program_7_conv2d_tf1_TextureLocation = gl.getUniformLocation(this.program_7, "conv2d_tf1");
+    this.program_7_conv2d_2_tf_TextureLocation = gl.getUniformLocation(this.program_7, "conv2d_2_tf");
+    this.program_7_conv2d_2_tf1_TextureLocation = gl.getUniformLocation(this.program_7, "conv2d_2_tf1");
+    this.program_8_conv2d_tf_TextureLocation = gl.getUniformLocation(this.program_8, "conv2d_tf");
+    this.program_8_conv2d_tf1_TextureLocation = gl.getUniformLocation(this.program_8, "conv2d_tf1");
+    this.program_8_conv2d_2_tf_TextureLocation = gl.getUniformLocation(this.program_8, "conv2d_2_tf");
+    this.program_8_conv2d_2_tf1_TextureLocation = gl.getUniformLocation(this.program_8, "conv2d_2_tf1");
+    this.program_9_conv2d_tf_TextureLocation = gl.getUniformLocation(this.program_9, "conv2d_tf");
+    this.program_9_conv2d_tf1_TextureLocation = gl.getUniformLocation(this.program_9, "conv2d_tf1");
+    this.program_9_conv2d_2_tf_TextureLocation = gl.getUniformLocation(this.program_9, "conv2d_2_tf");
+    this.program_9_conv2d_2_tf1_TextureLocation = gl.getUniformLocation(this.program_9, "conv2d_2_tf1");
+    this.program_10_conv2d_3_tf_TextureLocation = gl.getUniformLocation(this.program_10, "conv2d_3_tf");
+    this.program_10_conv2d_3_tf1_TextureLocation = gl.getUniformLocation(this.program_10, "conv2d_3_tf1");
+    this.program_10_conv2d_3_tf2_TextureLocation = gl.getUniformLocation(this.program_10, "conv2d_3_tf2");
+    this.program_11_conv2d_3_tf_TextureLocation = gl.getUniformLocation(this.program_11, "conv2d_3_tf");
+    this.program_11_conv2d_3_tf1_TextureLocation = gl.getUniformLocation(this.program_11, "conv2d_3_tf1");
+    this.program_11_conv2d_3_tf2_TextureLocation = gl.getUniformLocation(this.program_11, "conv2d_3_tf2");
+    this.program_12_conv2d_2_tf_TextureLocation = gl.getUniformLocation(this.program_12, "conv2d_2_tf");
+    this.program_12_conv2d_2_tf1_TextureLocation = gl.getUniformLocation(this.program_12, "conv2d_2_tf1");
+    this.program_12_conv2d_4_tf_TextureLocation = gl.getUniformLocation(this.program_12, "conv2d_4_tf");
+    this.program_12_conv2d_4_tf1_TextureLocation = gl.getUniformLocation(this.program_12, "conv2d_4_tf1");
+    this.program_13_conv2d_2_tf_TextureLocation = gl.getUniformLocation(this.program_13, "conv2d_2_tf");
+    this.program_13_conv2d_2_tf1_TextureLocation = gl.getUniformLocation(this.program_13, "conv2d_2_tf1");
+    this.program_13_conv2d_4_tf_TextureLocation = gl.getUniformLocation(this.program_13, "conv2d_4_tf");
+    this.program_13_conv2d_4_tf1_TextureLocation = gl.getUniformLocation(this.program_13, "conv2d_4_tf1");
+    this.program_14_conv2d_2_tf_TextureLocation = gl.getUniformLocation(this.program_14, "conv2d_2_tf");
+    this.program_14_conv2d_2_tf1_TextureLocation = gl.getUniformLocation(this.program_14, "conv2d_2_tf1");
+    this.program_14_conv2d_4_tf_TextureLocation = gl.getUniformLocation(this.program_14, "conv2d_4_tf");
+    this.program_14_conv2d_4_tf1_TextureLocation = gl.getUniformLocation(this.program_14, "conv2d_4_tf1");
+    this.program_15_conv2d_5_tf_TextureLocation = gl.getUniformLocation(this.program_15, "conv2d_5_tf");
+    this.program_15_conv2d_5_tf1_TextureLocation = gl.getUniformLocation(this.program_15, "conv2d_5_tf1");
+    this.program_15_conv2d_5_tf2_TextureLocation = gl.getUniformLocation(this.program_15, "conv2d_5_tf2");
+    this.program_16_conv2d_5_tf_TextureLocation = gl.getUniformLocation(this.program_16, "conv2d_5_tf");
+    this.program_16_conv2d_5_tf1_TextureLocation = gl.getUniformLocation(this.program_16, "conv2d_5_tf1");
+    this.program_16_conv2d_5_tf2_TextureLocation = gl.getUniformLocation(this.program_16, "conv2d_5_tf2");
+    this.program_17_MAIN_TextureLocation = gl.getUniformLocation(this.program_17, "MAIN");
+    this.program_17_conv2d_4_tf_TextureLocation = gl.getUniformLocation(this.program_17, "conv2d_4_tf");
+    this.program_17_conv2d_4_tf1_TextureLocation = gl.getUniformLocation(this.program_17, "conv2d_4_tf1");
+    this.program_17_conv2d_6_tf_TextureLocation = gl.getUniformLocation(this.program_17, "conv2d_6_tf");
+    this.program_17_conv2d_6_tf1_TextureLocation = gl.getUniformLocation(this.program_17, "conv2d_6_tf1");
     this.program_0_position_buffer = null;
     this.program_1_position_buffer = null;
     this.program_2_position_buffer = null;

@@ -226,14 +226,14 @@ export default class Anime4K_Upscale_DoG_x2 extends Anime4KShader {
   private program_1_u_texture_size_location: WebGLUniformLocation | null;
   private program_2_u_texture_size_location: WebGLUniformLocation | null;
   private program_3_u_texture_size_location: WebGLUniformLocation | null;
-  private program_0_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_1_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_1_LINELUMA_TextureLocation: WebGLUniformLocation | null
-  private program_2_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_2_GAUSS_X2_TextureLocation: WebGLUniformLocation | null
-  private program_3_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_3_LINELUMA_TextureLocation: WebGLUniformLocation | null
-  private program_3_GAUSS_X2_TextureLocation: WebGLUniformLocation | null
+  private program_0_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_1_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_1_LINELUMA_TextureLocation: WebGLUniformLocation | null;
+  private program_2_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_2_GAUSS_X2_TextureLocation: WebGLUniformLocation | null;
+  private program_3_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_3_LINELUMA_TextureLocation: WebGLUniformLocation | null;
+  private program_3_GAUSS_X2_TextureLocation: WebGLUniformLocation | null;
   private program_0_position_buffer: WebGLBuffer | null;
   private program_1_position_buffer: WebGLBuffer | null;
   private program_2_position_buffer: WebGLBuffer | null;
@@ -283,14 +283,14 @@ export default class Anime4K_Upscale_DoG_x2 extends Anime4KShader {
     this.program_1_u_texture_size_location = gl.getUniformLocation(this.program_1, "u_texture_size");
     this.program_2_u_texture_size_location = gl.getUniformLocation(this.program_2, "u_texture_size");
     this.program_3_u_texture_size_location = gl.getUniformLocation(this.program_3, "u_texture_size");
-    this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN")
-    this.program_1_MAIN_TextureLocation = gl.getUniformLocation(this.program_1, "MAIN")
-    this.program_1_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_1, "LINELUMA")
-    this.program_2_MAIN_TextureLocation = gl.getUniformLocation(this.program_2, "MAIN")
-    this.program_2_GAUSS_X2_TextureLocation = gl.getUniformLocation(this.program_2, "GAUSS_X2")
-    this.program_3_MAIN_TextureLocation = gl.getUniformLocation(this.program_3, "MAIN")
-    this.program_3_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_3, "LINELUMA")
-    this.program_3_GAUSS_X2_TextureLocation = gl.getUniformLocation(this.program_3, "GAUSS_X2")
+    this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN");
+    this.program_1_MAIN_TextureLocation = gl.getUniformLocation(this.program_1, "MAIN");
+    this.program_1_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_1, "LINELUMA");
+    this.program_2_MAIN_TextureLocation = gl.getUniformLocation(this.program_2, "MAIN");
+    this.program_2_GAUSS_X2_TextureLocation = gl.getUniformLocation(this.program_2, "GAUSS_X2");
+    this.program_3_MAIN_TextureLocation = gl.getUniformLocation(this.program_3, "MAIN");
+    this.program_3_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_3, "LINELUMA");
+    this.program_3_GAUSS_X2_TextureLocation = gl.getUniformLocation(this.program_3, "GAUSS_X2");
     this.program_0_position_buffer = null;
     this.program_1_position_buffer = null;
     this.program_2_position_buffer = null;

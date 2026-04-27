@@ -100,7 +100,7 @@ export default class Anime4K_Denoise_Bilateral_Mean extends Anime4KShader {
   private program_0_a_texture_coord_location: number;
   private program_0_u_resolution_location: WebGLUniformLocation | null;
   private program_0_u_texture_size_location: WebGLUniformLocation | null;
-  private program_0_MAIN_TextureLocation: WebGLUniformLocation | null
+  private program_0_MAIN_TextureLocation: WebGLUniformLocation | null;
   private program_0_position_buffer: WebGLBuffer | null;
 
   public constructor(gl: WebGLRenderingContext) {
@@ -117,7 +117,7 @@ export default class Anime4K_Denoise_Bilateral_Mean extends Anime4KShader {
     gl.enableVertexAttribArray(this.program_0_a_texture_coord_location);
     this.program_0_u_resolution_location = gl.getUniformLocation(this.program_0, "u_resolution");
     this.program_0_u_texture_size_location = gl.getUniformLocation(this.program_0, "u_texture_size");
-    this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN")
+    this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN");
     this.program_0_position_buffer = null;
   }
 

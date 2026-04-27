@@ -346,7 +346,7 @@ if __name__ == '__main__':
     webgl_program_a_texture_coord_location_declare = '\n'.join([ f'private program_{index}_a_texture_coord_location: number;' for index in range(len(programs)) ])
     webgl_program_u_resolution_location_declare = '\n'.join([ f'private program_{index}_u_resolution_location: WebGLUniformLocation | null;' for index in range(len(programs)) ])
     webgl_program_u_texture_size_location_declare = '\n'.join([ f'private program_{index}_u_texture_size_location: WebGLUniformLocation | null;' for index in range(len(programs)) ])
-    webgl_program_u_texture_location_declare = '\n'.join(['\n'.join([ f'private program_{index}_{bind}_TextureLocation: WebGLUniformLocation | null' for bind in program.get_bind()]) for index, program in enumerate(programs)])
+    webgl_program_u_texture_location_declare = '\n'.join(['\n'.join([ f'private program_{index}_{bind}_TextureLocation: WebGLUniformLocation | null;' for bind in program.get_bind()]) for index, program in enumerate(programs)])
     webgl_program_position_buffer_declare = '\n'.join([ f'private program_{index}_position_buffer: WebGLBuffer | null;' for index in range(len(programs)) ])
 
     webgl_programs_assign = '\n'.join([ f'this.program_{index} = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_{index}_shader)!)!;' for index in range(len(programs)) ])
@@ -357,7 +357,7 @@ if __name__ == '__main__':
     webgl_program_a_texture_coord_location_assign = '\n'.join([ f'this.program_{index}_a_texture_coord_location = gl.getAttribLocation(this.program_{index}, "a_texture_coord");\ngl.enableVertexAttribArray(this.program_{index}_a_texture_coord_location);' for index in range(len(programs)) ])
     webgl_program_u_resolution_location_assign = '\n'.join([ f'this.program_{index}_u_resolution_location = gl.getUniformLocation(this.program_{index}, "u_resolution");' for index in range(len(programs)) ])
     webgl_program_u_texture_size_location_assign = '\n'.join([ f'this.program_{index}_u_texture_size_location = gl.getUniformLocation(this.program_{index}, "u_texture_size");' for index in range(len(programs)) ])
-    webgl_program_u_texture_location_assign = '\n'.join(['\n'.join([ f'this.program_{index}_{bind}_TextureLocation = gl.getUniformLocation(this.program_{index}, "{bind}")' for bind in program.get_bind()]) for index, program in enumerate(programs)])
+    webgl_program_u_texture_location_assign = '\n'.join(['\n'.join([ f'this.program_{index}_{bind}_TextureLocation = gl.getUniformLocation(this.program_{index}, "{bind}");' for bind in program.get_bind()]) for index, program in enumerate(programs)])
     webgl_program_position_buffer_assign = '\n'.join([ f'this.program_{index}_position_buffer = null;' for index in range(len(programs)) ])
 
     webgl_program_MAIN = generateHook(programs, 'MAIN')

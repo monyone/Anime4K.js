@@ -290,16 +290,16 @@ export default class Anime4K_Darken_HQ extends Anime4KShader {
   private program_2_u_texture_size_location: WebGLUniformLocation | null;
   private program_3_u_texture_size_location: WebGLUniformLocation | null;
   private program_4_u_texture_size_location: WebGLUniformLocation | null;
-  private program_0_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_1_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_1_LINELUMA_TextureLocation: WebGLUniformLocation | null
-  private program_2_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_2_LINELUMA_TextureLocation: WebGLUniformLocation | null
-  private program_2_LINEKERNEL_TextureLocation: WebGLUniformLocation | null
-  private program_3_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_3_LINEKERNEL_TextureLocation: WebGLUniformLocation | null
-  private program_4_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_4_LINEKERNEL_TextureLocation: WebGLUniformLocation | null
+  private program_0_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_1_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_1_LINELUMA_TextureLocation: WebGLUniformLocation | null;
+  private program_2_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_2_LINELUMA_TextureLocation: WebGLUniformLocation | null;
+  private program_2_LINEKERNEL_TextureLocation: WebGLUniformLocation | null;
+  private program_3_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_3_LINEKERNEL_TextureLocation: WebGLUniformLocation | null;
+  private program_4_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_4_LINEKERNEL_TextureLocation: WebGLUniformLocation | null;
   private program_0_position_buffer: WebGLBuffer | null;
   private program_1_position_buffer: WebGLBuffer | null;
   private program_2_position_buffer: WebGLBuffer | null;
@@ -360,16 +360,16 @@ export default class Anime4K_Darken_HQ extends Anime4KShader {
     this.program_2_u_texture_size_location = gl.getUniformLocation(this.program_2, "u_texture_size");
     this.program_3_u_texture_size_location = gl.getUniformLocation(this.program_3, "u_texture_size");
     this.program_4_u_texture_size_location = gl.getUniformLocation(this.program_4, "u_texture_size");
-    this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN")
-    this.program_1_MAIN_TextureLocation = gl.getUniformLocation(this.program_1, "MAIN")
-    this.program_1_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_1, "LINELUMA")
-    this.program_2_MAIN_TextureLocation = gl.getUniformLocation(this.program_2, "MAIN")
-    this.program_2_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_2, "LINELUMA")
-    this.program_2_LINEKERNEL_TextureLocation = gl.getUniformLocation(this.program_2, "LINEKERNEL")
-    this.program_3_MAIN_TextureLocation = gl.getUniformLocation(this.program_3, "MAIN")
-    this.program_3_LINEKERNEL_TextureLocation = gl.getUniformLocation(this.program_3, "LINEKERNEL")
-    this.program_4_MAIN_TextureLocation = gl.getUniformLocation(this.program_4, "MAIN")
-    this.program_4_LINEKERNEL_TextureLocation = gl.getUniformLocation(this.program_4, "LINEKERNEL")
+    this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN");
+    this.program_1_MAIN_TextureLocation = gl.getUniformLocation(this.program_1, "MAIN");
+    this.program_1_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_1, "LINELUMA");
+    this.program_2_MAIN_TextureLocation = gl.getUniformLocation(this.program_2, "MAIN");
+    this.program_2_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_2, "LINELUMA");
+    this.program_2_LINEKERNEL_TextureLocation = gl.getUniformLocation(this.program_2, "LINEKERNEL");
+    this.program_3_MAIN_TextureLocation = gl.getUniformLocation(this.program_3, "MAIN");
+    this.program_3_LINEKERNEL_TextureLocation = gl.getUniformLocation(this.program_3, "LINEKERNEL");
+    this.program_4_MAIN_TextureLocation = gl.getUniformLocation(this.program_4, "MAIN");
+    this.program_4_LINEKERNEL_TextureLocation = gl.getUniformLocation(this.program_4, "LINEKERNEL");
     this.program_0_position_buffer = null;
     this.program_1_position_buffer = null;
     this.program_2_position_buffer = null;

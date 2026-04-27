@@ -229,11 +229,11 @@ export default class Anime4K_Restore_CNN_S extends Anime4KShader {
   private program_1_u_texture_size_location: WebGLUniformLocation | null;
   private program_2_u_texture_size_location: WebGLUniformLocation | null;
   private program_3_u_texture_size_location: WebGLUniformLocation | null;
-  private program_0_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_1_conv2d_tf_TextureLocation: WebGLUniformLocation | null
-  private program_2_conv2d_1_tf_TextureLocation: WebGLUniformLocation | null
-  private program_3_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_3_conv2d_2_tf_TextureLocation: WebGLUniformLocation | null
+  private program_0_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_1_conv2d_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_2_conv2d_1_tf_TextureLocation: WebGLUniformLocation | null;
+  private program_3_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_3_conv2d_2_tf_TextureLocation: WebGLUniformLocation | null;
   private program_0_position_buffer: WebGLBuffer | null;
   private program_1_position_buffer: WebGLBuffer | null;
   private program_2_position_buffer: WebGLBuffer | null;
@@ -283,11 +283,11 @@ export default class Anime4K_Restore_CNN_S extends Anime4KShader {
     this.program_1_u_texture_size_location = gl.getUniformLocation(this.program_1, "u_texture_size");
     this.program_2_u_texture_size_location = gl.getUniformLocation(this.program_2, "u_texture_size");
     this.program_3_u_texture_size_location = gl.getUniformLocation(this.program_3, "u_texture_size");
-    this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN")
-    this.program_1_conv2d_tf_TextureLocation = gl.getUniformLocation(this.program_1, "conv2d_tf")
-    this.program_2_conv2d_1_tf_TextureLocation = gl.getUniformLocation(this.program_2, "conv2d_1_tf")
-    this.program_3_MAIN_TextureLocation = gl.getUniformLocation(this.program_3, "MAIN")
-    this.program_3_conv2d_2_tf_TextureLocation = gl.getUniformLocation(this.program_3, "conv2d_2_tf")
+    this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN");
+    this.program_1_conv2d_tf_TextureLocation = gl.getUniformLocation(this.program_1, "conv2d_tf");
+    this.program_2_conv2d_1_tf_TextureLocation = gl.getUniformLocation(this.program_2, "conv2d_1_tf");
+    this.program_3_MAIN_TextureLocation = gl.getUniformLocation(this.program_3, "MAIN");
+    this.program_3_conv2d_2_tf_TextureLocation = gl.getUniformLocation(this.program_3, "conv2d_2_tf");
     this.program_0_position_buffer = null;
     this.program_1_position_buffer = null;
     this.program_2_position_buffer = null;

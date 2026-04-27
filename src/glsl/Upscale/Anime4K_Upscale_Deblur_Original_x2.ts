@@ -376,19 +376,19 @@ export default class Anime4K_Upscale_Deblur_Original_x2 extends Anime4KShader {
   private program_3_u_texture_size_location: WebGLUniformLocation | null;
   private program_4_u_texture_size_location: WebGLUniformLocation | null;
   private program_5_u_texture_size_location: WebGLUniformLocation | null;
-  private program_0_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_1_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_1_LINELUMA_TextureLocation: WebGLUniformLocation | null
-  private program_2_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_2_LUMAD_TextureLocation: WebGLUniformLocation | null
-  private program_3_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_3_LUMAD_TextureLocation: WebGLUniformLocation | null
-  private program_4_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_4_LUMAD_TextureLocation: WebGLUniformLocation | null
-  private program_4_LUMAMM_TextureLocation: WebGLUniformLocation | null
-  private program_5_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_5_LUMAD_TextureLocation: WebGLUniformLocation | null
-  private program_5_LUMAMM_TextureLocation: WebGLUniformLocation | null
+  private program_0_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_1_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_1_LINELUMA_TextureLocation: WebGLUniformLocation | null;
+  private program_2_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_2_LUMAD_TextureLocation: WebGLUniformLocation | null;
+  private program_3_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_3_LUMAD_TextureLocation: WebGLUniformLocation | null;
+  private program_4_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_4_LUMAD_TextureLocation: WebGLUniformLocation | null;
+  private program_4_LUMAMM_TextureLocation: WebGLUniformLocation | null;
+  private program_5_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_5_LUMAD_TextureLocation: WebGLUniformLocation | null;
+  private program_5_LUMAMM_TextureLocation: WebGLUniformLocation | null;
   private program_0_position_buffer: WebGLBuffer | null;
   private program_1_position_buffer: WebGLBuffer | null;
   private program_2_position_buffer: WebGLBuffer | null;
@@ -460,19 +460,19 @@ export default class Anime4K_Upscale_Deblur_Original_x2 extends Anime4KShader {
     this.program_3_u_texture_size_location = gl.getUniformLocation(this.program_3, "u_texture_size");
     this.program_4_u_texture_size_location = gl.getUniformLocation(this.program_4, "u_texture_size");
     this.program_5_u_texture_size_location = gl.getUniformLocation(this.program_5, "u_texture_size");
-    this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN")
-    this.program_1_MAIN_TextureLocation = gl.getUniformLocation(this.program_1, "MAIN")
-    this.program_1_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_1, "LINELUMA")
-    this.program_2_MAIN_TextureLocation = gl.getUniformLocation(this.program_2, "MAIN")
-    this.program_2_LUMAD_TextureLocation = gl.getUniformLocation(this.program_2, "LUMAD")
-    this.program_3_MAIN_TextureLocation = gl.getUniformLocation(this.program_3, "MAIN")
-    this.program_3_LUMAD_TextureLocation = gl.getUniformLocation(this.program_3, "LUMAD")
-    this.program_4_MAIN_TextureLocation = gl.getUniformLocation(this.program_4, "MAIN")
-    this.program_4_LUMAD_TextureLocation = gl.getUniformLocation(this.program_4, "LUMAD")
-    this.program_4_LUMAMM_TextureLocation = gl.getUniformLocation(this.program_4, "LUMAMM")
-    this.program_5_MAIN_TextureLocation = gl.getUniformLocation(this.program_5, "MAIN")
-    this.program_5_LUMAD_TextureLocation = gl.getUniformLocation(this.program_5, "LUMAD")
-    this.program_5_LUMAMM_TextureLocation = gl.getUniformLocation(this.program_5, "LUMAMM")
+    this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN");
+    this.program_1_MAIN_TextureLocation = gl.getUniformLocation(this.program_1, "MAIN");
+    this.program_1_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_1, "LINELUMA");
+    this.program_2_MAIN_TextureLocation = gl.getUniformLocation(this.program_2, "MAIN");
+    this.program_2_LUMAD_TextureLocation = gl.getUniformLocation(this.program_2, "LUMAD");
+    this.program_3_MAIN_TextureLocation = gl.getUniformLocation(this.program_3, "MAIN");
+    this.program_3_LUMAD_TextureLocation = gl.getUniformLocation(this.program_3, "LUMAD");
+    this.program_4_MAIN_TextureLocation = gl.getUniformLocation(this.program_4, "MAIN");
+    this.program_4_LUMAD_TextureLocation = gl.getUniformLocation(this.program_4, "LUMAD");
+    this.program_4_LUMAMM_TextureLocation = gl.getUniformLocation(this.program_4, "LUMAMM");
+    this.program_5_MAIN_TextureLocation = gl.getUniformLocation(this.program_5, "MAIN");
+    this.program_5_LUMAD_TextureLocation = gl.getUniformLocation(this.program_5, "LUMAD");
+    this.program_5_LUMAMM_TextureLocation = gl.getUniformLocation(this.program_5, "LUMAMM");
     this.program_0_position_buffer = null;
     this.program_1_position_buffer = null;
     this.program_2_position_buffer = null;

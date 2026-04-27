@@ -347,17 +347,17 @@ export default class Anime4K_Thin_VeryFast extends Anime4KShader {
   private program_5_u_texture_size_location: WebGLUniformLocation | null;
   private program_6_u_texture_size_location: WebGLUniformLocation | null;
   private program_7_u_texture_size_location: WebGLUniformLocation | null;
-  private program_0_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_1_LINELUMA_TextureLocation: WebGLUniformLocation | null
-  private program_2_LINESOBEL_TextureLocation: WebGLUniformLocation | null
-  private program_3_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_3_LINESOBEL_TextureLocation: WebGLUniformLocation | null
-  private program_4_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_4_LINESOBEL_TextureLocation: WebGLUniformLocation | null
-  private program_5_LINESOBEL_TextureLocation: WebGLUniformLocation | null
-  private program_6_LINESOBEL_TextureLocation: WebGLUniformLocation | null
-  private program_7_MAIN_TextureLocation: WebGLUniformLocation | null
-  private program_7_LINESOBEL_TextureLocation: WebGLUniformLocation | null
+  private program_0_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_1_LINELUMA_TextureLocation: WebGLUniformLocation | null;
+  private program_2_LINESOBEL_TextureLocation: WebGLUniformLocation | null;
+  private program_3_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_3_LINESOBEL_TextureLocation: WebGLUniformLocation | null;
+  private program_4_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_4_LINESOBEL_TextureLocation: WebGLUniformLocation | null;
+  private program_5_LINESOBEL_TextureLocation: WebGLUniformLocation | null;
+  private program_6_LINESOBEL_TextureLocation: WebGLUniformLocation | null;
+  private program_7_MAIN_TextureLocation: WebGLUniformLocation | null;
+  private program_7_LINESOBEL_TextureLocation: WebGLUniformLocation | null;
   private program_0_position_buffer: WebGLBuffer | null;
   private program_1_position_buffer: WebGLBuffer | null;
   private program_2_position_buffer: WebGLBuffer | null;
@@ -451,17 +451,17 @@ export default class Anime4K_Thin_VeryFast extends Anime4KShader {
     this.program_5_u_texture_size_location = gl.getUniformLocation(this.program_5, "u_texture_size");
     this.program_6_u_texture_size_location = gl.getUniformLocation(this.program_6, "u_texture_size");
     this.program_7_u_texture_size_location = gl.getUniformLocation(this.program_7, "u_texture_size");
-    this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN")
-    this.program_1_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_1, "LINELUMA")
-    this.program_2_LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_2, "LINESOBEL")
-    this.program_3_MAIN_TextureLocation = gl.getUniformLocation(this.program_3, "MAIN")
-    this.program_3_LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_3, "LINESOBEL")
-    this.program_4_MAIN_TextureLocation = gl.getUniformLocation(this.program_4, "MAIN")
-    this.program_4_LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_4, "LINESOBEL")
-    this.program_5_LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_5, "LINESOBEL")
-    this.program_6_LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_6, "LINESOBEL")
-    this.program_7_MAIN_TextureLocation = gl.getUniformLocation(this.program_7, "MAIN")
-    this.program_7_LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_7, "LINESOBEL")
+    this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN");
+    this.program_1_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_1, "LINELUMA");
+    this.program_2_LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_2, "LINESOBEL");
+    this.program_3_MAIN_TextureLocation = gl.getUniformLocation(this.program_3, "MAIN");
+    this.program_3_LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_3, "LINESOBEL");
+    this.program_4_MAIN_TextureLocation = gl.getUniformLocation(this.program_4, "MAIN");
+    this.program_4_LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_4, "LINESOBEL");
+    this.program_5_LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_5, "LINESOBEL");
+    this.program_6_LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_6, "LINESOBEL");
+    this.program_7_MAIN_TextureLocation = gl.getUniformLocation(this.program_7, "MAIN");
+    this.program_7_LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_7, "LINESOBEL");
     this.program_0_position_buffer = null;
     this.program_1_position_buffer = null;
     this.program_2_position_buffer = null;
