@@ -204,6 +204,35 @@ export default class Anime4K_Denoise_Bilateral_Median extends Anime4KShader {
     this.program_1_position_buffer = null;
   }
 
+  public destroy() {
+    const gl = this.gl;
+    if (this.texcoordBuffer != null) {
+      gl.deleteBuffer(this.texcoordBuffer);
+    }
+    {
+      if (this.program_0_intermediate_texture != null) {
+        gl.deleteTexture(this.program_0_intermediate_texture);
+      }
+      if (this.program_0_position_buffer != null) {
+        gl.deleteBuffer(this.program_0_position_buffer);
+      }
+      if (this.program_0 != null) {
+        gl.deleteProgram(this.program_0);
+      }
+    }
+    {
+      if (this.program_1_intermediate_texture != null) {
+        gl.deleteTexture(this.program_1_intermediate_texture);
+      }
+      if (this.program_1_position_buffer != null) {
+        gl.deleteBuffer(this.program_1_position_buffer);
+      }
+      if (this.program_1 != null) {
+        gl.deleteProgram(this.program_1);
+      }
+    }
+  }
+
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {
     const gl = this.gl;
     const texcoordBuffer = this.texcoordBuffer;

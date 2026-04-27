@@ -121,6 +121,24 @@ export default class Anime4K_Denoise_Bilateral_Mean extends Anime4KShader {
     this.program_0_position_buffer = null;
   }
 
+  public destroy() {
+    const gl = this.gl;
+    if (this.texcoordBuffer != null) {
+      gl.deleteBuffer(this.texcoordBuffer);
+    }
+    {
+      if (this.program_0_intermediate_texture != null) {
+        gl.deleteTexture(this.program_0_intermediate_texture);
+      }
+      if (this.program_0_position_buffer != null) {
+        gl.deleteBuffer(this.program_0_position_buffer);
+      }
+      if (this.program_0 != null) {
+        gl.deleteProgram(this.program_0);
+      }
+    }
+  }
+
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {
     const gl = this.gl;
     const texcoordBuffer = this.texcoordBuffer;

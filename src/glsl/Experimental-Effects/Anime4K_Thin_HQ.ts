@@ -472,6 +472,101 @@ export default class Anime4K_Thin_HQ extends Anime4KShader {
     this.program_7_position_buffer = null;
   }
 
+  public destroy() {
+    const gl = this.gl;
+    if (this.texcoordBuffer != null) {
+      gl.deleteBuffer(this.texcoordBuffer);
+    }
+    {
+      if (this.program_0_intermediate_texture != null) {
+        gl.deleteTexture(this.program_0_intermediate_texture);
+      }
+      if (this.program_0_position_buffer != null) {
+        gl.deleteBuffer(this.program_0_position_buffer);
+      }
+      if (this.program_0 != null) {
+        gl.deleteProgram(this.program_0);
+      }
+    }
+    {
+      if (this.program_1_intermediate_texture != null) {
+        gl.deleteTexture(this.program_1_intermediate_texture);
+      }
+      if (this.program_1_position_buffer != null) {
+        gl.deleteBuffer(this.program_1_position_buffer);
+      }
+      if (this.program_1 != null) {
+        gl.deleteProgram(this.program_1);
+      }
+    }
+    {
+      if (this.program_2_intermediate_texture != null) {
+        gl.deleteTexture(this.program_2_intermediate_texture);
+      }
+      if (this.program_2_position_buffer != null) {
+        gl.deleteBuffer(this.program_2_position_buffer);
+      }
+      if (this.program_2 != null) {
+        gl.deleteProgram(this.program_2);
+      }
+    }
+    {
+      if (this.program_3_intermediate_texture != null) {
+        gl.deleteTexture(this.program_3_intermediate_texture);
+      }
+      if (this.program_3_position_buffer != null) {
+        gl.deleteBuffer(this.program_3_position_buffer);
+      }
+      if (this.program_3 != null) {
+        gl.deleteProgram(this.program_3);
+      }
+    }
+    {
+      if (this.program_4_intermediate_texture != null) {
+        gl.deleteTexture(this.program_4_intermediate_texture);
+      }
+      if (this.program_4_position_buffer != null) {
+        gl.deleteBuffer(this.program_4_position_buffer);
+      }
+      if (this.program_4 != null) {
+        gl.deleteProgram(this.program_4);
+      }
+    }
+    {
+      if (this.program_5_intermediate_texture != null) {
+        gl.deleteTexture(this.program_5_intermediate_texture);
+      }
+      if (this.program_5_position_buffer != null) {
+        gl.deleteBuffer(this.program_5_position_buffer);
+      }
+      if (this.program_5 != null) {
+        gl.deleteProgram(this.program_5);
+      }
+    }
+    {
+      if (this.program_6_intermediate_texture != null) {
+        gl.deleteTexture(this.program_6_intermediate_texture);
+      }
+      if (this.program_6_position_buffer != null) {
+        gl.deleteBuffer(this.program_6_position_buffer);
+      }
+      if (this.program_6 != null) {
+        gl.deleteProgram(this.program_6);
+      }
+    }
+    {
+      if (this.program_7_intermediate_texture != null) {
+        gl.deleteTexture(this.program_7_intermediate_texture);
+      }
+      if (this.program_7_position_buffer != null) {
+        gl.deleteBuffer(this.program_7_position_buffer);
+      }
+      if (this.program_7 != null) {
+        gl.deleteProgram(this.program_7);
+      }
+    }
+  }
+
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {
     const gl = this.gl;
     const texcoordBuffer = this.texcoordBuffer;

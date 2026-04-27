@@ -261,6 +261,21 @@ def generateHook(programs: list[Program], hook: str):
 }}
 """.strip() for index, program in enumerate(programs) if program.hook == hook])
 
+def generateDestroy(programs: list[Program]):
+  return '\n'.join([f"""
+{{
+  if (this.program_{index}_intermediate_texture != null) {{
+    gl.deleteTexture(this.program_{index}_intermediate_texture);
+  }}
+  if (this.program_{index}_position_buffer != null) {{
+    gl.deleteBuffer(this.program_{index}_position_buffer);
+  }}
+  if (this.program_{index} != null) {{
+    gl.deleteProgram(this.program_{index});
+  }}
+}}
+""".strip() for index in range(len(programs))])
+
 if __name__ == '__main__':
   parser = argparse.ArgumentParser(description=('Anime4K.js fragment shader generator'))
 
@@ -360,6 +375,9 @@ if __name__ == '__main__':
     webgl_program_u_texture_location_assign = '\n'.join(['\n'.join([ f'this.program_{index}_{bind}_TextureLocation = gl.getUniformLocation(this.program_{index}, "{bind}");' for bind in program.get_bind()]) for index, program in enumerate(programs)])
     webgl_program_position_buffer_assign = '\n'.join([ f'this.program_{index}_position_buffer = null;' for index in range(len(programs)) ])
 
+    webgl_program_intermediate_texture_delete = '\n'.join([ f'gl.deleteTexture(this.program_{index}_intermediate_texture);' for index in range(len(programs)) ])
+    webgl_program_position_buffer_delete = '\n'.join([ f'gl.deleteBuffer(this.program_{index}_position_buffer);' for index in range(len(programs)) ])
+
     webgl_program_MAIN = generateHook(programs, 'MAIN')
     webgl_program_PREKERNEL = generateHook(programs, 'PREKERNEL')
 
@@ -393,6 +411,14 @@ export default class {outfile.stem.replace('+', '_')} extends Anime4KShader {{
 {indent(webgl_program_u_texture_size_location_assign, '    ')}
 {indent(webgl_program_u_texture_location_assign, '    ')}
 {indent(webgl_program_position_buffer_assign, '    ')}
+  }}
+
+  public destroy() {{
+    const gl = this.gl;
+    if (this.texcoordBuffer != null) {{
+      gl.deleteBuffer(this.texcoordBuffer);
+    }}
+{indent(generateDestroy(programs), '    ')}
   }}
 
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {{

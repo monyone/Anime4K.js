@@ -26,6 +26,8 @@ export const createProgram = (gl: WebGLRenderingContext, vertexShader: WebGLShad
   gl.attachShader(program, fragmentShader);
   gl.linkProgram(program);
   if (gl.getProgramParameter(program, gl.LINK_STATUS)) {
+    gl.deleteShader(vertexShader);
+    gl.deleteShader(fragmentShader);
     return program;
   }
 

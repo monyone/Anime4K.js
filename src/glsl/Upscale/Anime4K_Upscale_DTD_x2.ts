@@ -1211,6 +1211,211 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
     this.program_17_position_buffer = null;
   }
 
+  public destroy() {
+    const gl = this.gl;
+    if (this.texcoordBuffer != null) {
+      gl.deleteBuffer(this.texcoordBuffer);
+    }
+    {
+      if (this.program_0_intermediate_texture != null) {
+        gl.deleteTexture(this.program_0_intermediate_texture);
+      }
+      if (this.program_0_position_buffer != null) {
+        gl.deleteBuffer(this.program_0_position_buffer);
+      }
+      if (this.program_0 != null) {
+        gl.deleteProgram(this.program_0);
+      }
+    }
+    {
+      if (this.program_1_intermediate_texture != null) {
+        gl.deleteTexture(this.program_1_intermediate_texture);
+      }
+      if (this.program_1_position_buffer != null) {
+        gl.deleteBuffer(this.program_1_position_buffer);
+      }
+      if (this.program_1 != null) {
+        gl.deleteProgram(this.program_1);
+      }
+    }
+    {
+      if (this.program_2_intermediate_texture != null) {
+        gl.deleteTexture(this.program_2_intermediate_texture);
+      }
+      if (this.program_2_position_buffer != null) {
+        gl.deleteBuffer(this.program_2_position_buffer);
+      }
+      if (this.program_2 != null) {
+        gl.deleteProgram(this.program_2);
+      }
+    }
+    {
+      if (this.program_3_intermediate_texture != null) {
+        gl.deleteTexture(this.program_3_intermediate_texture);
+      }
+      if (this.program_3_position_buffer != null) {
+        gl.deleteBuffer(this.program_3_position_buffer);
+      }
+      if (this.program_3 != null) {
+        gl.deleteProgram(this.program_3);
+      }
+    }
+    {
+      if (this.program_4_intermediate_texture != null) {
+        gl.deleteTexture(this.program_4_intermediate_texture);
+      }
+      if (this.program_4_position_buffer != null) {
+        gl.deleteBuffer(this.program_4_position_buffer);
+      }
+      if (this.program_4 != null) {
+        gl.deleteProgram(this.program_4);
+      }
+    }
+    {
+      if (this.program_5_intermediate_texture != null) {
+        gl.deleteTexture(this.program_5_intermediate_texture);
+      }
+      if (this.program_5_position_buffer != null) {
+        gl.deleteBuffer(this.program_5_position_buffer);
+      }
+      if (this.program_5 != null) {
+        gl.deleteProgram(this.program_5);
+      }
+    }
+    {
+      if (this.program_6_intermediate_texture != null) {
+        gl.deleteTexture(this.program_6_intermediate_texture);
+      }
+      if (this.program_6_position_buffer != null) {
+        gl.deleteBuffer(this.program_6_position_buffer);
+      }
+      if (this.program_6 != null) {
+        gl.deleteProgram(this.program_6);
+      }
+    }
+    {
+      if (this.program_7_intermediate_texture != null) {
+        gl.deleteTexture(this.program_7_intermediate_texture);
+      }
+      if (this.program_7_position_buffer != null) {
+        gl.deleteBuffer(this.program_7_position_buffer);
+      }
+      if (this.program_7 != null) {
+        gl.deleteProgram(this.program_7);
+      }
+    }
+    {
+      if (this.program_8_intermediate_texture != null) {
+        gl.deleteTexture(this.program_8_intermediate_texture);
+      }
+      if (this.program_8_position_buffer != null) {
+        gl.deleteBuffer(this.program_8_position_buffer);
+      }
+      if (this.program_8 != null) {
+        gl.deleteProgram(this.program_8);
+      }
+    }
+    {
+      if (this.program_9_intermediate_texture != null) {
+        gl.deleteTexture(this.program_9_intermediate_texture);
+      }
+      if (this.program_9_position_buffer != null) {
+        gl.deleteBuffer(this.program_9_position_buffer);
+      }
+      if (this.program_9 != null) {
+        gl.deleteProgram(this.program_9);
+      }
+    }
+    {
+      if (this.program_10_intermediate_texture != null) {
+        gl.deleteTexture(this.program_10_intermediate_texture);
+      }
+      if (this.program_10_position_buffer != null) {
+        gl.deleteBuffer(this.program_10_position_buffer);
+      }
+      if (this.program_10 != null) {
+        gl.deleteProgram(this.program_10);
+      }
+    }
+    {
+      if (this.program_11_intermediate_texture != null) {
+        gl.deleteTexture(this.program_11_intermediate_texture);
+      }
+      if (this.program_11_position_buffer != null) {
+        gl.deleteBuffer(this.program_11_position_buffer);
+      }
+      if (this.program_11 != null) {
+        gl.deleteProgram(this.program_11);
+      }
+    }
+    {
+      if (this.program_12_intermediate_texture != null) {
+        gl.deleteTexture(this.program_12_intermediate_texture);
+      }
+      if (this.program_12_position_buffer != null) {
+        gl.deleteBuffer(this.program_12_position_buffer);
+      }
+      if (this.program_12 != null) {
+        gl.deleteProgram(this.program_12);
+      }
+    }
+    {
+      if (this.program_13_intermediate_texture != null) {
+        gl.deleteTexture(this.program_13_intermediate_texture);
+      }
+      if (this.program_13_position_buffer != null) {
+        gl.deleteBuffer(this.program_13_position_buffer);
+      }
+      if (this.program_13 != null) {
+        gl.deleteProgram(this.program_13);
+      }
+    }
+    {
+      if (this.program_14_intermediate_texture != null) {
+        gl.deleteTexture(this.program_14_intermediate_texture);
+      }
+      if (this.program_14_position_buffer != null) {
+        gl.deleteBuffer(this.program_14_position_buffer);
+      }
+      if (this.program_14 != null) {
+        gl.deleteProgram(this.program_14);
+      }
+    }
+    {
+      if (this.program_15_intermediate_texture != null) {
+        gl.deleteTexture(this.program_15_intermediate_texture);
+      }
+      if (this.program_15_position_buffer != null) {
+        gl.deleteBuffer(this.program_15_position_buffer);
+      }
+      if (this.program_15 != null) {
+        gl.deleteProgram(this.program_15);
+      }
+    }
+    {
+      if (this.program_16_intermediate_texture != null) {
+        gl.deleteTexture(this.program_16_intermediate_texture);
+      }
+      if (this.program_16_position_buffer != null) {
+        gl.deleteBuffer(this.program_16_position_buffer);
+      }
+      if (this.program_16 != null) {
+        gl.deleteProgram(this.program_16);
+      }
+    }
+    {
+      if (this.program_17_intermediate_texture != null) {
+        gl.deleteTexture(this.program_17_intermediate_texture);
+      }
+      if (this.program_17_position_buffer != null) {
+        gl.deleteBuffer(this.program_17_position_buffer);
+      }
+      if (this.program_17 != null) {
+        gl.deleteProgram(this.program_17);
+      }
+    }
+  }
+
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {
     const gl = this.gl;
     const texcoordBuffer = this.texcoordBuffer;

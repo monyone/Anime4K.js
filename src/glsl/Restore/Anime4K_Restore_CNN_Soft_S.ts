@@ -294,6 +294,57 @@ export default class Anime4K_Restore_CNN_Soft_S extends Anime4KShader {
     this.program_3_position_buffer = null;
   }
 
+  public destroy() {
+    const gl = this.gl;
+    if (this.texcoordBuffer != null) {
+      gl.deleteBuffer(this.texcoordBuffer);
+    }
+    {
+      if (this.program_0_intermediate_texture != null) {
+        gl.deleteTexture(this.program_0_intermediate_texture);
+      }
+      if (this.program_0_position_buffer != null) {
+        gl.deleteBuffer(this.program_0_position_buffer);
+      }
+      if (this.program_0 != null) {
+        gl.deleteProgram(this.program_0);
+      }
+    }
+    {
+      if (this.program_1_intermediate_texture != null) {
+        gl.deleteTexture(this.program_1_intermediate_texture);
+      }
+      if (this.program_1_position_buffer != null) {
+        gl.deleteBuffer(this.program_1_position_buffer);
+      }
+      if (this.program_1 != null) {
+        gl.deleteProgram(this.program_1);
+      }
+    }
+    {
+      if (this.program_2_intermediate_texture != null) {
+        gl.deleteTexture(this.program_2_intermediate_texture);
+      }
+      if (this.program_2_position_buffer != null) {
+        gl.deleteBuffer(this.program_2_position_buffer);
+      }
+      if (this.program_2 != null) {
+        gl.deleteProgram(this.program_2);
+      }
+    }
+    {
+      if (this.program_3_intermediate_texture != null) {
+        gl.deleteTexture(this.program_3_intermediate_texture);
+      }
+      if (this.program_3_position_buffer != null) {
+        gl.deleteBuffer(this.program_3_position_buffer);
+      }
+      if (this.program_3 != null) {
+        gl.deleteProgram(this.program_3);
+      }
+    }
+  }
+
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {
     const gl = this.gl;
     const texcoordBuffer = this.texcoordBuffer;

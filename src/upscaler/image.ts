@@ -129,6 +129,7 @@ export default class VideoUpscaler {
     }
   }
   public detachSource() {
+    (this.programs ?? []).forEach((program) => program.destroy());
     this.gl?.deleteFramebuffer(this.framebuffer);
     this.gl?.deleteTexture(this.in_texture);
     this.gl?.deleteTexture(this.native_texture);
