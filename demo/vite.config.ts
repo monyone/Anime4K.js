@@ -2,8 +2,6 @@ import { resolve } from 'path'
 import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
-import { rename, rmdir } from 'fs/promises'
-
 const entryPages = ['index.html', 'video.html', 'image.html']
 
 function flattenEntryHtml(): Plugin {
@@ -19,19 +17,11 @@ function flattenEntryHtml(): Plugin {
         next()
       })
     },
-    closeBundle: async () => {
-      const outDir = resolve(__dirname, '../docs')
-      const entryDir = resolve(outDir, 'entry')
-      for (const file of entryPages) {
-        await rename(resolve(entryDir, file), resolve(outDir, file))
-      }
-      await rmdir(entryDir)
-    },
   }
 }
 
-export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? '/Anime4K.js/' : '/',
+export default defineConfig({
+  base: './',
   plugins: [react(), tailwindcss(), flattenEntryHtml()],
   build: {
     outDir: '../docs',
@@ -44,4 +34,4 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
-}));
+});
