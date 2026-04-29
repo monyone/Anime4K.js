@@ -131,6 +131,9 @@ export default class ImageUpscaler {
   }
   public detachSource() {
     (this.programs ?? []).forEach((program) => program.destroy());
+    this.passthrough?.destroy();
+    this.passthrough = null;
+
     this.gl?.deleteFramebuffer(this.framebuffer);
     this.gl?.deleteTexture(this.in_texture);
     this.gl?.deleteTexture(this.native_texture);

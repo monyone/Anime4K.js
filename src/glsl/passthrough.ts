@@ -47,6 +47,10 @@ export default class PassThrough {
   private sourceTextureLocation: WebGLUniformLocation | null;
   private aPositionLocation: number;
   private aTextureCoordLocation: number;
+  private texcoordBuffer: WebGLBuffer | null;
+  private positionBuffer: WebGLBuffer | null = null;
+  private cachedWidth: number | null = null;
+  private cachedHeight: number | null = null;
 
   public constructor(gl: WebGLRenderingContext) {
     this.gl = gl;
@@ -54,6 +58,7 @@ export default class PassThrough {
       createVertexShader(gl, flip)!,
       createFragmentShader(gl, pass)!,
     )!;
+    this.texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1);
     this.resolutionLocation = gl.getUniformLocation(this.program, "u_resolution");
     this.sourceTextureLocation = gl.getUniformLocation(this.program, "u_image");
     this.aPositionLocation = gl.getAttribLocation(this.program, "a_position");
@@ -62,8 +67,21 @@ export default class PassThrough {
     gl.enableVertexAttribArray(this.aTextureCoordLocation);
   }
 
+  public destroy() {
+    const gl = this.gl;
+    if (this.texcoordBuffer != null) {
+      gl.deleteBuffer(this.texcoordBuffer);
+    }
+    if (this.positionBuffer != null) {
+      gl.deleteBuffer(this.positionBuffer);
+    }
+  }
+
   public render(texture: TextureData, out_width: number, out_height: number): void {
     const gl = this.gl;
+
+    const texcoordBuffer = this.texcoordBuffer;
+    if (!texcoordBuffer) { return; }
 
     const { texture: in_texture } = texture;
 
@@ -75,8 +93,13 @@ export default class PassThrough {
       gl.bindTexture(gl.TEXTURE_2D, in_texture);
 
       gl.useProgram(this.program);
-      const positionBuffer = createRectangleBuffer(gl, 0, 0, out_width, out_height)!;
-      const texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1)!;
+      if (this.positionBuffer == null) {
+        this.positionBuffer = createRectangleBuffer(gl, 0, 0, out_width, out_height)!;
+      } else if (this.cachedWidth !== out_width || this.cachedHeight !== out_height) {
+        gl.deleteBuffer(this.positionBuffer);
+        this.positionBuffer = createRectangleBuffer(gl, 0, 0, out_width, out_height)!;
+      }
+      const positionBuffer = this.positionBuffer!;
 
       enableVertexAttribArray(gl, this.aPositionLocation, positionBuffer);
       enableVertexAttribArray(gl, this.aTextureCoordLocation, texcoordBuffer);
@@ -84,6 +107,9 @@ export default class PassThrough {
       gl.uniform1i(this.sourceTextureLocation, 0);
 
       gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+      this.cachedWidth = out_width;
+      this.cachedHeight = out_height;
     }
   }
 }
