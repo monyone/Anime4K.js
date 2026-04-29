@@ -310,7 +310,7 @@ const textures = new Map<string, ResolutionData>([
   ['OUTPUT', {{ width: 1, height: 1 }}],
 ]);
 
-{indent(generateResolutionEach(programs), '  ')}
+{indent(generateResolutionEach([program for program in programs if program.hook == 'MAIN']), '  ')}
 
 const width = textures.get('MAIN')?.width ?? 1;
 const height = textures.get('MAIN')?.height ?? 1;

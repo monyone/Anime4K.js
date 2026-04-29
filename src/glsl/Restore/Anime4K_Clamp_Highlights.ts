@@ -285,19 +285,6 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
           if (!STATSMAX) { return [1, 1] as [number, number]; }
           textures.set('STATSMAX', { width: (MAIN.width), height: (MAIN.height)});
       }
-      {
-          const HOOKED = textures.get('PREKERNEL');
-          if (!HOOKED) { return [1, 1] as [number, number]; }
-          const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return [1, 1] as [number, number]; }
-          const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return [1, 1] as [number, number]; }
-          const PREKERNEL = textures.get('PREKERNEL');
-          if (!PREKERNEL) { return [1, 1] as [number, number]; }
-          const STATSMAX = textures.get('STATSMAX');
-          if (!STATSMAX) { return [1, 1] as [number, number]; }
-          textures.set('PREKERNEL', { width: (PREKERNEL.width), height: (PREKERNEL.height)});
-      }
 
     const width = textures.get('MAIN')?.width ?? 1;
     const height = textures.get('MAIN')?.height ?? 1;
