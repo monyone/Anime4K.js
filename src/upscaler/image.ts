@@ -10,7 +10,7 @@ export default class ImageUpscaler {
   private canvas: HTMLCanvasElement | null = null;
   private gl: WebGLRenderingContext | null = null;
 
-  private scale: number;
+  private scale: number | null = null;
   private config: Anime4KShaderConstructor[];
 
   private textures = new Map<string, TextureData>();
@@ -23,9 +23,8 @@ export default class ImageUpscaler {
 
   private supported: boolean;
 
-  public constructor(upscale: number, config: Anime4KShaderConstructor[]) {
+  public constructor(config: Anime4KShaderConstructor[]) {
     this.supported = ImageUpscaler.isSupported();
-    this.scale = upscale;
     this.config = config;
   }
 
@@ -123,6 +122,7 @@ export default class ImageUpscaler {
       this.framebuffer = gl.createFramebuffer()!;
 
       this.programs = this.config.map((constuctor) => new constuctor(gl));
+      this.scale = null;
       this.passthrough = new PassThrough(gl);
       this.adjustCanvasSize();
     } else {
@@ -148,6 +148,10 @@ export default class ImageUpscaler {
   private adjustCanvasSize() {
     if (!this.source) { return; }
     if (!this.canvas) { return; }
+
+    if (this.scale == null) {
+      this.scale = (this.programs ?? []).reduce((scale, program) => scale * program.magnification(), 1);
+    }
 
     const in_width = this.source instanceof ImageBitmap ? this.source.width : this.source instanceof HTMLVideoElement ? this.source.videoWidth : this.source instanceof (window.VideoFrame ?? empty) ? this.source.displayWidth : this.source.width;
     const in_height = this.source instanceof ImageBitmap ? this.source.height : this.source instanceof HTMLVideoElement ? this.source.videoHeight : this.source instanceof (window.VideoFrame ?? empty) ? this.source.displayHeight : this.source.height;

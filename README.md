@@ -31,7 +31,7 @@ yarn build
 ### Image Upscale
 
 ```javascript
-const upscaler = new Anime4KJS.ImageUpscaler(2 /* desired upscale factor */, Anime4KJS.ANIME4KJS_SIMPLE_M_2X /* PROFILE */);
+const upscaler = new Anime4KJS.ImageUpscaler(Anime4KJS.ANIME4KJS_SIMPLE_M_2X /* PROFILE */);
 upscaler.attachSource(textureSource, canvasElement);
 upscaler.upscale(); // do upscale
 ```
@@ -39,7 +39,7 @@ upscaler.upscale(); // do upscale
 ### Video Upscale
 
 ```javascript
-const upscaler = new Anime4KJS.VideoUpscaler(2 /* desired upscale factor */, Anime4KJS.ANIME4KJS_SIMPLE_M_2X /* PROFILE */);
+const upscaler = new Anime4KJS.VideoUpscaler(Anime4KJS.ANIME4KJS_SIMPLE_M_2X /* PROFILE */);
 upscaler.attachVideo(videoElement, canvasElement);
 upscaler.start(); // start upscale
 ```

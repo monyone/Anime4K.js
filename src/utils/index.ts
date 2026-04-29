@@ -86,3 +86,8 @@ export type TextureData = {
   width: number;
   height: number;
 }
+
+export type ResolutionData = {
+  width: number;
+  height: number;
+}

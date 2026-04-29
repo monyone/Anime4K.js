@@ -22,7 +22,7 @@
 // SOFTWARE.
 
 import Anime4KShader from "../shader";
-import { createVertexShader, createFragmentShader, createRectangleBuffer, createTexture, createProgram, enableVertexAttribArray, TextureData, fillEmptyTexture } from "../../utils/index";
+import { createVertexShader, createFragmentShader, createRectangleBuffer, createTexture, createProgram, enableVertexAttribArray, type TextureData, type ResolutionData, fillEmptyTexture } from "../../utils/index";
 
 const vertex_shader = `
 precision mediump float;
@@ -122,11 +122,15 @@ export default class Anime4K_AutoDownscalePre_x4 extends Anime4KShader {
     }
   }
 
+  public magnification() {
+    return 1;
+  }
+
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {
     const gl = this.gl;
     const texcoordBuffer = this.texcoordBuffer;
     if (!texcoordBuffer) { return; }
-        {
+    {
       const HOOKED = textures.get('MAIN');
       if (!HOOKED) { return; }
       const MAIN = textures.get('MAIN');

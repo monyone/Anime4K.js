@@ -27,7 +27,7 @@ export default class VideoUpscaler {
   private canvas: HTMLCanvasElement | null = null;
   private gl: WebGLRenderingContext | null = null;
 
-  private scale: number;
+  private scale: number | null = null;
   private config: Anime4KShaderConstructor[];
 
   private textures = new Map<string, TextureData>();
@@ -46,9 +46,8 @@ export default class VideoUpscaler {
   private fps: number | undefined;
   private supported: boolean;
 
-  public constructor(upscale: number, config: Anime4KShaderConstructor[], fps?: number) {
+  public constructor(config: Anime4KShaderConstructor[], fps?: number) {
     this.supported = VideoUpscaler.isSupported();
-    this.scale = upscale;
     this.config = config;
     this.fps = fps;
   }
@@ -174,6 +173,7 @@ export default class VideoUpscaler {
       this.output_texture = createTexture(gl, gl.LINEAR);
 
       this.programs = this.config.map((constuctor) => new constuctor(gl));
+      this.scale = null;
       this.passthrough = new PassThrough(gl);
       this.adjustCanvasSize();
     } else {
@@ -201,6 +201,10 @@ export default class VideoUpscaler {
   private adjustCanvasSize() {
     if (!this.video) { return; }
     if (!this.canvas) { return; }
+
+    if (this.scale == null) {
+      this.scale = (this.programs ?? []).reduce((scale, program) => scale * program.magnification(), 1);
+    }
 
     const width = this.video.videoWidth * this.scale;
     const height = this.video.videoHeight * this.scale;

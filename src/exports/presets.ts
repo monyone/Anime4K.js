@@ -18,6 +18,10 @@ import Anime4K_Upscale_CNN_x2_UL from '../glsl/Upscale/Anime4K_Upscale_CNN_x2_UL
 import Anime4K_Upscale_CNN_x2_VL from '../glsl/Upscale/Anime4K_Upscale_CNN_x2_VL';
 import { type Anime4KShaderConstructor } from '../glsl/shader';
 
+export const ignoreAutoDownscalePre = (config: Anime4KShaderConstructor[]): Anime4KShaderConstructor[] => {
+  return config.filter((program) => program !== Anime4K_AutoDownscalePre_x2 && program !== Anime4K_AutoDownscalePre_x4);
+}
+
 export const ANIME4K_LOWEREND_MODE_A_FAST: Anime4KShaderConstructor[] = [
   Anime4K_Clamp_Highlights,
   Anime4K_Restore_CNN_M,

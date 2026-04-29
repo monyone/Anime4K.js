@@ -22,7 +22,7 @@
 // SOFTWARE.
 
 import Anime4KShader from "../shader";
-import { createVertexShader, createFragmentShader, createRectangleBuffer, createTexture, createProgram, enableVertexAttribArray, TextureData, fillEmptyTexture } from "../../utils/index";
+import { createVertexShader, createFragmentShader, createRectangleBuffer, createTexture, createProgram, enableVertexAttribArray, type TextureData, type ResolutionData, fillEmptyTexture } from "../../utils/index";
 
 const vertex_shader = `
 precision mediump float;
@@ -756,11 +756,151 @@ export default class Anime4K_Upscale_CNN_x2_M extends Anime4KShader {
     }
   }
 
+  public magnification() {
+    const textures = new Map<string, ResolutionData>([
+      ['MAIN', { width: 1, height: 1 }],
+      ['NATIVE', { width: 1, height: 1 }],
+      ['OUTPUT', { width: 1, height: 1 }],
+    ]);
+
+      {
+          const HOOKED = textures.get('MAIN');
+          if (!HOOKED) { return 1; }
+          const MAIN = textures.get('MAIN');
+          if (!MAIN) { return 1; }
+          const NATIVE = textures.get('NATIVE');
+          if (!NATIVE) { return 1; }
+          const OUTPUT = textures.get('OUTPUT');
+          if (!OUTPUT) { return 1; }
+          textures.set('conv2d_tf', { width: MAIN.width, height: MAIN.height});
+      }
+      {
+          const HOOKED = textures.get('MAIN');
+          if (!HOOKED) { return 1; }
+          const MAIN = textures.get('MAIN');
+          if (!MAIN) { return 1; }
+          const NATIVE = textures.get('NATIVE');
+          if (!NATIVE) { return 1; }
+          const OUTPUT = textures.get('OUTPUT');
+          if (!OUTPUT) { return 1; }
+          const conv2d_tf = textures.get('conv2d_tf');
+          if (!conv2d_tf) { return 1; }
+          textures.set('conv2d_1_tf', { width: conv2d_tf.width, height: conv2d_tf.height});
+      }
+      {
+          const HOOKED = textures.get('MAIN');
+          if (!HOOKED) { return 1; }
+          const MAIN = textures.get('MAIN');
+          if (!MAIN) { return 1; }
+          const NATIVE = textures.get('NATIVE');
+          if (!NATIVE) { return 1; }
+          const OUTPUT = textures.get('OUTPUT');
+          if (!OUTPUT) { return 1; }
+          const conv2d_1_tf = textures.get('conv2d_1_tf');
+          if (!conv2d_1_tf) { return 1; }
+          textures.set('conv2d_2_tf', { width: conv2d_1_tf.width, height: conv2d_1_tf.height});
+      }
+      {
+          const HOOKED = textures.get('MAIN');
+          if (!HOOKED) { return 1; }
+          const MAIN = textures.get('MAIN');
+          if (!MAIN) { return 1; }
+          const NATIVE = textures.get('NATIVE');
+          if (!NATIVE) { return 1; }
+          const OUTPUT = textures.get('OUTPUT');
+          if (!OUTPUT) { return 1; }
+          const conv2d_2_tf = textures.get('conv2d_2_tf');
+          if (!conv2d_2_tf) { return 1; }
+          textures.set('conv2d_3_tf', { width: conv2d_2_tf.width, height: conv2d_2_tf.height});
+      }
+      {
+          const HOOKED = textures.get('MAIN');
+          if (!HOOKED) { return 1; }
+          const MAIN = textures.get('MAIN');
+          if (!MAIN) { return 1; }
+          const NATIVE = textures.get('NATIVE');
+          if (!NATIVE) { return 1; }
+          const OUTPUT = textures.get('OUTPUT');
+          if (!OUTPUT) { return 1; }
+          const conv2d_3_tf = textures.get('conv2d_3_tf');
+          if (!conv2d_3_tf) { return 1; }
+          textures.set('conv2d_4_tf', { width: conv2d_3_tf.width, height: conv2d_3_tf.height});
+      }
+      {
+          const HOOKED = textures.get('MAIN');
+          if (!HOOKED) { return 1; }
+          const MAIN = textures.get('MAIN');
+          if (!MAIN) { return 1; }
+          const NATIVE = textures.get('NATIVE');
+          if (!NATIVE) { return 1; }
+          const OUTPUT = textures.get('OUTPUT');
+          if (!OUTPUT) { return 1; }
+          const conv2d_4_tf = textures.get('conv2d_4_tf');
+          if (!conv2d_4_tf) { return 1; }
+          textures.set('conv2d_5_tf', { width: conv2d_4_tf.width, height: conv2d_4_tf.height});
+      }
+      {
+          const HOOKED = textures.get('MAIN');
+          if (!HOOKED) { return 1; }
+          const MAIN = textures.get('MAIN');
+          if (!MAIN) { return 1; }
+          const NATIVE = textures.get('NATIVE');
+          if (!NATIVE) { return 1; }
+          const OUTPUT = textures.get('OUTPUT');
+          if (!OUTPUT) { return 1; }
+          const conv2d_5_tf = textures.get('conv2d_5_tf');
+          if (!conv2d_5_tf) { return 1; }
+          textures.set('conv2d_6_tf', { width: conv2d_5_tf.width, height: conv2d_5_tf.height});
+      }
+      {
+          const HOOKED = textures.get('MAIN');
+          if (!HOOKED) { return 1; }
+          const MAIN = textures.get('MAIN');
+          if (!MAIN) { return 1; }
+          const NATIVE = textures.get('NATIVE');
+          if (!NATIVE) { return 1; }
+          const OUTPUT = textures.get('OUTPUT');
+          if (!OUTPUT) { return 1; }
+          const conv2d_1_tf = textures.get('conv2d_1_tf');
+          if (!conv2d_1_tf) { return 1; }
+          const conv2d_2_tf = textures.get('conv2d_2_tf');
+          if (!conv2d_2_tf) { return 1; }
+          const conv2d_3_tf = textures.get('conv2d_3_tf');
+          if (!conv2d_3_tf) { return 1; }
+          const conv2d_4_tf = textures.get('conv2d_4_tf');
+          if (!conv2d_4_tf) { return 1; }
+          const conv2d_5_tf = textures.get('conv2d_5_tf');
+          if (!conv2d_5_tf) { return 1; }
+          const conv2d_6_tf = textures.get('conv2d_6_tf');
+          if (!conv2d_6_tf) { return 1; }
+          const conv2d_tf = textures.get('conv2d_tf');
+          if (!conv2d_tf) { return 1; }
+          textures.set('conv2d_last_tf', { width: conv2d_tf.width, height: conv2d_tf.height});
+      }
+      {
+          const HOOKED = textures.get('MAIN');
+          if (!HOOKED) { return 1; }
+          const MAIN = textures.get('MAIN');
+          if (!MAIN) { return 1; }
+          const NATIVE = textures.get('NATIVE');
+          if (!NATIVE) { return 1; }
+          const OUTPUT = textures.get('OUTPUT');
+          if (!OUTPUT) { return 1; }
+          const conv2d_last_tf = textures.get('conv2d_last_tf');
+          if (!conv2d_last_tf) { return 1; }
+          textures.set('MAIN', { width: (conv2d_last_tf.width * 2), height: (conv2d_last_tf.height * 2)});
+      }
+
+    const width = textures.get('MAIN')?.width ?? 1;
+    const height = textures.get('MAIN')?.height ?? 1;
+    return Math.min(width, height);
+  }
+
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {
     const gl = this.gl;
     const texcoordBuffer = this.texcoordBuffer;
     if (!texcoordBuffer) { return; }
-        {
+    {
       const HOOKED = textures.get('MAIN');
       if (!HOOKED) { return; }
       const MAIN = textures.get('MAIN');

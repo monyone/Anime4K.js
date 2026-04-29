@@ -276,6 +276,47 @@ def generateDestroy(programs: list[Program]):
 }}
 """.strip() for index in range(len(programs))])
 
+
+def prepareResolution(program: Program):
+  return f"""
+const HOOKED = textures.get('{program.get_hook()}');
+if (!HOOKED) {{ return 1; }}
+""".strip() + '\n' + '\n'.join([ f"""
+const {bind} = textures.get('{bind}');
+if (!{bind}) {{ return 1; }}
+""".strip() for bind in sorted(list(set(program.get_bind() + [program.get_hook(), 'OUTPUT', 'NATIVE'])))])
+
+def pushOutputResolution(program: Program):
+  return f"""
+textures.set('{program.get_save()}', {{ width: {program.get_width()}, height: {program.get_height()}}});
+""".strip()
+
+def generateResolutionEach(programs: list[Program]):
+  return '\n'.join([f"""
+{{
+{ indent(prepareResolution(program), '    ') }
+{ indent(pushOutputResolution(program), '    ')}
+}}
+""".strip() for program in programs])
+
+def generateResolution(outfile: Path, programs: list[Program]):
+  if outfile.stem in ['Anime4K_AutoDownscalePre_x2', 'Anime4K_AutoDownscalePre_x4']:
+    return 'return 1;'
+
+  return f"""
+const textures = new Map<string, ResolutionData>([
+  ['MAIN', {{ width: 1, height: 1 }}],
+  ['NATIVE', {{ width: 1, height: 1 }}],
+  ['OUTPUT', {{ width: 1, height: 1 }}],
+]);
+
+{indent(generateResolutionEach(programs), '  ')}
+
+const width = textures.get('MAIN')?.width ?? 1;
+const height = textures.get('MAIN')?.height ?? 1;
+return Math.min(width, height);
+""".strip()
+
 if __name__ == '__main__':
   parser = argparse.ArgumentParser(description=('Anime4K.js fragment shader generator'))
 
@@ -349,7 +390,7 @@ if __name__ == '__main__':
 
 '''.lstrip())
     out.write('import Anime4KShader from "../shader";\n')
-    out.write('import { createVertexShader, createFragmentShader, createRectangleBuffer, createTexture, createProgram, enableVertexAttribArray, TextureData, fillEmptyTexture } from "../../utils/index";\n\n')
+    out.write('import { createVertexShader, createFragmentShader, createRectangleBuffer, createTexture, createProgram, enableVertexAttribArray, type TextureData, type ResolutionData, fillEmptyTexture } from "../../utils/index";\n\n')
     out.write(f'const vertex_shader = `{VIRT}`;\n')
     for index, program in enumerate(programs):
       out.write(f'const fragment_{index}_shader = `\n{program}`;\n')
@@ -375,6 +416,7 @@ if __name__ == '__main__':
     webgl_program_u_texture_location_assign = '\n'.join(['\n'.join([ f'this.program_{index}_{bind}_TextureLocation = gl.getUniformLocation(this.program_{index}, "{bind}");' for bind in program.get_bind()]) for index, program in enumerate(programs)])
     webgl_program_position_buffer_assign = '\n'.join([ f'this.program_{index}_position_buffer = null;' for index in range(len(programs)) ])
 
+    webgl_resolution = generateResolution(outfile, programs)
     webgl_program_MAIN = generateHook(programs, 'MAIN')
     webgl_program_PREKERNEL = generateHook(programs, 'PREKERNEL')
 
@@ -418,11 +460,15 @@ export default class {outfile.stem.replace('+', '_')} extends Anime4KShader {{
 {indent(generateDestroy(programs), '    ')}
   }}
 
+  public magnification() {{
+{indent(webgl_resolution, '    ')}
+  }}
+
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {{
     const gl = this.gl;
     const texcoordBuffer = this.texcoordBuffer;
     if (!texcoordBuffer) {{ return; }}
-    {indent(webgl_program_MAIN, '    ')}
+{indent(webgl_program_MAIN, '    ')}
   }}
 
   public hook_PREKERNEL(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {{

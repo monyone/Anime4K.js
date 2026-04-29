@@ -22,7 +22,7 @@
 // SOFTWARE.
 
 import Anime4KShader from "../shader";
-import { createVertexShader, createFragmentShader, createRectangleBuffer, createTexture, createProgram, enableVertexAttribArray, TextureData, fillEmptyTexture } from "../../utils/index";
+import { createVertexShader, createFragmentShader, createRectangleBuffer, createTexture, createProgram, enableVertexAttribArray, type TextureData, type ResolutionData, fillEmptyTexture } from "../../utils/index";
 
 const vertex_shader = `
 precision mediump float;
@@ -254,11 +254,61 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
     }
   }
 
+  public magnification() {
+    const textures = new Map<string, ResolutionData>([
+      ['MAIN', { width: 1, height: 1 }],
+      ['NATIVE', { width: 1, height: 1 }],
+      ['OUTPUT', { width: 1, height: 1 }],
+    ]);
+
+      {
+          const HOOKED = textures.get('MAIN');
+          if (!HOOKED) { return 1; }
+          const MAIN = textures.get('MAIN');
+          if (!MAIN) { return 1; }
+          const NATIVE = textures.get('NATIVE');
+          if (!NATIVE) { return 1; }
+          const OUTPUT = textures.get('OUTPUT');
+          if (!OUTPUT) { return 1; }
+          textures.set('STATSMAX', { width: (MAIN.width), height: (MAIN.height)});
+      }
+      {
+          const HOOKED = textures.get('MAIN');
+          if (!HOOKED) { return 1; }
+          const MAIN = textures.get('MAIN');
+          if (!MAIN) { return 1; }
+          const NATIVE = textures.get('NATIVE');
+          if (!NATIVE) { return 1; }
+          const OUTPUT = textures.get('OUTPUT');
+          if (!OUTPUT) { return 1; }
+          const STATSMAX = textures.get('STATSMAX');
+          if (!STATSMAX) { return 1; }
+          textures.set('STATSMAX', { width: (MAIN.width), height: (MAIN.height)});
+      }
+      {
+          const HOOKED = textures.get('PREKERNEL');
+          if (!HOOKED) { return 1; }
+          const NATIVE = textures.get('NATIVE');
+          if (!NATIVE) { return 1; }
+          const OUTPUT = textures.get('OUTPUT');
+          if (!OUTPUT) { return 1; }
+          const PREKERNEL = textures.get('PREKERNEL');
+          if (!PREKERNEL) { return 1; }
+          const STATSMAX = textures.get('STATSMAX');
+          if (!STATSMAX) { return 1; }
+          textures.set('PREKERNEL', { width: (PREKERNEL.width), height: (PREKERNEL.height)});
+      }
+
+    const width = textures.get('MAIN')?.width ?? 1;
+    const height = textures.get('MAIN')?.height ?? 1;
+    return Math.min(width, height);
+  }
+
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {
     const gl = this.gl;
     const texcoordBuffer = this.texcoordBuffer;
     if (!texcoordBuffer) { return; }
-        {
+    {
       const HOOKED = textures.get('MAIN');
       if (!HOOKED) { return; }
       const MAIN = textures.get('MAIN');
