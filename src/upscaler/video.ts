@@ -27,7 +27,7 @@ export default class VideoUpscaler {
   private canvas: HTMLCanvasElement | null = null;
   private gl: WebGLRenderingContext | null = null;
 
-  private scale: number | null = null;
+  private scale: [number, number] | null = null;
   private config: Anime4KShaderConstructor[];
 
   private textures = new Map<string, TextureData>();
@@ -203,11 +203,17 @@ export default class VideoUpscaler {
     if (!this.canvas) { return; }
 
     if (this.scale == null) {
-      this.scale = (this.programs ?? []).reduce((scale, program) => scale * program.magnification(), 1);
+      let w = 1, h = 1;
+      for (const program of this.programs ?? []) {
+        const [x, y] = program.magnification();
+        w *= x;
+        h *= y;
+      }
+      this.scale = [w, h];
     }
 
-    const width = this.video.videoWidth * this.scale;
-    const height = this.video.videoHeight * this.scale;
+    const width = this.video.videoWidth * this.scale[0];
+    const height = this.video.videoHeight * this.scale[1];
     if (this.canvas.width !== width || this.canvas.height !== height) {
       this.canvas.width = width;
       this.canvas.height = height;

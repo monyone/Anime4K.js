@@ -228,32 +228,32 @@ export default class Anime4K_Denoise_Bilateral_Mode extends Anime4KShader {
 
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('LINELUMA', { width: (MAIN.width), height: (MAIN.height)});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const LINELUMA = textures.get('LINELUMA');
-          if (!LINELUMA) { return 1; }
+          if (!LINELUMA) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('MAIN', { width: (MAIN.width), height: (MAIN.height)});
       }
 
     const width = textures.get('MAIN')?.width ?? 1;
     const height = textures.get('MAIN')?.height ?? 1;
-    return Math.min(width, height);
+    return [width, height] as [number, number];
   }
 
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {

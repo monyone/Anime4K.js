@@ -123,7 +123,7 @@ export default class Anime4K_AutoDownscalePre_x4 extends Anime4KShader {
   }
 
   public magnification() {
-    return 1;
+    return [1, 1] as [number, number];
   }
 
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {

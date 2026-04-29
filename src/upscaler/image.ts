@@ -10,7 +10,7 @@ export default class ImageUpscaler {
   private canvas: HTMLCanvasElement | null = null;
   private gl: WebGLRenderingContext | null = null;
 
-  private scale: number | null = null;
+  private scale: [number, number] | null = null;
   private config: Anime4KShaderConstructor[];
 
   private textures = new Map<string, TextureData>();
@@ -150,13 +150,19 @@ export default class ImageUpscaler {
     if (!this.canvas) { return; }
 
     if (this.scale == null) {
-      this.scale = (this.programs ?? []).reduce((scale, program) => scale * program.magnification(), 1);
+      let w = 1, h = 1;
+      for (const program of this.programs ?? []) {
+        const [x, y] = program.magnification();
+        w *= x;
+        h *= y;
+      }
+      this.scale = [w, h];
     }
 
     const in_width = this.source instanceof ImageBitmap ? this.source.width : this.source instanceof HTMLVideoElement ? this.source.videoWidth : this.source instanceof (window.VideoFrame ?? empty) ? this.source.displayWidth : this.source.width;
     const in_height = this.source instanceof ImageBitmap ? this.source.height : this.source instanceof HTMLVideoElement ? this.source.videoHeight : this.source instanceof (window.VideoFrame ?? empty) ? this.source.displayHeight : this.source.height;
-    this.canvas.width = in_width * this.scale;
-    this.canvas.height = in_height * this.scale;
+    this.canvas.width = in_width * this.scale[0];
+    this.canvas.height = in_height * this.scale[1];
     if(!(this.canvas instanceof OffscreenCanvas))
     this.canvas.style.pointerEvents = 'none';
   }

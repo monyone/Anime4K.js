@@ -1425,248 +1425,248 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
 
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('LINELUMA', { width: (MAIN.width), height: (MAIN.height)});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const LINELUMA = textures.get('LINELUMA');
-          if (!LINELUMA) { return 1; }
+          if (!LINELUMA) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('MMKERNEL', { width: (MAIN.width), height: (MAIN.height)});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const LINELUMA = textures.get('LINELUMA');
-          if (!LINELUMA) { return 1; }
+          if (!LINELUMA) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const MMKERNEL = textures.get('MMKERNEL');
-          if (!MMKERNEL) { return 1; }
+          if (!MMKERNEL) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('MMKERNEL', { width: (MAIN.width), height: (MAIN.height)});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const MMKERNEL = textures.get('MMKERNEL');
-          if (!MMKERNEL) { return 1; }
+          if (!MMKERNEL) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('MMKERNEL', { width: (MAIN.width), height: (MAIN.height)});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const MMKERNEL = textures.get('MMKERNEL');
-          if (!MMKERNEL) { return 1; }
+          if (!MMKERNEL) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('MMKERNEL', { width: (MAIN.width), height: (MAIN.height)});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const MMKERNEL = textures.get('MMKERNEL');
-          if (!MMKERNEL) { return 1; }
+          if (!MMKERNEL) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('MAIN', { width: (MAIN.width), height: (MAIN.height)});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('LINELUMA', { width: (MAIN.width), height: (MAIN.height)});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const LINELUMA = textures.get('LINELUMA');
-          if (!LINELUMA) { return 1; }
+          if (!LINELUMA) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('LUMAD', { width: (MAIN.width), height: (MAIN.height)});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const LUMAD = textures.get('LUMAD');
-          if (!LUMAD) { return 1; }
+          if (!LUMAD) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('LUMAD', { width: (MAIN.width), height: (MAIN.height)});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const LUMAD = textures.get('LUMAD');
-          if (!LUMAD) { return 1; }
+          if (!LUMAD) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('LUMADG', { width: (MAIN.width), height: (MAIN.height)});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const LUMAD = textures.get('LUMAD');
-          if (!LUMAD) { return 1; }
+          if (!LUMAD) { return [1, 1] as [number, number]; }
           const LUMADG = textures.get('LUMADG');
-          if (!LUMADG) { return 1; }
+          if (!LUMADG) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('LUMAD', { width: (MAIN.width), height: (MAIN.height)});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const LUMAD = textures.get('LUMAD');
-          if (!LUMAD) { return 1; }
+          if (!LUMAD) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('LUMAD2', { width: (MAIN.width), height: (MAIN.height)});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const LUMAD2 = textures.get('LUMAD2');
-          if (!LUMAD2) { return 1; }
+          if (!LUMAD2) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('LUMAD2', { width: (MAIN.width), height: (MAIN.height)});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const LUMAD = textures.get('LUMAD');
-          if (!LUMAD) { return 1; }
+          if (!LUMAD) { return [1, 1] as [number, number]; }
           const LUMAD2 = textures.get('LUMAD2');
-          if (!LUMAD2) { return 1; }
+          if (!LUMAD2) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('MAINTEMPTHIN', { width: (MAIN.width * 2), height: (MAIN.height * 2)});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const MAINTEMPTHIN = textures.get('MAINTEMPTHIN');
-          if (!MAINTEMPTHIN) { return 1; }
+          if (!MAINTEMPTHIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('MAINTEMP', { width: (MAIN.width * 2), height: (MAIN.height * 2)});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const MAINTEMP = textures.get('MAINTEMP');
-          if (!MAINTEMP) { return 1; }
+          if (!MAINTEMP) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('MMKERNEL', { width: (MAIN.width), height: (MAIN.height)});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const MMKERNEL = textures.get('MMKERNEL');
-          if (!MMKERNEL) { return 1; }
+          if (!MMKERNEL) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('MMKERNEL', { width: (MAIN.width), height: (MAIN.height)});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const MAINTEMP = textures.get('MAINTEMP');
-          if (!MAINTEMP) { return 1; }
+          if (!MAINTEMP) { return [1, 1] as [number, number]; }
           const MAINTEMPTHIN = textures.get('MAINTEMPTHIN');
-          if (!MAINTEMPTHIN) { return 1; }
+          if (!MAINTEMPTHIN) { return [1, 1] as [number, number]; }
           const MMKERNEL = textures.get('MMKERNEL');
-          if (!MMKERNEL) { return 1; }
+          if (!MMKERNEL) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('MAIN', { width: (MAIN.width * 2), height: (MAIN.height * 2)});
       }
 
     const width = textures.get('MAIN')?.width ?? 1;
     const height = textures.get('MAIN')?.height ?? 1;
-    return Math.min(width, height);
+    return [width, height] as [number, number];
   }
 
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {

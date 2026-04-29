@@ -280,10 +280,10 @@ def generateDestroy(programs: list[Program]):
 def prepareResolution(program: Program):
   return f"""
 const HOOKED = textures.get('{program.get_hook()}');
-if (!HOOKED) {{ return 1; }}
+if (!HOOKED) {{ return [1, 1] as [number, number]; }}
 """.strip() + '\n' + '\n'.join([ f"""
 const {bind} = textures.get('{bind}');
-if (!{bind}) {{ return 1; }}
+if (!{bind}) {{ return [1, 1] as [number, number]; }}
 """.strip() for bind in sorted(list(set(program.get_bind() + [program.get_hook(), 'OUTPUT', 'NATIVE'])))])
 
 def pushOutputResolution(program: Program):
@@ -301,7 +301,7 @@ def generateResolutionEach(programs: list[Program]):
 
 def generateResolution(outfile: Path, programs: list[Program]):
   if outfile.stem in ['Anime4K_AutoDownscalePre_x2', 'Anime4K_AutoDownscalePre_x4']:
-    return 'return 1;'
+    return 'return [1, 1] as [number, number];'
 
   return f"""
 const textures = new Map<string, ResolutionData>([
@@ -314,7 +314,7 @@ const textures = new Map<string, ResolutionData>([
 
 const width = textures.get('MAIN')?.width ?? 1;
 const height = textures.get('MAIN')?.height ?? 1;
-return Math.min(width, height);
+return [width, height] as [number, number];
 """.strip()
 
 if __name__ == '__main__':

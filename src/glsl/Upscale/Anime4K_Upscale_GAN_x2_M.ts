@@ -2577,439 +2577,439 @@ export default class Anime4K_Upscale_GAN_x2_M extends Anime4KShader {
 
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('conv2d_tf', { width: MAIN.width, height: MAIN.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           textures.set('conv2d_tf1', { width: MAIN.width, height: MAIN.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           const conv2d_tf = textures.get('conv2d_tf');
-          if (!conv2d_tf) { return 1; }
+          if (!conv2d_tf) { return [1, 1] as [number, number]; }
           const conv2d_tf1 = textures.get('conv2d_tf1');
-          if (!conv2d_tf1) { return 1; }
+          if (!conv2d_tf1) { return [1, 1] as [number, number]; }
           textures.set('conv2d_2_tf', { width: conv2d_tf.width, height: conv2d_tf.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           const conv2d_tf = textures.get('conv2d_tf');
-          if (!conv2d_tf) { return 1; }
+          if (!conv2d_tf) { return [1, 1] as [number, number]; }
           const conv2d_tf1 = textures.get('conv2d_tf1');
-          if (!conv2d_tf1) { return 1; }
+          if (!conv2d_tf1) { return [1, 1] as [number, number]; }
           textures.set('conv2d_1_tf', { width: conv2d_tf.width, height: conv2d_tf.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           const conv2d_1_tf = textures.get('conv2d_1_tf');
-          if (!conv2d_1_tf) { return 1; }
+          if (!conv2d_1_tf) { return [1, 1] as [number, number]; }
           const conv2d_2_tf = textures.get('conv2d_2_tf');
-          if (!conv2d_2_tf) { return 1; }
+          if (!conv2d_2_tf) { return [1, 1] as [number, number]; }
           const conv2d_tf = textures.get('conv2d_tf');
-          if (!conv2d_tf) { return 1; }
+          if (!conv2d_tf) { return [1, 1] as [number, number]; }
           const conv2d_tf1 = textures.get('conv2d_tf1');
-          if (!conv2d_tf1) { return 1; }
+          if (!conv2d_tf1) { return [1, 1] as [number, number]; }
           textures.set('conv2d_3_tf', { width: conv2d_tf.width, height: conv2d_tf.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           const conv2d_1_tf = textures.get('conv2d_1_tf');
-          if (!conv2d_1_tf) { return 1; }
+          if (!conv2d_1_tf) { return [1, 1] as [number, number]; }
           const conv2d_2_tf = textures.get('conv2d_2_tf');
-          if (!conv2d_2_tf) { return 1; }
+          if (!conv2d_2_tf) { return [1, 1] as [number, number]; }
           const conv2d_tf = textures.get('conv2d_tf');
-          if (!conv2d_tf) { return 1; }
+          if (!conv2d_tf) { return [1, 1] as [number, number]; }
           const conv2d_tf1 = textures.get('conv2d_tf1');
-          if (!conv2d_tf1) { return 1; }
+          if (!conv2d_tf1) { return [1, 1] as [number, number]; }
           textures.set('conv2d_3_tf1', { width: conv2d_tf.width, height: conv2d_tf.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           const conv2d_3_tf = textures.get('conv2d_3_tf');
-          if (!conv2d_3_tf) { return 1; }
+          if (!conv2d_3_tf) { return [1, 1] as [number, number]; }
           const conv2d_3_tf1 = textures.get('conv2d_3_tf1');
-          if (!conv2d_3_tf1) { return 1; }
+          if (!conv2d_3_tf1) { return [1, 1] as [number, number]; }
           textures.set('conv2d_5_tf', { width: conv2d_3_tf.width, height: conv2d_3_tf.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           const conv2d_3_tf = textures.get('conv2d_3_tf');
-          if (!conv2d_3_tf) { return 1; }
+          if (!conv2d_3_tf) { return [1, 1] as [number, number]; }
           const conv2d_3_tf1 = textures.get('conv2d_3_tf1');
-          if (!conv2d_3_tf1) { return 1; }
+          if (!conv2d_3_tf1) { return [1, 1] as [number, number]; }
           textures.set('conv2d_4_tf', { width: conv2d_3_tf.width, height: conv2d_3_tf.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           const conv2d_1_tf = textures.get('conv2d_1_tf');
-          if (!conv2d_1_tf) { return 1; }
+          if (!conv2d_1_tf) { return [1, 1] as [number, number]; }
           const conv2d_3_tf = textures.get('conv2d_3_tf');
-          if (!conv2d_3_tf) { return 1; }
+          if (!conv2d_3_tf) { return [1, 1] as [number, number]; }
           const conv2d_3_tf1 = textures.get('conv2d_3_tf1');
-          if (!conv2d_3_tf1) { return 1; }
+          if (!conv2d_3_tf1) { return [1, 1] as [number, number]; }
           const conv2d_4_tf = textures.get('conv2d_4_tf');
-          if (!conv2d_4_tf) { return 1; }
+          if (!conv2d_4_tf) { return [1, 1] as [number, number]; }
           const conv2d_5_tf = textures.get('conv2d_5_tf');
-          if (!conv2d_5_tf) { return 1; }
+          if (!conv2d_5_tf) { return [1, 1] as [number, number]; }
           textures.set('conv2d_6_tf', { width: conv2d_3_tf.width, height: conv2d_3_tf.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           const conv2d_1_tf = textures.get('conv2d_1_tf');
-          if (!conv2d_1_tf) { return 1; }
+          if (!conv2d_1_tf) { return [1, 1] as [number, number]; }
           const conv2d_3_tf = textures.get('conv2d_3_tf');
-          if (!conv2d_3_tf) { return 1; }
+          if (!conv2d_3_tf) { return [1, 1] as [number, number]; }
           const conv2d_3_tf1 = textures.get('conv2d_3_tf1');
-          if (!conv2d_3_tf1) { return 1; }
+          if (!conv2d_3_tf1) { return [1, 1] as [number, number]; }
           const conv2d_4_tf = textures.get('conv2d_4_tf');
-          if (!conv2d_4_tf) { return 1; }
+          if (!conv2d_4_tf) { return [1, 1] as [number, number]; }
           const conv2d_5_tf = textures.get('conv2d_5_tf');
-          if (!conv2d_5_tf) { return 1; }
+          if (!conv2d_5_tf) { return [1, 1] as [number, number]; }
           textures.set('conv2d_6_tf1', { width: conv2d_3_tf.width, height: conv2d_3_tf.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           const conv2d_6_tf = textures.get('conv2d_6_tf');
-          if (!conv2d_6_tf) { return 1; }
+          if (!conv2d_6_tf) { return [1, 1] as [number, number]; }
           const conv2d_6_tf1 = textures.get('conv2d_6_tf1');
-          if (!conv2d_6_tf1) { return 1; }
+          if (!conv2d_6_tf1) { return [1, 1] as [number, number]; }
           textures.set('conv2d_8_tf', { width: conv2d_6_tf.width, height: conv2d_6_tf.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           const conv2d_6_tf = textures.get('conv2d_6_tf');
-          if (!conv2d_6_tf) { return 1; }
+          if (!conv2d_6_tf) { return [1, 1] as [number, number]; }
           const conv2d_6_tf1 = textures.get('conv2d_6_tf1');
-          if (!conv2d_6_tf1) { return 1; }
+          if (!conv2d_6_tf1) { return [1, 1] as [number, number]; }
           textures.set('conv2d_7_tf', { width: conv2d_6_tf.width, height: conv2d_6_tf.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           const conv2d_1_tf = textures.get('conv2d_1_tf');
-          if (!conv2d_1_tf) { return 1; }
+          if (!conv2d_1_tf) { return [1, 1] as [number, number]; }
           const conv2d_4_tf = textures.get('conv2d_4_tf');
-          if (!conv2d_4_tf) { return 1; }
+          if (!conv2d_4_tf) { return [1, 1] as [number, number]; }
           const conv2d_6_tf = textures.get('conv2d_6_tf');
-          if (!conv2d_6_tf) { return 1; }
+          if (!conv2d_6_tf) { return [1, 1] as [number, number]; }
           const conv2d_6_tf1 = textures.get('conv2d_6_tf1');
-          if (!conv2d_6_tf1) { return 1; }
+          if (!conv2d_6_tf1) { return [1, 1] as [number, number]; }
           const conv2d_7_tf = textures.get('conv2d_7_tf');
-          if (!conv2d_7_tf) { return 1; }
+          if (!conv2d_7_tf) { return [1, 1] as [number, number]; }
           const conv2d_8_tf = textures.get('conv2d_8_tf');
-          if (!conv2d_8_tf) { return 1; }
+          if (!conv2d_8_tf) { return [1, 1] as [number, number]; }
           textures.set('conv2d_9_tf', { width: conv2d_6_tf.width, height: conv2d_6_tf.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           const conv2d_1_tf = textures.get('conv2d_1_tf');
-          if (!conv2d_1_tf) { return 1; }
+          if (!conv2d_1_tf) { return [1, 1] as [number, number]; }
           const conv2d_4_tf = textures.get('conv2d_4_tf');
-          if (!conv2d_4_tf) { return 1; }
+          if (!conv2d_4_tf) { return [1, 1] as [number, number]; }
           const conv2d_6_tf = textures.get('conv2d_6_tf');
-          if (!conv2d_6_tf) { return 1; }
+          if (!conv2d_6_tf) { return [1, 1] as [number, number]; }
           const conv2d_6_tf1 = textures.get('conv2d_6_tf1');
-          if (!conv2d_6_tf1) { return 1; }
+          if (!conv2d_6_tf1) { return [1, 1] as [number, number]; }
           const conv2d_7_tf = textures.get('conv2d_7_tf');
-          if (!conv2d_7_tf) { return 1; }
+          if (!conv2d_7_tf) { return [1, 1] as [number, number]; }
           const conv2d_8_tf = textures.get('conv2d_8_tf');
-          if (!conv2d_8_tf) { return 1; }
+          if (!conv2d_8_tf) { return [1, 1] as [number, number]; }
           textures.set('conv2d_9_tf1', { width: conv2d_6_tf.width, height: conv2d_6_tf.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           const conv2d_9_tf = textures.get('conv2d_9_tf');
-          if (!conv2d_9_tf) { return 1; }
+          if (!conv2d_9_tf) { return [1, 1] as [number, number]; }
           const conv2d_9_tf1 = textures.get('conv2d_9_tf1');
-          if (!conv2d_9_tf1) { return 1; }
+          if (!conv2d_9_tf1) { return [1, 1] as [number, number]; }
           textures.set('conv2d_11_tf', { width: conv2d_9_tf.width, height: conv2d_9_tf.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           const conv2d_9_tf = textures.get('conv2d_9_tf');
-          if (!conv2d_9_tf) { return 1; }
+          if (!conv2d_9_tf) { return [1, 1] as [number, number]; }
           const conv2d_9_tf1 = textures.get('conv2d_9_tf1');
-          if (!conv2d_9_tf1) { return 1; }
+          if (!conv2d_9_tf1) { return [1, 1] as [number, number]; }
           textures.set('conv2d_10_tf', { width: conv2d_9_tf.width, height: conv2d_9_tf.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           const conv2d_10_tf = textures.get('conv2d_10_tf');
-          if (!conv2d_10_tf) { return 1; }
+          if (!conv2d_10_tf) { return [1, 1] as [number, number]; }
           const conv2d_11_tf = textures.get('conv2d_11_tf');
-          if (!conv2d_11_tf) { return 1; }
+          if (!conv2d_11_tf) { return [1, 1] as [number, number]; }
           const conv2d_1_tf = textures.get('conv2d_1_tf');
-          if (!conv2d_1_tf) { return 1; }
+          if (!conv2d_1_tf) { return [1, 1] as [number, number]; }
           const conv2d_4_tf = textures.get('conv2d_4_tf');
-          if (!conv2d_4_tf) { return 1; }
+          if (!conv2d_4_tf) { return [1, 1] as [number, number]; }
           const conv2d_7_tf = textures.get('conv2d_7_tf');
-          if (!conv2d_7_tf) { return 1; }
+          if (!conv2d_7_tf) { return [1, 1] as [number, number]; }
           const conv2d_9_tf = textures.get('conv2d_9_tf');
-          if (!conv2d_9_tf) { return 1; }
+          if (!conv2d_9_tf) { return [1, 1] as [number, number]; }
           const conv2d_9_tf1 = textures.get('conv2d_9_tf1');
-          if (!conv2d_9_tf1) { return 1; }
+          if (!conv2d_9_tf1) { return [1, 1] as [number, number]; }
           textures.set('conv2d_12_tf', { width: conv2d_9_tf.width, height: conv2d_9_tf.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           const conv2d_10_tf = textures.get('conv2d_10_tf');
-          if (!conv2d_10_tf) { return 1; }
+          if (!conv2d_10_tf) { return [1, 1] as [number, number]; }
           const conv2d_11_tf = textures.get('conv2d_11_tf');
-          if (!conv2d_11_tf) { return 1; }
+          if (!conv2d_11_tf) { return [1, 1] as [number, number]; }
           const conv2d_1_tf = textures.get('conv2d_1_tf');
-          if (!conv2d_1_tf) { return 1; }
+          if (!conv2d_1_tf) { return [1, 1] as [number, number]; }
           const conv2d_4_tf = textures.get('conv2d_4_tf');
-          if (!conv2d_4_tf) { return 1; }
+          if (!conv2d_4_tf) { return [1, 1] as [number, number]; }
           const conv2d_7_tf = textures.get('conv2d_7_tf');
-          if (!conv2d_7_tf) { return 1; }
+          if (!conv2d_7_tf) { return [1, 1] as [number, number]; }
           const conv2d_9_tf = textures.get('conv2d_9_tf');
-          if (!conv2d_9_tf) { return 1; }
+          if (!conv2d_9_tf) { return [1, 1] as [number, number]; }
           const conv2d_9_tf1 = textures.get('conv2d_9_tf1');
-          if (!conv2d_9_tf1) { return 1; }
+          if (!conv2d_9_tf1) { return [1, 1] as [number, number]; }
           textures.set('conv2d_12_tf1', { width: conv2d_9_tf.width, height: conv2d_9_tf.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           const conv2d_12_tf = textures.get('conv2d_12_tf');
-          if (!conv2d_12_tf) { return 1; }
+          if (!conv2d_12_tf) { return [1, 1] as [number, number]; }
           const conv2d_12_tf1 = textures.get('conv2d_12_tf1');
-          if (!conv2d_12_tf1) { return 1; }
+          if (!conv2d_12_tf1) { return [1, 1] as [number, number]; }
           textures.set('conv2d_13_tf', { width: conv2d_12_tf.width, height: conv2d_12_tf.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           const conv2d_10_tf = textures.get('conv2d_10_tf');
-          if (!conv2d_10_tf) { return 1; }
+          if (!conv2d_10_tf) { return [1, 1] as [number, number]; }
           const conv2d_11_tf = textures.get('conv2d_11_tf');
-          if (!conv2d_11_tf) { return 1; }
+          if (!conv2d_11_tf) { return [1, 1] as [number, number]; }
           const conv2d_12_tf = textures.get('conv2d_12_tf');
-          if (!conv2d_12_tf) { return 1; }
+          if (!conv2d_12_tf) { return [1, 1] as [number, number]; }
           const conv2d_12_tf1 = textures.get('conv2d_12_tf1');
-          if (!conv2d_12_tf1) { return 1; }
+          if (!conv2d_12_tf1) { return [1, 1] as [number, number]; }
           const conv2d_13_tf = textures.get('conv2d_13_tf');
-          if (!conv2d_13_tf) { return 1; }
+          if (!conv2d_13_tf) { return [1, 1] as [number, number]; }
           const conv2d_1_tf = textures.get('conv2d_1_tf');
-          if (!conv2d_1_tf) { return 1; }
+          if (!conv2d_1_tf) { return [1, 1] as [number, number]; }
           const conv2d_4_tf = textures.get('conv2d_4_tf');
-          if (!conv2d_4_tf) { return 1; }
+          if (!conv2d_4_tf) { return [1, 1] as [number, number]; }
           const conv2d_7_tf = textures.get('conv2d_7_tf');
-          if (!conv2d_7_tf) { return 1; }
+          if (!conv2d_7_tf) { return [1, 1] as [number, number]; }
           textures.set('conv0ups', { width: conv2d_12_tf.width, height: conv2d_12_tf.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           const conv2d_10_tf = textures.get('conv2d_10_tf');
-          if (!conv2d_10_tf) { return 1; }
+          if (!conv2d_10_tf) { return [1, 1] as [number, number]; }
           const conv2d_11_tf = textures.get('conv2d_11_tf');
-          if (!conv2d_11_tf) { return 1; }
+          if (!conv2d_11_tf) { return [1, 1] as [number, number]; }
           const conv2d_12_tf = textures.get('conv2d_12_tf');
-          if (!conv2d_12_tf) { return 1; }
+          if (!conv2d_12_tf) { return [1, 1] as [number, number]; }
           const conv2d_12_tf1 = textures.get('conv2d_12_tf1');
-          if (!conv2d_12_tf1) { return 1; }
+          if (!conv2d_12_tf1) { return [1, 1] as [number, number]; }
           const conv2d_13_tf = textures.get('conv2d_13_tf');
-          if (!conv2d_13_tf) { return 1; }
+          if (!conv2d_13_tf) { return [1, 1] as [number, number]; }
           const conv2d_1_tf = textures.get('conv2d_1_tf');
-          if (!conv2d_1_tf) { return 1; }
+          if (!conv2d_1_tf) { return [1, 1] as [number, number]; }
           const conv2d_4_tf = textures.get('conv2d_4_tf');
-          if (!conv2d_4_tf) { return 1; }
+          if (!conv2d_4_tf) { return [1, 1] as [number, number]; }
           const conv2d_7_tf = textures.get('conv2d_7_tf');
-          if (!conv2d_7_tf) { return 1; }
+          if (!conv2d_7_tf) { return [1, 1] as [number, number]; }
           textures.set('conv0ups1', { width: conv2d_12_tf.width, height: conv2d_12_tf.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           const conv2d_10_tf = textures.get('conv2d_10_tf');
-          if (!conv2d_10_tf) { return 1; }
+          if (!conv2d_10_tf) { return [1, 1] as [number, number]; }
           const conv2d_11_tf = textures.get('conv2d_11_tf');
-          if (!conv2d_11_tf) { return 1; }
+          if (!conv2d_11_tf) { return [1, 1] as [number, number]; }
           const conv2d_12_tf = textures.get('conv2d_12_tf');
-          if (!conv2d_12_tf) { return 1; }
+          if (!conv2d_12_tf) { return [1, 1] as [number, number]; }
           const conv2d_12_tf1 = textures.get('conv2d_12_tf1');
-          if (!conv2d_12_tf1) { return 1; }
+          if (!conv2d_12_tf1) { return [1, 1] as [number, number]; }
           const conv2d_13_tf = textures.get('conv2d_13_tf');
-          if (!conv2d_13_tf) { return 1; }
+          if (!conv2d_13_tf) { return [1, 1] as [number, number]; }
           const conv2d_1_tf = textures.get('conv2d_1_tf');
-          if (!conv2d_1_tf) { return 1; }
+          if (!conv2d_1_tf) { return [1, 1] as [number, number]; }
           const conv2d_4_tf = textures.get('conv2d_4_tf');
-          if (!conv2d_4_tf) { return 1; }
+          if (!conv2d_4_tf) { return [1, 1] as [number, number]; }
           const conv2d_7_tf = textures.get('conv2d_7_tf');
-          if (!conv2d_7_tf) { return 1; }
+          if (!conv2d_7_tf) { return [1, 1] as [number, number]; }
           textures.set('conv0ups2', { width: conv2d_12_tf.width, height: conv2d_12_tf.height});
       }
       {
           const HOOKED = textures.get('MAIN');
-          if (!HOOKED) { return 1; }
+          if (!HOOKED) { return [1, 1] as [number, number]; }
           const MAIN = textures.get('MAIN');
-          if (!MAIN) { return 1; }
+          if (!MAIN) { return [1, 1] as [number, number]; }
           const NATIVE = textures.get('NATIVE');
-          if (!NATIVE) { return 1; }
+          if (!NATIVE) { return [1, 1] as [number, number]; }
           const OUTPUT = textures.get('OUTPUT');
-          if (!OUTPUT) { return 1; }
+          if (!OUTPUT) { return [1, 1] as [number, number]; }
           const conv0ups = textures.get('conv0ups');
-          if (!conv0ups) { return 1; }
+          if (!conv0ups) { return [1, 1] as [number, number]; }
           const conv0ups1 = textures.get('conv0ups1');
-          if (!conv0ups1) { return 1; }
+          if (!conv0ups1) { return [1, 1] as [number, number]; }
           const conv0ups2 = textures.get('conv0ups2');
-          if (!conv0ups2) { return 1; }
+          if (!conv0ups2) { return [1, 1] as [number, number]; }
           textures.set('MAIN', { width: (conv0ups.width * 2), height: (conv0ups.height * 2)});
       }
 
     const width = textures.get('MAIN')?.width ?? 1;
     const height = textures.get('MAIN')?.height ?? 1;
-    return Math.min(width, height);
+    return [width, height] as [number, number];
   }
 
   public hook_MAIN(textures: Map<string, TextureData>, framebuffer: WebGLFramebuffer) {
