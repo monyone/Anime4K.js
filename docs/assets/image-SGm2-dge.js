@@ -1,0 +1,1 @@
+import{c as e,i as t,s as n,t as r}from"./Layout-DO7AVuQl.js";import{t as i}from"./ImageDemo-DjTo9J0J.js";var a=e(),o=n(),s=t();function c(){return(0,s.jsx)(r,{children:(0,s.jsx)(i,{})})}(0,o.createRoot)(document.getElementById(`root`)).render((0,s.jsx)(a.StrictMode,{children:(0,s.jsx)(c,{})}));

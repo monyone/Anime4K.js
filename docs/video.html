@@ -1,70 +1,15 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <title>Anime4K.js Demo</title>
-    <script src="./dist/anime4k.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anime4K.js Demo - Video</title>
+    <script type="module" crossorigin src="/Anime4K.js/assets/video-BY7h_TXl.js"></script>
+    <link rel="modulepreload" crossorigin href="/Anime4K.js/assets/Layout-DO7AVuQl.js">
+    <link rel="modulepreload" crossorigin href="/Anime4K.js/assets/VideoDemo-CRhqvO0y.js">
+    <link rel="stylesheet" crossorigin href="/Anime4K.js/assets/Layout-IyNWW1nC.css">
   </head>
   <body>
-    <div>
-      Left: Orignal Video <br/>
-      Right: Upscaled Video
-    </div>
-    <div>
-      <label for="input">Choose a Video: </label><input type="file" id="input" accept="video/mp4, video/webm"/>
-    </div>
-    <div id="compare" style="position: relative;">
-    </div>
-    <script>
-      const upscale = async (event) => {
-        const file = event.target.files[0];
-        if (file == null) { return; }
-
-        const upscaler = new Anime4KJS.VideoUpscaler(Anime4KJS.ANIME4KJS_SIMPLE_M_2X);
-
-        const div = document.getElementById('compare');
-        while (div.lastChild) { div.removeChild(div.lastChild); }
-
-        const original = document.createElement('video');
-        original.src = URL.createObjectURL(file);
-        original.controls = true;
-        original.style.position = 'absolute';
-        original.style.top = '0';
-        original.style.left = '0';
-        original.style.clipPath = "polygon(0 0, 50% 0, 50% 100%, 0 100%)";
-        await new Promise((resolve) => { original.onloadedmetadata = resolve });
-        div.style.width = `${original.videoWidth}px`;
-        div.style.height = `${original.videoHeight}px`;
-        div.appendChild(original);
-
-        const upscaled = document.createElement('canvas');
-        upscaler.attachVideo(original, upscaled);
-        upscaler.start();
-        upscaled.style.pointerEvents = 'none';
-        upscaled.style.width = `${original.videoWidth}px`;
-        upscaled.style.height = `${original.videoHeight}px`;
-        upscaled.style.position = 'absolute';
-        upscaled.style.top = '0';
-        upscaled.style.left = '0';
-        div.appendChild(upscaled);
-
-        const mousemove = (event) => {
-          const x = event.offsetX;
-          const percent = Math.min(100, x * 100 / original.videoWidth + 1);
-          original.style.clipPath = `polygon(0 0, ${percent}% 0, ${percent}% 100%, 0 100%)`;
-          upscaled.style.clipPath = `polygon(${percent}% 0, 100% 0, 100% 100%, ${percent}% 100%)`;
-        }
-
-        const mouseleave = (event) => {
-          original.style.clipPath = "polygon(0 0, 50% 0, 50% 100%, 0 100%)";
-          upscaled.style.clipPath = "polygon(50% 0, 100% 0, 100% 100%, 50% 100%)";
-        }
-
-        div.onmousemove = mousemove;
-        div.onmouseleave = mouseleave;
-      };
-
-      const input = document.getElementById('input');
-      input.onchange = upscale.bind(input);
-    </script>
+    <div id="root"></div>
   </body>
 </html>
