@@ -1,4 +1,4 @@
-import { type TextureData } from "../utils";
+import { type TextureData } from "../utils/index";
 
 export type Anime4KShaderConstructor = new (gl: WebGLRenderingContext) => Anime4KShader;
 

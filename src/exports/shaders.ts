@@ -49,4 +49,4 @@ export { default as Anime4K_Upscale_GAN_x4_UUL } from '../glsl/Upscale/Anime4K_U
 export { default as Anime4K_Upscale_Original_x2 } from '../glsl/Upscale/Anime4K_Upscale_Original_x2';
 export { default as PassThrough } from '../glsl/passthrough';
 export { default as Anime4KShader, type Anime4KShaderConstructor } from '../glsl/shader';
-export type { TextureData, ResolutionData } from '../utils'
+export type { TextureData, ResolutionData } from '../utils/index'
