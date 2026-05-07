@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { VideoUpscaler } from 'anime4k.js/upscaler'
 import PresetSelector from './PresetSelector'
+import ComparisonSlider from './ComparisonSlider'
 import PRESETS from '../utils/presets'
 
 export default function VideoDemo() {
@@ -11,7 +12,6 @@ export default function VideoDemo() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const upscalerRef = useRef<VideoUpscaler | null>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
 
   const cleanup = useCallback(() => {
     if (upscalerRef.current) {
@@ -62,27 +62,6 @@ export default function VideoDemo() {
     return cleanup
   }, [videoUrl, presetKey, cleanup])
 
-  const onMouseMove = useCallback((e: React.MouseEvent) => {
-    const container = containerRef.current
-    const video = videoRef.current
-    const canvas = canvasRef.current
-    if (!container || !video || !canvas || !dimensions) return
-
-    const x = e.nativeEvent.offsetX
-    const percent = Math.min(100, (x * 100) / dimensions.width + 1)
-    video.style.clipPath = `polygon(0 0, ${percent}% 0, ${percent}% 100%, 0 100%)`
-    canvas.style.clipPath = `polygon(${percent}% 0, 100% 0, 100% 100%, ${percent}% 100%)`
-  }, [dimensions])
-
-  const onMouseLeave = useCallback(() => {
-    const video = videoRef.current
-    const canvas = canvasRef.current
-    if (!video || !canvas) return
-
-    video.style.clipPath = 'polygon(0 0, 50% 0, 50% 100%, 0 100%)'
-    canvas.style.clipPath = 'polygon(50% 0, 100% 0, 100% 100%, 50% 100%)'
-  }, [])
-
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center gap-4">
@@ -99,44 +78,39 @@ export default function VideoDemo() {
           presets={PRESETS.map((p) => ({ label: p.label, value: p.value }))}
           value={presetKey}
           onChange={setPresetKey}
-
         />
-        {dimensions && (
-          <span className="text-sm text-gray-400">
-            Left: Original / Right: Upscaled
-          </span>
-        )}
       </div>
 
       {videoUrl ? (
-        <div
-          ref={containerRef}
-          className="relative inline-block"
-          style={dimensions ? { width: dimensions.width, height: dimensions.height } : undefined}
-          onMouseMove={onMouseMove}
-          onMouseLeave={onMouseLeave}
+        <ComparisonSlider
+          width={dimensions?.width ?? 0}
+          height={dimensions?.height ?? 0}
         >
-          <video
-            ref={videoRef}
-            src={videoUrl}
-            controls
-            className="absolute top-0 left-0 block"
-            style={{
-              width: dimensions?.width,
-              height: dimensions?.height,
-              clipPath: 'polygon(0 0, 50% 0, 50% 100%, 0 100%)',
-            }}
-          />
-          <canvas
-            ref={canvasRef}
-            className="block pointer-events-none"
-            style={{
-              width: dimensions?.width,
-              height: dimensions?.height,
-              clipPath: 'polygon(50% 0, 100% 0, 100% 100%, 50% 100%)',
-            }}
-          />
-        </div>
+          {({ leftClip, rightClip }) => (
+            <>
+              <video
+                ref={videoRef}
+                src={videoUrl}
+                controls
+                className="absolute top-0 left-0 block"
+                style={{
+                  width: dimensions?.width,
+                  height: dimensions?.height,
+                  clipPath: dimensions ? leftClip : undefined,
+                }}
+              />
+              <canvas
+                ref={canvasRef}
+                className="block pointer-events-none"
+                style={{
+                  width: dimensions?.width,
+                  height: dimensions?.height,
+                  clipPath: dimensions ? rightClip : undefined,
+                }}
+              />
+            </>
+          )}
+        </ComparisonSlider>
       ) : (
         <div className="border-2 border-dashed border-gray-600 rounded-lg p-12 text-center text-gray-400">
           Select a video file to start
