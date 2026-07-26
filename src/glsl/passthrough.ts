@@ -1,7 +1,7 @@
 import { createVertexShader, createFragmentShader, createRectangleBuffer, createTexture, createProgram, enableVertexAttribArray, TextureData } from "../utils/index";
 
 const flip = `
-precision mediump float;
+precision highp float;
 
 attribute vec2 a_position;
 attribute vec2 a_texture_coord;
@@ -29,7 +29,12 @@ void main() {
 `;
 
 const pass = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform sampler2D u_image;
 

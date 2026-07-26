@@ -25,7 +25,7 @@ import Anime4KShader from "../shader";
 import { createVertexShader, createFragmentShader, createRectangleBuffer, createTexture, createProgram, enableVertexAttribArray, type TextureData, type ResolutionData, fillEmptyTexture } from "../../utils/index";
 
 const vertex_shader = `
-precision mediump float;
+precision highp float;
 
 attribute vec2 a_position;
 attribute vec2 a_texture_coord;
@@ -45,7 +45,12 @@ void main() {
 }
 `;
 const fragment_0_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -73,7 +78,12 @@ void main() {
 }
 `;
 const fragment_1_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -101,7 +111,12 @@ void main() {
 }
 `;
 const fragment_2_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -129,7 +144,12 @@ void main() {
 }
 `;
 const fragment_3_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -221,7 +241,12 @@ void main() {
 }
 `;
 const fragment_4_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -313,7 +338,12 @@ void main() {
 }
 `;
 const fragment_5_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -379,7 +409,12 @@ void main() {
 }
 `;
 const fragment_6_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -445,7 +480,12 @@ void main() {
 }
 `;
 const fragment_7_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -511,7 +551,12 @@ void main() {
 }
 `;
 const fragment_8_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -603,7 +648,12 @@ void main() {
 }
 `;
 const fragment_9_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -695,7 +745,12 @@ void main() {
 }
 `;
 const fragment_10_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -772,7 +827,12 @@ void main() {
 }
 `;
 const fragment_11_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -849,7 +909,12 @@ void main() {
 }
 `;
 const fragment_12_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -926,7 +991,12 @@ void main() {
 }
 `;
 const fragment_13_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -1018,7 +1088,12 @@ void main() {
 }
 `;
 const fragment_14_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -1110,7 +1185,12 @@ void main() {
 }
 `;
 const fragment_15_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -1198,7 +1278,12 @@ void main() {
 }
 `;
 const fragment_16_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -1286,7 +1371,12 @@ void main() {
 }
 `;
 const fragment_17_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -1374,7 +1464,12 @@ void main() {
 }
 `;
 const fragment_18_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -1466,7 +1561,12 @@ void main() {
 }
 `;
 const fragment_19_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -1558,7 +1658,12 @@ void main() {
 }
 `;
 const fragment_20_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -1657,7 +1762,12 @@ void main() {
 }
 `;
 const fragment_21_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -1756,7 +1866,12 @@ void main() {
 }
 `;
 const fragment_22_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -1855,7 +1970,12 @@ void main() {
 }
 `;
 const fragment_23_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -1947,7 +2067,12 @@ void main() {
 }
 `;
 const fragment_24_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -2039,7 +2164,12 @@ void main() {
 }
 `;
 const fragment_25_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -2149,7 +2279,12 @@ void main() {
 }
 `;
 const fragment_26_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -2259,7 +2394,12 @@ void main() {
 }
 `;
 const fragment_27_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -2369,7 +2509,12 @@ void main() {
 }
 `;
 const fragment_28_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -2461,7 +2606,12 @@ void main() {
 }
 `;
 const fragment_29_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -2553,7 +2703,12 @@ void main() {
 }
 `;
 const fragment_30_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -2674,7 +2829,12 @@ void main() {
 }
 `;
 const fragment_31_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -2795,7 +2955,12 @@ void main() {
 }
 `;
 const fragment_32_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -2916,7 +3081,12 @@ void main() {
 }
 `;
 const fragment_33_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -3008,7 +3178,12 @@ void main() {
 }
 `;
 const fragment_34_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -3100,7 +3275,12 @@ void main() {
 }
 `;
 const fragment_35_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -3232,7 +3412,12 @@ void main() {
 }
 `;
 const fragment_36_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -3364,7 +3549,12 @@ void main() {
 }
 `;
 const fragment_37_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -3496,7 +3686,12 @@ void main() {
 }
 `;
 const fragment_38_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -3588,7 +3783,12 @@ void main() {
 }
 `;
 const fragment_39_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -3731,7 +3931,12 @@ void main() {
 }
 `;
 const fragment_40_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -3874,7 +4079,12 @@ void main() {
 }
 `;
 const fragment_41_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -4017,7 +4227,12 @@ void main() {
 }
 `;
 const fragment_42_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -4160,7 +4375,12 @@ void main() {
 }
 `;
 const fragment_43_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -4279,7 +4499,12 @@ void main() {
 }
 `;
 const fragment_44_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -4398,7 +4623,12 @@ void main() {
 }
 `;
 const fragment_45_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -4517,7 +4747,12 @@ void main() {
 }
 `;
 const fragment_46_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;

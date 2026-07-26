@@ -10,7 +10,7 @@ import re
 from textwrap import indent
 
 VIRT = '''
-precision mediump float;
+precision highp float;
 
 attribute vec2 a_position;
 attribute vec2 a_texture_coord;
@@ -158,7 +158,12 @@ class Program:
 
   def __str__(self):
     head = """
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;

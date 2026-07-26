@@ -25,7 +25,7 @@ import Anime4KShader from "../shader";
 import { createVertexShader, createFragmentShader, createRectangleBuffer, createTexture, createProgram, enableVertexAttribArray, type TextureData, type ResolutionData, fillEmptyTexture } from "../../utils/index";
 
 const vertex_shader = `
-precision mediump float;
+precision highp float;
 
 attribute vec2 a_position;
 attribute vec2 a_texture_coord;
@@ -45,7 +45,12 @@ void main() {
 }
 `;
 const fragment_0_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -65,7 +70,12 @@ void main() {
 }
 `;
 const fragment_1_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -87,7 +97,12 @@ void main() {
 }
 `;
 const fragment_2_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -113,7 +128,12 @@ void main() {
 }
 `;
 const fragment_3_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -156,7 +176,12 @@ void main() {
 }
 `;
 const fragment_4_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -199,7 +224,12 @@ void main() {
 }
 `;
 const fragment_5_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -221,7 +251,12 @@ void main() {
 }
 `;
 const fragment_6_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
@@ -246,7 +281,12 @@ void main() {
 }
 `;
 const fragment_7_shader = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
 precision mediump float;
+#endif
+precision mediump sampler2D;
 
 uniform vec2 u_resolution;
 uniform vec2 u_texture_size;
