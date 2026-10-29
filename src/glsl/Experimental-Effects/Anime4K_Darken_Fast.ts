@@ -96,7 +96,7 @@ uniform vec2 u_LINELUMA_size;
 #define LINELUMA_texOff(offset) (LINELUMA_tex(LINELUMA_pos + LINELUMA_pt * offset))
 
 #define SPATIAL_SIGMA (1.0 * float(MAIN_size.y) / 1080.0) //Spatial window size, must be a positive real number.
-#define KERNELSIZE (max(int(ceil(SPATIAL_SIGMA * 2.0)), 1) * 2 + 1) //Kernel size, must be an positive odd integer.
+#define KERNELSIZE (int(max(ceil(SPATIAL_SIGMA * 2.0), 1.0)) * 2 + 1) //Kernel size, must be an positive odd integer.
 #define KERNELHALFSIZE (int(KERNELSIZE/2)) //Half of the kernel size without remainder. Must be equal to trunc(KERNELSIZE/2).
 #define KERNELLEN (KERNELSIZE * KERNELSIZE) //Total area of kernel. Must be equal to KERNELSIZE * KERNELSIZE.
 float gaussian(float x, float s, float m) {
@@ -153,7 +153,7 @@ uniform vec2 u_LINEKERNEL_size;
 #define LINEKERNEL_texOff(offset) (LINEKERNEL_tex(LINEKERNEL_pos + LINEKERNEL_pt * offset))
 
 #define SPATIAL_SIGMA (0.5 * float(MAIN_size.y) / 1080.0) //Spatial window size, must be a positive real number.
-#define KERNELSIZE (max(int(ceil(SPATIAL_SIGMA * 2.0)), 1) * 2 + 1) //Kernel size, must be an positive odd integer.
+#define KERNELSIZE (int(max(ceil(SPATIAL_SIGMA * 2.0), 1.0)) * 2 + 1) //Kernel size, must be an positive odd integer.
 #define KERNELHALFSIZE (int(KERNELSIZE/2)) //Half of the kernel size without remainder. Must be equal to trunc(KERNELSIZE/2).
 #define KERNELLEN (KERNELSIZE * KERNELSIZE) //Total area of kernel. Must be equal to KERNELSIZE * KERNELSIZE.
 float gaussian(float x, float s, float m) {
@@ -202,7 +202,7 @@ uniform vec2 u_LINEKERNEL_size;
 #define LINEKERNEL_texOff(offset) (LINEKERNEL_tex(LINEKERNEL_pos + LINEKERNEL_pt * offset))
 
 #define SPATIAL_SIGMA (0.5 * float(MAIN_size.y) / 1080.0) //Spatial window size, must be a positive real number.
-#define KERNELSIZE (max(int(ceil(SPATIAL_SIGMA * 2.0)), 1) * 2 + 1) //Kernel size, must be an positive odd integer.
+#define KERNELSIZE (int(max(ceil(SPATIAL_SIGMA * 2.0), 1.0)) * 2 + 1) //Kernel size, must be an positive odd integer.
 #define KERNELHALFSIZE (int(KERNELSIZE/2)) //Half of the kernel size without remainder. Must be equal to trunc(KERNELSIZE/2).
 #define KERNELLEN (KERNELSIZE * KERNELSIZE) //Total area of kernel. Must be equal to KERNELSIZE * KERNELSIZE.
 float gaussian(float x, float s, float m) {
@@ -251,7 +251,7 @@ uniform vec2 u_LINEKERNEL_size;
 #define LINEKERNEL_texOff(offset) (LINEKERNEL_tex(LINEKERNEL_pos + LINEKERNEL_pt * offset))
 
 #define SPATIAL_SIGMA (0.5 * float(MAIN_size.y) / 1080.0) //Spatial window size, must be a positive real number.
-#define KERNELSIZE (max(int(ceil(SPATIAL_SIGMA * 2.0)), 1) * 2 + 1) //Kernel size, must be an positive odd integer.
+#define KERNELSIZE (int(max(ceil(SPATIAL_SIGMA * 2.0), 1.0)) * 2 + 1) //Kernel size, must be an positive odd integer.
 #define KERNELHALFSIZE (int(KERNELSIZE/2)) //Half of the kernel size without remainder. Must be equal to trunc(KERNELSIZE/2).
 #define KERNELLEN (KERNELSIZE * KERNELSIZE) //Total area of kernel. Must be equal to KERNELSIZE * KERNELSIZE.
 float gaussian(float x, float s, float m) {

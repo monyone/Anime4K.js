@@ -65,10 +65,10 @@ uniform vec2 u_MAIN_size;
 #define INTENSITY_SIGMA 0.1 //Intensity window size, higher is stronger denoise, must be a positive real number
 #define SPATIAL_SIGMA 1.0 //Spatial window size, higher is stronger denoise, must be a positive real number.
 #define INTENSITY_POWER_CURVE 1.0 //Intensity window power curve. Setting it to 0 will make the intensity window treat all intensities equally, while increasing it will make the window narrower in darker intensities and wider in brighter intensities.
-#define KERNELSIZE (max(int(ceil(SPATIAL_SIGMA * 2.0)), 1) * 2 + 1) //Kernel size, must be an positive odd integer.
+#define KERNELSIZE (int(max(ceil(SPATIAL_SIGMA * 2.0), 1.0)) * 2 + 1) //Kernel size, must be an positive odd integer.
 #define KERNELHALFSIZE (int(KERNELSIZE/2)) //Half of the kernel size without remainder. Must be equal to trunc(KERNELSIZE/2).
 #define KERNELLEN (KERNELSIZE * KERNELSIZE) //Total area of kernel. Must be equal to KERNELSIZE * KERNELSIZE.
-#define GETOFFSET(i) vec2((i % KERNELSIZE) - KERNELHALFSIZE, (i / KERNELSIZE) - KERNELHALFSIZE)
+#define GETOFFSET(i) vec2(((i - (i / KERNELSIZE) * KERNELSIZE)) - KERNELHALFSIZE, (i / KERNELSIZE) - KERNELHALFSIZE)
 vec4 gaussian_vec(vec4 x, vec4 s, vec4 m) {
   vec4 scaled = (x - m) / s;
   return exp(-0.5 * scaled * scaled);

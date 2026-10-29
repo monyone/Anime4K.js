@@ -180,6 +180,7 @@ uniform vec2 u_{bind}_size;
 
     replaced = self.shader.replace('vec4 hook', 'void main').replace('float c3 = c2', 'float c3 = 0.0').replace('HOOKED', self.hook).replace('PREKERNEL_tex(PREKERNEL_pos) - (current_luma - new_luma);', 'vec4((PREKERNEL_tex(PREKERNEL_pos) - (current_luma - new_luma)).rgb, 1);').split('\n')
     body = '\n'.join(replaced[:-4]) + '\n' + '\n'.join(replaced[-4:]).replace('return', 'gl_FragColor =')
+    # GLSL ES 1.00 (WebGL) has no support for array index
     body = re.sub(r'\s*float c(\d) = (.*)\[.*\]', indent("""
 float c\\1 = 0.0;
 if (i\\1.y * 2 + i\\1.x == 0) {
@@ -192,6 +193,10 @@ if (i\\1.y * 2 + i\\1.x == 0) {
   c\\1 = \\2[3];
 }
 """.rstrip(), '  '), body)
+    # GLSL ES 1.00 (WebGL1) has no integer modulo operator
+    body = re.sub(r'(\w+) % (\w+)', r'(\1 - (\1 / \2) * \2)', body)
+    # GLSL ES 1.00 (WebGL1) has no integer max()
+    body = re.sub(r'max\(int\((.+?)\), 1\)', r'int(max(\1, 1.0))', body)
 
     return head + textures + body
 
