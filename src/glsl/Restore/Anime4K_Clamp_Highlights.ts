@@ -53,12 +53,12 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
@@ -85,19 +85,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D STATSMAX;
+uniform vec2 u_STATSMAX_size;
 #define STATSMAX_pos (v_texture_coord)
 #define STATSMAX_tex(pos) (texture2D(STATSMAX, pos))
-#define STATSMAX_size (u_texture_size)
+#define STATSMAX_size (u_STATSMAX_size)
 #define STATSMAX_pt (1.0 / STATSMAX_size)
 #define STATSMAX_texOff(offset) (STATSMAX_tex(STATSMAX_pos + STATSMAX_pt * offset))
 
@@ -121,19 +122,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D PREKERNEL;
+uniform vec2 u_PREKERNEL_size;
 #define PREKERNEL_pos (v_texture_coord)
 #define PREKERNEL_tex(pos) (texture2D(PREKERNEL, pos))
-#define PREKERNEL_size (u_texture_size)
+#define PREKERNEL_size (u_PREKERNEL_size)
 #define PREKERNEL_pt (1.0 / PREKERNEL_size)
 #define PREKERNEL_texOff(offset) (PREKERNEL_tex(PREKERNEL_pos + PREKERNEL_pt * offset))
 
 uniform sampler2D STATSMAX;
+uniform vec2 u_STATSMAX_size;
 #define STATSMAX_pos (v_texture_coord)
 #define STATSMAX_tex(pos) (texture2D(STATSMAX, pos))
-#define STATSMAX_size (u_texture_size)
+#define STATSMAX_size (u_STATSMAX_size)
 #define STATSMAX_pt (1.0 / STATSMAX_size)
 #define STATSMAX_texOff(offset) (STATSMAX_tex(STATSMAX_pos + STATSMAX_pt * offset))
 
@@ -173,9 +175,11 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
   private program_0_u_resolution_location: WebGLUniformLocation | null;
   private program_1_u_resolution_location: WebGLUniformLocation | null;
   private program_2_u_resolution_location: WebGLUniformLocation | null;
-  private program_0_u_texture_size_location: WebGLUniformLocation | null;
-  private program_1_u_texture_size_location: WebGLUniformLocation | null;
-  private program_2_u_texture_size_location: WebGLUniformLocation | null;
+  private program_0_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_1_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_1_STATSMAX_SizeLocation: WebGLUniformLocation | null;
+  private program_2_PREKERNEL_SizeLocation: WebGLUniformLocation | null;
+  private program_2_STATSMAX_SizeLocation: WebGLUniformLocation | null;
   private program_0_MAIN_TextureLocation: WebGLUniformLocation | null;
   private program_1_MAIN_TextureLocation: WebGLUniformLocation | null;
   private program_1_STATSMAX_TextureLocation: WebGLUniformLocation | null;
@@ -216,9 +220,11 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
     this.program_0_u_resolution_location = gl.getUniformLocation(this.program_0, "u_resolution");
     this.program_1_u_resolution_location = gl.getUniformLocation(this.program_1, "u_resolution");
     this.program_2_u_resolution_location = gl.getUniformLocation(this.program_2, "u_resolution");
-    this.program_0_u_texture_size_location = gl.getUniformLocation(this.program_0, "u_texture_size");
-    this.program_1_u_texture_size_location = gl.getUniformLocation(this.program_1, "u_texture_size");
-    this.program_2_u_texture_size_location = gl.getUniformLocation(this.program_2, "u_texture_size");
+    this.program_0_MAIN_SizeLocation = gl.getUniformLocation(this.program_0, "u_MAIN_size");
+    this.program_1_MAIN_SizeLocation = gl.getUniformLocation(this.program_1, "u_MAIN_size");
+    this.program_1_STATSMAX_SizeLocation = gl.getUniformLocation(this.program_1, "u_STATSMAX_size");
+    this.program_2_PREKERNEL_SizeLocation = gl.getUniformLocation(this.program_2, "u_PREKERNEL_size");
+    this.program_2_STATSMAX_SizeLocation = gl.getUniformLocation(this.program_2, "u_STATSMAX_size");
     this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN");
     this.program_1_MAIN_TextureLocation = gl.getUniformLocation(this.program_1, "MAIN");
     this.program_1_STATSMAX_TextureLocation = gl.getUniformLocation(this.program_1, "STATSMAX");
@@ -342,11 +348,11 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_0_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_0_u_resolution_location, (MAIN.width), (MAIN.height));
-        gl.uniform2f(this.program_0_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_0_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_0_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -389,14 +395,15 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_1_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_1_u_resolution_location, (MAIN.width), (MAIN.height));
-        gl.uniform2f(this.program_1_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_1_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_1_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, STATSMAX.texture);
         gl.uniform1i(this.program_1_STATSMAX_TextureLocation, 1);
+        gl.uniform2f(this.program_1_STATSMAX_SizeLocation, STATSMAX.width, STATSMAX.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -447,14 +454,15 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_2_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_2_u_resolution_location, (PREKERNEL.width), (PREKERNEL.height));
-        gl.uniform2f(this.program_2_u_texture_size_location, PREKERNEL.width, PREKERNEL.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, PREKERNEL.texture);
         gl.uniform1i(this.program_2_PREKERNEL_TextureLocation, 0);
+        gl.uniform2f(this.program_2_PREKERNEL_SizeLocation, PREKERNEL.width, PREKERNEL.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, STATSMAX.texture);
         gl.uniform1i(this.program_2_STATSMAX_TextureLocation, 1);
+        gl.uniform2f(this.program_2_STATSMAX_SizeLocation, STATSMAX.width, STATSMAX.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);

@@ -53,12 +53,12 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
@@ -78,12 +78,12 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D LINELUMA;
+uniform vec2 u_LINELUMA_size;
 #define LINELUMA_pos (v_texture_coord)
 #define LINELUMA_tex(pos) (texture2D(LINELUMA, pos))
-#define LINELUMA_size (u_texture_size)
+#define LINELUMA_size (u_LINELUMA_size)
 #define LINELUMA_pt (1.0 / LINELUMA_size)
 #define LINELUMA_texOff(offset) (LINELUMA_tex(LINELUMA_pos + LINELUMA_pt * offset))
 
@@ -105,12 +105,12 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D LINESOBEL;
+uniform vec2 u_LINESOBEL_size;
 #define LINESOBEL_pos (v_texture_coord)
 #define LINESOBEL_tex(pos) (texture2D(LINESOBEL, pos))
-#define LINESOBEL_size (u_texture_size)
+#define LINESOBEL_size (u_LINESOBEL_size)
 #define LINESOBEL_pt (1.0 / LINESOBEL_size)
 #define LINESOBEL_texOff(offset) (LINESOBEL_tex(LINESOBEL_pos + LINESOBEL_pt * offset))
 
@@ -136,19 +136,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D LINESOBEL;
+uniform vec2 u_LINESOBEL_size;
 #define LINESOBEL_pos (v_texture_coord)
 #define LINESOBEL_tex(pos) (texture2D(LINESOBEL, pos))
-#define LINESOBEL_size (u_texture_size)
+#define LINESOBEL_size (u_LINESOBEL_size)
 #define LINESOBEL_pt (1.0 / LINESOBEL_size)
 #define LINESOBEL_texOff(offset) (LINESOBEL_tex(LINESOBEL_pos + LINESOBEL_pt * offset))
 
@@ -184,19 +185,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D LINESOBEL;
+uniform vec2 u_LINESOBEL_size;
 #define LINESOBEL_pos (v_texture_coord)
 #define LINESOBEL_tex(pos) (texture2D(LINESOBEL, pos))
-#define LINESOBEL_size (u_texture_size)
+#define LINESOBEL_size (u_LINESOBEL_size)
 #define LINESOBEL_pt (1.0 / LINESOBEL_size)
 #define LINESOBEL_texOff(offset) (LINESOBEL_tex(LINESOBEL_pos + LINESOBEL_pt * offset))
 
@@ -232,12 +234,12 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D LINESOBEL;
+uniform vec2 u_LINESOBEL_size;
 #define LINESOBEL_pos (v_texture_coord)
 #define LINESOBEL_tex(pos) (texture2D(LINESOBEL, pos))
-#define LINESOBEL_size (u_texture_size)
+#define LINESOBEL_size (u_LINESOBEL_size)
 #define LINESOBEL_pt (1.0 / LINESOBEL_size)
 #define LINESOBEL_texOff(offset) (LINESOBEL_tex(LINESOBEL_pos + LINESOBEL_pt * offset))
 
@@ -259,12 +261,12 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D LINESOBEL;
+uniform vec2 u_LINESOBEL_size;
 #define LINESOBEL_pos (v_texture_coord)
 #define LINESOBEL_tex(pos) (texture2D(LINESOBEL, pos))
-#define LINESOBEL_size (u_texture_size)
+#define LINESOBEL_size (u_LINESOBEL_size)
 #define LINESOBEL_pt (1.0 / LINESOBEL_size)
 #define LINESOBEL_texOff(offset) (LINESOBEL_tex(LINESOBEL_pos + LINESOBEL_pt * offset))
 
@@ -289,19 +291,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D LINESOBEL;
+uniform vec2 u_LINESOBEL_size;
 #define LINESOBEL_pos (v_texture_coord)
 #define LINESOBEL_tex(pos) (texture2D(LINESOBEL, pos))
-#define LINESOBEL_size (u_texture_size)
+#define LINESOBEL_size (u_LINESOBEL_size)
 #define LINESOBEL_pt (1.0 / LINESOBEL_size)
 #define LINESOBEL_texOff(offset) (LINESOBEL_tex(LINESOBEL_pos + LINESOBEL_pt * offset))
 
@@ -379,14 +382,17 @@ export default class Anime4K_Thin_VeryFast extends Anime4KShader {
   private program_5_u_resolution_location: WebGLUniformLocation | null;
   private program_6_u_resolution_location: WebGLUniformLocation | null;
   private program_7_u_resolution_location: WebGLUniformLocation | null;
-  private program_0_u_texture_size_location: WebGLUniformLocation | null;
-  private program_1_u_texture_size_location: WebGLUniformLocation | null;
-  private program_2_u_texture_size_location: WebGLUniformLocation | null;
-  private program_3_u_texture_size_location: WebGLUniformLocation | null;
-  private program_4_u_texture_size_location: WebGLUniformLocation | null;
-  private program_5_u_texture_size_location: WebGLUniformLocation | null;
-  private program_6_u_texture_size_location: WebGLUniformLocation | null;
-  private program_7_u_texture_size_location: WebGLUniformLocation | null;
+  private program_0_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_1_LINELUMA_SizeLocation: WebGLUniformLocation | null;
+  private program_2_LINESOBEL_SizeLocation: WebGLUniformLocation | null;
+  private program_3_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_3_LINESOBEL_SizeLocation: WebGLUniformLocation | null;
+  private program_4_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_4_LINESOBEL_SizeLocation: WebGLUniformLocation | null;
+  private program_5_LINESOBEL_SizeLocation: WebGLUniformLocation | null;
+  private program_6_LINESOBEL_SizeLocation: WebGLUniformLocation | null;
+  private program_7_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_7_LINESOBEL_SizeLocation: WebGLUniformLocation | null;
   private program_0_MAIN_TextureLocation: WebGLUniformLocation | null;
   private program_1_LINELUMA_TextureLocation: WebGLUniformLocation | null;
   private program_2_LINESOBEL_TextureLocation: WebGLUniformLocation | null;
@@ -483,14 +489,17 @@ export default class Anime4K_Thin_VeryFast extends Anime4KShader {
     this.program_5_u_resolution_location = gl.getUniformLocation(this.program_5, "u_resolution");
     this.program_6_u_resolution_location = gl.getUniformLocation(this.program_6, "u_resolution");
     this.program_7_u_resolution_location = gl.getUniformLocation(this.program_7, "u_resolution");
-    this.program_0_u_texture_size_location = gl.getUniformLocation(this.program_0, "u_texture_size");
-    this.program_1_u_texture_size_location = gl.getUniformLocation(this.program_1, "u_texture_size");
-    this.program_2_u_texture_size_location = gl.getUniformLocation(this.program_2, "u_texture_size");
-    this.program_3_u_texture_size_location = gl.getUniformLocation(this.program_3, "u_texture_size");
-    this.program_4_u_texture_size_location = gl.getUniformLocation(this.program_4, "u_texture_size");
-    this.program_5_u_texture_size_location = gl.getUniformLocation(this.program_5, "u_texture_size");
-    this.program_6_u_texture_size_location = gl.getUniformLocation(this.program_6, "u_texture_size");
-    this.program_7_u_texture_size_location = gl.getUniformLocation(this.program_7, "u_texture_size");
+    this.program_0_MAIN_SizeLocation = gl.getUniformLocation(this.program_0, "u_MAIN_size");
+    this.program_1_LINELUMA_SizeLocation = gl.getUniformLocation(this.program_1, "u_LINELUMA_size");
+    this.program_2_LINESOBEL_SizeLocation = gl.getUniformLocation(this.program_2, "u_LINESOBEL_size");
+    this.program_3_MAIN_SizeLocation = gl.getUniformLocation(this.program_3, "u_MAIN_size");
+    this.program_3_LINESOBEL_SizeLocation = gl.getUniformLocation(this.program_3, "u_LINESOBEL_size");
+    this.program_4_MAIN_SizeLocation = gl.getUniformLocation(this.program_4, "u_MAIN_size");
+    this.program_4_LINESOBEL_SizeLocation = gl.getUniformLocation(this.program_4, "u_LINESOBEL_size");
+    this.program_5_LINESOBEL_SizeLocation = gl.getUniformLocation(this.program_5, "u_LINESOBEL_size");
+    this.program_6_LINESOBEL_SizeLocation = gl.getUniformLocation(this.program_6, "u_LINESOBEL_size");
+    this.program_7_MAIN_SizeLocation = gl.getUniformLocation(this.program_7, "u_MAIN_size");
+    this.program_7_LINESOBEL_SizeLocation = gl.getUniformLocation(this.program_7, "u_LINESOBEL_size");
     this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN");
     this.program_1_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_1, "LINELUMA");
     this.program_2_LINESOBEL_TextureLocation = gl.getUniformLocation(this.program_2, "LINESOBEL");
@@ -758,11 +767,11 @@ export default class Anime4K_Thin_VeryFast extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_0_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_0_u_resolution_location, (HOOKED.width / 2), (HOOKED.height / 2));
-        gl.uniform2f(this.program_0_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_0_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_0_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -805,11 +814,11 @@ export default class Anime4K_Thin_VeryFast extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_1_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_1_u_resolution_location, (HOOKED.width / 4), (HOOKED.height / 4));
-        gl.uniform2f(this.program_1_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, LINELUMA.texture);
         gl.uniform1i(this.program_1_LINELUMA_TextureLocation, 0);
+        gl.uniform2f(this.program_1_LINELUMA_SizeLocation, LINELUMA.width, LINELUMA.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -852,11 +861,11 @@ export default class Anime4K_Thin_VeryFast extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_2_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_2_u_resolution_location, (HOOKED.width / 4), (HOOKED.height / 4));
-        gl.uniform2f(this.program_2_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, LINESOBEL.texture);
         gl.uniform1i(this.program_2_LINESOBEL_TextureLocation, 0);
+        gl.uniform2f(this.program_2_LINESOBEL_SizeLocation, LINESOBEL.width, LINESOBEL.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -899,14 +908,15 @@ export default class Anime4K_Thin_VeryFast extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_3_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_3_u_resolution_location, (HOOKED.width / 4), (HOOKED.height / 4));
-        gl.uniform2f(this.program_3_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_3_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_3_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, LINESOBEL.texture);
         gl.uniform1i(this.program_3_LINESOBEL_TextureLocation, 1);
+        gl.uniform2f(this.program_3_LINESOBEL_SizeLocation, LINESOBEL.width, LINESOBEL.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -951,14 +961,15 @@ export default class Anime4K_Thin_VeryFast extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_4_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_4_u_resolution_location, (HOOKED.width / 4), (HOOKED.height / 4));
-        gl.uniform2f(this.program_4_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_4_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_4_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, LINESOBEL.texture);
         gl.uniform1i(this.program_4_LINESOBEL_TextureLocation, 1);
+        gl.uniform2f(this.program_4_LINESOBEL_SizeLocation, LINESOBEL.width, LINESOBEL.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -1003,11 +1014,11 @@ export default class Anime4K_Thin_VeryFast extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_5_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_5_u_resolution_location, (HOOKED.width / 4), (HOOKED.height / 4));
-        gl.uniform2f(this.program_5_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, LINESOBEL.texture);
         gl.uniform1i(this.program_5_LINESOBEL_TextureLocation, 0);
+        gl.uniform2f(this.program_5_LINESOBEL_SizeLocation, LINESOBEL.width, LINESOBEL.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -1050,11 +1061,11 @@ export default class Anime4K_Thin_VeryFast extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_6_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_6_u_resolution_location, (HOOKED.width / 4), (HOOKED.height / 4));
-        gl.uniform2f(this.program_6_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, LINESOBEL.texture);
         gl.uniform1i(this.program_6_LINESOBEL_TextureLocation, 0);
+        gl.uniform2f(this.program_6_LINESOBEL_SizeLocation, LINESOBEL.width, LINESOBEL.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -1097,14 +1108,15 @@ export default class Anime4K_Thin_VeryFast extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_7_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_7_u_resolution_location, (MAIN.width), (MAIN.height));
-        gl.uniform2f(this.program_7_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_7_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_7_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, LINESOBEL.texture);
         gl.uniform1i(this.program_7_LINESOBEL_TextureLocation, 1);
+        gl.uniform2f(this.program_7_LINESOBEL_SizeLocation, LINESOBEL.width, LINESOBEL.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);

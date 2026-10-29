@@ -53,12 +53,12 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
@@ -78,19 +78,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D LINELUMA;
+uniform vec2 u_LINELUMA_size;
 #define LINELUMA_pos (v_texture_coord)
 #define LINELUMA_tex(pos) (texture2D(LINELUMA, pos))
-#define LINELUMA_size (u_texture_size)
+#define LINELUMA_size (u_LINELUMA_size)
 #define LINELUMA_pt (1.0 / LINELUMA_size)
 #define LINELUMA_texOff(offset) (LINELUMA_tex(LINELUMA_pos + LINELUMA_pt * offset))
 
@@ -161,8 +162,9 @@ export default class Anime4K_Denoise_Bilateral_Mode extends Anime4KShader {
   private program_1_a_texture_coord_location: number;
   private program_0_u_resolution_location: WebGLUniformLocation | null;
   private program_1_u_resolution_location: WebGLUniformLocation | null;
-  private program_0_u_texture_size_location: WebGLUniformLocation | null;
-  private program_1_u_texture_size_location: WebGLUniformLocation | null;
+  private program_0_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_1_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_1_LINELUMA_SizeLocation: WebGLUniformLocation | null;
   private program_0_MAIN_TextureLocation: WebGLUniformLocation | null;
   private program_1_MAIN_TextureLocation: WebGLUniformLocation | null;
   private program_1_LINELUMA_TextureLocation: WebGLUniformLocation | null;
@@ -191,8 +193,9 @@ export default class Anime4K_Denoise_Bilateral_Mode extends Anime4KShader {
     gl.enableVertexAttribArray(this.program_1_a_texture_coord_location);
     this.program_0_u_resolution_location = gl.getUniformLocation(this.program_0, "u_resolution");
     this.program_1_u_resolution_location = gl.getUniformLocation(this.program_1, "u_resolution");
-    this.program_0_u_texture_size_location = gl.getUniformLocation(this.program_0, "u_texture_size");
-    this.program_1_u_texture_size_location = gl.getUniformLocation(this.program_1, "u_texture_size");
+    this.program_0_MAIN_SizeLocation = gl.getUniformLocation(this.program_0, "u_MAIN_size");
+    this.program_1_MAIN_SizeLocation = gl.getUniformLocation(this.program_1, "u_MAIN_size");
+    this.program_1_LINELUMA_SizeLocation = gl.getUniformLocation(this.program_1, "u_LINELUMA_size");
     this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN");
     this.program_1_MAIN_TextureLocation = gl.getUniformLocation(this.program_1, "MAIN");
     this.program_1_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_1, "LINELUMA");
@@ -302,11 +305,11 @@ export default class Anime4K_Denoise_Bilateral_Mode extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_0_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_0_u_resolution_location, (MAIN.width), (MAIN.height));
-        gl.uniform2f(this.program_0_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_0_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_0_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -349,14 +352,15 @@ export default class Anime4K_Denoise_Bilateral_Mode extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_1_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_1_u_resolution_location, (MAIN.width), (MAIN.height));
-        gl.uniform2f(this.program_1_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_1_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_1_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, LINELUMA.texture);
         gl.uniform1i(this.program_1_LINELUMA_TextureLocation, 1);
+        gl.uniform2f(this.program_1_LINELUMA_SizeLocation, LINELUMA.width, LINELUMA.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);

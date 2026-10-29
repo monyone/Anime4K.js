@@ -53,12 +53,12 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
@@ -104,7 +104,7 @@ export default class Anime4K_Denoise_Bilateral_Mean extends Anime4KShader {
   private program_0_a_position_location: number;
   private program_0_a_texture_coord_location: number;
   private program_0_u_resolution_location: WebGLUniformLocation | null;
-  private program_0_u_texture_size_location: WebGLUniformLocation | null;
+  private program_0_MAIN_SizeLocation: WebGLUniformLocation | null;
   private program_0_MAIN_TextureLocation: WebGLUniformLocation | null;
   private program_0_position_buffer: WebGLBuffer | null;
 
@@ -121,7 +121,7 @@ export default class Anime4K_Denoise_Bilateral_Mean extends Anime4KShader {
     this.program_0_a_texture_coord_location = gl.getAttribLocation(this.program_0, "a_texture_coord");
     gl.enableVertexAttribArray(this.program_0_a_texture_coord_location);
     this.program_0_u_resolution_location = gl.getUniformLocation(this.program_0, "u_resolution");
-    this.program_0_u_texture_size_location = gl.getUniformLocation(this.program_0, "u_texture_size");
+    this.program_0_MAIN_SizeLocation = gl.getUniformLocation(this.program_0, "u_MAIN_size");
     this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN");
     this.program_0_position_buffer = null;
   }
@@ -204,11 +204,11 @@ export default class Anime4K_Denoise_Bilateral_Mean extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_0_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_0_u_resolution_location, (MAIN.width), (MAIN.height));
-        gl.uniform2f(this.program_0_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_0_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_0_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);

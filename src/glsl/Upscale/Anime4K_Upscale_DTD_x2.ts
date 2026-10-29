@@ -53,12 +53,12 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
@@ -78,19 +78,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D LINELUMA;
+uniform vec2 u_LINELUMA_size;
 #define LINELUMA_pos (v_texture_coord)
 #define LINELUMA_tex(pos) (texture2D(LINELUMA, pos))
-#define LINELUMA_size (u_texture_size)
+#define LINELUMA_size (u_LINELUMA_size)
 #define LINELUMA_pt (1.0 / LINELUMA_size)
 #define LINELUMA_texOff(offset) (LINELUMA_tex(LINELUMA_pos + LINELUMA_pt * offset))
 
@@ -125,26 +126,28 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D LINELUMA;
+uniform vec2 u_LINELUMA_size;
 #define LINELUMA_pos (v_texture_coord)
 #define LINELUMA_tex(pos) (texture2D(LINELUMA, pos))
-#define LINELUMA_size (u_texture_size)
+#define LINELUMA_size (u_LINELUMA_size)
 #define LINELUMA_pt (1.0 / LINELUMA_size)
 #define LINELUMA_texOff(offset) (LINELUMA_tex(LINELUMA_pos + LINELUMA_pt * offset))
 
 uniform sampler2D MMKERNEL;
+uniform vec2 u_MMKERNEL_size;
 #define MMKERNEL_pos (v_texture_coord)
 #define MMKERNEL_tex(pos) (texture2D(MMKERNEL, pos))
-#define MMKERNEL_size (u_texture_size)
+#define MMKERNEL_size (u_MMKERNEL_size)
 #define MMKERNEL_pt (1.0 / MMKERNEL_size)
 #define MMKERNEL_texOff(offset) (MMKERNEL_tex(MMKERNEL_pos + MMKERNEL_pt * offset))
 
@@ -179,19 +182,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D MMKERNEL;
+uniform vec2 u_MMKERNEL_size;
 #define MMKERNEL_pos (v_texture_coord)
 #define MMKERNEL_tex(pos) (texture2D(MMKERNEL, pos))
-#define MMKERNEL_size (u_texture_size)
+#define MMKERNEL_size (u_MMKERNEL_size)
 #define MMKERNEL_pt (1.0 / MMKERNEL_size)
 #define MMKERNEL_texOff(offset) (MMKERNEL_tex(MMKERNEL_pos + MMKERNEL_pt * offset))
 
@@ -226,19 +230,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D MMKERNEL;
+uniform vec2 u_MMKERNEL_size;
 #define MMKERNEL_pos (v_texture_coord)
 #define MMKERNEL_tex(pos) (texture2D(MMKERNEL, pos))
-#define MMKERNEL_size (u_texture_size)
+#define MMKERNEL_size (u_MMKERNEL_size)
 #define MMKERNEL_pt (1.0 / MMKERNEL_size)
 #define MMKERNEL_texOff(offset) (MMKERNEL_tex(MMKERNEL_pos + MMKERNEL_pt * offset))
 
@@ -273,19 +278,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D MMKERNEL;
+uniform vec2 u_MMKERNEL_size;
 #define MMKERNEL_pos (v_texture_coord)
 #define MMKERNEL_tex(pos) (texture2D(MMKERNEL, pos))
-#define MMKERNEL_size (u_texture_size)
+#define MMKERNEL_size (u_MMKERNEL_size)
 #define MMKERNEL_pt (1.0 / MMKERNEL_size)
 #define MMKERNEL_texOff(offset) (MMKERNEL_tex(MMKERNEL_pos + MMKERNEL_pt * offset))
 
@@ -306,12 +312,12 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
@@ -331,19 +337,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D LINELUMA;
+uniform vec2 u_LINELUMA_size;
 #define LINELUMA_pos (v_texture_coord)
 #define LINELUMA_tex(pos) (texture2D(LINELUMA, pos))
-#define LINELUMA_size (u_texture_size)
+#define LINELUMA_size (u_LINELUMA_size)
 #define LINELUMA_pt (1.0 / LINELUMA_size)
 #define LINELUMA_texOff(offset) (LINELUMA_tex(LINELUMA_pos + LINELUMA_pt * offset))
 
@@ -379,19 +386,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D LUMAD;
+uniform vec2 u_LUMAD_size;
 #define LUMAD_pos (v_texture_coord)
 #define LUMAD_tex(pos) (texture2D(LUMAD, pos))
-#define LUMAD_size (u_texture_size)
+#define LUMAD_size (u_LUMAD_size)
 #define LUMAD_pt (1.0 / LUMAD_size)
 #define LUMAD_texOff(offset) (LUMAD_tex(LUMAD_pos + LUMAD_pt * offset))
 
@@ -430,19 +438,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D LUMAD;
+uniform vec2 u_LUMAD_size;
 #define LUMAD_pos (v_texture_coord)
 #define LUMAD_tex(pos) (texture2D(LUMAD, pos))
-#define LUMAD_size (u_texture_size)
+#define LUMAD_size (u_LUMAD_size)
 #define LUMAD_pt (1.0 / LUMAD_size)
 #define LUMAD_texOff(offset) (LUMAD_tex(LUMAD_pos + LUMAD_pt * offset))
 
@@ -473,26 +482,28 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D LUMAD;
+uniform vec2 u_LUMAD_size;
 #define LUMAD_pos (v_texture_coord)
 #define LUMAD_tex(pos) (texture2D(LUMAD, pos))
-#define LUMAD_size (u_texture_size)
+#define LUMAD_size (u_LUMAD_size)
 #define LUMAD_pt (1.0 / LUMAD_size)
 #define LUMAD_texOff(offset) (LUMAD_tex(LUMAD_pos + LUMAD_pt * offset))
 
 uniform sampler2D LUMADG;
+uniform vec2 u_LUMADG_size;
 #define LUMADG_pos (v_texture_coord)
 #define LUMADG_tex(pos) (texture2D(LUMADG, pos))
-#define LUMADG_size (u_texture_size)
+#define LUMADG_size (u_LUMADG_size)
 #define LUMADG_pt (1.0 / LUMADG_size)
 #define LUMADG_texOff(offset) (LUMADG_tex(LUMADG_pos + LUMADG_pt * offset))
 
@@ -524,19 +535,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D LUMAD;
+uniform vec2 u_LUMAD_size;
 #define LUMAD_pos (v_texture_coord)
 #define LUMAD_tex(pos) (texture2D(LUMAD, pos))
-#define LUMAD_size (u_texture_size)
+#define LUMAD_size (u_LUMAD_size)
 #define LUMAD_pt (1.0 / LUMAD_size)
 #define LUMAD_texOff(offset) (LUMAD_tex(LUMAD_pos + LUMAD_pt * offset))
 
@@ -571,19 +583,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D LUMAD2;
+uniform vec2 u_LUMAD2_size;
 #define LUMAD2_pos (v_texture_coord)
 #define LUMAD2_tex(pos) (texture2D(LUMAD2, pos))
-#define LUMAD2_size (u_texture_size)
+#define LUMAD2_size (u_LUMAD2_size)
 #define LUMAD2_pt (1.0 / LUMAD2_size)
 #define LUMAD2_texOff(offset) (LUMAD2_tex(LUMAD2_pos + LUMAD2_pt * offset))
 
@@ -621,26 +634,28 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D LUMAD;
+uniform vec2 u_LUMAD_size;
 #define LUMAD_pos (v_texture_coord)
 #define LUMAD_tex(pos) (texture2D(LUMAD, pos))
-#define LUMAD_size (u_texture_size)
+#define LUMAD_size (u_LUMAD_size)
 #define LUMAD_pt (1.0 / LUMAD_size)
 #define LUMAD_texOff(offset) (LUMAD_tex(LUMAD_pos + LUMAD_pt * offset))
 
 uniform sampler2D LUMAD2;
+uniform vec2 u_LUMAD2_size;
 #define LUMAD2_pos (v_texture_coord)
 #define LUMAD2_tex(pos) (texture2D(LUMAD2, pos))
-#define LUMAD2_size (u_texture_size)
+#define LUMAD2_size (u_LUMAD2_size)
 #define LUMAD2_pt (1.0 / LUMAD2_size)
 #define LUMAD2_texOff(offset) (LUMAD2_tex(LUMAD2_pos + LUMAD2_pt * offset))
 
@@ -668,19 +683,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D MAINTEMPTHIN;
+uniform vec2 u_MAINTEMPTHIN_size;
 #define MAINTEMPTHIN_pos (v_texture_coord)
 #define MAINTEMPTHIN_tex(pos) (texture2D(MAINTEMPTHIN, pos))
-#define MAINTEMPTHIN_size (u_texture_size)
+#define MAINTEMPTHIN_size (u_MAINTEMPTHIN_size)
 #define MAINTEMPTHIN_pt (1.0 / MAINTEMPTHIN_size)
 #define MAINTEMPTHIN_texOff(offset) (MAINTEMPTHIN_tex(MAINTEMPTHIN_pos + MAINTEMPTHIN_pt * offset))
 
@@ -700,19 +716,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D MAINTEMP;
+uniform vec2 u_MAINTEMP_size;
 #define MAINTEMP_pos (v_texture_coord)
 #define MAINTEMP_tex(pos) (texture2D(MAINTEMP, pos))
-#define MAINTEMP_size (u_texture_size)
+#define MAINTEMP_size (u_MAINTEMP_size)
 #define MAINTEMP_pt (1.0 / MAINTEMP_size)
 #define MAINTEMP_texOff(offset) (MAINTEMP_tex(MAINTEMP_pos + MAINTEMP_pt * offset))
 
@@ -748,19 +765,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D MMKERNEL;
+uniform vec2 u_MMKERNEL_size;
 #define MMKERNEL_pos (v_texture_coord)
 #define MMKERNEL_tex(pos) (texture2D(MMKERNEL, pos))
-#define MMKERNEL_size (u_texture_size)
+#define MMKERNEL_size (u_MMKERNEL_size)
 #define MMKERNEL_pt (1.0 / MMKERNEL_size)
 #define MMKERNEL_texOff(offset) (MMKERNEL_tex(MMKERNEL_pos + MMKERNEL_pt * offset))
 
@@ -799,33 +817,36 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D MAINTEMPTHIN;
+uniform vec2 u_MAINTEMPTHIN_size;
 #define MAINTEMPTHIN_pos (v_texture_coord)
 #define MAINTEMPTHIN_tex(pos) (texture2D(MAINTEMPTHIN, pos))
-#define MAINTEMPTHIN_size (u_texture_size)
+#define MAINTEMPTHIN_size (u_MAINTEMPTHIN_size)
 #define MAINTEMPTHIN_pt (1.0 / MAINTEMPTHIN_size)
 #define MAINTEMPTHIN_texOff(offset) (MAINTEMPTHIN_tex(MAINTEMPTHIN_pos + MAINTEMPTHIN_pt * offset))
 
 uniform sampler2D MAINTEMP;
+uniform vec2 u_MAINTEMP_size;
 #define MAINTEMP_pos (v_texture_coord)
 #define MAINTEMP_tex(pos) (texture2D(MAINTEMP, pos))
-#define MAINTEMP_size (u_texture_size)
+#define MAINTEMP_size (u_MAINTEMP_size)
 #define MAINTEMP_pt (1.0 / MAINTEMP_size)
 #define MAINTEMP_texOff(offset) (MAINTEMP_tex(MAINTEMP_pos + MAINTEMP_pt * offset))
 
 uniform sampler2D MMKERNEL;
+uniform vec2 u_MMKERNEL_size;
 #define MMKERNEL_pos (v_texture_coord)
 #define MMKERNEL_tex(pos) (texture2D(MMKERNEL, pos))
-#define MMKERNEL_size (u_texture_size)
+#define MMKERNEL_size (u_MMKERNEL_size)
 #define MMKERNEL_pt (1.0 / MMKERNEL_size)
 #define MMKERNEL_texOff(offset) (MMKERNEL_tex(MMKERNEL_pos + MMKERNEL_pt * offset))
 
@@ -982,24 +1003,45 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
   private program_15_u_resolution_location: WebGLUniformLocation | null;
   private program_16_u_resolution_location: WebGLUniformLocation | null;
   private program_17_u_resolution_location: WebGLUniformLocation | null;
-  private program_0_u_texture_size_location: WebGLUniformLocation | null;
-  private program_1_u_texture_size_location: WebGLUniformLocation | null;
-  private program_2_u_texture_size_location: WebGLUniformLocation | null;
-  private program_3_u_texture_size_location: WebGLUniformLocation | null;
-  private program_4_u_texture_size_location: WebGLUniformLocation | null;
-  private program_5_u_texture_size_location: WebGLUniformLocation | null;
-  private program_6_u_texture_size_location: WebGLUniformLocation | null;
-  private program_7_u_texture_size_location: WebGLUniformLocation | null;
-  private program_8_u_texture_size_location: WebGLUniformLocation | null;
-  private program_9_u_texture_size_location: WebGLUniformLocation | null;
-  private program_10_u_texture_size_location: WebGLUniformLocation | null;
-  private program_11_u_texture_size_location: WebGLUniformLocation | null;
-  private program_12_u_texture_size_location: WebGLUniformLocation | null;
-  private program_13_u_texture_size_location: WebGLUniformLocation | null;
-  private program_14_u_texture_size_location: WebGLUniformLocation | null;
-  private program_15_u_texture_size_location: WebGLUniformLocation | null;
-  private program_16_u_texture_size_location: WebGLUniformLocation | null;
-  private program_17_u_texture_size_location: WebGLUniformLocation | null;
+  private program_0_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_1_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_1_LINELUMA_SizeLocation: WebGLUniformLocation | null;
+  private program_2_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_2_LINELUMA_SizeLocation: WebGLUniformLocation | null;
+  private program_2_MMKERNEL_SizeLocation: WebGLUniformLocation | null;
+  private program_3_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_3_MMKERNEL_SizeLocation: WebGLUniformLocation | null;
+  private program_4_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_4_MMKERNEL_SizeLocation: WebGLUniformLocation | null;
+  private program_5_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_5_MMKERNEL_SizeLocation: WebGLUniformLocation | null;
+  private program_6_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_7_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_7_LINELUMA_SizeLocation: WebGLUniformLocation | null;
+  private program_8_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_8_LUMAD_SizeLocation: WebGLUniformLocation | null;
+  private program_9_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_9_LUMAD_SizeLocation: WebGLUniformLocation | null;
+  private program_10_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_10_LUMAD_SizeLocation: WebGLUniformLocation | null;
+  private program_10_LUMADG_SizeLocation: WebGLUniformLocation | null;
+  private program_11_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_11_LUMAD_SizeLocation: WebGLUniformLocation | null;
+  private program_12_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_12_LUMAD2_SizeLocation: WebGLUniformLocation | null;
+  private program_13_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_13_LUMAD_SizeLocation: WebGLUniformLocation | null;
+  private program_13_LUMAD2_SizeLocation: WebGLUniformLocation | null;
+  private program_14_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_14_MAINTEMPTHIN_SizeLocation: WebGLUniformLocation | null;
+  private program_15_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_15_MAINTEMP_SizeLocation: WebGLUniformLocation | null;
+  private program_16_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_16_MMKERNEL_SizeLocation: WebGLUniformLocation | null;
+  private program_17_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_17_MAINTEMPTHIN_SizeLocation: WebGLUniformLocation | null;
+  private program_17_MAINTEMP_SizeLocation: WebGLUniformLocation | null;
+  private program_17_MMKERNEL_SizeLocation: WebGLUniformLocation | null;
   private program_0_MAIN_TextureLocation: WebGLUniformLocation | null;
   private program_1_MAIN_TextureLocation: WebGLUniformLocation | null;
   private program_1_LINELUMA_TextureLocation: WebGLUniformLocation | null;
@@ -1224,24 +1266,45 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
     this.program_15_u_resolution_location = gl.getUniformLocation(this.program_15, "u_resolution");
     this.program_16_u_resolution_location = gl.getUniformLocation(this.program_16, "u_resolution");
     this.program_17_u_resolution_location = gl.getUniformLocation(this.program_17, "u_resolution");
-    this.program_0_u_texture_size_location = gl.getUniformLocation(this.program_0, "u_texture_size");
-    this.program_1_u_texture_size_location = gl.getUniformLocation(this.program_1, "u_texture_size");
-    this.program_2_u_texture_size_location = gl.getUniformLocation(this.program_2, "u_texture_size");
-    this.program_3_u_texture_size_location = gl.getUniformLocation(this.program_3, "u_texture_size");
-    this.program_4_u_texture_size_location = gl.getUniformLocation(this.program_4, "u_texture_size");
-    this.program_5_u_texture_size_location = gl.getUniformLocation(this.program_5, "u_texture_size");
-    this.program_6_u_texture_size_location = gl.getUniformLocation(this.program_6, "u_texture_size");
-    this.program_7_u_texture_size_location = gl.getUniformLocation(this.program_7, "u_texture_size");
-    this.program_8_u_texture_size_location = gl.getUniformLocation(this.program_8, "u_texture_size");
-    this.program_9_u_texture_size_location = gl.getUniformLocation(this.program_9, "u_texture_size");
-    this.program_10_u_texture_size_location = gl.getUniformLocation(this.program_10, "u_texture_size");
-    this.program_11_u_texture_size_location = gl.getUniformLocation(this.program_11, "u_texture_size");
-    this.program_12_u_texture_size_location = gl.getUniformLocation(this.program_12, "u_texture_size");
-    this.program_13_u_texture_size_location = gl.getUniformLocation(this.program_13, "u_texture_size");
-    this.program_14_u_texture_size_location = gl.getUniformLocation(this.program_14, "u_texture_size");
-    this.program_15_u_texture_size_location = gl.getUniformLocation(this.program_15, "u_texture_size");
-    this.program_16_u_texture_size_location = gl.getUniformLocation(this.program_16, "u_texture_size");
-    this.program_17_u_texture_size_location = gl.getUniformLocation(this.program_17, "u_texture_size");
+    this.program_0_MAIN_SizeLocation = gl.getUniformLocation(this.program_0, "u_MAIN_size");
+    this.program_1_MAIN_SizeLocation = gl.getUniformLocation(this.program_1, "u_MAIN_size");
+    this.program_1_LINELUMA_SizeLocation = gl.getUniformLocation(this.program_1, "u_LINELUMA_size");
+    this.program_2_MAIN_SizeLocation = gl.getUniformLocation(this.program_2, "u_MAIN_size");
+    this.program_2_LINELUMA_SizeLocation = gl.getUniformLocation(this.program_2, "u_LINELUMA_size");
+    this.program_2_MMKERNEL_SizeLocation = gl.getUniformLocation(this.program_2, "u_MMKERNEL_size");
+    this.program_3_MAIN_SizeLocation = gl.getUniformLocation(this.program_3, "u_MAIN_size");
+    this.program_3_MMKERNEL_SizeLocation = gl.getUniformLocation(this.program_3, "u_MMKERNEL_size");
+    this.program_4_MAIN_SizeLocation = gl.getUniformLocation(this.program_4, "u_MAIN_size");
+    this.program_4_MMKERNEL_SizeLocation = gl.getUniformLocation(this.program_4, "u_MMKERNEL_size");
+    this.program_5_MAIN_SizeLocation = gl.getUniformLocation(this.program_5, "u_MAIN_size");
+    this.program_5_MMKERNEL_SizeLocation = gl.getUniformLocation(this.program_5, "u_MMKERNEL_size");
+    this.program_6_MAIN_SizeLocation = gl.getUniformLocation(this.program_6, "u_MAIN_size");
+    this.program_7_MAIN_SizeLocation = gl.getUniformLocation(this.program_7, "u_MAIN_size");
+    this.program_7_LINELUMA_SizeLocation = gl.getUniformLocation(this.program_7, "u_LINELUMA_size");
+    this.program_8_MAIN_SizeLocation = gl.getUniformLocation(this.program_8, "u_MAIN_size");
+    this.program_8_LUMAD_SizeLocation = gl.getUniformLocation(this.program_8, "u_LUMAD_size");
+    this.program_9_MAIN_SizeLocation = gl.getUniformLocation(this.program_9, "u_MAIN_size");
+    this.program_9_LUMAD_SizeLocation = gl.getUniformLocation(this.program_9, "u_LUMAD_size");
+    this.program_10_MAIN_SizeLocation = gl.getUniformLocation(this.program_10, "u_MAIN_size");
+    this.program_10_LUMAD_SizeLocation = gl.getUniformLocation(this.program_10, "u_LUMAD_size");
+    this.program_10_LUMADG_SizeLocation = gl.getUniformLocation(this.program_10, "u_LUMADG_size");
+    this.program_11_MAIN_SizeLocation = gl.getUniformLocation(this.program_11, "u_MAIN_size");
+    this.program_11_LUMAD_SizeLocation = gl.getUniformLocation(this.program_11, "u_LUMAD_size");
+    this.program_12_MAIN_SizeLocation = gl.getUniformLocation(this.program_12, "u_MAIN_size");
+    this.program_12_LUMAD2_SizeLocation = gl.getUniformLocation(this.program_12, "u_LUMAD2_size");
+    this.program_13_MAIN_SizeLocation = gl.getUniformLocation(this.program_13, "u_MAIN_size");
+    this.program_13_LUMAD_SizeLocation = gl.getUniformLocation(this.program_13, "u_LUMAD_size");
+    this.program_13_LUMAD2_SizeLocation = gl.getUniformLocation(this.program_13, "u_LUMAD2_size");
+    this.program_14_MAIN_SizeLocation = gl.getUniformLocation(this.program_14, "u_MAIN_size");
+    this.program_14_MAINTEMPTHIN_SizeLocation = gl.getUniformLocation(this.program_14, "u_MAINTEMPTHIN_size");
+    this.program_15_MAIN_SizeLocation = gl.getUniformLocation(this.program_15, "u_MAIN_size");
+    this.program_15_MAINTEMP_SizeLocation = gl.getUniformLocation(this.program_15, "u_MAINTEMP_size");
+    this.program_16_MAIN_SizeLocation = gl.getUniformLocation(this.program_16, "u_MAIN_size");
+    this.program_16_MMKERNEL_SizeLocation = gl.getUniformLocation(this.program_16, "u_MMKERNEL_size");
+    this.program_17_MAIN_SizeLocation = gl.getUniformLocation(this.program_17, "u_MAIN_size");
+    this.program_17_MAINTEMPTHIN_SizeLocation = gl.getUniformLocation(this.program_17, "u_MAINTEMPTHIN_size");
+    this.program_17_MAINTEMP_SizeLocation = gl.getUniformLocation(this.program_17, "u_MAINTEMP_size");
+    this.program_17_MMKERNEL_SizeLocation = gl.getUniformLocation(this.program_17, "u_MMKERNEL_size");
     this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN");
     this.program_1_MAIN_TextureLocation = gl.getUniformLocation(this.program_1, "MAIN");
     this.program_1_LINELUMA_TextureLocation = gl.getUniformLocation(this.program_1, "LINELUMA");
@@ -1795,11 +1858,11 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_0_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_0_u_resolution_location, (MAIN.width), (MAIN.height));
-        gl.uniform2f(this.program_0_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_0_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_0_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -1842,14 +1905,15 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_1_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_1_u_resolution_location, (MAIN.width), (MAIN.height));
-        gl.uniform2f(this.program_1_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_1_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_1_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, LINELUMA.texture);
         gl.uniform1i(this.program_1_LINELUMA_TextureLocation, 1);
+        gl.uniform2f(this.program_1_LINELUMA_SizeLocation, LINELUMA.width, LINELUMA.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -1896,17 +1960,19 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_2_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_2_u_resolution_location, (MAIN.width), (MAIN.height));
-        gl.uniform2f(this.program_2_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_2_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_2_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, LINELUMA.texture);
         gl.uniform1i(this.program_2_LINELUMA_TextureLocation, 1);
+        gl.uniform2f(this.program_2_LINELUMA_SizeLocation, LINELUMA.width, LINELUMA.height);
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, MMKERNEL.texture);
         gl.uniform1i(this.program_2_MMKERNEL_TextureLocation, 2);
+        gl.uniform2f(this.program_2_MMKERNEL_SizeLocation, MMKERNEL.width, MMKERNEL.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -1953,14 +2019,15 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_3_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_3_u_resolution_location, (MAIN.width), (MAIN.height));
-        gl.uniform2f(this.program_3_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_3_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_3_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, MMKERNEL.texture);
         gl.uniform1i(this.program_3_MMKERNEL_TextureLocation, 1);
+        gl.uniform2f(this.program_3_MMKERNEL_SizeLocation, MMKERNEL.width, MMKERNEL.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -2005,14 +2072,15 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_4_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_4_u_resolution_location, (MAIN.width), (MAIN.height));
-        gl.uniform2f(this.program_4_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_4_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_4_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, MMKERNEL.texture);
         gl.uniform1i(this.program_4_MMKERNEL_TextureLocation, 1);
+        gl.uniform2f(this.program_4_MMKERNEL_SizeLocation, MMKERNEL.width, MMKERNEL.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -2057,14 +2125,15 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_5_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_5_u_resolution_location, (MAIN.width), (MAIN.height));
-        gl.uniform2f(this.program_5_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_5_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_5_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, MMKERNEL.texture);
         gl.uniform1i(this.program_5_MMKERNEL_TextureLocation, 1);
+        gl.uniform2f(this.program_5_MMKERNEL_SizeLocation, MMKERNEL.width, MMKERNEL.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -2107,11 +2176,11 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_6_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_6_u_resolution_location, (MAIN.width), (MAIN.height));
-        gl.uniform2f(this.program_6_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_6_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_6_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -2154,14 +2223,15 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_7_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_7_u_resolution_location, (MAIN.width), (MAIN.height));
-        gl.uniform2f(this.program_7_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_7_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_7_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, LINELUMA.texture);
         gl.uniform1i(this.program_7_LINELUMA_TextureLocation, 1);
+        gl.uniform2f(this.program_7_LINELUMA_SizeLocation, LINELUMA.width, LINELUMA.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -2206,14 +2276,15 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_8_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_8_u_resolution_location, (MAIN.width), (MAIN.height));
-        gl.uniform2f(this.program_8_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_8_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_8_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, LUMAD.texture);
         gl.uniform1i(this.program_8_LUMAD_TextureLocation, 1);
+        gl.uniform2f(this.program_8_LUMAD_SizeLocation, LUMAD.width, LUMAD.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -2258,14 +2329,15 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_9_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_9_u_resolution_location, (MAIN.width), (MAIN.height));
-        gl.uniform2f(this.program_9_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_9_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_9_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, LUMAD.texture);
         gl.uniform1i(this.program_9_LUMAD_TextureLocation, 1);
+        gl.uniform2f(this.program_9_LUMAD_SizeLocation, LUMAD.width, LUMAD.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -2312,17 +2384,19 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_10_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_10_u_resolution_location, (MAIN.width), (MAIN.height));
-        gl.uniform2f(this.program_10_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_10_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_10_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, LUMAD.texture);
         gl.uniform1i(this.program_10_LUMAD_TextureLocation, 1);
+        gl.uniform2f(this.program_10_LUMAD_SizeLocation, LUMAD.width, LUMAD.height);
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, LUMADG.texture);
         gl.uniform1i(this.program_10_LUMADG_TextureLocation, 2);
+        gl.uniform2f(this.program_10_LUMADG_SizeLocation, LUMADG.width, LUMADG.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -2369,14 +2443,15 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_11_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_11_u_resolution_location, (MAIN.width), (MAIN.height));
-        gl.uniform2f(this.program_11_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_11_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_11_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, LUMAD.texture);
         gl.uniform1i(this.program_11_LUMAD_TextureLocation, 1);
+        gl.uniform2f(this.program_11_LUMAD_SizeLocation, LUMAD.width, LUMAD.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -2421,14 +2496,15 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_12_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_12_u_resolution_location, (MAIN.width), (MAIN.height));
-        gl.uniform2f(this.program_12_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_12_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_12_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, LUMAD2.texture);
         gl.uniform1i(this.program_12_LUMAD2_TextureLocation, 1);
+        gl.uniform2f(this.program_12_LUMAD2_SizeLocation, LUMAD2.width, LUMAD2.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -2475,17 +2551,19 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_13_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_13_u_resolution_location, (MAIN.width * 2), (MAIN.height * 2));
-        gl.uniform2f(this.program_13_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_13_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_13_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, LUMAD.texture);
         gl.uniform1i(this.program_13_LUMAD_TextureLocation, 1);
+        gl.uniform2f(this.program_13_LUMAD_SizeLocation, LUMAD.width, LUMAD.height);
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, LUMAD2.texture);
         gl.uniform1i(this.program_13_LUMAD2_TextureLocation, 2);
+        gl.uniform2f(this.program_13_LUMAD2_SizeLocation, LUMAD2.width, LUMAD2.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -2532,14 +2610,15 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_14_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_14_u_resolution_location, (MAIN.width * 2), (MAIN.height * 2));
-        gl.uniform2f(this.program_14_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_14_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_14_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, MAINTEMPTHIN.texture);
         gl.uniform1i(this.program_14_MAINTEMPTHIN_TextureLocation, 1);
+        gl.uniform2f(this.program_14_MAINTEMPTHIN_SizeLocation, MAINTEMPTHIN.width, MAINTEMPTHIN.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -2584,14 +2663,15 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_15_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_15_u_resolution_location, (MAIN.width), (MAIN.height));
-        gl.uniform2f(this.program_15_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_15_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_15_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, MAINTEMP.texture);
         gl.uniform1i(this.program_15_MAINTEMP_TextureLocation, 1);
+        gl.uniform2f(this.program_15_MAINTEMP_SizeLocation, MAINTEMP.width, MAINTEMP.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -2636,14 +2716,15 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_16_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_16_u_resolution_location, (MAIN.width), (MAIN.height));
-        gl.uniform2f(this.program_16_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_16_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_16_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, MMKERNEL.texture);
         gl.uniform1i(this.program_16_MMKERNEL_TextureLocation, 1);
+        gl.uniform2f(this.program_16_MMKERNEL_SizeLocation, MMKERNEL.width, MMKERNEL.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -2692,20 +2773,23 @@ export default class Anime4K_Upscale_DTD_x2 extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_17_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_17_u_resolution_location, (MAIN.width * 2), (MAIN.height * 2));
-        gl.uniform2f(this.program_17_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_17_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_17_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, MAINTEMPTHIN.texture);
         gl.uniform1i(this.program_17_MAINTEMPTHIN_TextureLocation, 1);
+        gl.uniform2f(this.program_17_MAINTEMPTHIN_SizeLocation, MAINTEMPTHIN.width, MAINTEMPTHIN.height);
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, MAINTEMP.texture);
         gl.uniform1i(this.program_17_MAINTEMP_TextureLocation, 2);
+        gl.uniform2f(this.program_17_MAINTEMP_SizeLocation, MAINTEMP.width, MAINTEMP.height);
         gl.activeTexture(gl.TEXTURE3);
         gl.bindTexture(gl.TEXTURE_2D, MMKERNEL.texture);
         gl.uniform1i(this.program_17_MMKERNEL_TextureLocation, 3);
+        gl.uniform2f(this.program_17_MMKERNEL_SizeLocation, MMKERNEL.width, MMKERNEL.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);

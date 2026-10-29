@@ -53,12 +53,12 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
@@ -86,12 +86,12 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
@@ -119,19 +119,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D conv2d_tf;
+uniform vec2 u_conv2d_tf_size;
 #define conv2d_tf_pos (v_texture_coord)
 #define conv2d_tf_tex(pos) (texture2D(conv2d_tf, pos))
-#define conv2d_tf_size (u_texture_size)
+#define conv2d_tf_size (u_conv2d_tf_size)
 #define conv2d_tf_pt (1.0 / conv2d_tf_size)
 #define conv2d_tf_texOff(offset) (conv2d_tf_tex(conv2d_tf_pos + conv2d_tf_pt * offset))
 
 uniform sampler2D conv2d_tf1;
+uniform vec2 u_conv2d_tf1_size;
 #define conv2d_tf1_pos (v_texture_coord)
 #define conv2d_tf1_tex(pos) (texture2D(conv2d_tf1, pos))
-#define conv2d_tf1_size (u_texture_size)
+#define conv2d_tf1_size (u_conv2d_tf1_size)
 #define conv2d_tf1_pt (1.0 / conv2d_tf1_size)
 #define conv2d_tf1_texOff(offset) (conv2d_tf1_tex(conv2d_tf1_pos + conv2d_tf1_pt * offset))
 
@@ -189,19 +190,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D conv2d_tf;
+uniform vec2 u_conv2d_tf_size;
 #define conv2d_tf_pos (v_texture_coord)
 #define conv2d_tf_tex(pos) (texture2D(conv2d_tf, pos))
-#define conv2d_tf_size (u_texture_size)
+#define conv2d_tf_size (u_conv2d_tf_size)
 #define conv2d_tf_pt (1.0 / conv2d_tf_size)
 #define conv2d_tf_texOff(offset) (conv2d_tf_tex(conv2d_tf_pos + conv2d_tf_pt * offset))
 
 uniform sampler2D conv2d_tf1;
+uniform vec2 u_conv2d_tf1_size;
 #define conv2d_tf1_pos (v_texture_coord)
 #define conv2d_tf1_tex(pos) (texture2D(conv2d_tf1, pos))
-#define conv2d_tf1_size (u_texture_size)
+#define conv2d_tf1_size (u_conv2d_tf1_size)
 #define conv2d_tf1_pt (1.0 / conv2d_tf1_size)
 #define conv2d_tf1_texOff(offset) (conv2d_tf1_tex(conv2d_tf1_pos + conv2d_tf1_pt * offset))
 
@@ -259,19 +261,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D conv2d_1_tf;
+uniform vec2 u_conv2d_1_tf_size;
 #define conv2d_1_tf_pos (v_texture_coord)
 #define conv2d_1_tf_tex(pos) (texture2D(conv2d_1_tf, pos))
-#define conv2d_1_tf_size (u_texture_size)
+#define conv2d_1_tf_size (u_conv2d_1_tf_size)
 #define conv2d_1_tf_pt (1.0 / conv2d_1_tf_size)
 #define conv2d_1_tf_texOff(offset) (conv2d_1_tf_tex(conv2d_1_tf_pos + conv2d_1_tf_pt * offset))
 
 uniform sampler2D conv2d_1_tf1;
+uniform vec2 u_conv2d_1_tf1_size;
 #define conv2d_1_tf1_pos (v_texture_coord)
 #define conv2d_1_tf1_tex(pos) (texture2D(conv2d_1_tf1, pos))
-#define conv2d_1_tf1_size (u_texture_size)
+#define conv2d_1_tf1_size (u_conv2d_1_tf1_size)
 #define conv2d_1_tf1_pt (1.0 / conv2d_1_tf1_size)
 #define conv2d_1_tf1_texOff(offset) (conv2d_1_tf1_tex(conv2d_1_tf1_pos + conv2d_1_tf1_pt * offset))
 
@@ -329,19 +332,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D conv2d_1_tf;
+uniform vec2 u_conv2d_1_tf_size;
 #define conv2d_1_tf_pos (v_texture_coord)
 #define conv2d_1_tf_tex(pos) (texture2D(conv2d_1_tf, pos))
-#define conv2d_1_tf_size (u_texture_size)
+#define conv2d_1_tf_size (u_conv2d_1_tf_size)
 #define conv2d_1_tf_pt (1.0 / conv2d_1_tf_size)
 #define conv2d_1_tf_texOff(offset) (conv2d_1_tf_tex(conv2d_1_tf_pos + conv2d_1_tf_pt * offset))
 
 uniform sampler2D conv2d_1_tf1;
+uniform vec2 u_conv2d_1_tf1_size;
 #define conv2d_1_tf1_pos (v_texture_coord)
 #define conv2d_1_tf1_tex(pos) (texture2D(conv2d_1_tf1, pos))
-#define conv2d_1_tf1_size (u_texture_size)
+#define conv2d_1_tf1_size (u_conv2d_1_tf1_size)
 #define conv2d_1_tf1_pt (1.0 / conv2d_1_tf1_size)
 #define conv2d_1_tf1_texOff(offset) (conv2d_1_tf1_tex(conv2d_1_tf1_pos + conv2d_1_tf1_pt * offset))
 
@@ -399,19 +403,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D conv2d_2_tf;
+uniform vec2 u_conv2d_2_tf_size;
 #define conv2d_2_tf_pos (v_texture_coord)
 #define conv2d_2_tf_tex(pos) (texture2D(conv2d_2_tf, pos))
-#define conv2d_2_tf_size (u_texture_size)
+#define conv2d_2_tf_size (u_conv2d_2_tf_size)
 #define conv2d_2_tf_pt (1.0 / conv2d_2_tf_size)
 #define conv2d_2_tf_texOff(offset) (conv2d_2_tf_tex(conv2d_2_tf_pos + conv2d_2_tf_pt * offset))
 
 uniform sampler2D conv2d_2_tf1;
+uniform vec2 u_conv2d_2_tf1_size;
 #define conv2d_2_tf1_pos (v_texture_coord)
 #define conv2d_2_tf1_tex(pos) (texture2D(conv2d_2_tf1, pos))
-#define conv2d_2_tf1_size (u_texture_size)
+#define conv2d_2_tf1_size (u_conv2d_2_tf1_size)
 #define conv2d_2_tf1_pt (1.0 / conv2d_2_tf1_size)
 #define conv2d_2_tf1_texOff(offset) (conv2d_2_tf1_tex(conv2d_2_tf1_pos + conv2d_2_tf1_pt * offset))
 
@@ -469,19 +474,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D conv2d_2_tf;
+uniform vec2 u_conv2d_2_tf_size;
 #define conv2d_2_tf_pos (v_texture_coord)
 #define conv2d_2_tf_tex(pos) (texture2D(conv2d_2_tf, pos))
-#define conv2d_2_tf_size (u_texture_size)
+#define conv2d_2_tf_size (u_conv2d_2_tf_size)
 #define conv2d_2_tf_pt (1.0 / conv2d_2_tf_size)
 #define conv2d_2_tf_texOff(offset) (conv2d_2_tf_tex(conv2d_2_tf_pos + conv2d_2_tf_pt * offset))
 
 uniform sampler2D conv2d_2_tf1;
+uniform vec2 u_conv2d_2_tf1_size;
 #define conv2d_2_tf1_pos (v_texture_coord)
 #define conv2d_2_tf1_tex(pos) (texture2D(conv2d_2_tf1, pos))
-#define conv2d_2_tf1_size (u_texture_size)
+#define conv2d_2_tf1_size (u_conv2d_2_tf1_size)
 #define conv2d_2_tf1_pt (1.0 / conv2d_2_tf1_size)
 #define conv2d_2_tf1_texOff(offset) (conv2d_2_tf1_tex(conv2d_2_tf1_pos + conv2d_2_tf1_pt * offset))
 
@@ -539,19 +545,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D conv2d_3_tf;
+uniform vec2 u_conv2d_3_tf_size;
 #define conv2d_3_tf_pos (v_texture_coord)
 #define conv2d_3_tf_tex(pos) (texture2D(conv2d_3_tf, pos))
-#define conv2d_3_tf_size (u_texture_size)
+#define conv2d_3_tf_size (u_conv2d_3_tf_size)
 #define conv2d_3_tf_pt (1.0 / conv2d_3_tf_size)
 #define conv2d_3_tf_texOff(offset) (conv2d_3_tf_tex(conv2d_3_tf_pos + conv2d_3_tf_pt * offset))
 
 uniform sampler2D conv2d_3_tf1;
+uniform vec2 u_conv2d_3_tf1_size;
 #define conv2d_3_tf1_pos (v_texture_coord)
 #define conv2d_3_tf1_tex(pos) (texture2D(conv2d_3_tf1, pos))
-#define conv2d_3_tf1_size (u_texture_size)
+#define conv2d_3_tf1_size (u_conv2d_3_tf1_size)
 #define conv2d_3_tf1_pt (1.0 / conv2d_3_tf1_size)
 #define conv2d_3_tf1_texOff(offset) (conv2d_3_tf1_tex(conv2d_3_tf1_pos + conv2d_3_tf1_pt * offset))
 
@@ -609,19 +616,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D conv2d_3_tf;
+uniform vec2 u_conv2d_3_tf_size;
 #define conv2d_3_tf_pos (v_texture_coord)
 #define conv2d_3_tf_tex(pos) (texture2D(conv2d_3_tf, pos))
-#define conv2d_3_tf_size (u_texture_size)
+#define conv2d_3_tf_size (u_conv2d_3_tf_size)
 #define conv2d_3_tf_pt (1.0 / conv2d_3_tf_size)
 #define conv2d_3_tf_texOff(offset) (conv2d_3_tf_tex(conv2d_3_tf_pos + conv2d_3_tf_pt * offset))
 
 uniform sampler2D conv2d_3_tf1;
+uniform vec2 u_conv2d_3_tf1_size;
 #define conv2d_3_tf1_pos (v_texture_coord)
 #define conv2d_3_tf1_tex(pos) (texture2D(conv2d_3_tf1, pos))
-#define conv2d_3_tf1_size (u_texture_size)
+#define conv2d_3_tf1_size (u_conv2d_3_tf1_size)
 #define conv2d_3_tf1_pt (1.0 / conv2d_3_tf1_size)
 #define conv2d_3_tf1_texOff(offset) (conv2d_3_tf1_tex(conv2d_3_tf1_pos + conv2d_3_tf1_pt * offset))
 
@@ -679,19 +687,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D conv2d_4_tf;
+uniform vec2 u_conv2d_4_tf_size;
 #define conv2d_4_tf_pos (v_texture_coord)
 #define conv2d_4_tf_tex(pos) (texture2D(conv2d_4_tf, pos))
-#define conv2d_4_tf_size (u_texture_size)
+#define conv2d_4_tf_size (u_conv2d_4_tf_size)
 #define conv2d_4_tf_pt (1.0 / conv2d_4_tf_size)
 #define conv2d_4_tf_texOff(offset) (conv2d_4_tf_tex(conv2d_4_tf_pos + conv2d_4_tf_pt * offset))
 
 uniform sampler2D conv2d_4_tf1;
+uniform vec2 u_conv2d_4_tf1_size;
 #define conv2d_4_tf1_pos (v_texture_coord)
 #define conv2d_4_tf1_tex(pos) (texture2D(conv2d_4_tf1, pos))
-#define conv2d_4_tf1_size (u_texture_size)
+#define conv2d_4_tf1_size (u_conv2d_4_tf1_size)
 #define conv2d_4_tf1_pt (1.0 / conv2d_4_tf1_size)
 #define conv2d_4_tf1_texOff(offset) (conv2d_4_tf1_tex(conv2d_4_tf1_pos + conv2d_4_tf1_pt * offset))
 
@@ -749,19 +758,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D conv2d_4_tf;
+uniform vec2 u_conv2d_4_tf_size;
 #define conv2d_4_tf_pos (v_texture_coord)
 #define conv2d_4_tf_tex(pos) (texture2D(conv2d_4_tf, pos))
-#define conv2d_4_tf_size (u_texture_size)
+#define conv2d_4_tf_size (u_conv2d_4_tf_size)
 #define conv2d_4_tf_pt (1.0 / conv2d_4_tf_size)
 #define conv2d_4_tf_texOff(offset) (conv2d_4_tf_tex(conv2d_4_tf_pos + conv2d_4_tf_pt * offset))
 
 uniform sampler2D conv2d_4_tf1;
+uniform vec2 u_conv2d_4_tf1_size;
 #define conv2d_4_tf1_pos (v_texture_coord)
 #define conv2d_4_tf1_tex(pos) (texture2D(conv2d_4_tf1, pos))
-#define conv2d_4_tf1_size (u_texture_size)
+#define conv2d_4_tf1_size (u_conv2d_4_tf1_size)
 #define conv2d_4_tf1_pt (1.0 / conv2d_4_tf1_size)
 #define conv2d_4_tf1_texOff(offset) (conv2d_4_tf1_tex(conv2d_4_tf1_pos + conv2d_4_tf1_pt * offset))
 
@@ -819,19 +829,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D conv2d_5_tf;
+uniform vec2 u_conv2d_5_tf_size;
 #define conv2d_5_tf_pos (v_texture_coord)
 #define conv2d_5_tf_tex(pos) (texture2D(conv2d_5_tf, pos))
-#define conv2d_5_tf_size (u_texture_size)
+#define conv2d_5_tf_size (u_conv2d_5_tf_size)
 #define conv2d_5_tf_pt (1.0 / conv2d_5_tf_size)
 #define conv2d_5_tf_texOff(offset) (conv2d_5_tf_tex(conv2d_5_tf_pos + conv2d_5_tf_pt * offset))
 
 uniform sampler2D conv2d_5_tf1;
+uniform vec2 u_conv2d_5_tf1_size;
 #define conv2d_5_tf1_pos (v_texture_coord)
 #define conv2d_5_tf1_tex(pos) (texture2D(conv2d_5_tf1, pos))
-#define conv2d_5_tf1_size (u_texture_size)
+#define conv2d_5_tf1_size (u_conv2d_5_tf1_size)
 #define conv2d_5_tf1_pt (1.0 / conv2d_5_tf1_size)
 #define conv2d_5_tf1_texOff(offset) (conv2d_5_tf1_tex(conv2d_5_tf1_pos + conv2d_5_tf1_pt * offset))
 
@@ -889,19 +900,20 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D conv2d_5_tf;
+uniform vec2 u_conv2d_5_tf_size;
 #define conv2d_5_tf_pos (v_texture_coord)
 #define conv2d_5_tf_tex(pos) (texture2D(conv2d_5_tf, pos))
-#define conv2d_5_tf_size (u_texture_size)
+#define conv2d_5_tf_size (u_conv2d_5_tf_size)
 #define conv2d_5_tf_pt (1.0 / conv2d_5_tf_size)
 #define conv2d_5_tf_texOff(offset) (conv2d_5_tf_tex(conv2d_5_tf_pos + conv2d_5_tf_pt * offset))
 
 uniform sampler2D conv2d_5_tf1;
+uniform vec2 u_conv2d_5_tf1_size;
 #define conv2d_5_tf1_pos (v_texture_coord)
 #define conv2d_5_tf1_tex(pos) (texture2D(conv2d_5_tf1, pos))
-#define conv2d_5_tf1_size (u_texture_size)
+#define conv2d_5_tf1_size (u_conv2d_5_tf1_size)
 #define conv2d_5_tf1_pt (1.0 / conv2d_5_tf1_size)
 #define conv2d_5_tf1_texOff(offset) (conv2d_5_tf1_tex(conv2d_5_tf1_pos + conv2d_5_tf1_pt * offset))
 
@@ -959,103 +971,116 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D conv2d_tf;
+uniform vec2 u_conv2d_tf_size;
 #define conv2d_tf_pos (v_texture_coord)
 #define conv2d_tf_tex(pos) (texture2D(conv2d_tf, pos))
-#define conv2d_tf_size (u_texture_size)
+#define conv2d_tf_size (u_conv2d_tf_size)
 #define conv2d_tf_pt (1.0 / conv2d_tf_size)
 #define conv2d_tf_texOff(offset) (conv2d_tf_tex(conv2d_tf_pos + conv2d_tf_pt * offset))
 
 uniform sampler2D conv2d_tf1;
+uniform vec2 u_conv2d_tf1_size;
 #define conv2d_tf1_pos (v_texture_coord)
 #define conv2d_tf1_tex(pos) (texture2D(conv2d_tf1, pos))
-#define conv2d_tf1_size (u_texture_size)
+#define conv2d_tf1_size (u_conv2d_tf1_size)
 #define conv2d_tf1_pt (1.0 / conv2d_tf1_size)
 #define conv2d_tf1_texOff(offset) (conv2d_tf1_tex(conv2d_tf1_pos + conv2d_tf1_pt * offset))
 
 uniform sampler2D conv2d_1_tf;
+uniform vec2 u_conv2d_1_tf_size;
 #define conv2d_1_tf_pos (v_texture_coord)
 #define conv2d_1_tf_tex(pos) (texture2D(conv2d_1_tf, pos))
-#define conv2d_1_tf_size (u_texture_size)
+#define conv2d_1_tf_size (u_conv2d_1_tf_size)
 #define conv2d_1_tf_pt (1.0 / conv2d_1_tf_size)
 #define conv2d_1_tf_texOff(offset) (conv2d_1_tf_tex(conv2d_1_tf_pos + conv2d_1_tf_pt * offset))
 
 uniform sampler2D conv2d_1_tf1;
+uniform vec2 u_conv2d_1_tf1_size;
 #define conv2d_1_tf1_pos (v_texture_coord)
 #define conv2d_1_tf1_tex(pos) (texture2D(conv2d_1_tf1, pos))
-#define conv2d_1_tf1_size (u_texture_size)
+#define conv2d_1_tf1_size (u_conv2d_1_tf1_size)
 #define conv2d_1_tf1_pt (1.0 / conv2d_1_tf1_size)
 #define conv2d_1_tf1_texOff(offset) (conv2d_1_tf1_tex(conv2d_1_tf1_pos + conv2d_1_tf1_pt * offset))
 
 uniform sampler2D conv2d_2_tf;
+uniform vec2 u_conv2d_2_tf_size;
 #define conv2d_2_tf_pos (v_texture_coord)
 #define conv2d_2_tf_tex(pos) (texture2D(conv2d_2_tf, pos))
-#define conv2d_2_tf_size (u_texture_size)
+#define conv2d_2_tf_size (u_conv2d_2_tf_size)
 #define conv2d_2_tf_pt (1.0 / conv2d_2_tf_size)
 #define conv2d_2_tf_texOff(offset) (conv2d_2_tf_tex(conv2d_2_tf_pos + conv2d_2_tf_pt * offset))
 
 uniform sampler2D conv2d_2_tf1;
+uniform vec2 u_conv2d_2_tf1_size;
 #define conv2d_2_tf1_pos (v_texture_coord)
 #define conv2d_2_tf1_tex(pos) (texture2D(conv2d_2_tf1, pos))
-#define conv2d_2_tf1_size (u_texture_size)
+#define conv2d_2_tf1_size (u_conv2d_2_tf1_size)
 #define conv2d_2_tf1_pt (1.0 / conv2d_2_tf1_size)
 #define conv2d_2_tf1_texOff(offset) (conv2d_2_tf1_tex(conv2d_2_tf1_pos + conv2d_2_tf1_pt * offset))
 
 uniform sampler2D conv2d_3_tf;
+uniform vec2 u_conv2d_3_tf_size;
 #define conv2d_3_tf_pos (v_texture_coord)
 #define conv2d_3_tf_tex(pos) (texture2D(conv2d_3_tf, pos))
-#define conv2d_3_tf_size (u_texture_size)
+#define conv2d_3_tf_size (u_conv2d_3_tf_size)
 #define conv2d_3_tf_pt (1.0 / conv2d_3_tf_size)
 #define conv2d_3_tf_texOff(offset) (conv2d_3_tf_tex(conv2d_3_tf_pos + conv2d_3_tf_pt * offset))
 
 uniform sampler2D conv2d_3_tf1;
+uniform vec2 u_conv2d_3_tf1_size;
 #define conv2d_3_tf1_pos (v_texture_coord)
 #define conv2d_3_tf1_tex(pos) (texture2D(conv2d_3_tf1, pos))
-#define conv2d_3_tf1_size (u_texture_size)
+#define conv2d_3_tf1_size (u_conv2d_3_tf1_size)
 #define conv2d_3_tf1_pt (1.0 / conv2d_3_tf1_size)
 #define conv2d_3_tf1_texOff(offset) (conv2d_3_tf1_tex(conv2d_3_tf1_pos + conv2d_3_tf1_pt * offset))
 
 uniform sampler2D conv2d_4_tf;
+uniform vec2 u_conv2d_4_tf_size;
 #define conv2d_4_tf_pos (v_texture_coord)
 #define conv2d_4_tf_tex(pos) (texture2D(conv2d_4_tf, pos))
-#define conv2d_4_tf_size (u_texture_size)
+#define conv2d_4_tf_size (u_conv2d_4_tf_size)
 #define conv2d_4_tf_pt (1.0 / conv2d_4_tf_size)
 #define conv2d_4_tf_texOff(offset) (conv2d_4_tf_tex(conv2d_4_tf_pos + conv2d_4_tf_pt * offset))
 
 uniform sampler2D conv2d_4_tf1;
+uniform vec2 u_conv2d_4_tf1_size;
 #define conv2d_4_tf1_pos (v_texture_coord)
 #define conv2d_4_tf1_tex(pos) (texture2D(conv2d_4_tf1, pos))
-#define conv2d_4_tf1_size (u_texture_size)
+#define conv2d_4_tf1_size (u_conv2d_4_tf1_size)
 #define conv2d_4_tf1_pt (1.0 / conv2d_4_tf1_size)
 #define conv2d_4_tf1_texOff(offset) (conv2d_4_tf1_tex(conv2d_4_tf1_pos + conv2d_4_tf1_pt * offset))
 
 uniform sampler2D conv2d_5_tf;
+uniform vec2 u_conv2d_5_tf_size;
 #define conv2d_5_tf_pos (v_texture_coord)
 #define conv2d_5_tf_tex(pos) (texture2D(conv2d_5_tf, pos))
-#define conv2d_5_tf_size (u_texture_size)
+#define conv2d_5_tf_size (u_conv2d_5_tf_size)
 #define conv2d_5_tf_pt (1.0 / conv2d_5_tf_size)
 #define conv2d_5_tf_texOff(offset) (conv2d_5_tf_tex(conv2d_5_tf_pos + conv2d_5_tf_pt * offset))
 
 uniform sampler2D conv2d_5_tf1;
+uniform vec2 u_conv2d_5_tf1_size;
 #define conv2d_5_tf1_pos (v_texture_coord)
 #define conv2d_5_tf1_tex(pos) (texture2D(conv2d_5_tf1, pos))
-#define conv2d_5_tf1_size (u_texture_size)
+#define conv2d_5_tf1_size (u_conv2d_5_tf1_size)
 #define conv2d_5_tf1_pt (1.0 / conv2d_5_tf1_size)
 #define conv2d_5_tf1_texOff(offset) (conv2d_5_tf1_tex(conv2d_5_tf1_pos + conv2d_5_tf1_pt * offset))
 
 uniform sampler2D conv2d_6_tf;
+uniform vec2 u_conv2d_6_tf_size;
 #define conv2d_6_tf_pos (v_texture_coord)
 #define conv2d_6_tf_tex(pos) (texture2D(conv2d_6_tf, pos))
-#define conv2d_6_tf_size (u_texture_size)
+#define conv2d_6_tf_size (u_conv2d_6_tf_size)
 #define conv2d_6_tf_pt (1.0 / conv2d_6_tf_size)
 #define conv2d_6_tf_texOff(offset) (conv2d_6_tf_tex(conv2d_6_tf_pos + conv2d_6_tf_pt * offset))
 
 uniform sampler2D conv2d_6_tf1;
+uniform vec2 u_conv2d_6_tf1_size;
 #define conv2d_6_tf1_pos (v_texture_coord)
 #define conv2d_6_tf1_tex(pos) (texture2D(conv2d_6_tf1, pos))
-#define conv2d_6_tf1_size (u_texture_size)
+#define conv2d_6_tf1_size (u_conv2d_6_tf1_size)
 #define conv2d_6_tf1_pt (1.0 / conv2d_6_tf1_size)
 #define conv2d_6_tf1_texOff(offset) (conv2d_6_tf1_tex(conv2d_6_tf1_pos + conv2d_6_tf1_pt * offset))
 
@@ -1129,103 +1154,116 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D conv2d_tf;
+uniform vec2 u_conv2d_tf_size;
 #define conv2d_tf_pos (v_texture_coord)
 #define conv2d_tf_tex(pos) (texture2D(conv2d_tf, pos))
-#define conv2d_tf_size (u_texture_size)
+#define conv2d_tf_size (u_conv2d_tf_size)
 #define conv2d_tf_pt (1.0 / conv2d_tf_size)
 #define conv2d_tf_texOff(offset) (conv2d_tf_tex(conv2d_tf_pos + conv2d_tf_pt * offset))
 
 uniform sampler2D conv2d_tf1;
+uniform vec2 u_conv2d_tf1_size;
 #define conv2d_tf1_pos (v_texture_coord)
 #define conv2d_tf1_tex(pos) (texture2D(conv2d_tf1, pos))
-#define conv2d_tf1_size (u_texture_size)
+#define conv2d_tf1_size (u_conv2d_tf1_size)
 #define conv2d_tf1_pt (1.0 / conv2d_tf1_size)
 #define conv2d_tf1_texOff(offset) (conv2d_tf1_tex(conv2d_tf1_pos + conv2d_tf1_pt * offset))
 
 uniform sampler2D conv2d_1_tf;
+uniform vec2 u_conv2d_1_tf_size;
 #define conv2d_1_tf_pos (v_texture_coord)
 #define conv2d_1_tf_tex(pos) (texture2D(conv2d_1_tf, pos))
-#define conv2d_1_tf_size (u_texture_size)
+#define conv2d_1_tf_size (u_conv2d_1_tf_size)
 #define conv2d_1_tf_pt (1.0 / conv2d_1_tf_size)
 #define conv2d_1_tf_texOff(offset) (conv2d_1_tf_tex(conv2d_1_tf_pos + conv2d_1_tf_pt * offset))
 
 uniform sampler2D conv2d_1_tf1;
+uniform vec2 u_conv2d_1_tf1_size;
 #define conv2d_1_tf1_pos (v_texture_coord)
 #define conv2d_1_tf1_tex(pos) (texture2D(conv2d_1_tf1, pos))
-#define conv2d_1_tf1_size (u_texture_size)
+#define conv2d_1_tf1_size (u_conv2d_1_tf1_size)
 #define conv2d_1_tf1_pt (1.0 / conv2d_1_tf1_size)
 #define conv2d_1_tf1_texOff(offset) (conv2d_1_tf1_tex(conv2d_1_tf1_pos + conv2d_1_tf1_pt * offset))
 
 uniform sampler2D conv2d_2_tf;
+uniform vec2 u_conv2d_2_tf_size;
 #define conv2d_2_tf_pos (v_texture_coord)
 #define conv2d_2_tf_tex(pos) (texture2D(conv2d_2_tf, pos))
-#define conv2d_2_tf_size (u_texture_size)
+#define conv2d_2_tf_size (u_conv2d_2_tf_size)
 #define conv2d_2_tf_pt (1.0 / conv2d_2_tf_size)
 #define conv2d_2_tf_texOff(offset) (conv2d_2_tf_tex(conv2d_2_tf_pos + conv2d_2_tf_pt * offset))
 
 uniform sampler2D conv2d_2_tf1;
+uniform vec2 u_conv2d_2_tf1_size;
 #define conv2d_2_tf1_pos (v_texture_coord)
 #define conv2d_2_tf1_tex(pos) (texture2D(conv2d_2_tf1, pos))
-#define conv2d_2_tf1_size (u_texture_size)
+#define conv2d_2_tf1_size (u_conv2d_2_tf1_size)
 #define conv2d_2_tf1_pt (1.0 / conv2d_2_tf1_size)
 #define conv2d_2_tf1_texOff(offset) (conv2d_2_tf1_tex(conv2d_2_tf1_pos + conv2d_2_tf1_pt * offset))
 
 uniform sampler2D conv2d_3_tf;
+uniform vec2 u_conv2d_3_tf_size;
 #define conv2d_3_tf_pos (v_texture_coord)
 #define conv2d_3_tf_tex(pos) (texture2D(conv2d_3_tf, pos))
-#define conv2d_3_tf_size (u_texture_size)
+#define conv2d_3_tf_size (u_conv2d_3_tf_size)
 #define conv2d_3_tf_pt (1.0 / conv2d_3_tf_size)
 #define conv2d_3_tf_texOff(offset) (conv2d_3_tf_tex(conv2d_3_tf_pos + conv2d_3_tf_pt * offset))
 
 uniform sampler2D conv2d_3_tf1;
+uniform vec2 u_conv2d_3_tf1_size;
 #define conv2d_3_tf1_pos (v_texture_coord)
 #define conv2d_3_tf1_tex(pos) (texture2D(conv2d_3_tf1, pos))
-#define conv2d_3_tf1_size (u_texture_size)
+#define conv2d_3_tf1_size (u_conv2d_3_tf1_size)
 #define conv2d_3_tf1_pt (1.0 / conv2d_3_tf1_size)
 #define conv2d_3_tf1_texOff(offset) (conv2d_3_tf1_tex(conv2d_3_tf1_pos + conv2d_3_tf1_pt * offset))
 
 uniform sampler2D conv2d_4_tf;
+uniform vec2 u_conv2d_4_tf_size;
 #define conv2d_4_tf_pos (v_texture_coord)
 #define conv2d_4_tf_tex(pos) (texture2D(conv2d_4_tf, pos))
-#define conv2d_4_tf_size (u_texture_size)
+#define conv2d_4_tf_size (u_conv2d_4_tf_size)
 #define conv2d_4_tf_pt (1.0 / conv2d_4_tf_size)
 #define conv2d_4_tf_texOff(offset) (conv2d_4_tf_tex(conv2d_4_tf_pos + conv2d_4_tf_pt * offset))
 
 uniform sampler2D conv2d_4_tf1;
+uniform vec2 u_conv2d_4_tf1_size;
 #define conv2d_4_tf1_pos (v_texture_coord)
 #define conv2d_4_tf1_tex(pos) (texture2D(conv2d_4_tf1, pos))
-#define conv2d_4_tf1_size (u_texture_size)
+#define conv2d_4_tf1_size (u_conv2d_4_tf1_size)
 #define conv2d_4_tf1_pt (1.0 / conv2d_4_tf1_size)
 #define conv2d_4_tf1_texOff(offset) (conv2d_4_tf1_tex(conv2d_4_tf1_pos + conv2d_4_tf1_pt * offset))
 
 uniform sampler2D conv2d_5_tf;
+uniform vec2 u_conv2d_5_tf_size;
 #define conv2d_5_tf_pos (v_texture_coord)
 #define conv2d_5_tf_tex(pos) (texture2D(conv2d_5_tf, pos))
-#define conv2d_5_tf_size (u_texture_size)
+#define conv2d_5_tf_size (u_conv2d_5_tf_size)
 #define conv2d_5_tf_pt (1.0 / conv2d_5_tf_size)
 #define conv2d_5_tf_texOff(offset) (conv2d_5_tf_tex(conv2d_5_tf_pos + conv2d_5_tf_pt * offset))
 
 uniform sampler2D conv2d_5_tf1;
+uniform vec2 u_conv2d_5_tf1_size;
 #define conv2d_5_tf1_pos (v_texture_coord)
 #define conv2d_5_tf1_tex(pos) (texture2D(conv2d_5_tf1, pos))
-#define conv2d_5_tf1_size (u_texture_size)
+#define conv2d_5_tf1_size (u_conv2d_5_tf1_size)
 #define conv2d_5_tf1_pt (1.0 / conv2d_5_tf1_size)
 #define conv2d_5_tf1_texOff(offset) (conv2d_5_tf1_tex(conv2d_5_tf1_pos + conv2d_5_tf1_pt * offset))
 
 uniform sampler2D conv2d_6_tf;
+uniform vec2 u_conv2d_6_tf_size;
 #define conv2d_6_tf_pos (v_texture_coord)
 #define conv2d_6_tf_tex(pos) (texture2D(conv2d_6_tf, pos))
-#define conv2d_6_tf_size (u_texture_size)
+#define conv2d_6_tf_size (u_conv2d_6_tf_size)
 #define conv2d_6_tf_pt (1.0 / conv2d_6_tf_size)
 #define conv2d_6_tf_texOff(offset) (conv2d_6_tf_tex(conv2d_6_tf_pos + conv2d_6_tf_pt * offset))
 
 uniform sampler2D conv2d_6_tf1;
+uniform vec2 u_conv2d_6_tf1_size;
 #define conv2d_6_tf1_pos (v_texture_coord)
 #define conv2d_6_tf1_tex(pos) (texture2D(conv2d_6_tf1, pos))
-#define conv2d_6_tf1_size (u_texture_size)
+#define conv2d_6_tf1_size (u_conv2d_6_tf1_size)
 #define conv2d_6_tf1_pt (1.0 / conv2d_6_tf1_size)
 #define conv2d_6_tf1_texOff(offset) (conv2d_6_tf1_tex(conv2d_6_tf1_pos + conv2d_6_tf1_pt * offset))
 
@@ -1299,103 +1337,116 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D conv2d_tf;
+uniform vec2 u_conv2d_tf_size;
 #define conv2d_tf_pos (v_texture_coord)
 #define conv2d_tf_tex(pos) (texture2D(conv2d_tf, pos))
-#define conv2d_tf_size (u_texture_size)
+#define conv2d_tf_size (u_conv2d_tf_size)
 #define conv2d_tf_pt (1.0 / conv2d_tf_size)
 #define conv2d_tf_texOff(offset) (conv2d_tf_tex(conv2d_tf_pos + conv2d_tf_pt * offset))
 
 uniform sampler2D conv2d_tf1;
+uniform vec2 u_conv2d_tf1_size;
 #define conv2d_tf1_pos (v_texture_coord)
 #define conv2d_tf1_tex(pos) (texture2D(conv2d_tf1, pos))
-#define conv2d_tf1_size (u_texture_size)
+#define conv2d_tf1_size (u_conv2d_tf1_size)
 #define conv2d_tf1_pt (1.0 / conv2d_tf1_size)
 #define conv2d_tf1_texOff(offset) (conv2d_tf1_tex(conv2d_tf1_pos + conv2d_tf1_pt * offset))
 
 uniform sampler2D conv2d_1_tf;
+uniform vec2 u_conv2d_1_tf_size;
 #define conv2d_1_tf_pos (v_texture_coord)
 #define conv2d_1_tf_tex(pos) (texture2D(conv2d_1_tf, pos))
-#define conv2d_1_tf_size (u_texture_size)
+#define conv2d_1_tf_size (u_conv2d_1_tf_size)
 #define conv2d_1_tf_pt (1.0 / conv2d_1_tf_size)
 #define conv2d_1_tf_texOff(offset) (conv2d_1_tf_tex(conv2d_1_tf_pos + conv2d_1_tf_pt * offset))
 
 uniform sampler2D conv2d_1_tf1;
+uniform vec2 u_conv2d_1_tf1_size;
 #define conv2d_1_tf1_pos (v_texture_coord)
 #define conv2d_1_tf1_tex(pos) (texture2D(conv2d_1_tf1, pos))
-#define conv2d_1_tf1_size (u_texture_size)
+#define conv2d_1_tf1_size (u_conv2d_1_tf1_size)
 #define conv2d_1_tf1_pt (1.0 / conv2d_1_tf1_size)
 #define conv2d_1_tf1_texOff(offset) (conv2d_1_tf1_tex(conv2d_1_tf1_pos + conv2d_1_tf1_pt * offset))
 
 uniform sampler2D conv2d_2_tf;
+uniform vec2 u_conv2d_2_tf_size;
 #define conv2d_2_tf_pos (v_texture_coord)
 #define conv2d_2_tf_tex(pos) (texture2D(conv2d_2_tf, pos))
-#define conv2d_2_tf_size (u_texture_size)
+#define conv2d_2_tf_size (u_conv2d_2_tf_size)
 #define conv2d_2_tf_pt (1.0 / conv2d_2_tf_size)
 #define conv2d_2_tf_texOff(offset) (conv2d_2_tf_tex(conv2d_2_tf_pos + conv2d_2_tf_pt * offset))
 
 uniform sampler2D conv2d_2_tf1;
+uniform vec2 u_conv2d_2_tf1_size;
 #define conv2d_2_tf1_pos (v_texture_coord)
 #define conv2d_2_tf1_tex(pos) (texture2D(conv2d_2_tf1, pos))
-#define conv2d_2_tf1_size (u_texture_size)
+#define conv2d_2_tf1_size (u_conv2d_2_tf1_size)
 #define conv2d_2_tf1_pt (1.0 / conv2d_2_tf1_size)
 #define conv2d_2_tf1_texOff(offset) (conv2d_2_tf1_tex(conv2d_2_tf1_pos + conv2d_2_tf1_pt * offset))
 
 uniform sampler2D conv2d_3_tf;
+uniform vec2 u_conv2d_3_tf_size;
 #define conv2d_3_tf_pos (v_texture_coord)
 #define conv2d_3_tf_tex(pos) (texture2D(conv2d_3_tf, pos))
-#define conv2d_3_tf_size (u_texture_size)
+#define conv2d_3_tf_size (u_conv2d_3_tf_size)
 #define conv2d_3_tf_pt (1.0 / conv2d_3_tf_size)
 #define conv2d_3_tf_texOff(offset) (conv2d_3_tf_tex(conv2d_3_tf_pos + conv2d_3_tf_pt * offset))
 
 uniform sampler2D conv2d_3_tf1;
+uniform vec2 u_conv2d_3_tf1_size;
 #define conv2d_3_tf1_pos (v_texture_coord)
 #define conv2d_3_tf1_tex(pos) (texture2D(conv2d_3_tf1, pos))
-#define conv2d_3_tf1_size (u_texture_size)
+#define conv2d_3_tf1_size (u_conv2d_3_tf1_size)
 #define conv2d_3_tf1_pt (1.0 / conv2d_3_tf1_size)
 #define conv2d_3_tf1_texOff(offset) (conv2d_3_tf1_tex(conv2d_3_tf1_pos + conv2d_3_tf1_pt * offset))
 
 uniform sampler2D conv2d_4_tf;
+uniform vec2 u_conv2d_4_tf_size;
 #define conv2d_4_tf_pos (v_texture_coord)
 #define conv2d_4_tf_tex(pos) (texture2D(conv2d_4_tf, pos))
-#define conv2d_4_tf_size (u_texture_size)
+#define conv2d_4_tf_size (u_conv2d_4_tf_size)
 #define conv2d_4_tf_pt (1.0 / conv2d_4_tf_size)
 #define conv2d_4_tf_texOff(offset) (conv2d_4_tf_tex(conv2d_4_tf_pos + conv2d_4_tf_pt * offset))
 
 uniform sampler2D conv2d_4_tf1;
+uniform vec2 u_conv2d_4_tf1_size;
 #define conv2d_4_tf1_pos (v_texture_coord)
 #define conv2d_4_tf1_tex(pos) (texture2D(conv2d_4_tf1, pos))
-#define conv2d_4_tf1_size (u_texture_size)
+#define conv2d_4_tf1_size (u_conv2d_4_tf1_size)
 #define conv2d_4_tf1_pt (1.0 / conv2d_4_tf1_size)
 #define conv2d_4_tf1_texOff(offset) (conv2d_4_tf1_tex(conv2d_4_tf1_pos + conv2d_4_tf1_pt * offset))
 
 uniform sampler2D conv2d_5_tf;
+uniform vec2 u_conv2d_5_tf_size;
 #define conv2d_5_tf_pos (v_texture_coord)
 #define conv2d_5_tf_tex(pos) (texture2D(conv2d_5_tf, pos))
-#define conv2d_5_tf_size (u_texture_size)
+#define conv2d_5_tf_size (u_conv2d_5_tf_size)
 #define conv2d_5_tf_pt (1.0 / conv2d_5_tf_size)
 #define conv2d_5_tf_texOff(offset) (conv2d_5_tf_tex(conv2d_5_tf_pos + conv2d_5_tf_pt * offset))
 
 uniform sampler2D conv2d_5_tf1;
+uniform vec2 u_conv2d_5_tf1_size;
 #define conv2d_5_tf1_pos (v_texture_coord)
 #define conv2d_5_tf1_tex(pos) (texture2D(conv2d_5_tf1, pos))
-#define conv2d_5_tf1_size (u_texture_size)
+#define conv2d_5_tf1_size (u_conv2d_5_tf1_size)
 #define conv2d_5_tf1_pt (1.0 / conv2d_5_tf1_size)
 #define conv2d_5_tf1_texOff(offset) (conv2d_5_tf1_tex(conv2d_5_tf1_pos + conv2d_5_tf1_pt * offset))
 
 uniform sampler2D conv2d_6_tf;
+uniform vec2 u_conv2d_6_tf_size;
 #define conv2d_6_tf_pos (v_texture_coord)
 #define conv2d_6_tf_tex(pos) (texture2D(conv2d_6_tf, pos))
-#define conv2d_6_tf_size (u_texture_size)
+#define conv2d_6_tf_size (u_conv2d_6_tf_size)
 #define conv2d_6_tf_pt (1.0 / conv2d_6_tf_size)
 #define conv2d_6_tf_texOff(offset) (conv2d_6_tf_tex(conv2d_6_tf_pos + conv2d_6_tf_pt * offset))
 
 uniform sampler2D conv2d_6_tf1;
+uniform vec2 u_conv2d_6_tf1_size;
 #define conv2d_6_tf1_pos (v_texture_coord)
 #define conv2d_6_tf1_tex(pos) (texture2D(conv2d_6_tf1, pos))
-#define conv2d_6_tf1_size (u_texture_size)
+#define conv2d_6_tf1_size (u_conv2d_6_tf1_size)
 #define conv2d_6_tf1_pt (1.0 / conv2d_6_tf1_size)
 #define conv2d_6_tf1_texOff(offset) (conv2d_6_tf1_tex(conv2d_6_tf1_pos + conv2d_6_tf1_pt * offset))
 
@@ -1469,33 +1520,36 @@ precision mediump float;
 precision mediump sampler2D;
 
 uniform vec2 u_resolution;
-uniform vec2 u_texture_size;
 varying vec2 v_texture_coord;
 uniform sampler2D MAIN;
+uniform vec2 u_MAIN_size;
 #define MAIN_pos (v_texture_coord)
 #define MAIN_tex(pos) (texture2D(MAIN, pos))
-#define MAIN_size (u_texture_size)
+#define MAIN_size (u_MAIN_size)
 #define MAIN_pt (1.0 / MAIN_size)
 #define MAIN_texOff(offset) (MAIN_tex(MAIN_pos + MAIN_pt * offset))
 
 uniform sampler2D conv2d_last_tf;
+uniform vec2 u_conv2d_last_tf_size;
 #define conv2d_last_tf_pos (v_texture_coord)
 #define conv2d_last_tf_tex(pos) (texture2D(conv2d_last_tf, pos))
-#define conv2d_last_tf_size (u_texture_size)
+#define conv2d_last_tf_size (u_conv2d_last_tf_size)
 #define conv2d_last_tf_pt (1.0 / conv2d_last_tf_size)
 #define conv2d_last_tf_texOff(offset) (conv2d_last_tf_tex(conv2d_last_tf_pos + conv2d_last_tf_pt * offset))
 
 uniform sampler2D conv2d_last_tf1;
+uniform vec2 u_conv2d_last_tf1_size;
 #define conv2d_last_tf1_pos (v_texture_coord)
 #define conv2d_last_tf1_tex(pos) (texture2D(conv2d_last_tf1, pos))
-#define conv2d_last_tf1_size (u_texture_size)
+#define conv2d_last_tf1_size (u_conv2d_last_tf1_size)
 #define conv2d_last_tf1_pt (1.0 / conv2d_last_tf1_size)
 #define conv2d_last_tf1_texOff(offset) (conv2d_last_tf1_tex(conv2d_last_tf1_pos + conv2d_last_tf1_pt * offset))
 
 uniform sampler2D conv2d_last_tf2;
+uniform vec2 u_conv2d_last_tf2_size;
 #define conv2d_last_tf2_pos (v_texture_coord)
 #define conv2d_last_tf2_tex(pos) (texture2D(conv2d_last_tf2, pos))
-#define conv2d_last_tf2_size (u_texture_size)
+#define conv2d_last_tf2_size (u_conv2d_last_tf2_size)
 #define conv2d_last_tf2_pt (1.0 / conv2d_last_tf2_size)
 #define conv2d_last_tf2_texOff(offset) (conv2d_last_tf2_tex(conv2d_last_tf2_pos + conv2d_last_tf2_pt * offset))
 
@@ -1670,24 +1724,78 @@ export default class Anime4K_Upscale_CNN_x2_VL extends Anime4KShader {
   private program_15_u_resolution_location: WebGLUniformLocation | null;
   private program_16_u_resolution_location: WebGLUniformLocation | null;
   private program_17_u_resolution_location: WebGLUniformLocation | null;
-  private program_0_u_texture_size_location: WebGLUniformLocation | null;
-  private program_1_u_texture_size_location: WebGLUniformLocation | null;
-  private program_2_u_texture_size_location: WebGLUniformLocation | null;
-  private program_3_u_texture_size_location: WebGLUniformLocation | null;
-  private program_4_u_texture_size_location: WebGLUniformLocation | null;
-  private program_5_u_texture_size_location: WebGLUniformLocation | null;
-  private program_6_u_texture_size_location: WebGLUniformLocation | null;
-  private program_7_u_texture_size_location: WebGLUniformLocation | null;
-  private program_8_u_texture_size_location: WebGLUniformLocation | null;
-  private program_9_u_texture_size_location: WebGLUniformLocation | null;
-  private program_10_u_texture_size_location: WebGLUniformLocation | null;
-  private program_11_u_texture_size_location: WebGLUniformLocation | null;
-  private program_12_u_texture_size_location: WebGLUniformLocation | null;
-  private program_13_u_texture_size_location: WebGLUniformLocation | null;
-  private program_14_u_texture_size_location: WebGLUniformLocation | null;
-  private program_15_u_texture_size_location: WebGLUniformLocation | null;
-  private program_16_u_texture_size_location: WebGLUniformLocation | null;
-  private program_17_u_texture_size_location: WebGLUniformLocation | null;
+  private program_0_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_1_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_2_conv2d_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_2_conv2d_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_3_conv2d_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_3_conv2d_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_4_conv2d_1_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_4_conv2d_1_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_5_conv2d_1_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_5_conv2d_1_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_6_conv2d_2_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_6_conv2d_2_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_7_conv2d_2_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_7_conv2d_2_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_8_conv2d_3_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_8_conv2d_3_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_9_conv2d_3_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_9_conv2d_3_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_10_conv2d_4_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_10_conv2d_4_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_11_conv2d_4_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_11_conv2d_4_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_12_conv2d_5_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_12_conv2d_5_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_13_conv2d_5_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_13_conv2d_5_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_14_conv2d_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_14_conv2d_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_14_conv2d_1_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_14_conv2d_1_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_14_conv2d_2_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_14_conv2d_2_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_14_conv2d_3_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_14_conv2d_3_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_14_conv2d_4_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_14_conv2d_4_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_14_conv2d_5_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_14_conv2d_5_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_14_conv2d_6_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_14_conv2d_6_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_15_conv2d_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_15_conv2d_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_15_conv2d_1_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_15_conv2d_1_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_15_conv2d_2_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_15_conv2d_2_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_15_conv2d_3_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_15_conv2d_3_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_15_conv2d_4_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_15_conv2d_4_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_15_conv2d_5_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_15_conv2d_5_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_15_conv2d_6_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_15_conv2d_6_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_16_conv2d_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_16_conv2d_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_16_conv2d_1_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_16_conv2d_1_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_16_conv2d_2_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_16_conv2d_2_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_16_conv2d_3_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_16_conv2d_3_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_16_conv2d_4_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_16_conv2d_4_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_16_conv2d_5_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_16_conv2d_5_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_16_conv2d_6_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_16_conv2d_6_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_17_MAIN_SizeLocation: WebGLUniformLocation | null;
+  private program_17_conv2d_last_tf_SizeLocation: WebGLUniformLocation | null;
+  private program_17_conv2d_last_tf1_SizeLocation: WebGLUniformLocation | null;
+  private program_17_conv2d_last_tf2_SizeLocation: WebGLUniformLocation | null;
   private program_0_MAIN_TextureLocation: WebGLUniformLocation | null;
   private program_1_MAIN_TextureLocation: WebGLUniformLocation | null;
   private program_2_conv2d_tf_TextureLocation: WebGLUniformLocation | null;
@@ -1945,24 +2053,78 @@ export default class Anime4K_Upscale_CNN_x2_VL extends Anime4KShader {
     this.program_15_u_resolution_location = gl.getUniformLocation(this.program_15, "u_resolution");
     this.program_16_u_resolution_location = gl.getUniformLocation(this.program_16, "u_resolution");
     this.program_17_u_resolution_location = gl.getUniformLocation(this.program_17, "u_resolution");
-    this.program_0_u_texture_size_location = gl.getUniformLocation(this.program_0, "u_texture_size");
-    this.program_1_u_texture_size_location = gl.getUniformLocation(this.program_1, "u_texture_size");
-    this.program_2_u_texture_size_location = gl.getUniformLocation(this.program_2, "u_texture_size");
-    this.program_3_u_texture_size_location = gl.getUniformLocation(this.program_3, "u_texture_size");
-    this.program_4_u_texture_size_location = gl.getUniformLocation(this.program_4, "u_texture_size");
-    this.program_5_u_texture_size_location = gl.getUniformLocation(this.program_5, "u_texture_size");
-    this.program_6_u_texture_size_location = gl.getUniformLocation(this.program_6, "u_texture_size");
-    this.program_7_u_texture_size_location = gl.getUniformLocation(this.program_7, "u_texture_size");
-    this.program_8_u_texture_size_location = gl.getUniformLocation(this.program_8, "u_texture_size");
-    this.program_9_u_texture_size_location = gl.getUniformLocation(this.program_9, "u_texture_size");
-    this.program_10_u_texture_size_location = gl.getUniformLocation(this.program_10, "u_texture_size");
-    this.program_11_u_texture_size_location = gl.getUniformLocation(this.program_11, "u_texture_size");
-    this.program_12_u_texture_size_location = gl.getUniformLocation(this.program_12, "u_texture_size");
-    this.program_13_u_texture_size_location = gl.getUniformLocation(this.program_13, "u_texture_size");
-    this.program_14_u_texture_size_location = gl.getUniformLocation(this.program_14, "u_texture_size");
-    this.program_15_u_texture_size_location = gl.getUniformLocation(this.program_15, "u_texture_size");
-    this.program_16_u_texture_size_location = gl.getUniformLocation(this.program_16, "u_texture_size");
-    this.program_17_u_texture_size_location = gl.getUniformLocation(this.program_17, "u_texture_size");
+    this.program_0_MAIN_SizeLocation = gl.getUniformLocation(this.program_0, "u_MAIN_size");
+    this.program_1_MAIN_SizeLocation = gl.getUniformLocation(this.program_1, "u_MAIN_size");
+    this.program_2_conv2d_tf_SizeLocation = gl.getUniformLocation(this.program_2, "u_conv2d_tf_size");
+    this.program_2_conv2d_tf1_SizeLocation = gl.getUniformLocation(this.program_2, "u_conv2d_tf1_size");
+    this.program_3_conv2d_tf_SizeLocation = gl.getUniformLocation(this.program_3, "u_conv2d_tf_size");
+    this.program_3_conv2d_tf1_SizeLocation = gl.getUniformLocation(this.program_3, "u_conv2d_tf1_size");
+    this.program_4_conv2d_1_tf_SizeLocation = gl.getUniformLocation(this.program_4, "u_conv2d_1_tf_size");
+    this.program_4_conv2d_1_tf1_SizeLocation = gl.getUniformLocation(this.program_4, "u_conv2d_1_tf1_size");
+    this.program_5_conv2d_1_tf_SizeLocation = gl.getUniformLocation(this.program_5, "u_conv2d_1_tf_size");
+    this.program_5_conv2d_1_tf1_SizeLocation = gl.getUniformLocation(this.program_5, "u_conv2d_1_tf1_size");
+    this.program_6_conv2d_2_tf_SizeLocation = gl.getUniformLocation(this.program_6, "u_conv2d_2_tf_size");
+    this.program_6_conv2d_2_tf1_SizeLocation = gl.getUniformLocation(this.program_6, "u_conv2d_2_tf1_size");
+    this.program_7_conv2d_2_tf_SizeLocation = gl.getUniformLocation(this.program_7, "u_conv2d_2_tf_size");
+    this.program_7_conv2d_2_tf1_SizeLocation = gl.getUniformLocation(this.program_7, "u_conv2d_2_tf1_size");
+    this.program_8_conv2d_3_tf_SizeLocation = gl.getUniformLocation(this.program_8, "u_conv2d_3_tf_size");
+    this.program_8_conv2d_3_tf1_SizeLocation = gl.getUniformLocation(this.program_8, "u_conv2d_3_tf1_size");
+    this.program_9_conv2d_3_tf_SizeLocation = gl.getUniformLocation(this.program_9, "u_conv2d_3_tf_size");
+    this.program_9_conv2d_3_tf1_SizeLocation = gl.getUniformLocation(this.program_9, "u_conv2d_3_tf1_size");
+    this.program_10_conv2d_4_tf_SizeLocation = gl.getUniformLocation(this.program_10, "u_conv2d_4_tf_size");
+    this.program_10_conv2d_4_tf1_SizeLocation = gl.getUniformLocation(this.program_10, "u_conv2d_4_tf1_size");
+    this.program_11_conv2d_4_tf_SizeLocation = gl.getUniformLocation(this.program_11, "u_conv2d_4_tf_size");
+    this.program_11_conv2d_4_tf1_SizeLocation = gl.getUniformLocation(this.program_11, "u_conv2d_4_tf1_size");
+    this.program_12_conv2d_5_tf_SizeLocation = gl.getUniformLocation(this.program_12, "u_conv2d_5_tf_size");
+    this.program_12_conv2d_5_tf1_SizeLocation = gl.getUniformLocation(this.program_12, "u_conv2d_5_tf1_size");
+    this.program_13_conv2d_5_tf_SizeLocation = gl.getUniformLocation(this.program_13, "u_conv2d_5_tf_size");
+    this.program_13_conv2d_5_tf1_SizeLocation = gl.getUniformLocation(this.program_13, "u_conv2d_5_tf1_size");
+    this.program_14_conv2d_tf_SizeLocation = gl.getUniformLocation(this.program_14, "u_conv2d_tf_size");
+    this.program_14_conv2d_tf1_SizeLocation = gl.getUniformLocation(this.program_14, "u_conv2d_tf1_size");
+    this.program_14_conv2d_1_tf_SizeLocation = gl.getUniformLocation(this.program_14, "u_conv2d_1_tf_size");
+    this.program_14_conv2d_1_tf1_SizeLocation = gl.getUniformLocation(this.program_14, "u_conv2d_1_tf1_size");
+    this.program_14_conv2d_2_tf_SizeLocation = gl.getUniformLocation(this.program_14, "u_conv2d_2_tf_size");
+    this.program_14_conv2d_2_tf1_SizeLocation = gl.getUniformLocation(this.program_14, "u_conv2d_2_tf1_size");
+    this.program_14_conv2d_3_tf_SizeLocation = gl.getUniformLocation(this.program_14, "u_conv2d_3_tf_size");
+    this.program_14_conv2d_3_tf1_SizeLocation = gl.getUniformLocation(this.program_14, "u_conv2d_3_tf1_size");
+    this.program_14_conv2d_4_tf_SizeLocation = gl.getUniformLocation(this.program_14, "u_conv2d_4_tf_size");
+    this.program_14_conv2d_4_tf1_SizeLocation = gl.getUniformLocation(this.program_14, "u_conv2d_4_tf1_size");
+    this.program_14_conv2d_5_tf_SizeLocation = gl.getUniformLocation(this.program_14, "u_conv2d_5_tf_size");
+    this.program_14_conv2d_5_tf1_SizeLocation = gl.getUniformLocation(this.program_14, "u_conv2d_5_tf1_size");
+    this.program_14_conv2d_6_tf_SizeLocation = gl.getUniformLocation(this.program_14, "u_conv2d_6_tf_size");
+    this.program_14_conv2d_6_tf1_SizeLocation = gl.getUniformLocation(this.program_14, "u_conv2d_6_tf1_size");
+    this.program_15_conv2d_tf_SizeLocation = gl.getUniformLocation(this.program_15, "u_conv2d_tf_size");
+    this.program_15_conv2d_tf1_SizeLocation = gl.getUniformLocation(this.program_15, "u_conv2d_tf1_size");
+    this.program_15_conv2d_1_tf_SizeLocation = gl.getUniformLocation(this.program_15, "u_conv2d_1_tf_size");
+    this.program_15_conv2d_1_tf1_SizeLocation = gl.getUniformLocation(this.program_15, "u_conv2d_1_tf1_size");
+    this.program_15_conv2d_2_tf_SizeLocation = gl.getUniformLocation(this.program_15, "u_conv2d_2_tf_size");
+    this.program_15_conv2d_2_tf1_SizeLocation = gl.getUniformLocation(this.program_15, "u_conv2d_2_tf1_size");
+    this.program_15_conv2d_3_tf_SizeLocation = gl.getUniformLocation(this.program_15, "u_conv2d_3_tf_size");
+    this.program_15_conv2d_3_tf1_SizeLocation = gl.getUniformLocation(this.program_15, "u_conv2d_3_tf1_size");
+    this.program_15_conv2d_4_tf_SizeLocation = gl.getUniformLocation(this.program_15, "u_conv2d_4_tf_size");
+    this.program_15_conv2d_4_tf1_SizeLocation = gl.getUniformLocation(this.program_15, "u_conv2d_4_tf1_size");
+    this.program_15_conv2d_5_tf_SizeLocation = gl.getUniformLocation(this.program_15, "u_conv2d_5_tf_size");
+    this.program_15_conv2d_5_tf1_SizeLocation = gl.getUniformLocation(this.program_15, "u_conv2d_5_tf1_size");
+    this.program_15_conv2d_6_tf_SizeLocation = gl.getUniformLocation(this.program_15, "u_conv2d_6_tf_size");
+    this.program_15_conv2d_6_tf1_SizeLocation = gl.getUniformLocation(this.program_15, "u_conv2d_6_tf1_size");
+    this.program_16_conv2d_tf_SizeLocation = gl.getUniformLocation(this.program_16, "u_conv2d_tf_size");
+    this.program_16_conv2d_tf1_SizeLocation = gl.getUniformLocation(this.program_16, "u_conv2d_tf1_size");
+    this.program_16_conv2d_1_tf_SizeLocation = gl.getUniformLocation(this.program_16, "u_conv2d_1_tf_size");
+    this.program_16_conv2d_1_tf1_SizeLocation = gl.getUniformLocation(this.program_16, "u_conv2d_1_tf1_size");
+    this.program_16_conv2d_2_tf_SizeLocation = gl.getUniformLocation(this.program_16, "u_conv2d_2_tf_size");
+    this.program_16_conv2d_2_tf1_SizeLocation = gl.getUniformLocation(this.program_16, "u_conv2d_2_tf1_size");
+    this.program_16_conv2d_3_tf_SizeLocation = gl.getUniformLocation(this.program_16, "u_conv2d_3_tf_size");
+    this.program_16_conv2d_3_tf1_SizeLocation = gl.getUniformLocation(this.program_16, "u_conv2d_3_tf1_size");
+    this.program_16_conv2d_4_tf_SizeLocation = gl.getUniformLocation(this.program_16, "u_conv2d_4_tf_size");
+    this.program_16_conv2d_4_tf1_SizeLocation = gl.getUniformLocation(this.program_16, "u_conv2d_4_tf1_size");
+    this.program_16_conv2d_5_tf_SizeLocation = gl.getUniformLocation(this.program_16, "u_conv2d_5_tf_size");
+    this.program_16_conv2d_5_tf1_SizeLocation = gl.getUniformLocation(this.program_16, "u_conv2d_5_tf1_size");
+    this.program_16_conv2d_6_tf_SizeLocation = gl.getUniformLocation(this.program_16, "u_conv2d_6_tf_size");
+    this.program_16_conv2d_6_tf1_SizeLocation = gl.getUniformLocation(this.program_16, "u_conv2d_6_tf1_size");
+    this.program_17_MAIN_SizeLocation = gl.getUniformLocation(this.program_17, "u_MAIN_size");
+    this.program_17_conv2d_last_tf_SizeLocation = gl.getUniformLocation(this.program_17, "u_conv2d_last_tf_size");
+    this.program_17_conv2d_last_tf1_SizeLocation = gl.getUniformLocation(this.program_17, "u_conv2d_last_tf1_size");
+    this.program_17_conv2d_last_tf2_SizeLocation = gl.getUniformLocation(this.program_17, "u_conv2d_last_tf2_size");
     this.program_0_MAIN_TextureLocation = gl.getUniformLocation(this.program_0, "MAIN");
     this.program_1_MAIN_TextureLocation = gl.getUniformLocation(this.program_1, "MAIN");
     this.program_2_conv2d_tf_TextureLocation = gl.getUniformLocation(this.program_2, "conv2d_tf");
@@ -2645,11 +2807,11 @@ export default class Anime4K_Upscale_CNN_x2_VL extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_0_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_0_u_resolution_location, MAIN.width, MAIN.height);
-        gl.uniform2f(this.program_0_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_0_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_0_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -2690,11 +2852,11 @@ export default class Anime4K_Upscale_CNN_x2_VL extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_1_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_1_u_resolution_location, MAIN.width, MAIN.height);
-        gl.uniform2f(this.program_1_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_1_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_1_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -2739,14 +2901,15 @@ export default class Anime4K_Upscale_CNN_x2_VL extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_2_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_2_u_resolution_location, conv2d_tf.width, conv2d_tf.height);
-        gl.uniform2f(this.program_2_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_tf.texture);
         gl.uniform1i(this.program_2_conv2d_tf_TextureLocation, 0);
+        gl.uniform2f(this.program_2_conv2d_tf_SizeLocation, conv2d_tf.width, conv2d_tf.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_tf1.texture);
         gl.uniform1i(this.program_2_conv2d_tf1_TextureLocation, 1);
+        gl.uniform2f(this.program_2_conv2d_tf1_SizeLocation, conv2d_tf1.width, conv2d_tf1.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -2793,14 +2956,15 @@ export default class Anime4K_Upscale_CNN_x2_VL extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_3_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_3_u_resolution_location, conv2d_tf.width, conv2d_tf.height);
-        gl.uniform2f(this.program_3_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_tf.texture);
         gl.uniform1i(this.program_3_conv2d_tf_TextureLocation, 0);
+        gl.uniform2f(this.program_3_conv2d_tf_SizeLocation, conv2d_tf.width, conv2d_tf.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_tf1.texture);
         gl.uniform1i(this.program_3_conv2d_tf1_TextureLocation, 1);
+        gl.uniform2f(this.program_3_conv2d_tf1_SizeLocation, conv2d_tf1.width, conv2d_tf1.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -2847,14 +3011,15 @@ export default class Anime4K_Upscale_CNN_x2_VL extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_4_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_4_u_resolution_location, conv2d_1_tf.width, conv2d_1_tf.height);
-        gl.uniform2f(this.program_4_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_1_tf.texture);
         gl.uniform1i(this.program_4_conv2d_1_tf_TextureLocation, 0);
+        gl.uniform2f(this.program_4_conv2d_1_tf_SizeLocation, conv2d_1_tf.width, conv2d_1_tf.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_1_tf1.texture);
         gl.uniform1i(this.program_4_conv2d_1_tf1_TextureLocation, 1);
+        gl.uniform2f(this.program_4_conv2d_1_tf1_SizeLocation, conv2d_1_tf1.width, conv2d_1_tf1.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -2901,14 +3066,15 @@ export default class Anime4K_Upscale_CNN_x2_VL extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_5_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_5_u_resolution_location, conv2d_1_tf.width, conv2d_1_tf.height);
-        gl.uniform2f(this.program_5_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_1_tf.texture);
         gl.uniform1i(this.program_5_conv2d_1_tf_TextureLocation, 0);
+        gl.uniform2f(this.program_5_conv2d_1_tf_SizeLocation, conv2d_1_tf.width, conv2d_1_tf.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_1_tf1.texture);
         gl.uniform1i(this.program_5_conv2d_1_tf1_TextureLocation, 1);
+        gl.uniform2f(this.program_5_conv2d_1_tf1_SizeLocation, conv2d_1_tf1.width, conv2d_1_tf1.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -2955,14 +3121,15 @@ export default class Anime4K_Upscale_CNN_x2_VL extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_6_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_6_u_resolution_location, conv2d_2_tf.width, conv2d_2_tf.height);
-        gl.uniform2f(this.program_6_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_2_tf.texture);
         gl.uniform1i(this.program_6_conv2d_2_tf_TextureLocation, 0);
+        gl.uniform2f(this.program_6_conv2d_2_tf_SizeLocation, conv2d_2_tf.width, conv2d_2_tf.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_2_tf1.texture);
         gl.uniform1i(this.program_6_conv2d_2_tf1_TextureLocation, 1);
+        gl.uniform2f(this.program_6_conv2d_2_tf1_SizeLocation, conv2d_2_tf1.width, conv2d_2_tf1.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -3009,14 +3176,15 @@ export default class Anime4K_Upscale_CNN_x2_VL extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_7_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_7_u_resolution_location, conv2d_2_tf.width, conv2d_2_tf.height);
-        gl.uniform2f(this.program_7_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_2_tf.texture);
         gl.uniform1i(this.program_7_conv2d_2_tf_TextureLocation, 0);
+        gl.uniform2f(this.program_7_conv2d_2_tf_SizeLocation, conv2d_2_tf.width, conv2d_2_tf.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_2_tf1.texture);
         gl.uniform1i(this.program_7_conv2d_2_tf1_TextureLocation, 1);
+        gl.uniform2f(this.program_7_conv2d_2_tf1_SizeLocation, conv2d_2_tf1.width, conv2d_2_tf1.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -3063,14 +3231,15 @@ export default class Anime4K_Upscale_CNN_x2_VL extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_8_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_8_u_resolution_location, conv2d_3_tf.width, conv2d_3_tf.height);
-        gl.uniform2f(this.program_8_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_3_tf.texture);
         gl.uniform1i(this.program_8_conv2d_3_tf_TextureLocation, 0);
+        gl.uniform2f(this.program_8_conv2d_3_tf_SizeLocation, conv2d_3_tf.width, conv2d_3_tf.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_3_tf1.texture);
         gl.uniform1i(this.program_8_conv2d_3_tf1_TextureLocation, 1);
+        gl.uniform2f(this.program_8_conv2d_3_tf1_SizeLocation, conv2d_3_tf1.width, conv2d_3_tf1.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -3117,14 +3286,15 @@ export default class Anime4K_Upscale_CNN_x2_VL extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_9_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_9_u_resolution_location, conv2d_3_tf.width, conv2d_3_tf.height);
-        gl.uniform2f(this.program_9_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_3_tf.texture);
         gl.uniform1i(this.program_9_conv2d_3_tf_TextureLocation, 0);
+        gl.uniform2f(this.program_9_conv2d_3_tf_SizeLocation, conv2d_3_tf.width, conv2d_3_tf.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_3_tf1.texture);
         gl.uniform1i(this.program_9_conv2d_3_tf1_TextureLocation, 1);
+        gl.uniform2f(this.program_9_conv2d_3_tf1_SizeLocation, conv2d_3_tf1.width, conv2d_3_tf1.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -3171,14 +3341,15 @@ export default class Anime4K_Upscale_CNN_x2_VL extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_10_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_10_u_resolution_location, conv2d_4_tf.width, conv2d_4_tf.height);
-        gl.uniform2f(this.program_10_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_4_tf.texture);
         gl.uniform1i(this.program_10_conv2d_4_tf_TextureLocation, 0);
+        gl.uniform2f(this.program_10_conv2d_4_tf_SizeLocation, conv2d_4_tf.width, conv2d_4_tf.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_4_tf1.texture);
         gl.uniform1i(this.program_10_conv2d_4_tf1_TextureLocation, 1);
+        gl.uniform2f(this.program_10_conv2d_4_tf1_SizeLocation, conv2d_4_tf1.width, conv2d_4_tf1.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -3225,14 +3396,15 @@ export default class Anime4K_Upscale_CNN_x2_VL extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_11_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_11_u_resolution_location, conv2d_4_tf.width, conv2d_4_tf.height);
-        gl.uniform2f(this.program_11_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_4_tf.texture);
         gl.uniform1i(this.program_11_conv2d_4_tf_TextureLocation, 0);
+        gl.uniform2f(this.program_11_conv2d_4_tf_SizeLocation, conv2d_4_tf.width, conv2d_4_tf.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_4_tf1.texture);
         gl.uniform1i(this.program_11_conv2d_4_tf1_TextureLocation, 1);
+        gl.uniform2f(this.program_11_conv2d_4_tf1_SizeLocation, conv2d_4_tf1.width, conv2d_4_tf1.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -3279,14 +3451,15 @@ export default class Anime4K_Upscale_CNN_x2_VL extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_12_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_12_u_resolution_location, conv2d_5_tf.width, conv2d_5_tf.height);
-        gl.uniform2f(this.program_12_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_5_tf.texture);
         gl.uniform1i(this.program_12_conv2d_5_tf_TextureLocation, 0);
+        gl.uniform2f(this.program_12_conv2d_5_tf_SizeLocation, conv2d_5_tf.width, conv2d_5_tf.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_5_tf1.texture);
         gl.uniform1i(this.program_12_conv2d_5_tf1_TextureLocation, 1);
+        gl.uniform2f(this.program_12_conv2d_5_tf1_SizeLocation, conv2d_5_tf1.width, conv2d_5_tf1.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -3333,14 +3506,15 @@ export default class Anime4K_Upscale_CNN_x2_VL extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_13_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_13_u_resolution_location, conv2d_5_tf.width, conv2d_5_tf.height);
-        gl.uniform2f(this.program_13_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_5_tf.texture);
         gl.uniform1i(this.program_13_conv2d_5_tf_TextureLocation, 0);
+        gl.uniform2f(this.program_13_conv2d_5_tf_SizeLocation, conv2d_5_tf.width, conv2d_5_tf.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_5_tf1.texture);
         gl.uniform1i(this.program_13_conv2d_5_tf1_TextureLocation, 1);
+        gl.uniform2f(this.program_13_conv2d_5_tf1_SizeLocation, conv2d_5_tf1.width, conv2d_5_tf1.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -3411,50 +3585,63 @@ export default class Anime4K_Upscale_CNN_x2_VL extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_14_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_14_u_resolution_location, conv2d_tf.width, conv2d_tf.height);
-        gl.uniform2f(this.program_14_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_tf.texture);
         gl.uniform1i(this.program_14_conv2d_tf_TextureLocation, 0);
+        gl.uniform2f(this.program_14_conv2d_tf_SizeLocation, conv2d_tf.width, conv2d_tf.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_tf1.texture);
         gl.uniform1i(this.program_14_conv2d_tf1_TextureLocation, 1);
+        gl.uniform2f(this.program_14_conv2d_tf1_SizeLocation, conv2d_tf1.width, conv2d_tf1.height);
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_1_tf.texture);
         gl.uniform1i(this.program_14_conv2d_1_tf_TextureLocation, 2);
+        gl.uniform2f(this.program_14_conv2d_1_tf_SizeLocation, conv2d_1_tf.width, conv2d_1_tf.height);
         gl.activeTexture(gl.TEXTURE3);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_1_tf1.texture);
         gl.uniform1i(this.program_14_conv2d_1_tf1_TextureLocation, 3);
+        gl.uniform2f(this.program_14_conv2d_1_tf1_SizeLocation, conv2d_1_tf1.width, conv2d_1_tf1.height);
         gl.activeTexture(gl.TEXTURE4);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_2_tf.texture);
         gl.uniform1i(this.program_14_conv2d_2_tf_TextureLocation, 4);
+        gl.uniform2f(this.program_14_conv2d_2_tf_SizeLocation, conv2d_2_tf.width, conv2d_2_tf.height);
         gl.activeTexture(gl.TEXTURE5);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_2_tf1.texture);
         gl.uniform1i(this.program_14_conv2d_2_tf1_TextureLocation, 5);
+        gl.uniform2f(this.program_14_conv2d_2_tf1_SizeLocation, conv2d_2_tf1.width, conv2d_2_tf1.height);
         gl.activeTexture(gl.TEXTURE6);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_3_tf.texture);
         gl.uniform1i(this.program_14_conv2d_3_tf_TextureLocation, 6);
+        gl.uniform2f(this.program_14_conv2d_3_tf_SizeLocation, conv2d_3_tf.width, conv2d_3_tf.height);
         gl.activeTexture(gl.TEXTURE7);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_3_tf1.texture);
         gl.uniform1i(this.program_14_conv2d_3_tf1_TextureLocation, 7);
+        gl.uniform2f(this.program_14_conv2d_3_tf1_SizeLocation, conv2d_3_tf1.width, conv2d_3_tf1.height);
         gl.activeTexture(gl.TEXTURE8);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_4_tf.texture);
         gl.uniform1i(this.program_14_conv2d_4_tf_TextureLocation, 8);
+        gl.uniform2f(this.program_14_conv2d_4_tf_SizeLocation, conv2d_4_tf.width, conv2d_4_tf.height);
         gl.activeTexture(gl.TEXTURE9);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_4_tf1.texture);
         gl.uniform1i(this.program_14_conv2d_4_tf1_TextureLocation, 9);
+        gl.uniform2f(this.program_14_conv2d_4_tf1_SizeLocation, conv2d_4_tf1.width, conv2d_4_tf1.height);
         gl.activeTexture(gl.TEXTURE10);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_5_tf.texture);
         gl.uniform1i(this.program_14_conv2d_5_tf_TextureLocation, 10);
+        gl.uniform2f(this.program_14_conv2d_5_tf_SizeLocation, conv2d_5_tf.width, conv2d_5_tf.height);
         gl.activeTexture(gl.TEXTURE11);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_5_tf1.texture);
         gl.uniform1i(this.program_14_conv2d_5_tf1_TextureLocation, 11);
+        gl.uniform2f(this.program_14_conv2d_5_tf1_SizeLocation, conv2d_5_tf1.width, conv2d_5_tf1.height);
         gl.activeTexture(gl.TEXTURE12);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_6_tf.texture);
         gl.uniform1i(this.program_14_conv2d_6_tf_TextureLocation, 12);
+        gl.uniform2f(this.program_14_conv2d_6_tf_SizeLocation, conv2d_6_tf.width, conv2d_6_tf.height);
         gl.activeTexture(gl.TEXTURE13);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_6_tf1.texture);
         gl.uniform1i(this.program_14_conv2d_6_tf1_TextureLocation, 13);
+        gl.uniform2f(this.program_14_conv2d_6_tf1_SizeLocation, conv2d_6_tf1.width, conv2d_6_tf1.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -3549,50 +3736,63 @@ export default class Anime4K_Upscale_CNN_x2_VL extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_15_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_15_u_resolution_location, conv2d_tf.width, conv2d_tf.height);
-        gl.uniform2f(this.program_15_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_tf.texture);
         gl.uniform1i(this.program_15_conv2d_tf_TextureLocation, 0);
+        gl.uniform2f(this.program_15_conv2d_tf_SizeLocation, conv2d_tf.width, conv2d_tf.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_tf1.texture);
         gl.uniform1i(this.program_15_conv2d_tf1_TextureLocation, 1);
+        gl.uniform2f(this.program_15_conv2d_tf1_SizeLocation, conv2d_tf1.width, conv2d_tf1.height);
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_1_tf.texture);
         gl.uniform1i(this.program_15_conv2d_1_tf_TextureLocation, 2);
+        gl.uniform2f(this.program_15_conv2d_1_tf_SizeLocation, conv2d_1_tf.width, conv2d_1_tf.height);
         gl.activeTexture(gl.TEXTURE3);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_1_tf1.texture);
         gl.uniform1i(this.program_15_conv2d_1_tf1_TextureLocation, 3);
+        gl.uniform2f(this.program_15_conv2d_1_tf1_SizeLocation, conv2d_1_tf1.width, conv2d_1_tf1.height);
         gl.activeTexture(gl.TEXTURE4);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_2_tf.texture);
         gl.uniform1i(this.program_15_conv2d_2_tf_TextureLocation, 4);
+        gl.uniform2f(this.program_15_conv2d_2_tf_SizeLocation, conv2d_2_tf.width, conv2d_2_tf.height);
         gl.activeTexture(gl.TEXTURE5);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_2_tf1.texture);
         gl.uniform1i(this.program_15_conv2d_2_tf1_TextureLocation, 5);
+        gl.uniform2f(this.program_15_conv2d_2_tf1_SizeLocation, conv2d_2_tf1.width, conv2d_2_tf1.height);
         gl.activeTexture(gl.TEXTURE6);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_3_tf.texture);
         gl.uniform1i(this.program_15_conv2d_3_tf_TextureLocation, 6);
+        gl.uniform2f(this.program_15_conv2d_3_tf_SizeLocation, conv2d_3_tf.width, conv2d_3_tf.height);
         gl.activeTexture(gl.TEXTURE7);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_3_tf1.texture);
         gl.uniform1i(this.program_15_conv2d_3_tf1_TextureLocation, 7);
+        gl.uniform2f(this.program_15_conv2d_3_tf1_SizeLocation, conv2d_3_tf1.width, conv2d_3_tf1.height);
         gl.activeTexture(gl.TEXTURE8);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_4_tf.texture);
         gl.uniform1i(this.program_15_conv2d_4_tf_TextureLocation, 8);
+        gl.uniform2f(this.program_15_conv2d_4_tf_SizeLocation, conv2d_4_tf.width, conv2d_4_tf.height);
         gl.activeTexture(gl.TEXTURE9);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_4_tf1.texture);
         gl.uniform1i(this.program_15_conv2d_4_tf1_TextureLocation, 9);
+        gl.uniform2f(this.program_15_conv2d_4_tf1_SizeLocation, conv2d_4_tf1.width, conv2d_4_tf1.height);
         gl.activeTexture(gl.TEXTURE10);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_5_tf.texture);
         gl.uniform1i(this.program_15_conv2d_5_tf_TextureLocation, 10);
+        gl.uniform2f(this.program_15_conv2d_5_tf_SizeLocation, conv2d_5_tf.width, conv2d_5_tf.height);
         gl.activeTexture(gl.TEXTURE11);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_5_tf1.texture);
         gl.uniform1i(this.program_15_conv2d_5_tf1_TextureLocation, 11);
+        gl.uniform2f(this.program_15_conv2d_5_tf1_SizeLocation, conv2d_5_tf1.width, conv2d_5_tf1.height);
         gl.activeTexture(gl.TEXTURE12);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_6_tf.texture);
         gl.uniform1i(this.program_15_conv2d_6_tf_TextureLocation, 12);
+        gl.uniform2f(this.program_15_conv2d_6_tf_SizeLocation, conv2d_6_tf.width, conv2d_6_tf.height);
         gl.activeTexture(gl.TEXTURE13);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_6_tf1.texture);
         gl.uniform1i(this.program_15_conv2d_6_tf1_TextureLocation, 13);
+        gl.uniform2f(this.program_15_conv2d_6_tf1_SizeLocation, conv2d_6_tf1.width, conv2d_6_tf1.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -3687,50 +3887,63 @@ export default class Anime4K_Upscale_CNN_x2_VL extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_16_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_16_u_resolution_location, conv2d_tf.width, conv2d_tf.height);
-        gl.uniform2f(this.program_16_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_tf.texture);
         gl.uniform1i(this.program_16_conv2d_tf_TextureLocation, 0);
+        gl.uniform2f(this.program_16_conv2d_tf_SizeLocation, conv2d_tf.width, conv2d_tf.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_tf1.texture);
         gl.uniform1i(this.program_16_conv2d_tf1_TextureLocation, 1);
+        gl.uniform2f(this.program_16_conv2d_tf1_SizeLocation, conv2d_tf1.width, conv2d_tf1.height);
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_1_tf.texture);
         gl.uniform1i(this.program_16_conv2d_1_tf_TextureLocation, 2);
+        gl.uniform2f(this.program_16_conv2d_1_tf_SizeLocation, conv2d_1_tf.width, conv2d_1_tf.height);
         gl.activeTexture(gl.TEXTURE3);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_1_tf1.texture);
         gl.uniform1i(this.program_16_conv2d_1_tf1_TextureLocation, 3);
+        gl.uniform2f(this.program_16_conv2d_1_tf1_SizeLocation, conv2d_1_tf1.width, conv2d_1_tf1.height);
         gl.activeTexture(gl.TEXTURE4);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_2_tf.texture);
         gl.uniform1i(this.program_16_conv2d_2_tf_TextureLocation, 4);
+        gl.uniform2f(this.program_16_conv2d_2_tf_SizeLocation, conv2d_2_tf.width, conv2d_2_tf.height);
         gl.activeTexture(gl.TEXTURE5);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_2_tf1.texture);
         gl.uniform1i(this.program_16_conv2d_2_tf1_TextureLocation, 5);
+        gl.uniform2f(this.program_16_conv2d_2_tf1_SizeLocation, conv2d_2_tf1.width, conv2d_2_tf1.height);
         gl.activeTexture(gl.TEXTURE6);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_3_tf.texture);
         gl.uniform1i(this.program_16_conv2d_3_tf_TextureLocation, 6);
+        gl.uniform2f(this.program_16_conv2d_3_tf_SizeLocation, conv2d_3_tf.width, conv2d_3_tf.height);
         gl.activeTexture(gl.TEXTURE7);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_3_tf1.texture);
         gl.uniform1i(this.program_16_conv2d_3_tf1_TextureLocation, 7);
+        gl.uniform2f(this.program_16_conv2d_3_tf1_SizeLocation, conv2d_3_tf1.width, conv2d_3_tf1.height);
         gl.activeTexture(gl.TEXTURE8);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_4_tf.texture);
         gl.uniform1i(this.program_16_conv2d_4_tf_TextureLocation, 8);
+        gl.uniform2f(this.program_16_conv2d_4_tf_SizeLocation, conv2d_4_tf.width, conv2d_4_tf.height);
         gl.activeTexture(gl.TEXTURE9);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_4_tf1.texture);
         gl.uniform1i(this.program_16_conv2d_4_tf1_TextureLocation, 9);
+        gl.uniform2f(this.program_16_conv2d_4_tf1_SizeLocation, conv2d_4_tf1.width, conv2d_4_tf1.height);
         gl.activeTexture(gl.TEXTURE10);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_5_tf.texture);
         gl.uniform1i(this.program_16_conv2d_5_tf_TextureLocation, 10);
+        gl.uniform2f(this.program_16_conv2d_5_tf_SizeLocation, conv2d_5_tf.width, conv2d_5_tf.height);
         gl.activeTexture(gl.TEXTURE11);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_5_tf1.texture);
         gl.uniform1i(this.program_16_conv2d_5_tf1_TextureLocation, 11);
+        gl.uniform2f(this.program_16_conv2d_5_tf1_SizeLocation, conv2d_5_tf1.width, conv2d_5_tf1.height);
         gl.activeTexture(gl.TEXTURE12);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_6_tf.texture);
         gl.uniform1i(this.program_16_conv2d_6_tf_TextureLocation, 12);
+        gl.uniform2f(this.program_16_conv2d_6_tf_SizeLocation, conv2d_6_tf.width, conv2d_6_tf.height);
         gl.activeTexture(gl.TEXTURE13);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_6_tf1.texture);
         gl.uniform1i(this.program_16_conv2d_6_tf1_TextureLocation, 13);
+        gl.uniform2f(this.program_16_conv2d_6_tf1_SizeLocation, conv2d_6_tf1.width, conv2d_6_tf1.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
@@ -3803,20 +4016,23 @@ export default class Anime4K_Upscale_CNN_x2_VL extends Anime4KShader {
         enableVertexAttribArray(gl, this.program_17_a_texture_coord_location, texcoordBuffer);
 
         gl.uniform2f(this.program_17_u_resolution_location, (conv2d_last_tf.width * 2), (conv2d_last_tf.height * 2));
-        gl.uniform2f(this.program_17_u_texture_size_location, MAIN.width, MAIN.height);
 
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, MAIN.texture);
         gl.uniform1i(this.program_17_MAIN_TextureLocation, 0);
+        gl.uniform2f(this.program_17_MAIN_SizeLocation, MAIN.width, MAIN.height);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_last_tf.texture);
         gl.uniform1i(this.program_17_conv2d_last_tf_TextureLocation, 1);
+        gl.uniform2f(this.program_17_conv2d_last_tf_SizeLocation, conv2d_last_tf.width, conv2d_last_tf.height);
         gl.activeTexture(gl.TEXTURE2);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_last_tf1.texture);
         gl.uniform1i(this.program_17_conv2d_last_tf1_TextureLocation, 2);
+        gl.uniform2f(this.program_17_conv2d_last_tf1_SizeLocation, conv2d_last_tf1.width, conv2d_last_tf1.height);
         gl.activeTexture(gl.TEXTURE3);
         gl.bindTexture(gl.TEXTURE_2D, conv2d_last_tf2.texture);
         gl.uniform1i(this.program_17_conv2d_last_tf2_TextureLocation, 3);
+        gl.uniform2f(this.program_17_conv2d_last_tf2_SizeLocation, conv2d_last_tf2.width, conv2d_last_tf2.height);
         gl.drawArrays(gl.TRIANGLES, 0, 6);
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, null);
