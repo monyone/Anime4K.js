@@ -1,6 +1,7 @@
 import type { Anime4KShaderConstructor } from 'anime4k.js'
 import {
   ignoreAutoDownscalePre,
+  ANIME4KJS_EMPTY,
   ANIME4KJS_SIMPLE_S_2X,
   ANIME4KJS_SIMPLE_M_2X,
   ANIME4KJS_SIMPLE_L_2X,
@@ -49,17 +50,19 @@ import {
   Anime4K_Restore_GAN_UL,
   Anime4K_Restore_GAN_UUL,
   Anime4K_Clamp_Highlights,
-  Anime4K_Denoise_Bilateral_Mean,
-  Anime4K_Denoise_Bilateral_Median,
-  Anime4K_Denoise_Bilateral_Mode,
-  Anime4K_Deblur_DoG,
-  Anime4K_Deblur_Original,
-  Anime4K_Darken_Fast,
-  Anime4K_Darken_HQ,
-  Anime4K_Darken_VeryFast,
-  Anime4K_Thin_Fast,
-  Anime4K_Thin_HQ,
-  Anime4K_Thin_VeryFast,
+
+  // Disabled in the single-filter list below (WebGL1 incompatible dynamic loop bounds):
+  // Anime4K_Denoise_Bilateral_Mean,
+  // Anime4K_Denoise_Bilateral_Median,
+  // Anime4K_Denoise_Bilateral_Mode,
+  // Anime4K_Deblur_DoG,
+  // Anime4K_Deblur_Original,
+  // Anime4K_Darken_Fast,
+  // Anime4K_Darken_HQ,
+  // Anime4K_Darken_VeryFast,
+  // Anime4K_Thin_Fast,
+  // Anime4K_Thin_HQ,
+  // Anime4K_Thin_VeryFast,
 } from 'anime4k.js'
 
 export type PresetEntry = {
@@ -94,6 +97,7 @@ export default [
   { group: 'Preset', label: 'Lower-End Mode A (Fast)', value: 'lower-a-fast', config: ignoreAutoDownscalePre(ANIME4K_LOWEREND_MODE_A_FAST) },
   { group: 'Preset', label: 'Lower-End Mode B (Fast)', value: 'lower-b-fast', config: ignoreAutoDownscalePre(ANIME4K_LOWEREND_MODE_B_FAST) },
   { group: 'Preset', label: 'Lower-End Mode C (Fast)', value: 'lower-c-fast', config: ignoreAutoDownscalePre(ANIME4K_LOWEREND_MODE_C_FAST) },
+  { group: 'Preset', label: 'Passthrough (Original)', value: 'passthrough', config: ANIME4KJS_EMPTY },
 
   single('Upscale (single)', 'up-cnn-s', 'CNN x2 S', Anime4K_Upscale_CNN_x2_S),
   single('Upscale (single)', 'up-cnn-m', 'CNN x2 M', Anime4K_Upscale_CNN_x2_M),
@@ -128,17 +132,21 @@ export default [
   single('Restore (single)', 're-gan-uul', 'GAN UUL', Anime4K_Restore_GAN_UUL),
   single('Restore (single)', 're-clamp', 'Clamp Highlights', Anime4K_Clamp_Highlights),
 
-  single('Denoise (single)', 'dn-mean', 'Bilateral Mean', Anime4K_Denoise_Bilateral_Mean),
-  single('Denoise (single)', 'dn-median', 'Bilateral Median', Anime4K_Denoise_Bilateral_Median),
-  single('Denoise (single)', 'dn-mode', 'Bilateral Mode', Anime4K_Denoise_Bilateral_Mode),
+  // NOTE: Denoise / Deblur / Effect(Darken, Thin) are disabled for now — their GLSL
+  // relies on dynamic (resolution-dependent) loop bounds that WebGL1 (GLSL ES 1.00)
+  // rejects as non-constant loop conditions.
 
-  single('Deblur (single)', 'db-dog', 'DoG', Anime4K_Deblur_DoG),
-  single('Deblur (single)', 'db-original', 'Original', Anime4K_Deblur_Original),
+  // single('Denoise (single)', 'dn-mean', 'Bilateral Mean', Anime4K_Denoise_Bilateral_Mean),
+  // single('Denoise (single)', 'dn-median', 'Bilateral Median', Anime4K_Denoise_Bilateral_Median),
+  // single('Denoise (single)', 'dn-mode', 'Bilateral Mode', Anime4K_Denoise_Bilateral_Mode),
 
-  single('Effect (single)', 'fx-darken-fast', 'Darken Fast', Anime4K_Darken_Fast),
-  single('Effect (single)', 'fx-darken-hq', 'Darken HQ', Anime4K_Darken_HQ),
-  single('Effect (single)', 'fx-darken-veryfast', 'Darken VeryFast', Anime4K_Darken_VeryFast),
-  single('Effect (single)', 'fx-thin-fast', 'Thin Fast', Anime4K_Thin_Fast),
-  single('Effect (single)', 'fx-thin-hq', 'Thin HQ', Anime4K_Thin_HQ),
-  single('Effect (single)', 'fx-thin-veryfast', 'Thin VeryFast', Anime4K_Thin_VeryFast),
+  // single('Deblur (single)', 'db-dog', 'DoG', Anime4K_Deblur_DoG),
+  // single('Deblur (single)', 'db-original', 'Original', Anime4K_Deblur_Original),
+
+  // single('Effect (single)', 'fx-darken-fast', 'Darken Fast', Anime4K_Darken_Fast),
+  // single('Effect (single)', 'fx-darken-hq', 'Darken HQ', Anime4K_Darken_HQ),
+  // single('Effect (single)', 'fx-darken-veryfast', 'Darken VeryFast', Anime4K_Darken_VeryFast),
+  // single('Effect (single)', 'fx-thin-fast', 'Thin Fast', Anime4K_Thin_Fast),
+  // single('Effect (single)', 'fx-thin-hq', 'Thin HQ', Anime4K_Thin_HQ),
+  // single('Effect (single)', 'fx-thin-veryfast', 'Thin VeryFast', Anime4K_Thin_VeryFast),
 ] satisfies PresetEntry[];
