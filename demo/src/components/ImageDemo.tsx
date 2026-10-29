@@ -71,7 +71,7 @@ export default function ImageDemo() {
           />
         </label>
         <PresetSelector
-          presets={PRESETS.map((p) => ({ label: p.label, value: p.value }))}
+          presets={PRESETS.map((p) => ({ group: p.group, label: p.label, value: p.value }))}
           value={presetKey}
           onChange={handlePresetChange}
           disabled={processing}
