@@ -178,7 +178,11 @@ uniform vec2 u_{bind}_size;
 #define {bind}_texOff(offset) ({bind}_tex({bind}_pos + {bind}_pt * offset))
 """.lstrip() for bind in self.get_bind()]) + '\n'
 
-    shader = self.shader.replace('vec4 hook', 'void main').replace('float c3 = c2', 'float c3 = 0.0').replace('HOOKED', self.hook).replace('PREKERNEL_tex(PREKERNEL_pos) - (current_luma - new_luma);', 'vec4((PREKERNEL_tex(PREKERNEL_pos) - (current_luma - new_luma)).rgb, 1);')
+    shader = self.shader\
+      .replace('vec4 hook', 'void main')\
+      .replace('float c3 = c2', 'float c3 = 0.0')\
+      .replace('HOOKED_tex(HOOKED_pos) - (current_luma - new_luma);', 'vec4((HOOKED_tex(HOOKED_pos) - (current_luma - new_luma)).rgb, 1);')\
+      .replace('HOOKED', self.hook)
     head_part, sep, main_part = shader.partition('void main')
     main_part = re.sub(r'return\s+(.+?);', r'{ gl_FragColor = \1; return; }', main_part)
     body = head_part + sep + main_part
