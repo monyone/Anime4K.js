@@ -193,10 +193,6 @@ if (i\\1.y * 2 + i\\1.x == 0) {
   c\\1 = \\2[3];
 }
 """.rstrip(), '  '), body)
-    # GLSL ES 1.00 (WebGL1) has no integer modulo operator
-    body = re.sub(r'(\w+) % (\w+)', r'(\1 - (\1 / \2) * \2)', body)
-    # GLSL ES 1.00 (WebGL1) has no integer max()
-    body = re.sub(r'max\(int\((.+?)\), 1\)', r'int(max(\1, 1.0))', body)
 
     return head + textures + body
 

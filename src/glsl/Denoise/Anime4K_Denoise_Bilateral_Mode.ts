@@ -99,10 +99,10 @@ uniform vec2 u_LINELUMA_size;
 #define SPATIAL_SIGMA 1.0 //Spatial window size, higher is stronger denoise, must be a positive real number.
 #define HISTOGRAM_REGULARIZATION 0.2 //Histogram regularization window size, higher values approximate a bilateral "closest-to-mean" filter.
 #define INTENSITY_POWER_CURVE 1.0 //Intensity window power curve. Setting it to 0 will make the intensity window treat all intensities equally, while increasing it will make the window narrower in darker intensities and wider in brighter intensities.
-#define KERNELSIZE int(int(max(SPATIAL_SIGMA, 1.0)) * 2 + 1) //Kernel size, must be an positive odd integer.
+#define KERNELSIZE int(max(int(SPATIAL_SIGMA), 1) * 2 + 1) //Kernel size, must be an positive odd integer.
 #define KERNELHALFSIZE (int(KERNELSIZE/2)) //Half of the kernel size without remainder. Must be equal to trunc(KERNELSIZE/2).
 #define KERNELLEN (KERNELSIZE * KERNELSIZE) //Total area of kernel. Must be equal to KERNELSIZE * KERNELSIZE.
-#define GETOFFSET(i) vec2(((i - (i / KERNELSIZE) * KERNELSIZE)) - KERNELHALFSIZE, (i / KERNELSIZE) - KERNELHALFSIZE)
+#define GETOFFSET(i) vec2((i % KERNELSIZE) - KERNELHALFSIZE, (i / KERNELSIZE) - KERNELHALFSIZE)
 float gaussian(float x, float s, float m) {
   float scaled = (x - m) / s;
   return exp(-0.5 * scaled * scaled);
