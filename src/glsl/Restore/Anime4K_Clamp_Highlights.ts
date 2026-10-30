@@ -73,7 +73,7 @@ void main() {
     float g = get_luma(MAIN_texOff(vec2(i - KERNELHALFSIZE, 0)));
     gmax = max(g, gmax);
   }
-  gl_FragColor = vec4(gmax, 0.0, 0.0, 0.0);
+  { gl_FragColor = vec4(gmax, 0.0, 0.0, 0.0); return; }
 }
 `;
 const fragment_1_shader = `
@@ -110,7 +110,7 @@ void main() {
     float g = STATSMAX_texOff(vec2(0, i - KERNELHALFSIZE)).x;
     gmax = max(g, gmax);
   }
-  gl_FragColor = vec4(gmax, 0.0, 0.0, 0.0);
+  { gl_FragColor = vec4(gmax, 0.0, 0.0, 0.0); return; }
 }
 `;
 const fragment_2_shader = `
@@ -147,7 +147,7 @@ void main() {
   float new_luma = min(current_luma, STATSMAX_tex(PREKERNEL_pos).x);
   //This trick is only possible if the inverse Y->RGB matrix has 1 for every row... (which is the case for BT.709)
   //Otherwise we would need to convert RGB to YUV, modify Y then convert back to RGB.
-  gl_FragColor = vec4((PREKERNEL_tex(PREKERNEL_pos) - (current_luma - new_luma)).rgb, 1);
+  { gl_FragColor = vec4((PREKERNEL_tex(PREKERNEL_pos) - (current_luma - new_luma)).rgb, 1); return; }
 }
 `;
 

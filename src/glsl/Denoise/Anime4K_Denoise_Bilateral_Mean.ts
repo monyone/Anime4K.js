@@ -90,7 +90,7 @@ void main() {
     sum += d * v;
     n += d;
   }
-  gl_FragColor = sum / n;
+  { gl_FragColor = sum / n; return; }
 }
 `;
 

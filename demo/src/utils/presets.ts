@@ -50,19 +50,15 @@ import {
   Anime4K_Restore_GAN_UL,
   Anime4K_Restore_GAN_UUL,
   Anime4K_Clamp_Highlights,
-
-  // Disabled in the single-filter list below (WebGL1 incompatible dynamic loop bounds):
-  // Anime4K_Denoise_Bilateral_Mean,
-  // Anime4K_Denoise_Bilateral_Median,
-  // Anime4K_Denoise_Bilateral_Mode,
-  // Anime4K_Deblur_DoG,
-  // Anime4K_Deblur_Original,
-  // Anime4K_Darken_Fast,
-  // Anime4K_Darken_HQ,
-  // Anime4K_Darken_VeryFast,
-  // Anime4K_Thin_Fast,
-  // Anime4K_Thin_HQ,
-  // Anime4K_Thin_VeryFast,
+  Anime4K_Deblur_DoG,
+  Anime4K_Deblur_Original,
+  Anime4K_AutoDownscalePre_x2,
+  Anime4K_AutoDownscalePre_x4,
+  Anime4K_Upscale_Deblur_DoG_x2,
+  Anime4K_Upscale_Deblur_Original_x2,
+  Anime4K_Upscale_DoG_x2,
+  Anime4K_Upscale_Original_x2,
+  // Not exported (WebGL1 incompatible dynamic loop bounds): Denoise Bilateral, Darken, Thin
 } from 'anime4k.js'
 
 export type PresetEntry = {
@@ -117,6 +113,12 @@ export default [
   single('Upscale (single)', 'up-denoise-cnn-ul', 'Denoise CNN x2 UL', Anime4K_Upscale_Denoise_CNN_x2_UL),
   single('Upscale (single)', 'up-3d-us', '3DGraphics x2 US', Anime4K_3DGraphics_Upscale_x2_US),
   single('Upscale (single)', 'up-3d-aa-us', '3DGraphics AA x2 US', Anime4K_3DGraphics_AA_Upscale_x2_US),
+  single('Upscale (single)', 'up-deblur-dog-x2', 'Deblur DoG x2', Anime4K_Upscale_Deblur_DoG_x2),
+  single('Upscale (single)', 'up-deblur-original-x2', 'Deblur Original x2', Anime4K_Upscale_Deblur_Original_x2),
+  single('Upscale (single)', 'up-dog-x2', 'DoG x2', Anime4K_Upscale_DoG_x2),
+  single('Upscale (single)', 'up-original-x2', 'Original x2', Anime4K_Upscale_Original_x2),
+  single('Upscale (single)', 'up-autodownscale-x2', 'AutoDownscalePre x2', Anime4K_AutoDownscalePre_x2),
+  single('Upscale (single)', 'up-autodownscale-x4', 'AutoDownscalePre x4', Anime4K_AutoDownscalePre_x4),
 
   single('Restore (single)', 're-cnn-s', 'CNN S', Anime4K_Restore_CNN_S),
   single('Restore (single)', 're-cnn-m', 'CNN M', Anime4K_Restore_CNN_M),
@@ -132,21 +134,9 @@ export default [
   single('Restore (single)', 're-gan-uul', 'GAN UUL', Anime4K_Restore_GAN_UUL),
   single('Restore (single)', 're-clamp', 'Clamp Highlights', Anime4K_Clamp_Highlights),
 
-  // NOTE: Denoise / Deblur / Effect(Darken, Thin) are disabled for now — their GLSL
-  // relies on dynamic (resolution-dependent) loop bounds that WebGL1 (GLSL ES 1.00)
-  // rejects as non-constant loop conditions.
+  single('Deblur (single)', 'db-dog', 'DoG', Anime4K_Deblur_DoG),
+  single('Deblur (single)', 'db-original', 'Original', Anime4K_Deblur_Original),
 
-  // single('Denoise (single)', 'dn-mean', 'Bilateral Mean', Anime4K_Denoise_Bilateral_Mean),
-  // single('Denoise (single)', 'dn-median', 'Bilateral Median', Anime4K_Denoise_Bilateral_Median),
-  // single('Denoise (single)', 'dn-mode', 'Bilateral Mode', Anime4K_Denoise_Bilateral_Mode),
-
-  // single('Deblur (single)', 'db-dog', 'DoG', Anime4K_Deblur_DoG),
-  // single('Deblur (single)', 'db-original', 'Original', Anime4K_Deblur_Original),
-
-  // single('Effect (single)', 'fx-darken-fast', 'Darken Fast', Anime4K_Darken_Fast),
-  // single('Effect (single)', 'fx-darken-hq', 'Darken HQ', Anime4K_Darken_HQ),
-  // single('Effect (single)', 'fx-darken-veryfast', 'Darken VeryFast', Anime4K_Darken_VeryFast),
-  // single('Effect (single)', 'fx-thin-fast', 'Thin Fast', Anime4K_Thin_Fast),
-  // single('Effect (single)', 'fx-thin-hq', 'Thin HQ', Anime4K_Thin_HQ),
-  // single('Effect (single)', 'fx-thin-veryfast', 'Thin VeryFast', Anime4K_Thin_VeryFast),
+  // NOTE: Denoise Bilateral / Darken / Thin are intentionally omitted — they are not
+  // exported from anime4k.js (WebGL1 / GLSL ES 1.00 rejects their dynamic loop bounds).
 ] satisfies PresetEntry[];

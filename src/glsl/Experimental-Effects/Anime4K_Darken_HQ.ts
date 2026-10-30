@@ -66,7 +66,7 @@ float get_luma(vec4 rgba) {
   return dot(vec4(0.299, 0.587, 0.114, 0.0), rgba);
 }
 void main() {
-  gl_FragColor = vec4(get_luma(MAIN_tex(MAIN_pos)), 0.0, 0.0, 0.0);
+  { gl_FragColor = vec4(get_luma(MAIN_tex(MAIN_pos)), 0.0, 0.0, 0.0); return; }
 }
 `;
 const fragment_1_shader = `
@@ -115,7 +115,7 @@ float comp_gaussian_x() {
   return g / gn;
 }
 void main() {
-  gl_FragColor = vec4(comp_gaussian_x(), 0.0, 0.0, 0.0);
+  { gl_FragColor = vec4(comp_gaussian_x(), 0.0, 0.0, 0.0); return; }
 }
 `;
 const fragment_2_shader = `
@@ -172,7 +172,7 @@ float comp_gaussian_y() {
   return g / gn;
 }
 void main() {
-  gl_FragColor = vec4(min(LINELUMA_tex(MAIN_pos).x - comp_gaussian_y(), 0.0), 0.0, 0.0, 0.0);
+  { gl_FragColor = vec4(min(LINELUMA_tex(MAIN_pos).x - comp_gaussian_y(), 0.0), 0.0, 0.0, 0.0); return; }
 }
 `;
 const fragment_3_shader = `
@@ -221,7 +221,7 @@ float comp_gaussian_x() {
   return g / gn;
 }
 void main() {
-  gl_FragColor = vec4(comp_gaussian_x(), 0.0, 0.0, 0.0);
+  { gl_FragColor = vec4(comp_gaussian_x(), 0.0, 0.0, 0.0); return; }
 }
 `;
 const fragment_4_shader = `
@@ -273,7 +273,7 @@ float comp_gaussian_y() {
 void main() {
   //This trick is only possible if the inverse Y->RGB matrix has 1 for every row... (which is the case for BT.709)
   //Otherwise we would need to convert RGB to YUV, modify Y then convert back to RGB.
-  gl_FragColor = MAIN_tex(MAIN_pos) + (comp_gaussian_y() * STRENGTH);
+  { gl_FragColor = MAIN_tex(MAIN_pos) + (comp_gaussian_y() * STRENGTH); return; }
 }
 `;
 

@@ -1,6 +1,13 @@
 #!/bin/sh
 
+# Experimental-Effects と Denoise は WebGL2 を要求する
+# Upscale_DTD も webgl1 では無理
+# 一旦 サポート対象 から外す
+
 find src/glsl -type f -name '*.ts' \
+  ! -path 'src/glsl/Experimental-Effects/*' \
+  ! -path 'src/glsl/Denoise/*' \
+  ! -name 'Anime4K_Upscale_DTD_x2.ts' \
   ! -name 'shader.ts' \
   ! -name 'passthrough.ts' \
   | sort \

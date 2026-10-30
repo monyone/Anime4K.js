@@ -178,8 +178,10 @@ uniform vec2 u_{bind}_size;
 #define {bind}_texOff(offset) ({bind}_tex({bind}_pos + {bind}_pt * offset))
 """.lstrip() for bind in self.get_bind()]) + '\n'
 
-    replaced = self.shader.replace('vec4 hook', 'void main').replace('float c3 = c2', 'float c3 = 0.0').replace('HOOKED', self.hook).replace('PREKERNEL_tex(PREKERNEL_pos) - (current_luma - new_luma);', 'vec4((PREKERNEL_tex(PREKERNEL_pos) - (current_luma - new_luma)).rgb, 1);').split('\n')
-    body = '\n'.join(replaced[:-4]) + '\n' + '\n'.join(replaced[-4:]).replace('return', 'gl_FragColor =')
+    shader = self.shader.replace('vec4 hook', 'void main').replace('float c3 = c2', 'float c3 = 0.0').replace('HOOKED', self.hook).replace('PREKERNEL_tex(PREKERNEL_pos) - (current_luma - new_luma);', 'vec4((PREKERNEL_tex(PREKERNEL_pos) - (current_luma - new_luma)).rgb, 1);')
+    head_part, sep, main_part = shader.partition('void main')
+    main_part = re.sub(r'return\s+(.+?);', r'{ gl_FragColor = \1; return; }', main_part)
+    body = head_part + sep + main_part
     # GLSL ES 1.00 (WebGL) has no support for array index
     body = re.sub(r'\s*float c(\d) = (.*)\[.*\]', indent("""
 float c\\1 = 0.0;

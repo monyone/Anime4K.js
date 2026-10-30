@@ -66,7 +66,7 @@ float get_luma(vec4 rgba) {
   return dot(vec4(0.299, 0.587, 0.114, 0.0), rgba);
 }
 void main() {
-  gl_FragColor = vec4(get_luma(MAIN_tex(MAIN_pos)), 0.0, 0.0, 0.0);
+  { gl_FragColor = vec4(get_luma(MAIN_tex(MAIN_pos)), 0.0, 0.0, 0.0); return; }
 }
 `;
 const fragment_1_shader = `
@@ -93,7 +93,7 @@ void main() {
   float r = LINELUMA_texOff(vec2(1.0, 0.0)).x;
   float xgrad = (-l + r);
   float ygrad = (l + c + c + r);
-  gl_FragColor = vec4(xgrad, ygrad, 0.0, 0.0);
+  { gl_FragColor = vec4(xgrad, ygrad, 0.0, 0.0); return; }
 }
 `;
 const fragment_2_shader = `
@@ -124,7 +124,7 @@ void main() {
   float ygrad = (-ty + by) / 8.0;
   //Computes the luminance's gradient
   float norm = sqrt(xgrad * xgrad + ygrad * ygrad);
-  gl_FragColor = vec4(pow(norm, 0.7));
+  { gl_FragColor = vec4(pow(norm, 0.7)); return; }
 }
 `;
 const fragment_3_shader = `
@@ -173,7 +173,7 @@ float comp_gaussian_x() {
   return g / gn;
 }
 void main() {
-  gl_FragColor = vec4(comp_gaussian_x(), 0.0, 0.0, 0.0);
+  { gl_FragColor = vec4(comp_gaussian_x(), 0.0, 0.0, 0.0); return; }
 }
 `;
 const fragment_4_shader = `
@@ -222,7 +222,7 @@ float comp_gaussian_y() {
   return g / gn;
 }
 void main() {
-  gl_FragColor = vec4(comp_gaussian_y(), 0.0, 0.0, 0.0);
+  { gl_FragColor = vec4(comp_gaussian_y(), 0.0, 0.0, 0.0); return; }
 }
 `;
 const fragment_5_shader = `
@@ -249,7 +249,7 @@ void main() {
   float r = LINESOBEL_texOff(vec2(0.5, 0.0)).x;
   float xgrad = (-l + r);
   float ygrad = (l + c + c + r);
-  gl_FragColor = vec4(xgrad, ygrad, 0.0, 0.0);
+  { gl_FragColor = vec4(xgrad, ygrad, 0.0, 0.0); return; }
 }
 `;
 const fragment_6_shader = `
@@ -279,7 +279,7 @@ void main() {
   float xgrad = (tx + cx + cx + bx) / 8.0;
   float ygrad = (-ty + by) / 8.0;
   //Computes the luminance's gradient
-  gl_FragColor = vec4(xgrad, ygrad, 0.0, 0.0);
+  { gl_FragColor = vec4(xgrad, ygrad, 0.0, 0.0); return; }
 }
 `;
 const fragment_7_shader = `
@@ -319,7 +319,7 @@ void main() {
     vec2 dd = (dn / (length(dn) + 0.01)) * d * relstr; //Quasi-normalization for large vectors, avoids divide by zero
     pos -= dd;
   }
-  gl_FragColor = MAIN_tex(pos);
+  { gl_FragColor = MAIN_tex(pos); return; }
 }
 `;
 

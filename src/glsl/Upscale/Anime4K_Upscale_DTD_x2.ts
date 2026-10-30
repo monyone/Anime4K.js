@@ -66,7 +66,7 @@ float get_luma(vec4 rgba) {
   return dot(vec4(0.299, 0.587, 0.114, 0.0), rgba);
 }
 void main() {
-  gl_FragColor = vec4(get_luma(MAIN_tex(MAIN_pos)), 0.0, 0.0, 0.0);
+  { gl_FragColor = vec4(get_luma(MAIN_tex(MAIN_pos)), 0.0, 0.0, 0.0); return; }
 }
 `;
 const fragment_1_shader = `
@@ -114,7 +114,7 @@ float lumGaussian(vec2 pos, vec2 d) {
   return g / gn;
 }
 void main() {
-  gl_FragColor = vec4(lumGaussian(MAIN_pos, vec2(MAIN_pt.x, 0)));
+  { gl_FragColor = vec4(lumGaussian(MAIN_pos, vec2(MAIN_pt.x, 0))); return; }
 }
 `;
 const fragment_2_shader = `
@@ -170,7 +170,7 @@ float lumGaussian(vec2 pos, vec2 d) {
   return g / gn;
 }
 void main() {
-  gl_FragColor = vec4(min(LINELUMA_tex(MAIN_pos).x - lumGaussian(MAIN_pos, vec2(0, MAIN_pt.y)), 0.0));
+  { gl_FragColor = vec4(min(LINELUMA_tex(MAIN_pos).x - lumGaussian(MAIN_pos, vec2(0, MAIN_pt.y)), 0.0)); return; }
 }
 `;
 const fragment_3_shader = `
@@ -218,7 +218,7 @@ float lumGaussian(vec2 pos, vec2 d) {
   return g / gn;
 }
 void main() {
-  gl_FragColor = vec4(lumGaussian(MAIN_pos, vec2(MAIN_pt.x, 0)));
+  { gl_FragColor = vec4(lumGaussian(MAIN_pos, vec2(MAIN_pt.x, 0))); return; }
 }
 `;
 const fragment_4_shader = `
@@ -266,7 +266,7 @@ float lumGaussian(vec2 pos, vec2 d) {
   return g / gn;
 }
 void main() {
-  gl_FragColor = vec4(lumGaussian(MAIN_pos, vec2(0, MAIN_pt.y)));
+  { gl_FragColor = vec4(lumGaussian(MAIN_pos, vec2(0, MAIN_pt.y))); return; }
 }
 `;
 const fragment_5_shader = `
@@ -300,7 +300,7 @@ void main() {
   float c = (MMKERNEL_tex(MAIN_pos).x) * STRENGTH;
   //This trick is only possible if the inverse Y->RGB matrix has 1 for every row... (which is the case for BT.709)
   //Otherwise we would need to convert RGB to YUV, modify Y then convert back to RGB.
-  gl_FragColor = MAIN_tex(MAIN_pos) + c;
+  { gl_FragColor = MAIN_tex(MAIN_pos) + c; return; }
 }
 `;
 const fragment_6_shader = `
@@ -325,7 +325,7 @@ float get_luma(vec4 rgba) {
   return dot(vec4(0.299, 0.587, 0.114, 0.0), rgba);
 }
 void main() {
-  gl_FragColor = vec4(get_luma(MAIN_tex(MAIN_pos)), 0.0, 0.0, 0.0);
+  { gl_FragColor = vec4(get_luma(MAIN_tex(MAIN_pos)), 0.0, 0.0, 0.0); return; }
 }
 `;
 const fragment_7_shader = `
@@ -374,7 +374,7 @@ void main() {
   //[ 1 2 1]
   float ygrad = (l + c + c + r);
   //Computes the luminance's gradient
-  gl_FragColor = vec4(xgrad, ygrad, 0, 0);
+  { gl_FragColor = vec4(xgrad, ygrad, 0, 0); return; }
 }
 `;
 const fragment_8_shader = `
@@ -426,7 +426,7 @@ void main() {
   float ygrad = (-ty + by) / 8.0;
   //Computes the luminance's gradient
   float norm = sqrt(xgrad * xgrad + ygrad * ygrad);
-  gl_FragColor = vec4(pow(norm, 0.7));
+  { gl_FragColor = vec4(pow(norm, 0.7)); return; }
 }
 `;
 const fragment_9_shader = `
@@ -470,7 +470,7 @@ float lumGaussian(vec2 pos, vec2 d) {
   return g;
 }
 void main() {
-  gl_FragColor = vec4(lumGaussian(MAIN_pos, vec2(MAIN_pt.x, 0)));
+  { gl_FragColor = vec4(lumGaussian(MAIN_pos, vec2(MAIN_pt.x, 0))); return; }
 }
 `;
 const fragment_10_shader = `
@@ -523,7 +523,7 @@ float lumGaussian(vec2 pos, vec2 d) {
 }
 void main() {
   float g = lumGaussian(MAIN_pos, vec2(0, MAIN_pt.y));
-  gl_FragColor = vec4(g);
+  { gl_FragColor = vec4(g); return; }
 }
 `;
 const fragment_11_shader = `
@@ -571,7 +571,7 @@ void main() {
   //[ 1 2 1]
   float ygrad = (l + c + c + r);
   //Computes the luminance's gradient
-  gl_FragColor = vec4(xgrad, ygrad, 0, 0);
+  { gl_FragColor = vec4(xgrad, ygrad, 0, 0); return; }
 }
 `;
 const fragment_12_shader = `
@@ -622,7 +622,7 @@ void main() {
   //[ 1 2 1]
   float ygrad = (-ty + by) / 8.0;
   //Computes the luminance's gradient
-  gl_FragColor = vec4(xgrad, ygrad, 0, 0);
+  { gl_FragColor = vec4(xgrad, ygrad, 0, 0); return; }
 }
 `;
 const fragment_13_shader = `
@@ -671,7 +671,7 @@ void main() {
     vec2 dd = (dn / (length(dn) + 0.01)) * d * relstr; //Quasi-normalization for large vectors, avoids divide by zero
     pos -= dd;
   }
-  gl_FragColor = L_tex(pos);
+  { gl_FragColor = L_tex(pos); return; }
 }
 `;
 const fragment_14_shader = `
@@ -704,7 +704,7 @@ float get_luma(vec4 rgba) {
   return dot(vec4(0.299, 0.587, 0.114, 0.0), rgba);
 }
 void main() {
-  gl_FragColor = vec4(get_luma(MAINTEMPTHIN_tex(MAIN_pos)), 0.0, 0.0, 0.0);
+  { gl_FragColor = vec4(get_luma(MAINTEMPTHIN_tex(MAIN_pos)), 0.0, 0.0, 0.0); return; }
 }
 `;
 const fragment_15_shader = `
@@ -753,7 +753,7 @@ float lumGaussian7(vec2 pos, vec2 d) {
   return g;
 }
 void main() {
-  gl_FragColor = vec4(lumGaussian7(MAIN_pos, vec2(MAIN_pt.x, 0)), minmax3(MAIN_pos, vec2(MAIN_pt.x, 0)), 0);
+  { gl_FragColor = vec4(lumGaussian7(MAIN_pos, vec2(MAIN_pt.x, 0)), minmax3(MAIN_pos, vec2(MAIN_pt.x, 0)), 0); return; }
 }
 `;
 const fragment_16_shader = `
@@ -805,7 +805,7 @@ float lumGaussian7(vec2 pos, vec2 d) {
   return g;
 }
 void main() {
-  gl_FragColor = vec4(lumGaussian7(MAIN_pos, vec2(0, MAIN_pt.y)), minmax3(MAIN_pos, vec2(0, MAIN_pt.y)), 0);
+  { gl_FragColor = vec4(lumGaussian7(MAIN_pos, vec2(0, MAIN_pt.y)), minmax3(MAIN_pos, vec2(0, MAIN_pt.y)), 0); return; }
 }
 `;
 const fragment_17_shader = `
@@ -870,7 +870,7 @@ void main() {
   float cc = clamp(c_t + L_tex(MAIN_pos).x, MMKERNEL_tex(MAIN_pos).y, MMKERNEL_tex(MAIN_pos).z) - L_tex(MAIN_pos).x;
   //This trick is only possible if the inverse Y->RGB matrix has 1 for every row... (which is the case for BT.709)
   //Otherwise we would need to convert RGB to YUV, modify Y then convert back to RGB.
-  gl_FragColor = MAINTEMPTHIN_tex(MAIN_pos) + cc;
+  { gl_FragColor = MAINTEMPTHIN_tex(MAIN_pos) + cc; return; }
 }
 `;
 

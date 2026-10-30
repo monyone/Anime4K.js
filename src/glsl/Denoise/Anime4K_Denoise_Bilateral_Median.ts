@@ -66,7 +66,7 @@ float get_luma(vec4 rgba) {
   return dot(vec4(0.299, 0.587, 0.114, 0.0), rgba);
 }
 void main() {
-  gl_FragColor = vec4(get_luma(MAIN_tex(MAIN_pos)), 0.0, 0.0, 0.0);
+  { gl_FragColor = vec4(get_luma(MAIN_tex(MAIN_pos)), 0.0, 0.0, 0.0); return; }
 }
 `;
 const fragment_1_shader = `
@@ -153,9 +153,9 @@ void main() {
       }
       n += histogram_wn[i];
     }
-    return getMedian(histogram_v, histogram_wn, n);
+    { gl_FragColor = getMedian(histogram_v, histogram_wn, n); return; }
   }
-  gl_FragColor = getMedian(histogram_v, histogram_w, n);
+  { gl_FragColor = getMedian(histogram_v, histogram_w, n); return; }
 }
 `;
 

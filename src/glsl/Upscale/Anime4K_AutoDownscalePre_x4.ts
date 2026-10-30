@@ -70,9 +70,8 @@ uniform vec2 u_NATIVE_size;
 #define NATIVE_pt (1.0 / NATIVE_size)
 #define NATIVE_texOff(offset) (NATIVE_tex(NATIVE_pos + NATIVE_pt * offset))
 
-
 void main() {
-  gl_FragColor = MAIN_tex(MAIN_pos);
+  { gl_FragColor = MAIN_tex(MAIN_pos); return; }
 }
 `;
 

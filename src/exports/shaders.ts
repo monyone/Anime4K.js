@@ -1,14 +1,5 @@
 export { default as Anime4K_Deblur_DoG } from '../glsl/Deblur/Anime4K_Deblur_DoG';
 export { default as Anime4K_Deblur_Original } from '../glsl/Deblur/Anime4K_Deblur_Original';
-export { default as Anime4K_Denoise_Bilateral_Mean } from '../glsl/Denoise/Anime4K_Denoise_Bilateral_Mean';
-export { default as Anime4K_Denoise_Bilateral_Median } from '../glsl/Denoise/Anime4K_Denoise_Bilateral_Median';
-export { default as Anime4K_Denoise_Bilateral_Mode } from '../glsl/Denoise/Anime4K_Denoise_Bilateral_Mode';
-export { default as Anime4K_Darken_Fast } from '../glsl/Experimental-Effects/Anime4K_Darken_Fast';
-export { default as Anime4K_Darken_HQ } from '../glsl/Experimental-Effects/Anime4K_Darken_HQ';
-export { default as Anime4K_Darken_VeryFast } from '../glsl/Experimental-Effects/Anime4K_Darken_VeryFast';
-export { default as Anime4K_Thin_Fast } from '../glsl/Experimental-Effects/Anime4K_Thin_Fast';
-export { default as Anime4K_Thin_HQ } from '../glsl/Experimental-Effects/Anime4K_Thin_HQ';
-export { default as Anime4K_Thin_VeryFast } from '../glsl/Experimental-Effects/Anime4K_Thin_VeryFast';
 export { default as Anime4K_Clamp_Highlights } from '../glsl/Restore/Anime4K_Clamp_Highlights';
 export { default as Anime4K_Restore_CNN_L } from '../glsl/Restore/Anime4K_Restore_CNN_L';
 export { default as Anime4K_Restore_CNN_M } from '../glsl/Restore/Anime4K_Restore_CNN_M';
@@ -22,11 +13,6 @@ export { default as Anime4K_Restore_CNN_UL } from '../glsl/Restore/Anime4K_Resto
 export { default as Anime4K_Restore_CNN_VL } from '../glsl/Restore/Anime4K_Restore_CNN_VL';
 export { default as Anime4K_Restore_GAN_UL } from '../glsl/Restore/Anime4K_Restore_GAN_UL';
 export { default as Anime4K_Restore_GAN_UUL } from '../glsl/Restore/Anime4K_Restore_GAN_UUL';
-export { default as Anime4K_Upscale_Denoise_CNN_x2_L } from '../glsl/Upscale+Denoise/Anime4K_Upscale_Denoise_CNN_x2_L';
-export { default as Anime4K_Upscale_Denoise_CNN_x2_M } from '../glsl/Upscale+Denoise/Anime4K_Upscale_Denoise_CNN_x2_M';
-export { default as Anime4K_Upscale_Denoise_CNN_x2_S } from '../glsl/Upscale+Denoise/Anime4K_Upscale_Denoise_CNN_x2_S';
-export { default as Anime4K_Upscale_Denoise_CNN_x2_UL } from '../glsl/Upscale+Denoise/Anime4K_Upscale_Denoise_CNN_x2_UL';
-export { default as Anime4K_Upscale_Denoise_CNN_x2_VL } from '../glsl/Upscale+Denoise/Anime4K_Upscale_Denoise_CNN_x2_VL';
 export { default as Anime4K_3DGraphics_AA_Upscale_x2_US } from '../glsl/Upscale/Anime4K_3DGraphics_AA_Upscale_x2_US';
 export { default as Anime4K_3DGraphics_Upscale_x2_US } from '../glsl/Upscale/Anime4K_3DGraphics_Upscale_x2_US';
 export { default as Anime4K_AutoDownscalePre_x2 } from '../glsl/Upscale/Anime4K_AutoDownscalePre_x2';
@@ -36,7 +22,6 @@ export { default as Anime4K_Upscale_CNN_x2_M } from '../glsl/Upscale/Anime4K_Ups
 export { default as Anime4K_Upscale_CNN_x2_S } from '../glsl/Upscale/Anime4K_Upscale_CNN_x2_S';
 export { default as Anime4K_Upscale_CNN_x2_UL } from '../glsl/Upscale/Anime4K_Upscale_CNN_x2_UL';
 export { default as Anime4K_Upscale_CNN_x2_VL } from '../glsl/Upscale/Anime4K_Upscale_CNN_x2_VL';
-export { default as Anime4K_Upscale_DTD_x2 } from '../glsl/Upscale/Anime4K_Upscale_DTD_x2';
 export { default as Anime4K_Upscale_Deblur_DoG_x2 } from '../glsl/Upscale/Anime4K_Upscale_Deblur_DoG_x2';
 export { default as Anime4K_Upscale_Deblur_Original_x2 } from '../glsl/Upscale/Anime4K_Upscale_Deblur_Original_x2';
 export { default as Anime4K_Upscale_DoG_x2 } from '../glsl/Upscale/Anime4K_Upscale_DoG_x2';
@@ -47,6 +32,10 @@ export { default as Anime4K_Upscale_GAN_x3_VL } from '../glsl/Upscale/Anime4K_Up
 export { default as Anime4K_Upscale_GAN_x4_UL } from '../glsl/Upscale/Anime4K_Upscale_GAN_x4_UL';
 export { default as Anime4K_Upscale_GAN_x4_UUL } from '../glsl/Upscale/Anime4K_Upscale_GAN_x4_UUL';
 export { default as Anime4K_Upscale_Original_x2 } from '../glsl/Upscale/Anime4K_Upscale_Original_x2';
-export { default as PassThrough } from '../glsl/passthrough';
+export { default as Anime4K_Upscale_Denoise_CNN_x2_L } from '../glsl/Upscale+Denoise/Anime4K_Upscale_Denoise_CNN_x2_L';
+export { default as Anime4K_Upscale_Denoise_CNN_x2_M } from '../glsl/Upscale+Denoise/Anime4K_Upscale_Denoise_CNN_x2_M';
+export { default as Anime4K_Upscale_Denoise_CNN_x2_S } from '../glsl/Upscale+Denoise/Anime4K_Upscale_Denoise_CNN_x2_S';
+export { default as Anime4K_Upscale_Denoise_CNN_x2_UL } from '../glsl/Upscale+Denoise/Anime4K_Upscale_Denoise_CNN_x2_UL';
+export { default as Anime4K_Upscale_Denoise_CNN_x2_VL } from '../glsl/Upscale+Denoise/Anime4K_Upscale_Denoise_CNN_x2_VL';
 export { default as Anime4KShader, type Anime4KShaderConstructor } from '../glsl/shader';
 export type { TextureData, ResolutionData } from '../utils/index'

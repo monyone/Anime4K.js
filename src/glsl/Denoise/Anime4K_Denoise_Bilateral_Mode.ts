@@ -66,7 +66,7 @@ float get_luma(vec4 rgba) {
   return dot(vec4(0.299, 0.587, 0.114, 0.0), rgba);
 }
 void main() {
-  gl_FragColor = vec4(get_luma(MAIN_tex(MAIN_pos)), 0.0, 0.0, 0.0);
+  { gl_FragColor = vec4(get_luma(MAIN_tex(MAIN_pos)), 0.0, 0.0, 0.0); return; }
 }
 `;
 const fragment_1_shader = `
@@ -141,7 +141,7 @@ void main() {
       histogram_wn[i] += d * histogram_w[j];
     }
   }
-  gl_FragColor = getMode(histogram_v, histogram_wn);
+  { gl_FragColor = getMode(histogram_v, histogram_wn); return; }
 }
 `;
 

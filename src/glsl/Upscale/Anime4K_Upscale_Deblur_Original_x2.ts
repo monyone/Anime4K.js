@@ -66,7 +66,7 @@ float get_luma(vec4 rgba) {
   return dot(vec4(0.299, 0.587, 0.114, 0.0), rgba);
 }
 void main() {
-  gl_FragColor = vec4(get_luma(MAIN_tex(MAIN_pos)), 0.0, 0.0, 0.0);
+  { gl_FragColor = vec4(get_luma(MAIN_tex(MAIN_pos)), 0.0, 0.0, 0.0); return; }
 }
 `;
 const fragment_1_shader = `
@@ -114,7 +114,7 @@ void main() {
   //[ 1 2 1]
   float ygrad = (l + c + c + r);
   //Computes the luminance's gradient
-  gl_FragColor = vec4(xgrad, ygrad, 0.0, 0.0);
+  { gl_FragColor = vec4(xgrad, ygrad, 0.0, 0.0); return; }
 }
 `;
 const fragment_2_shader = `
@@ -188,7 +188,7 @@ void main() {
   //Computes the luminance's gradient
   float sobel_norm = clamp(sqrt(xgrad * xgrad + ygrad * ygrad), 0.0, 1.0);
   float dval = clamp(power_function(clamp(sobel_norm, 0.0, 1.0)) * REFINE_STRENGTH + REFINE_BIAS, 0.0, 1.0);
-  gl_FragColor = vec4(sobel_norm, dval, 0.0, 0.0);
+  { gl_FragColor = vec4(sobel_norm, dval, 0.0, 0.0); return; }
 }
 `;
 const fragment_3_shader = `
@@ -220,7 +220,7 @@ uniform vec2 u_LUMAD_size;
 void main() {
   vec2 d = MAIN_pt;
   if (LUMAD_tex(MAIN_pos).y < 0.1) {
-    return vec4(0.0);
+    { gl_FragColor = vec4(0.0); return; }
   }
   //[tl t tr]
   //[ l c r]
@@ -238,7 +238,7 @@ void main() {
   //[ 0 0 0]
   //[ 1 2 1]
   float ygrad = (l + c + c + r);
-  gl_FragColor = vec4(xgrad, ygrad, 0.0, 0.0);
+  { gl_FragColor = vec4(xgrad, ygrad, 0.0, 0.0); return; }
 }
 `;
 const fragment_4_shader = `
@@ -278,7 +278,7 @@ uniform vec2 u_LUMAMM_size;
 void main() {
   vec2 d = MAIN_pt;
   if (LUMAD_tex(MAIN_pos).y < 0.1) {
-    return vec4(0.0);
+    { gl_FragColor = vec4(0.0); return; }
   }
   //[tl t tr]
   //[ l cc r]
@@ -305,7 +305,7 @@ void main() {
     ygrad = 0.0;
     norm = 1.0;
   }
-  gl_FragColor = vec4(xgrad/norm, ygrad/norm, 0.0, 0.0);
+  { gl_FragColor = vec4(xgrad/norm, ygrad/norm, 0.0, 0.0); return; }
 }
 `;
 const fragment_5_shader = `
@@ -346,11 +346,11 @@ void main() {
   vec2 d = MAIN_pt;
   float dval = LUMAD_tex(MAIN_pos).y;
   if (dval < 0.1) {
-    return MAIN_tex(MAIN_pos);
+    { gl_FragColor = MAIN_tex(MAIN_pos); return; }
   }
   vec4 dc = LUMAMM_tex(MAIN_pos);
   if (abs(dc.x + dc.y) <= 0.0001) {
-    return MAIN_tex(MAIN_pos);
+    { gl_FragColor = MAIN_tex(MAIN_pos); return; }
   }
   float xpos = -sign(dc.x);
   float ypos = -sign(dc.y);
@@ -358,7 +358,7 @@ void main() {
   vec4 yval = MAIN_tex(MAIN_pos + vec2(0.0, d.y * ypos));
   float xyratio = abs(dc.x) / (abs(dc.x) + abs(dc.y));
   vec4 avg = xyratio * xval + (1.0 - xyratio) * yval;
-  gl_FragColor = avg * dval + MAIN_tex(MAIN_pos) * (1.0 - dval);
+  { gl_FragColor = avg * dval + MAIN_tex(MAIN_pos) * (1.0 - dval); return; }
 }
 `;
 
