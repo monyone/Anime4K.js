@@ -196,9 +196,9 @@ export default class Anime4K_Clamp_Highlights extends Anime4KShader {
     this.program_0 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_0_shader)!)!;
     this.program_1 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_1_shader)!)!;
     this.program_2 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_2_shader)!)!;
-    this.program_0_intermediate_texture = createTexture(gl, gl.NEAREST)!;
-    this.program_1_intermediate_texture = createTexture(gl, gl.NEAREST)!;
-    this.program_2_intermediate_texture = createTexture(gl, gl.NEAREST)!;
+    this.program_0_intermediate_texture = createTexture(gl, gl.LINEAR)!;
+    this.program_1_intermediate_texture = createTexture(gl, gl.LINEAR)!;
+    this.program_2_intermediate_texture = createTexture(gl, gl.LINEAR)!;
     this.program_0_intermediate_texture_cached_width = null;
     this.program_1_intermediate_texture_cached_width = null;
     this.program_2_intermediate_texture_cached_width = null;

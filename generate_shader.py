@@ -418,7 +418,7 @@ if __name__ == '__main__':
     webgl_program_position_buffer_declare = '\n'.join([ f'private program_{index}_position_buffer: WebGLBuffer | null;' for index in range(len(programs)) ])
 
     webgl_programs_assign = '\n'.join([ f'this.program_{index} = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_{index}_shader)!)!;' for index in range(len(programs)) ])
-    webgl_program_intermediate_texture_assign = '\n'.join([ f'this.program_{index}_intermediate_texture = createTexture(gl, gl.NEAREST)!;' for index in range(len(programs)) ])
+    webgl_program_intermediate_texture_assign = '\n'.join([ f'this.program_{index}_intermediate_texture = createTexture(gl, gl.LINEAR)!;' for index in range(len(programs)) ])
     webgl_program_intermediate_texture_cached_width_assign = '\n'.join([ f'this.program_{index}_intermediate_texture_cached_width = null;' for index in range(len(programs)) ])
     webgl_program_intermediate_texture_cached_height_assign = '\n'.join([ f'this.program_{index}_intermediate_texture_cached_height = null;' for index in range(len(programs)) ])
     webgl_program_a_position_location_assign = '\n'.join([ f'this.program_{index}_a_position_location = gl.getAttribLocation(this.program_{index}, "a_position");\ngl.enableVertexAttribArray(this.program_{index}_a_position_location);' for index in range(len(programs))])

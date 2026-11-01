@@ -3,6 +3,12 @@ import type Anime4KShader from "../glsl/shader";
 import { type Anime4KShaderConstructor } from "../glsl/shader";
 import { createTexture, TextureData } from "../utils/index";
 
+const isFloatLinearTextureSupported = (gl: WebGLRenderingContext): boolean => {
+  const half_float = gl.getExtension("OES_texture_half_float") != null && gl.getExtension("OES_texture_half_float_linear") != null && gl.getExtension("EXT_color_buffer_half_float") != null;
+  const float = gl.getExtension("OES_texture_float") != null && gl.getExtension("OES_texture_float_linear") != null && gl.getExtension("WEBGL_color_buffer_float") != null;
+  return half_float || float;
+};
+
 const empty = () => {}
 
 export default class ImageUpscaler {
@@ -32,9 +38,7 @@ export default class ImageUpscaler {
     const canvas = new OffscreenCanvas(0,0)
     const gl = canvas.getContext('webgl');
     if (!gl) { return false; }
-    if (gl.getExtension("OES_texture_float") == null) { return false; }
-    if (gl.getExtension("OES_texture_float_linear") == null) { return false; }
-    return true;
+    return isFloatLinearTextureSupported(gl);
   }
 
 
@@ -108,7 +112,7 @@ export default class ImageUpscaler {
       stencil: false,
       depth: false
     });
-    if (this.gl && this.gl.getExtension("OES_texture_float") && this.gl.getExtension("OES_texture_float_linear")) {
+    if (this.gl && isFloatLinearTextureSupported(this.gl)) {
       const gl = this.gl;
       gl.disable(gl.DEPTH_TEST);
       gl.disable(gl.STENCIL_TEST);

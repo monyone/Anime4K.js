@@ -96,7 +96,7 @@ export default class Anime4K_AutoDownscalePre_x4 extends Anime4KShader {
     this.gl = gl;
     this.texcoordBuffer = createRectangleBuffer(gl, 0, 0, 1, 1);
     this.program_0 = createProgram(gl, createVertexShader(gl, vertex_shader)!, createFragmentShader(gl,  fragment_0_shader)!)!;
-    this.program_0_intermediate_texture = createTexture(gl, gl.NEAREST)!;
+    this.program_0_intermediate_texture = createTexture(gl, gl.LINEAR)!;
     this.program_0_intermediate_texture_cached_width = null;
     this.program_0_intermediate_texture_cached_height = null;
     this.program_0_a_position_location = gl.getAttribLocation(this.program_0, "a_position");

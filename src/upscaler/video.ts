@@ -3,6 +3,12 @@ import type Anime4KShader from "../glsl/shader";
 import { type Anime4KShaderConstructor } from "../glsl/shader";
 import { createTexture, type TextureData } from "../utils/index";
 
+const isFloatLinearTextureSupported = (gl: WebGLRenderingContext): boolean => {
+  const half_float = gl.getExtension("OES_texture_half_float") != null && gl.getExtension("OES_texture_half_float_linear") != null && gl.getExtension("EXT_color_buffer_half_float") != null;
+  const float = gl.getExtension("OES_texture_float") != null && gl.getExtension("OES_texture_float_linear") != null && gl.getExtension("WEBGL_color_buffer_float") != null;
+  return half_float || float;
+};
+
 const useVideoFrameCallback = (media?: HTMLVideoElement, fps?: number) => {
   if (fps != null) { return false; }
   return typeof media?.requestVideoFrameCallback === 'function';
@@ -56,9 +62,7 @@ export default class VideoUpscaler {
     const canvas = document.createElement('canvas');
     const gl = canvas.getContext('webgl');
     if (!gl) { return false; }
-    if (gl.getExtension("OES_texture_float") == null) { return false; }
-    if (gl.getExtension("OES_texture_float_linear") == null) { return false; }
-    return true;
+    return isFloatLinearTextureSupported(gl);
   }
 
   public start() {
@@ -159,7 +163,7 @@ export default class VideoUpscaler {
       stencil: false,
       depth: false
     });
-    if (this.gl && this.gl.getExtension("OES_texture_float") && this.gl.getExtension("OES_texture_float_linear") && this.gl.getExtension("EXT_color_buffer_half_float")) {
+    if (this.gl && isFloatLinearTextureSupported(this.gl)) {
       const gl = this.gl;
       gl.disable(gl.DEPTH_TEST);
       gl.disable(gl.STENCIL_TEST);
