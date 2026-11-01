@@ -37,5 +37,7 @@ export { default as Anime4K_Upscale_Denoise_CNN_x2_M } from '../glsl/Upscale+Den
 export { default as Anime4K_Upscale_Denoise_CNN_x2_S } from '../glsl/Upscale+Denoise/Anime4K_Upscale_Denoise_CNN_x2_S';
 export { default as Anime4K_Upscale_Denoise_CNN_x2_UL } from '../glsl/Upscale+Denoise/Anime4K_Upscale_Denoise_CNN_x2_UL';
 export { default as Anime4K_Upscale_Denoise_CNN_x2_VL } from '../glsl/Upscale+Denoise/Anime4K_Upscale_Denoise_CNN_x2_VL';
+/* Utils */
 export { default as Anime4KShader, type Anime4KShaderConstructor } from '../glsl/shader';
+export { default as PassThrough } from '../glsl/passthrough';
 export type { TextureData, ResolutionData } from '../utils/index'
