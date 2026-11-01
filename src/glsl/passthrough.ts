@@ -74,6 +74,9 @@ export default class PassThrough {
 
   public destroy() {
     const gl = this.gl;
+    if (this.program != null) {
+      gl.deleteProgram(this.program);
+    }
     if (this.texcoordBuffer != null) {
       gl.deleteBuffer(this.texcoordBuffer);
     }
