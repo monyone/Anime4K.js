@@ -156,6 +156,9 @@ export default class VideoUpscaler {
   }
 
   public attachVideo(video: HTMLVideoElement, canvas: HTMLCanvasElement) {
+    const keepRunning = this.running; // keep running for detaching
+    this.detachVideo(); // force detach for already attached resources
+
     this.video = video;
     this.canvas = canvas;
     this.gl = this.canvas.getContext('webgl', {
@@ -180,6 +183,8 @@ export default class VideoUpscaler {
       this.scale = null;
       this.passthrough = new PassThrough(gl);
       this.adjustCanvasSize();
+
+      if (keepRunning) { this.start(); }
     } else {
       this.detachVideo();
     }
@@ -188,17 +193,20 @@ export default class VideoUpscaler {
     this.stop();
 
     (this.programs ?? []).forEach((program) => program.destroy());
+    this.programs = null;
     this.passthrough?.destroy();
     this.passthrough = null;
 
     this.gl?.deleteFramebuffer(this.framebuffer);
+    this.framebuffer = null;
+
     this.gl?.deleteTexture(this.in_texture);
     this.gl?.deleteTexture(this.native_texture);
     this.gl?.deleteTexture(this.output_texture);
     this.in_texture = this.native_texture = this.output_texture = null;
+    this.textures.clear();
 
     this.gl = null;
-    this.framebuffer = null;
     if (this.canvas) {
       this.canvas.style.visibility = 'hidden';
     }
