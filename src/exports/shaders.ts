@@ -40,4 +40,5 @@ export { default as Anime4K_Upscale_Denoise_CNN_x2_VL } from '../glsl/Upscale+De
 /* Utils */
 export { default as Anime4KShader, type Anime4KShaderConstructor } from '../glsl/shader';
 export { default as PassThrough } from '../glsl/passthrough';
+export { createTexture, isFloatLinearTextureSupported } from '../utils/index'
 export type { TextureData, ResolutionData } from '../utils/index'

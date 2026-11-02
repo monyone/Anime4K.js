@@ -54,11 +54,22 @@ export const createTexture = (gl: WebGLRenderingContext, type: number): WebGLTex
 export const fillEmptyTexture = (gl: WebGLRenderingContext, texture: WebGLTexture, width: number, height: number): void => {
   const tex_half_float = gl.getExtension("OES_texture_half_float");
   const can_linear_and_color_half_float = gl.getExtension("OES_texture_half_float_linear") != null && gl.getExtension("EXT_color_buffer_half_float") != null;
-  const type = (tex_half_float != null && can_linear_and_color_half_float) ? tex_half_float.HALF_FLOAT_OES : gl.FLOAT;
+  const use_half_float = tex_half_float != null && can_linear_and_color_half_float;
+  if (!use_half_float) {
+    gl.getExtension("OES_texture_float");
+    gl.getExtension("OES_texture_float_linear");
+    gl.getExtension("WEBGL_color_buffer_float");
+  }
+  const type = use_half_float ? tex_half_float.HALF_FLOAT_OES : gl.FLOAT;
   gl.bindTexture(gl.TEXTURE_2D, texture);
   gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, width, height, 0, gl.RGBA, type, null);
   gl.bindTexture(gl.TEXTURE_2D, null);
 }
+export const isFloatLinearTextureSupported = (gl: WebGLRenderingContext): boolean => {
+  const half_float = gl.getExtension("OES_texture_half_float") != null && gl.getExtension("OES_texture_half_float_linear") != null && gl.getExtension("EXT_color_buffer_half_float") != null;
+  const float = gl.getExtension("OES_texture_float") != null && gl.getExtension("OES_texture_float_linear") != null && gl.getExtension("WEBGL_color_buffer_float") != null;
+  return half_float || float;
+};
 
 export const createRectangleBuffer = (gl: WebGLRenderingContext, sx: number, sy: number, dx: number, dy: number): WebGLBuffer | null => {
   const buffer = gl.createBuffer();

@@ -1,13 +1,7 @@
 import PassThrough from "../glsl/passthrough";
 import type Anime4KShader from "../glsl/shader";
 import { type Anime4KShaderConstructor } from "../glsl/shader";
-import { createTexture, type TextureData } from "../utils/index";
-
-const isFloatLinearTextureSupported = (gl: WebGLRenderingContext): boolean => {
-  const half_float = gl.getExtension("OES_texture_half_float") != null && gl.getExtension("OES_texture_half_float_linear") != null && gl.getExtension("EXT_color_buffer_half_float") != null;
-  const float = gl.getExtension("OES_texture_float") != null && gl.getExtension("OES_texture_float_linear") != null && gl.getExtension("WEBGL_color_buffer_float") != null;
-  return half_float || float;
-};
+import { createTexture, isFloatLinearTextureSupported, type TextureData } from "../utils/index";
 
 const useVideoFrameCallback = (media?: HTMLVideoElement, fps?: number) => {
   if (fps != null) { return false; }
