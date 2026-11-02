@@ -9,11 +9,33 @@ const isFloatLinearTextureSupported = (gl: WebGLRenderingContext): boolean => {
   return half_float || float;
 };
 
-const empty = () => {}
+const texSourceResolution = (source: TexImageSource): [number, number] => {
+  const ImageBitmap = self.ImageBitmap ?? (class{});
+  const HTMLVideoElement = self.HTMLVideoElement ?? (class{});
+  const VideoFrame = self.VideoFrame ?? (class{});
+  if (source instanceof ImageBitmap) { return [source.width, source.height]; }
+  if (source instanceof HTMLVideoElement) { return [source.videoWidth, source.videoHeight]; }
+  if (source instanceof VideoFrame) { return [source.displayWidth, source.displayHeight]; }
+  return [source.width, source.height];
+};
+
+type CanvasLike = HTMLCanvasElement | OffscreenCanvas;
+const isDOM = (canvas: CanvasLike): canvas is HTMLCanvasElement => {
+  const HTMLCanvasElement = self.HTMLCanvasElement ?? (class{});
+  return canvas instanceof HTMLCanvasElement;
+}
+const getContext = (canvas: CanvasLike | null | undefined, options: WebGLContextAttributes): WebGLRenderingContext | null => {
+  if (canvas == null) { return null; }
+  if (isDOM(canvas)) {
+    return canvas.getContext('webgl', options);
+  } else {
+    return canvas.getContext('webgl', options);
+  }
+}
 
 export default class ImageUpscaler {
   private source: TexImageSource | null = null;
-  private canvas: HTMLCanvasElement | null = null;
+  private canvas: CanvasLike | null = null;
   private gl: WebGLRenderingContext | null = null;
 
   private scale: [number, number] | null = null;
@@ -41,7 +63,6 @@ export default class ImageUpscaler {
     return isFloatLinearTextureSupported(gl);
   }
 
-
   public upscale() {
     if (!this.supported) { return; }
     if (!this.source) { return; }
@@ -67,26 +88,29 @@ export default class ImageUpscaler {
     const output_texture = this.output_texture;
     if (!output_texture) { return; }
 
-    const in_width = this.source instanceof ImageBitmap ? this.source.width : this.source instanceof HTMLVideoElement ? this.source.videoWidth : this.source instanceof (window.VideoFrame ?? empty) ? this.source.displayWidth : this.source.width;
-    const in_height = this.source instanceof ImageBitmap ? this.source.height : this.source instanceof HTMLVideoElement ? this.source.videoHeight :this.source instanceof (window.VideoFrame ?? empty) ? this.source.displayHeight : this.source.height;
+    const [in_width, in_height] = texSourceResolution(this.source);
     const out_width = this.canvas.width, out_height = this.canvas.height;
 
     // use Texture
     {
-      if (!this.textures.has('NATIVE')) {
+      const native = this.textures.get('NATIVE')
+      if (native == null || native.width !== in_width || native.height !== in_height) {
         this.textures.set('NATIVE', { texture: native_texture, width: in_width, height: in_height });
       }
     }
     {
-      if (!this.textures.has('OUTPUT')) {
+      const output = this.textures.get('OUTPUT')
+      if (output == null || output.width !== out_width || output.height !== out_height) {
         this.textures.set('OUTPUT', { texture: output_texture, width: out_width, height: out_height });
       }
     }
     {
-      if (!this.textures.has('MAIN')) {
+      const main = this.textures.get('MAIN');
+      if (main == null || main.width !== in_width || main.height !== in_height) {
         this.textures.set('MAIN', { texture: in_texture, width: in_width, height: in_height });
       }
     }
+
     this.programs.forEach((program) => program.hook_MAIN(this.textures, framebuffer!));
 
     if (this.textures.has('MAIN')){
@@ -100,14 +124,17 @@ export default class ImageUpscaler {
 
     gl.flush();
 
-    if(!(this.canvas instanceof OffscreenCanvas))
-    this.canvas.style.visibility = 'visible';
+    if (isDOM(this.canvas)) {
+      this.canvas.style.visibility = 'visible';
+    }
   }
 
-  public attachSource(source: TexImageSource, canvas: HTMLCanvasElement) {
+  public attachSource(source: TexImageSource, canvas: CanvasLike) {
+    this.detachSource(); // force detach for already attached resources
+
     this.source = source;
     this.canvas = canvas;
-    this.gl = this.canvas.getContext('webgl', {
+    this.gl = getContext(canvas, {
       premultipliedAlpha: false,
       stencil: false,
       depth: false
@@ -135,18 +162,21 @@ export default class ImageUpscaler {
   }
   public detachSource() {
     (this.programs ?? []).forEach((program) => program.destroy());
+    this.programs = null;
     this.passthrough?.destroy();
     this.passthrough = null;
 
     this.gl?.deleteFramebuffer(this.framebuffer);
+    this.framebuffer = null;
+
     this.gl?.deleteTexture(this.in_texture);
     this.gl?.deleteTexture(this.native_texture);
     this.gl?.deleteTexture(this.output_texture);
     this.in_texture = this.native_texture = this.output_texture = null;
+    this.textures.clear();
 
     this.gl = null;
-    if (this.canvas) {
-      if(!(this.canvas instanceof OffscreenCanvas))
+    if (this.canvas && isDOM(this.canvas)) {
       this.canvas.style.visibility = 'hidden';
     }
     this.source = null;
@@ -166,11 +196,12 @@ export default class ImageUpscaler {
       this.scale = [w, h];
     }
 
-    const in_width = this.source instanceof ImageBitmap ? this.source.width : this.source instanceof HTMLVideoElement ? this.source.videoWidth : this.source instanceof (window.VideoFrame ?? empty) ? this.source.displayWidth : this.source.width;
-    const in_height = this.source instanceof ImageBitmap ? this.source.height : this.source instanceof HTMLVideoElement ? this.source.videoHeight : this.source instanceof (window.VideoFrame ?? empty) ? this.source.displayHeight : this.source.height;
+    const [in_width, in_height] = texSourceResolution(this.source);
     this.canvas.width = in_width * this.scale[0];
     this.canvas.height = in_height * this.scale[1];
-    if(!(this.canvas instanceof OffscreenCanvas))
-    this.canvas.style.pointerEvents = 'none';
+
+    if (isDOM(this.canvas)) {
+      this.canvas.style.pointerEvents = 'none';
+    }
   }
 }
