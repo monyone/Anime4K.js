@@ -10,7 +10,7 @@ A WebGL port of [Anime4K](https://github.com/bloc97/Anime4K) (4.0.1) glsl filter
 
 https://monyone.github.io/Anime4K.js/
 
-Image Upscaling Demo is Here: https://monyone.github.io/Anime4K.js/Image.html  
+Image Upscaling Demo is Here: https://monyone.github.io/Anime4K.js/image.html  
 Video Upscaling Demo is Here: https://monyone.github.io/Anime4K.js/video.html  
 
 ## Build
