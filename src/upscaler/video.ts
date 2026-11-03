@@ -44,6 +44,11 @@ export default class VideoUpscaler {
   private running: boolean = false;
   private upscaleTime: number = 0;
   private fps: number | undefined;
+
+  private lostRunning: boolean = false;
+  private contextLostHandler = this.contextLost.bind(this);
+  private contextRestoredHandler = this.contextRestored.bind(this);
+
   private supported: boolean;
 
   public constructor(config: Anime4KShaderConstructor[], fps?: number) {
@@ -55,8 +60,58 @@ export default class VideoUpscaler {
   public static isSupported(): boolean {
     const canvas = document.createElement('canvas');
     const gl = canvas.getContext('webgl');
-    if (!gl) { return false; }
-    return isFloatLinearTextureSupported(gl);
+    const ok = gl != null && isFloatLinearTextureSupported(gl);
+    gl?.getExtension('WEBGL_lose_context')?.loseContext();
+    return ok;
+  }
+
+  private setupWebGL(): void {
+    if (this.gl == null) { return; }
+    const gl = this.gl;
+
+    gl.disable(gl.DEPTH_TEST);
+    gl.disable(gl.STENCIL_TEST);
+    gl.clearColor(0, 0, 0, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+
+    this.framebuffer = gl.createFramebuffer()!;
+
+    this.in_texture = createTexture(gl, gl.LINEAR);
+    this.native_texture = createTexture(gl, gl.LINEAR);
+    this.output_texture = createTexture(gl, gl.LINEAR);
+
+    this.programs = this.config.map((constuctor) => new constuctor(gl));
+    this.scale = null;
+    this.passthrough = new PassThrough(gl);
+  }
+  private teardownWebGL(): void {
+    (this.programs ?? []).forEach((program) => program.destroy());
+    this.programs = null;
+    this.passthrough?.destroy();
+    this.passthrough = null;
+
+    this.gl?.deleteFramebuffer(this.framebuffer);
+    this.framebuffer = null;
+
+    this.gl?.deleteTexture(this.in_texture);
+    this.gl?.deleteTexture(this.native_texture);
+    this.gl?.deleteTexture(this.output_texture);
+    this.in_texture = this.native_texture = this.output_texture = null;
+    this.textures.clear();
+  }
+
+  private contextLost(e: Event): void {
+    e.preventDefault();
+    const keepRunning = this.running;
+    this.stop();
+    this.teardownWebGL();
+    this.lostRunning = keepRunning;
+  }
+  private contextRestored(_: Event): void {
+    this.setupWebGL();
+    this.adjustCanvasSize();
+    if (!this.lostRunning) { return; }
+    this.start();
   }
 
   public start() {
@@ -155,29 +210,16 @@ export default class VideoUpscaler {
 
     this.video = video;
     this.canvas = canvas;
+    this.canvas.addEventListener('webglcontextlost', this.contextLostHandler);
+    this.canvas.addEventListener('webglcontextrestored', this.contextRestoredHandler);
     this.gl = this.canvas.getContext('webgl', {
       premultipliedAlpha: false,
       stencil: false,
       depth: false
     });
     if (this.gl && isFloatLinearTextureSupported(this.gl)) {
-      const gl = this.gl;
-      gl.disable(gl.DEPTH_TEST);
-      gl.disable(gl.STENCIL_TEST);
-      gl.clearColor(0, 0, 0, 0);
-      gl.clear(gl.COLOR_BUFFER_BIT);
-
-      this.framebuffer = gl.createFramebuffer()!;
-
-      this.in_texture = createTexture(gl, gl.LINEAR);
-      this.native_texture = createTexture(gl, gl.LINEAR);
-      this.output_texture = createTexture(gl, gl.LINEAR);
-
-      this.programs = this.config.map((constuctor) => new constuctor(gl));
-      this.scale = null;
-      this.passthrough = new PassThrough(gl);
+      this.setupWebGL();
       this.adjustCanvasSize();
-
       if (keepRunning) { this.start(); }
     } else {
       this.detachVideo();
@@ -186,20 +228,9 @@ export default class VideoUpscaler {
   public detachVideo() {
     this.stop();
 
-    (this.programs ?? []).forEach((program) => program.destroy());
-    this.programs = null;
-    this.passthrough?.destroy();
-    this.passthrough = null;
-
-    this.gl?.deleteFramebuffer(this.framebuffer);
-    this.framebuffer = null;
-
-    this.gl?.deleteTexture(this.in_texture);
-    this.gl?.deleteTexture(this.native_texture);
-    this.gl?.deleteTexture(this.output_texture);
-    this.in_texture = this.native_texture = this.output_texture = null;
-    this.textures.clear();
-
+    this.teardownWebGL();
+    this.canvas?.removeEventListener('webglcontextlost', this.contextLostHandler);
+    this.canvas?.removeEventListener('webglcontextrestored', this.contextRestoredHandler);
     this.gl = null;
     if (this.canvas) {
       this.canvas.style.visibility = 'hidden';
