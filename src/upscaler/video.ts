@@ -115,12 +115,12 @@ export default class VideoUpscaler {
   }
 
   public start() {
-    this.running = true;
+    this.running = this.lostRunning = true;
     this.upscaleTime = 0;
     this.upscale();
   }
   public stop() {
-    this.running = false;
+    this.running = this.lostRunning = false;
     this.upscaleTime = 0;
     if (this.canvas) {
       this.canvas.style.visibility = 'hidden';
