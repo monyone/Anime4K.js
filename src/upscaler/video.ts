@@ -2,6 +2,7 @@ import PassThrough from "../glsl/passthrough";
 import type Anime4KShader from "../glsl/shader";
 import { type Anime4KShaderConstructor } from "../glsl/shader";
 import { createTexture, isFloatLinearTextureSupported, type TextureData } from "../utils/index";
+import { type AttachOption, ResolutionMode } from "./option";
 
 const useVideoFrameCallback = (media?: HTMLVideoElement, fps?: number) => {
   if (fps != null) { return false; }
@@ -27,8 +28,9 @@ export default class VideoUpscaler {
   private canvas: HTMLCanvasElement | null = null;
   private gl: WebGLRenderingContext | null = null;
 
-  private scale: [number, number] | null = null;
   private config: Anime4KShaderConstructor[];
+  private resolutionMode: ResolutionMode = ResolutionMode.Default();
+  private scale: [number, number] | null = null;
 
   private textures = new Map<string, TextureData>();
   private in_texture: WebGLTexture | null = null;
@@ -39,10 +41,10 @@ export default class VideoUpscaler {
   private programs: Anime4KShader[] | null = null;
   private passthrough: PassThrough | null = null;
 
-  private readonly upscaleHandler: () => void = this.upscale.bind(this);
-  private upscaleTimer: number | null = null;
-  private running: boolean = false;
-  private upscaleTime: number = 0;
+  private readonly loopHandler: () => void = this.loop.bind(this);
+  private loopTimer: number | null = null;
+  private loopTime: number = 0;
+  private loopRunning: boolean = false;
   private fps: number | undefined;
 
   private lostRunning: boolean = false;
@@ -102,35 +104,38 @@ export default class VideoUpscaler {
 
   private contextLost(e: Event): void {
     e.preventDefault();
-    const keepRunning = this.running;
+    const keepRunning = this.loopRunning;
     this.stop();
     this.teardownWebGL();
     this.lostRunning = keepRunning;
   }
   private contextRestored(_: Event): void {
     this.setupWebGL();
-    this.adjustCanvasSize();
+    this.adjustCanvasSize()
     if (!this.lostRunning) { return; }
     this.start();
   }
 
   public start() {
-    this.running = this.lostRunning = true;
-    this.upscaleTime = 0;
-    this.upscale();
-  }
-  public stop() {
-    this.running = this.lostRunning = false;
-    this.upscaleTime = 0;
+    this.loopRunning = this.lostRunning = true;
+    this.loopTime = 0;
     if (this.canvas) {
       this.canvas.style.visibility = 'hidden';
     }
-    if (this.upscaleTimer == null) { return; }
-    cancelFrame(this.upscaleTimer, this.video ?? undefined, this.fps);
-    this.upscaleTimer = null;
+    this.loop();
+  }
+  public stop() {
+    this.loopRunning = this.lostRunning = false;
+    this.loopTime = 0;
+    if (this.canvas) {
+      this.canvas.style.visibility = 'hidden';
+    }
+    if (this.loopTimer == null) { return; }
+    cancelFrame(this.loopTimer, this.video ?? undefined, this.fps);
+    this.loopTimer = null;
   }
 
-  private upscale() {
+  private loop() {
     if (!this.supported) { return; }
     if (!this.video) { return; }
     if (!this.canvas) { return; }
@@ -139,16 +144,35 @@ export default class VideoUpscaler {
     if (!this.programs) { return; }
     if (!this.passthrough) { return; }
 
-    if (!this.running) { return; }
-    this.adjustCanvasSize();
+    // stop if not running
+    if (!this.loopRunning) { return; }
 
     const currentTime = performance.now();
-    if (!useVideoFrameCallback(this.video, this.fps) && (currentTime - this.upscaleTime) * (this.fps ?? Number.POSITIVE_INFINITY) < 1000) {
-      this.upscaleTimer = requestFrame(this.upscaleHandler, this.video, this.fps);
+    if (!useVideoFrameCallback(this.video, this.fps) && (currentTime - this.loopTime) * (this.fps ?? Number.POSITIVE_INFINITY) < 1000) {
+      this.loopTimer = requestFrame(this.loopHandler, this.video, this.fps);
       return;
     }
-    this.upscaleTime = currentTime;
+    this.loopTime = currentTime;
 
+    this.upscale();
+    this.canvas.style.visibility = 'visible';
+
+    this.loopTimer = requestFrame(this.loopHandler, this.video, this.fps);
+  }
+
+  public upscale() {
+    if (!this.supported) { return; }
+    if (!this.video) { return; }
+    if (!this.canvas) { return; }
+    if (!this.gl) { return; }
+    if (!this.framebuffer) { return; }
+    if (!this.programs) { return; }
+    if (!this.passthrough) { return; }
+
+    // init destination area
+    this.adjustCanvasSize();
+
+    // shorthands
     const gl = this.gl;
     const framebuffer = this.framebuffer;
 
@@ -199,17 +223,16 @@ export default class VideoUpscaler {
     this.passthrough.render(this.textures.get('PREKERNEL')!, out_width, out_height);
 
     gl.flush();
-    this.canvas.style.visibility = 'visible';
-
-    this.upscaleTimer = requestFrame(this.upscaleHandler, this.video, this.fps);
   }
 
-  public attachVideo(video: HTMLVideoElement, canvas: HTMLCanvasElement) {
-    const keepRunning = this.running; // keep running for detaching
+  public attachVideo(video: HTMLVideoElement, canvas: HTMLCanvasElement, option?: AttachOption) {
+    const keepRunning = this.loopRunning; // keep running for detaching
     this.detachVideo(); // force detach for already attached resources
 
     this.video = video;
     this.canvas = canvas;
+    this.resolutionMode = option?.resolution ?? ResolutionMode.Default();
+    this.canvas.style.pointerEvents = 'none';
     this.canvas.addEventListener('webglcontextlost', this.contextLostHandler);
     this.canvas.addEventListener('webglcontextrestored', this.contextRestoredHandler);
     this.gl = this.canvas.getContext('webgl', {
@@ -237,27 +260,40 @@ export default class VideoUpscaler {
     }
     this.video = null;
     this.canvas = null;
+    this.resolutionMode = ResolutionMode.Default();
   }
+
   private adjustCanvasSize() {
     if (!this.video) { return; }
     if (!this.canvas) { return; }
 
-    if (this.scale == null) {
-      let w = 1, h = 1;
-      for (const program of this.programs ?? []) {
-        const [x, y] = program.magnification();
-        w *= x;
-        h *= y;
+    let width: number, height: number;
+    switch (this.resolutionMode.type) {
+      case 'display': {
+        const dpr = self.devicePixelRatio || 1;
+        width = Math.round(this.video.clientWidth * dpr);
+        height = Math.round(this.video.clientHeight * dpr);
+        break;
       }
-      this.scale = [w, h];
-    }
+      case 'native': {
+        if (this.scale == null) {
+          let w = 1, h = 1;
+          for (const program of this.programs ?? []) {
+            const [x, y] = program.magnification();
+            w *= x;
+            h *= y;
+          }
+          this.scale = [w, h];
+        }
 
-    const width = this.video.videoWidth * this.scale[0];
-    const height = this.video.videoHeight * this.scale[1];
+        width = this.video.videoWidth * this.scale[0];
+        height = this.video.videoHeight * this.scale[1];
+        break;
+      }
+    }
     if (this.canvas.width !== width || this.canvas.height !== height) {
       this.canvas.width = width;
       this.canvas.height = height;
     }
-    this.canvas.style.pointerEvents = 'none';
   }
 }
