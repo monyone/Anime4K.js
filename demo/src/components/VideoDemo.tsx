@@ -1,13 +1,16 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { VideoUpscaler } from 'anime4k.js/upscaler'
+import { VideoUpscaler, ResolutionMode } from 'anime4k.js/upscaler'
 import PresetSelector from './PresetSelector'
 import ComparisonSlider from './ComparisonSlider'
 import PRESETS from '../utils/presets'
+
+type SizeMode = 'video' | 'output'
 
 export default function VideoDemo() {
   const [presetKey, setPresetKey] = useState(PRESETS[0].value)
   const [videoUrl, setVideoUrl] = useState<string | null>(null)
   const [dimensions, setDimensions] = useState<{ width: number; height: number } | null>(null)
+  const [sizeMode, setSizeMode] = useState<SizeMode>('video')
 
   const videoRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -44,8 +47,10 @@ export default function VideoDemo() {
 
       setDimensions({ width: video.videoWidth, height: video.videoHeight })
 
+      const resolution = sizeMode === 'output' ? ResolutionMode.Display() : ResolutionMode.Native()
+
       const upscaler = new VideoUpscaler(preset.config)
-      upscaler.attachVideo(video, canvas)
+      upscaler.attachVideo(video, canvas, { resolution })
       upscaler.start()
       upscalerRef.current = upscaler
     }
@@ -60,7 +65,7 @@ export default function VideoDemo() {
     }
 
     return cleanup
-  }, [videoUrl, presetKey, cleanup])
+  }, [videoUrl, presetKey, sizeMode, cleanup])
 
   return (
     <div className="space-y-4">
@@ -79,6 +84,26 @@ export default function VideoDemo() {
           value={presetKey}
           onChange={setPresetKey}
         />
+        <div className="flex items-center gap-2 text-sm text-gray-300">
+          <span>Resolution:</span>
+          <div className="inline-flex rounded overflow-hidden border border-gray-600">
+            {([
+              ['video', 'Source'],
+              ['output', 'Display'],
+            ] as const).map(([mode, label]) => (
+              <button
+                key={mode}
+                type="button"
+                onClick={() => setSizeMode(mode)}
+                className={`px-3 py-2 transition-colors ${
+                  sizeMode === mode ? 'bg-blue-600 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
       {videoUrl ? (
